@@ -8,12 +8,16 @@ class Character {
   final int id;
 
   String name;
+  String picture;
 
   Character(
     this.id, 
-    this.name);
+    this.name,this.picture);
 
   void setName(String newName){
     name = newName;
+  }
+  void setPicture(String newPicture){
+    picture = newPicture;
   }
 }

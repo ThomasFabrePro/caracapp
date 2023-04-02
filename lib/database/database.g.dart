@@ -85,7 +85,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Character` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `Character` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `picture` TEXT NOT NULL, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -107,14 +107,20 @@ class _$CharacterDao extends CharacterDao {
         _characterInsertionAdapter = InsertionAdapter(
             database,
             'Character',
-            (Character item) =>
-                <String, Object?>{'id': item.id, 'name': item.name}),
+            (Character item) => <String, Object?>{
+                  'id': item.id,
+                  'name': item.name,
+                  'picture': item.picture
+                }),
         _characterUpdateAdapter = UpdateAdapter(
             database,
             'Character',
             ['id'],
-            (Character item) =>
-                <String, Object?>{'id': item.id, 'name': item.name});
+            (Character item) => <String, Object?>{
+                  'id': item.id,
+                  'name': item.name,
+                  'picture': item.picture
+                });
 
   final sqflite.DatabaseExecutor database;
 
@@ -129,23 +135,23 @@ class _$CharacterDao extends CharacterDao {
   @override
   Future<List<Character>> findAllCharacters() async {
     return _queryAdapter.queryList('SELECT * FROM Character',
-        mapper: (Map<String, Object?> row) =>
-            Character(row['id'] as int, row['name'] as String));
+        mapper: (Map<String, Object?> row) => Character(
+            row['id'] as int, row['name'] as String, row['picture'] as String));
   }
 
   @override
   Future<Character?> findCharacterById(int id) async {
     return _queryAdapter.query('SELECT * FROM Character WHERE id = ?1',
-        mapper: (Map<String, Object?> row) =>
-            Character(row['id'] as int, row['name'] as String),
+        mapper: (Map<String, Object?> row) => Character(
+            row['id'] as int, row['name'] as String, row['picture'] as String),
         arguments: [id]);
   }
 
   @override
   Future<Character?> findCharacterByName(String name) async {
     return _queryAdapter.query('SELECT * FROM Character WHERE name = ?1',
-        mapper: (Map<String, Object?> row) =>
-            Character(row['id'] as int, row['name'] as String),
+        mapper: (Map<String, Object?> row) => Character(
+            row['id'] as int, row['name'] as String, row['picture'] as String),
         arguments: [name]);
   }
 
