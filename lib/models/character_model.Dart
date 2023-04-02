@@ -13,9 +13,6 @@ class Character {
     this.id, 
     this.name);
 
-  //  set setName(String newName){
-  //     name = newName;
-  // }
   void setName(String newName){
     name = newName;
   }

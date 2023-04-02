@@ -23,6 +23,8 @@ dev_dependencies:
   build_runner: ^2.1.2
  
 flutter:
+   assets:
+    - assets/ninja_images/
 
 
-  uses-material-design: true
+uses-material-design: true
