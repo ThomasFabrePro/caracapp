@@ -3,13 +3,20 @@
 import 'package:floor/floor.dart';
 
 @entity
-class Person {
+class Character {
   @primaryKey
-  // final int id;
+  final int id;
 
-  final String name;
+  String name;
 
-  Person(
-    // this.id, 
+  Character(
+    this.id, 
     this.name);
+
+  //  set setName(String newName){
+  //     name = newName;
+  // }
+  void setName(String newName){
+    name = newName;
+  }
 }

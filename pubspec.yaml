@@ -12,13 +12,15 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   flutter_lints: ^2.0.0
+  sqflite: ^2.2.6
   # google_fonts: ^4.0.2
   # database_helper: ^0.0.2
   floor: ^1.4.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  floor_generator: ^1.4.1
+  build_runner: ^2.1.2
  
 flutter:
 

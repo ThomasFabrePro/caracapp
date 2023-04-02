@@ -1,14 +1,35 @@
+import 'package:caracapp/database/database.dart';
+import 'package:caracapp/models/character_model.dart';
 import 'package:caracapp/utils/color_theme.dart';
+import 'package:caracapp/utils/data_access_object/character_dao.dart';
 import 'package:caracapp/widgets/app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-void main() {
-  runApp(const MyApp());
+// void main() {
+//   runApp(const MyApp());
+// }
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final database =
+      await $FloorAppDatabase.databaseBuilder('app_database.db').build();
+
+  final characterDao = database.characterDao;
+  Character character;
+  List<Character> list = await characterDao.findAllCharacters();
+  if (list.isEmpty) {
+    character = Character(1, 'Fanny');
+    await characterDao.insertCharacter(character);
+  } else {
+    character = list[0];
+  }
+  runApp(MyApp(character: character, characterDao: characterDao));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  Character character;
+  CharacterDao characterDao;
+  MyApp({super.key, required this.character, required this.characterDao});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,13 +38,22 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: MyColorTheme.colorCustom,
       ),
-      home: MyHomePage(title: 'Carac App Home Page'),
+      home: MyHomePage(
+          title: 'Carac App Home Page',
+          character: character,
+          characterDao: characterDao),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  Character character;
+  CharacterDao characterDao;
+  MyHomePage(
+      {super.key,
+      required this.title,
+      required this.character,
+      required this.characterDao});
 
   final String title;
 
@@ -55,7 +85,8 @@ class _MyHomePageState extends State<MyHomePage> {
         // ),
         body: Column(
           children: <Widget>[
-            MyAppBar(),
+            MyAppBar(
+                character: widget.character, characterDao: widget.characterDao),
           ],
         ),
       ),
