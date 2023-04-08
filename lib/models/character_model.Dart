@@ -15,6 +15,7 @@ class Character {
   int age;
   String origin;
   int level;
+  int attribute;
   int hp;
   int constitution;
   int ninjutsu;
@@ -35,6 +36,7 @@ class Character {
     this.age = 17,
     this.origin = "Konoha",
     this.level=1,
+    this.attribute = 0,
     this.hp=30, 
     this.constitution=30,
     this.ninjutsu=30,
@@ -108,7 +110,12 @@ class Character {
     await DbHelper.database.characterDao.updateCharacter(this);
   }
 
-  void setPicture(String newPicture){
+  Future<void> setPicture(String newPicture)async{
     picture = newPicture;
+    await DbHelper.database.characterDao.updateCharacter(this);
+  }
+  Future<void> setAttribute(int newAttribute)async{
+    attribute = newAttribute;
+    await DbHelper.database.characterDao.updateCharacter(this);
   }
 }

@@ -35,6 +35,7 @@ class _MyTextFieldState extends State<MyTextField> {
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
                   color: widget.fontColor,
+                  overflow: TextOverflow.ellipsis,
                 ))),
         SizedBox(
           width: width * widget.textFieldWidthPercent,

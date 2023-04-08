@@ -38,6 +38,7 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
                 color: widget.fontColor,
+                overflow: TextOverflow.ellipsis,
               )),
         ),
         SizedBox(
