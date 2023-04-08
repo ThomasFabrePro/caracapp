@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:caracapp/models/character_model.dart';
 import 'package:caracapp/utils/assets.dart';
 import 'package:caracapp/utils/data_access_object/character_dao.dart';
-import 'package:caracapp/widgets/my_text_field.dart';
+import 'package:caracapp/widgets/lowerWidgets/my_text_field.dart';
 import 'package:flutter/material.dart';
 
 class CharacterPicture extends StatefulWidget {

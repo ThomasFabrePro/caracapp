@@ -8,6 +8,8 @@ class MyImages {
     image.ninja4: "assets/ninja_images/ninja_4.png",
     image.ninja5: "assets/ninja_images/ninja_5.jpeg",
     image.ninja6: "assets/ninja_images/ninja_6.jpeg",
+    image.buttonPlus: "assets/front/plus_button.png",
+    image.buttonMinus: "assets/front/minus_button.png",
   };
 }
 
@@ -18,6 +20,8 @@ enum image {
   ninja4,
   ninja5,
   ninja6,
+  buttonPlus,
+  buttonMinus,
 }
 
 class MyDecoration {

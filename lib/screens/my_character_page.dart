@@ -1,6 +1,6 @@
 import 'package:caracapp/models/character_model.dart';
 import 'package:caracapp/utils/data_access_object/character_dao.dart';
-import 'package:caracapp/widgets/app_bar.dart';
+import 'package:caracapp/widgets/lowerWidgets/app_bar.dart';
 import 'package:caracapp/widgets/character_picture.dart';
 import 'package:flutter/material.dart';
 

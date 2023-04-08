@@ -2,8 +2,9 @@ import 'package:caracapp/models/character_model.dart';
 import 'package:caracapp/utils/assets.dart';
 import 'package:caracapp/utils/color_theme.dart';
 import 'package:caracapp/utils/data_access_object/character_dao.dart';
-import 'package:caracapp/widgets/caracteristics_upgrade.dart';
-import 'package:caracapp/widgets/my_text_field.dart';
+import 'package:caracapp/widgets/caracteristics_upgrade_bloc.dart';
+import 'package:caracapp/widgets/character_picture.dart';
+import 'package:caracapp/widgets/lowerWidgets/my_text_field.dart';
 import 'package:flutter/material.dart';
 
 class AddCharacterPage extends StatefulWidget {
@@ -41,65 +42,99 @@ class _AddCharacterPageState extends State<AddCharacterPage> {
               ],
             ),
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: SingleChildScrollView(
+          child: SingleChildScrollView(
+              child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: Column(
-              children: <Widget>[
-                MyTextField(
-                  title: "Nom :",
-                  hint: "",
-                  onChanged: (value) async {
-                    if (value != "" && mounted) {
-                      setState(() async {
-                        await widget.character.setName(value);
-                      });
-                    }
-                  },
-                  textFieldWidthPercent: textFieldWidthPercent,
+                  children: [
+                    MyTextField(
+                      title: "Nom :",
+                      hint: "${widget.character.name}",
+                      onChanged: (value) async {
+                        if (value != "" && mounted) {
+                          setState(() async {
+                            await widget.character.setName(value);
+                          });
+                        }
+                      },
+                      textFieldWidthPercent: textFieldWidthPercent,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    MyTextField(
+                      title: "Sexe :",
+                      hint: "${widget.character.sexe}",
+                      onChanged: (value) {
+                        if (value != "" && mounted) {
+                          setState(() async {
+                            await widget.character.setSexe(value);
+                          });
+                        }
+                      },
+                      textFieldWidthPercent: textFieldWidthPercent,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    MyTextField(
+                      title: "Age :",
+                      hint: "${widget.character.age}",
+                      onChanged: (value) {
+                        if (value != "" && mounted) {
+                          setState(() async {
+                            await widget.character.setAge(value);
+                          });
+                        }
+                      },
+                      textFieldWidthPercent: textFieldWidthPercent,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    MyTextField(
+                      title: "Origine :",
+                      hint: "${widget.character.origin}",
+                      onChanged: (value) {
+                        if (value != "" && mounted) {
+                          setState(() async {
+                            await widget.character.setOrigin(value);
+                          });
+                        }
+                      },
+                      textFieldWidthPercent: textFieldWidthPercent,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                  ],
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                MyTextField(
-                  title: "Sexe :",
-                  hint: "",
-                  onChanged: () {},
-                  textFieldWidthPercent: textFieldWidthPercent,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                MyTextField(
-                  title: "Age :",
-                  hint: "",
-                  onChanged: () {},
-                  textFieldWidthPercent: textFieldWidthPercent,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                MyTextField(
-                  title: "Origine :",
-                  hint: "",
-                  onChanged: () {},
-                  textFieldWidthPercent: textFieldWidthPercent,
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                const Text("Caractéristiques",
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                    )),
-                const SizedBox(
-                  height: 10,
-                ),
-                CaracteristicsUpgrade(character: widget.character),
-              ],
-            )),
-          ),
+              ),
+              Padding(
+                  padding: const EdgeInsets.only(bottom: 16.0),
+                  child: CharacterPicture(
+                      character: widget.character,
+                      characterDao: widget.characterDao)),
+              const SizedBox(
+                height: 30,
+              ),
+              const Text("Caractéristiques",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  )),
+              const SizedBox(
+                height: 30,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    bottom: 16.0, left: 16.0, right: 16.0),
+                child: CaracteristicsUpgradeBloc(character: widget.character),
+              ),
+            ],
+          )),
         ),
       ),
     );
