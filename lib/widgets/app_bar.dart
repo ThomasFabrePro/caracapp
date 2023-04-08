@@ -38,6 +38,16 @@ class _MyAppBarState extends State<MyAppBar> {
       width: width,
       height: height,
       color: MyColorTheme.colorCustom,
+      // decoration: const BoxDecoration(
+      // gradient: LinearGradient(
+      //   begin: Alignment.topRight,
+      //   end: Alignment.bottomLeft,
+      //   colors: [
+      //     Colors.blue,
+      //     Colors.red,
+      //   ],
+      // ),
+      // ),
       child: TextField(
         style: nameStyle,
         scrollPadding: EdgeInsets.zero,
@@ -50,7 +60,7 @@ class _MyAppBarState extends State<MyAppBar> {
           hintText: widget.character.name,
         ),
         onChanged: (value) {
-          widget.character.name = value;
+          // widget.character.name = value;
           widget.character.setName(value);
           widget.characterDao.updateCharacter(widget.character);
         },

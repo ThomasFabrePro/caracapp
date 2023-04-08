@@ -85,7 +85,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Character` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `picture` TEXT NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `Character` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `picture` TEXT NOT NULL, `hp` INTEGER NOT NULL, `constitution` INTEGER NOT NULL, `ninjutsu` INTEGER NOT NULL, `taijutsu` INTEGER NOT NULL, `genjutsu` INTEGER NOT NULL, `luck` INTEGER NOT NULL, `perception` INTEGER NOT NULL, `chakra` INTEGER NOT NULL, `dodge` INTEGER NOT NULL, `throwing` INTEGER NOT NULL, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -110,7 +110,17 @@ class _$CharacterDao extends CharacterDao {
             (Character item) => <String, Object?>{
                   'id': item.id,
                   'name': item.name,
-                  'picture': item.picture
+                  'picture': item.picture,
+                  'hp': item.hp,
+                  'constitution': item.constitution,
+                  'ninjutsu': item.ninjutsu,
+                  'taijutsu': item.taijutsu,
+                  'genjutsu': item.genjutsu,
+                  'luck': item.luck,
+                  'perception': item.perception,
+                  'chakra': item.chakra,
+                  'dodge': item.dodge,
+                  'throwing': item.throwing
                 }),
         _characterUpdateAdapter = UpdateAdapter(
             database,
@@ -119,7 +129,17 @@ class _$CharacterDao extends CharacterDao {
             (Character item) => <String, Object?>{
                   'id': item.id,
                   'name': item.name,
-                  'picture': item.picture
+                  'picture': item.picture,
+                  'hp': item.hp,
+                  'constitution': item.constitution,
+                  'ninjutsu': item.ninjutsu,
+                  'taijutsu': item.taijutsu,
+                  'genjutsu': item.genjutsu,
+                  'luck': item.luck,
+                  'perception': item.perception,
+                  'chakra': item.chakra,
+                  'dodge': item.dodge,
+                  'throwing': item.throwing
                 });
 
   final sqflite.DatabaseExecutor database;
@@ -136,14 +156,38 @@ class _$CharacterDao extends CharacterDao {
   Future<List<Character>> findAllCharacters() async {
     return _queryAdapter.queryList('SELECT * FROM Character',
         mapper: (Map<String, Object?> row) => Character(
-            row['id'] as int, row['name'] as String, row['picture'] as String));
+            id: row['id'] as int,
+            name: row['name'] as String,
+            picture: row['picture'] as String,
+            hp: row['hp'] as int,
+            constitution: row['constitution'] as int,
+            ninjutsu: row['ninjutsu'] as int,
+            taijutsu: row['taijutsu'] as int,
+            genjutsu: row['genjutsu'] as int,
+            luck: row['luck'] as int,
+            perception: row['perception'] as int,
+            chakra: row['chakra'] as int,
+            dodge: row['dodge'] as int,
+            throwing: row['throwing'] as int));
   }
 
   @override
   Future<Character?> findCharacterById(int id) async {
     return _queryAdapter.query('SELECT * FROM Character WHERE id = ?1',
         mapper: (Map<String, Object?> row) => Character(
-            row['id'] as int, row['name'] as String, row['picture'] as String),
+            id: row['id'] as int,
+            name: row['name'] as String,
+            picture: row['picture'] as String,
+            hp: row['hp'] as int,
+            constitution: row['constitution'] as int,
+            ninjutsu: row['ninjutsu'] as int,
+            taijutsu: row['taijutsu'] as int,
+            genjutsu: row['genjutsu'] as int,
+            luck: row['luck'] as int,
+            perception: row['perception'] as int,
+            chakra: row['chakra'] as int,
+            dodge: row['dodge'] as int,
+            throwing: row['throwing'] as int),
         arguments: [id]);
   }
 
@@ -151,7 +195,19 @@ class _$CharacterDao extends CharacterDao {
   Future<Character?> findCharacterByName(String name) async {
     return _queryAdapter.query('SELECT * FROM Character WHERE name = ?1',
         mapper: (Map<String, Object?> row) => Character(
-            row['id'] as int, row['name'] as String, row['picture'] as String),
+            id: row['id'] as int,
+            name: row['name'] as String,
+            picture: row['picture'] as String,
+            hp: row['hp'] as int,
+            constitution: row['constitution'] as int,
+            ninjutsu: row['ninjutsu'] as int,
+            taijutsu: row['taijutsu'] as int,
+            genjutsu: row['genjutsu'] as int,
+            luck: row['luck'] as int,
+            perception: row['perception'] as int,
+            chakra: row['chakra'] as int,
+            dodge: row['dodge'] as int,
+            throwing: row['throwing'] as int),
         arguments: [name]);
   }
 

@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class MyImages {
   Map<image, String> imagePath = {
     image.ninja1: "assets/ninja_images/ninja_1.jpg",
@@ -16,4 +18,20 @@ enum image {
   ninja4,
   ninja5,
   ninja6,
+}
+
+class MyDecoration {
+  static BoxShadow boxShadow = BoxShadow(
+    color: const Color.fromARGB(110, 0, 0, 0).withOpacity(0.5),
+    spreadRadius: 4,
+    blurRadius: 7,
+    offset: const Offset(3, 3), // changes position of shadow
+  );
+  static BoxShadow textFieldBoxShadow = BoxShadow(
+    color: const Color.fromARGB(110, 0, 0, 0).withOpacity(0.5),
+    spreadRadius: 1.0,
+    blurRadius: 3,
+    offset: const Offset(3, 3), // changes position of shadow
+  );
+  static Color green = Colors.green;
 }

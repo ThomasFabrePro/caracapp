@@ -1,7 +1,10 @@
+import 'package:caracapp/models/character_model.dart';
+import 'package:caracapp/utils/assets.dart';
 import 'package:flutter/material.dart';
 
 class CaracteristicsUpgrade extends StatefulWidget {
-  const CaracteristicsUpgrade({super.key});
+  final Character character;
+  const CaracteristicsUpgrade({super.key, required this.character});
 
   @override
   State<CaracteristicsUpgrade> createState() => _CaracteristicsUpgradeState();
@@ -18,11 +21,13 @@ class _CaracteristicsUpgradeState extends State<CaracteristicsUpgrade> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
+        boxShadow: [MyDecoration.boxShadow],
       ),
       child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Column(
-            children: [Text("data")],
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[Text("data")],
           )),
     );
   }

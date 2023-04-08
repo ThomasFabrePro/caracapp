@@ -1,3 +1,4 @@
+import 'package:caracapp/utils/assets.dart';
 import 'package:flutter/material.dart';
 
 class MyTextField extends StatefulWidget {
@@ -6,10 +7,12 @@ class MyTextField extends StatefulWidget {
   final double titleFieldWidthPercent;
   final double textFieldWidthPercent;
   final Function onChanged;
+  final Color? fontColor;
   const MyTextField(
       {super.key,
       this.titleFieldWidthPercent = 0.22,
       this.textFieldWidthPercent = 0.42,
+      this.fontColor,
       required this.title,
       required this.hint,
       required this.onChanged});
@@ -28,27 +31,38 @@ class _MyTextFieldState extends State<MyTextField> {
         SizedBox(
             width: width * widget.titleFieldWidthPercent,
             child: Text(widget.title,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
+                  color: widget.fontColor,
                 ))),
         SizedBox(
           width: width * widget.textFieldWidthPercent,
           height: 40,
-          child: TextField(
-            style: const TextStyle(
-              fontSize: 18,
+          child: Container(
+            // color: Colors.white,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(5),
+              boxShadow: [
+                MyDecoration.textFieldBoxShadow,
+              ],
             ),
-            // readOnly: true,
-            decoration: InputDecoration(
-              fillColor: Colors.white,
-              border: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white)),
-              hintText: widget.hint,
+            child: TextField(
+              style: const TextStyle(
+                fontSize: 18,
+              ),
+              // readOnly: true,
+              decoration: InputDecoration(
+                fillColor: Colors.white,
+                border: const OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white)),
+                hintText: widget.hint,
+              ),
+              onChanged: (value) {
+                widget.onChanged(value);
+              },
             ),
-            onChanged: (value) {
-              widget.onChanged(value);
-            },
           ),
         ),
       ],
