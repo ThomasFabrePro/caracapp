@@ -142,6 +142,7 @@ class Character {
           constitution += 5;
           break;
         case 3:
+        //byakugan
           taijutsu -= 5;
           perception -= 5;
           chakra += 5;
@@ -163,6 +164,7 @@ class Character {
           constitution -= 5;
           break;
         case 3:
+        //byakugan
           taijutsu += 5;
           perception += 5;
           chakra -= 5;

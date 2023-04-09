@@ -19,14 +19,10 @@ class UpgradeCaracteristic extends StatefulWidget {
 
 class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
   int stat = 0;
-  @override
-  void initState() {
-    stat = widget.stat;
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
+    stat = widget.stat;
     double width = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),

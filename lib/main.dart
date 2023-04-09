@@ -42,8 +42,10 @@ Future<void> main() async {
   // }
   //!FAKE
   if (list.isEmpty) {
-    character =
-        Character(id: fakeId, picture: MyImages().imagePath[image.ninja1]!);
+    character = Character(
+        id: fakeId,
+        name: 'Ashley',
+        picture: MyImages().imagePath[image.ninja1]!);
     await characterDao.insertCharacter(character);
     runApp(MyApp(
       character: character,
