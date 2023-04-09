@@ -47,6 +47,7 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                     UpgradeCaracteristic(
                         title: "HP",
                         stat: widget.character.hp,
+                        buffer: widget.character.hpBuffer,
                         onTap: (int value) async {
                           widget.character.hp += value;
                           // (widget.character.hp + value).clamp(30, 100);
@@ -55,6 +56,7 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                     UpgradeCaracteristic(
                         title: "Constitution",
                         stat: widget.character.constitution,
+                        buffer: widget.character.constitutionBuffer,
                         onTap: (int value) async {
                           widget.character.constitution += value;
                           // (widget.character.constitution + value)
@@ -65,6 +67,7 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                     UpgradeCaracteristic(
                         title: "Chance",
                         stat: widget.character.luck,
+                        buffer: widget.character.luckBuffer,
                         onTap: (int value) async {
                           widget.character.luck += value;
                           // (widget.character.luck + value).clamp(30, 100);
@@ -73,6 +76,7 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                     UpgradeCaracteristic(
                         title: "Perception",
                         stat: widget.character.perception,
+                        buffer: widget.character.perceptionBuffer,
                         onTap: (int value) async {
                           widget.character.perception += value;
                           // (widget.character.perception + value)
@@ -83,6 +87,7 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                     UpgradeCaracteristic(
                         title: "Chakra",
                         stat: widget.character.chakra,
+                        buffer: widget.character.chakraBuffer,
                         onTap: (int value) async {
                           widget.character.chakra += value;
                           // (snapshot.data!.chakra + value).clamp(30, 100);
@@ -92,6 +97,7 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                     UpgradeCaracteristic(
                         title: "Esq/Bloc",
                         stat: widget.character.dodge,
+                        buffer: widget.character.dodgeBuffer,
                         onTap: (int value) async {
                           widget.character.dodge += value;
                           // (widget.character.dodge + value).clamp(30, 100);
@@ -101,6 +107,7 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                     UpgradeCaracteristic(
                         title: "Lancer",
                         stat: widget.character.throwing,
+                        buffer: widget.character.throwingBuffer,
                         onTap: (int value) async {
                           widget.character.throwing += value;
                           // (widget.character.throwing + value)
@@ -111,6 +118,7 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                     UpgradeCaracteristic(
                         title: "Ninjutsu",
                         stat: widget.character.ninjutsu,
+                        buffer: widget.character.ninjutsuBuffer,
                         onTap: (int value) async {
                           widget.character.ninjutsu += value;
                           // (widget.character.ninjutsu + value)
@@ -121,6 +129,7 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                     UpgradeCaracteristic(
                         title: "Taijutsu",
                         stat: widget.character.taijutsu,
+                        buffer: widget.character.taijutsuBuffer,
                         onTap: (int value) async {
                           widget.character.taijutsu += value;
                           // (widget.character.taijutsu + value)
@@ -131,6 +140,7 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                     UpgradeCaracteristic(
                         title: "Genjutsu",
                         stat: widget.character.genjutsu,
+                        buffer: widget.character.genjutsuBuffer,
                         onTap: (int value) async {
                           widget.character.genjutsu += value;
                           // (widget.character.genjutsu + value)

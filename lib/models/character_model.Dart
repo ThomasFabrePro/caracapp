@@ -27,6 +27,17 @@ class Character {
   int chakra;
   int dodge;
   int throwing;
+  //buffers
+  int hpBuffer;
+  int constitutionBuffer;
+  int ninjutsuBuffer;
+  int taijutsuBuffer;
+  int genjutsuBuffer;
+  int luckBuffer;
+  int perceptionBuffer;
+  int chakraBuffer;
+  int dodgeBuffer;
+  int throwingBuffer;
 
   Character(
     {
@@ -49,6 +60,17 @@ class Character {
     this.chakra=30,
     this.dodge = 30,
     this.throwing=30,
+    //buffers
+    this.hpBuffer=0,
+    this.constitutionBuffer=0,
+    this.ninjutsuBuffer=0,
+    this.taijutsuBuffer=0,
+    this.genjutsuBuffer=0,
+    this.luckBuffer=0,
+    this.perceptionBuffer=0,
+    this.chakraBuffer=0,
+    this.dodgeBuffer=0,
+    this.throwingBuffer=0,
          });
   
 
@@ -135,17 +157,17 @@ class Character {
           break;
         case 2:
         //sharingan
-          ninjutsu -= 5;
-          dodge -= 5;
-          genjutsu -= 5;
-          chakra +=5;
-          constitution += 5;
+          ninjutsuBuffer -= 5;
+          dodgeBuffer -= 5;
+          genjutsuBuffer -= 5;
+          chakraBuffer +=5;
+          constitutionBuffer += 5;
           break;
         case 3:
         //byakugan
-          taijutsu -= 5;
-          perception -= 5;
-          chakra += 5;
+          taijutsuBuffer -= 5;
+          perceptionBuffer -= 5;
+          chakraBuffer += 5;
           break;
       }
     }
@@ -157,23 +179,70 @@ class Character {
           break;
         case 2:
         //sharingan
-          ninjutsu += 5;
-          dodge += 5;
-          genjutsu += 5;
-          chakra -=5;
-          constitution -= 5;
+          ninjutsuBuffer += 5;
+          dodgeBuffer += 5;
+          genjutsuBuffer += 5;
+          chakraBuffer -=5;
+          constitutionBuffer -= 5;
           break;
         case 3:
         //byakugan
-          taijutsu += 5;
-          perception += 5;
-          chakra -= 5;
+          taijutsuBuffer += 5;
+          perceptionBuffer += 5;
+          chakraBuffer -= 5;
           break;
       }
     }
     attribute = newAttribute;
     await DbHelper.database.characterDao.updateCharacter(this);
   }
+  ///STATCODES
+  ///0 : Aucun /
+  ///1 : HPBuffer /
+  ///2 : ConstitutionBuffer /
+  ///3 : NinjutsuBuffer /
+  ///4 : TaijutsuBuffer /
+  ///5 : GenjutsuBuffer /
+  ///6 : LuckBuffer /
+  ///7 : PerceptionBuffer /
+  ///8 : ChakraBuffer /
+  ///9 : DodgeBuffer /
+  ///10 : ThrowingBuffer /
+  // Future<void> addToBuffer(int statCode,int newBuffer)async{
+  //   switch(statCode){
+  //     case 1:
+  //       hpBuffer += newBuffer;
+  //       break;
+  //     case 2:
+  //       constitutionBuffer += newBuffer;
+  //       break;
+  //     case 3:
+  //       ninjutsuBuffer += newBuffer;
+  //       break;
+  //     case 4:
+  //       taijutsuBuffer += newBuffer;
+  //       break;
+  //     case 5:
+  //       genjutsuBuffer += newBuffer;
+  //       break;
+  //     case 6:
+  //       luckBuffer += newBuffer;
+  //       break;
+  //     case 7:
+  //       perceptionBuffer += newBuffer;
+  //       break;
+  //     case 8:
+  //       chakraBuffer += newBuffer;
+  //       break;
+  //     case 9:
+  //       dodgeBuffer += newBuffer;
+  //       break;
+  //     case 10:
+  //       throwingBuffer += newBuffer;
+  //       break;
+  //   }
+  //   await DbHelper.database.characterDao.updateCharacter(this);
+  // }
   ///SPECIALITE
   ///0 : Aucun /
   ///1 : Taïjutsu /
@@ -181,9 +250,59 @@ class Character {
   ///3 : Genjutsu /
   ///4 : Lancer /
   ///5 : Chakra /
-  ///6 : Invocation /
-  ///7 : Sceaux /
+  ///6 : Chance /
+  ///7 : Dodge /
   Future<void> setSpeciality(int newSpeciality)async{
+    switch(speciality){
+      case 0:
+        break;
+      case 1:
+        taijutsuBuffer -= 5;
+        break;
+      case 2:
+        ninjutsuBuffer -= 5;
+        break;
+      case 3:
+        genjutsuBuffer -= 5;
+        break;
+      case 4:
+        throwingBuffer -= 5;
+        break;
+      case 5:
+        chakraBuffer -= 5;
+        break;
+      case 6:
+        luckBuffer -= 5;
+        break;
+      case 7:
+        dodgeBuffer -= 5;
+        break;
+    }
+    switch(newSpeciality){
+      case 0:
+        break;
+      case 1:
+        taijutsuBuffer += 5;
+        break;
+      case 2:
+        ninjutsuBuffer += 5;
+        break;
+      case 3:
+        genjutsuBuffer += 5;
+        break;
+      case 4:
+        throwingBuffer += 5;
+        break;
+      case 5:
+        chakraBuffer += 5;
+        break;
+      case 6:
+        luckBuffer += 5;
+        break;
+      case 7:
+        dodgeBuffer += 5;
+        break;
+    }
     speciality = newSpeciality;
     await DbHelper.database.characterDao.updateCharacter(this);
   }

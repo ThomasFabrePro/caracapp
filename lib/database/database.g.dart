@@ -85,7 +85,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Character` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `picture` TEXT NOT NULL, `sexe` TEXT NOT NULL, `age` INTEGER NOT NULL, `origin` TEXT NOT NULL, `level` INTEGER NOT NULL, `attribute` INTEGER NOT NULL, `speciality` INTEGER NOT NULL, `hp` INTEGER NOT NULL, `constitution` INTEGER NOT NULL, `ninjutsu` INTEGER NOT NULL, `taijutsu` INTEGER NOT NULL, `genjutsu` INTEGER NOT NULL, `luck` INTEGER NOT NULL, `perception` INTEGER NOT NULL, `chakra` INTEGER NOT NULL, `dodge` INTEGER NOT NULL, `throwing` INTEGER NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `Character` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `picture` TEXT NOT NULL, `sexe` TEXT NOT NULL, `age` INTEGER NOT NULL, `origin` TEXT NOT NULL, `level` INTEGER NOT NULL, `attribute` INTEGER NOT NULL, `speciality` INTEGER NOT NULL, `hp` INTEGER NOT NULL, `constitution` INTEGER NOT NULL, `ninjutsu` INTEGER NOT NULL, `taijutsu` INTEGER NOT NULL, `genjutsu` INTEGER NOT NULL, `luck` INTEGER NOT NULL, `perception` INTEGER NOT NULL, `chakra` INTEGER NOT NULL, `dodge` INTEGER NOT NULL, `throwing` INTEGER NOT NULL, `hpBuffer` INTEGER NOT NULL, `constitutionBuffer` INTEGER NOT NULL, `ninjutsuBuffer` INTEGER NOT NULL, `taijutsuBuffer` INTEGER NOT NULL, `genjutsuBuffer` INTEGER NOT NULL, `luckBuffer` INTEGER NOT NULL, `perceptionBuffer` INTEGER NOT NULL, `chakraBuffer` INTEGER NOT NULL, `dodgeBuffer` INTEGER NOT NULL, `throwingBuffer` INTEGER NOT NULL, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -126,7 +126,17 @@ class _$CharacterDao extends CharacterDao {
                   'perception': item.perception,
                   'chakra': item.chakra,
                   'dodge': item.dodge,
-                  'throwing': item.throwing
+                  'throwing': item.throwing,
+                  'hpBuffer': item.hpBuffer,
+                  'constitutionBuffer': item.constitutionBuffer,
+                  'ninjutsuBuffer': item.ninjutsuBuffer,
+                  'taijutsuBuffer': item.taijutsuBuffer,
+                  'genjutsuBuffer': item.genjutsuBuffer,
+                  'luckBuffer': item.luckBuffer,
+                  'perceptionBuffer': item.perceptionBuffer,
+                  'chakraBuffer': item.chakraBuffer,
+                  'dodgeBuffer': item.dodgeBuffer,
+                  'throwingBuffer': item.throwingBuffer
                 }),
         _characterUpdateAdapter = UpdateAdapter(
             database,
@@ -151,7 +161,17 @@ class _$CharacterDao extends CharacterDao {
                   'perception': item.perception,
                   'chakra': item.chakra,
                   'dodge': item.dodge,
-                  'throwing': item.throwing
+                  'throwing': item.throwing,
+                  'hpBuffer': item.hpBuffer,
+                  'constitutionBuffer': item.constitutionBuffer,
+                  'ninjutsuBuffer': item.ninjutsuBuffer,
+                  'taijutsuBuffer': item.taijutsuBuffer,
+                  'genjutsuBuffer': item.genjutsuBuffer,
+                  'luckBuffer': item.luckBuffer,
+                  'perceptionBuffer': item.perceptionBuffer,
+                  'chakraBuffer': item.chakraBuffer,
+                  'dodgeBuffer': item.dodgeBuffer,
+                  'throwingBuffer': item.throwingBuffer
                 });
 
   final sqflite.DatabaseExecutor database;
@@ -186,7 +206,17 @@ class _$CharacterDao extends CharacterDao {
             perception: row['perception'] as int,
             chakra: row['chakra'] as int,
             dodge: row['dodge'] as int,
-            throwing: row['throwing'] as int));
+            throwing: row['throwing'] as int,
+            hpBuffer: row['hpBuffer'] as int,
+            constitutionBuffer: row['constitutionBuffer'] as int,
+            ninjutsuBuffer: row['ninjutsuBuffer'] as int,
+            taijutsuBuffer: row['taijutsuBuffer'] as int,
+            genjutsuBuffer: row['genjutsuBuffer'] as int,
+            luckBuffer: row['luckBuffer'] as int,
+            perceptionBuffer: row['perceptionBuffer'] as int,
+            chakraBuffer: row['chakraBuffer'] as int,
+            dodgeBuffer: row['dodgeBuffer'] as int,
+            throwingBuffer: row['throwingBuffer'] as int));
   }
 
   @override
@@ -211,7 +241,17 @@ class _$CharacterDao extends CharacterDao {
             perception: row['perception'] as int,
             chakra: row['chakra'] as int,
             dodge: row['dodge'] as int,
-            throwing: row['throwing'] as int),
+            throwing: row['throwing'] as int,
+            hpBuffer: row['hpBuffer'] as int,
+            constitutionBuffer: row['constitutionBuffer'] as int,
+            ninjutsuBuffer: row['ninjutsuBuffer'] as int,
+            taijutsuBuffer: row['taijutsuBuffer'] as int,
+            genjutsuBuffer: row['genjutsuBuffer'] as int,
+            luckBuffer: row['luckBuffer'] as int,
+            perceptionBuffer: row['perceptionBuffer'] as int,
+            chakraBuffer: row['chakraBuffer'] as int,
+            dodgeBuffer: row['dodgeBuffer'] as int,
+            throwingBuffer: row['throwingBuffer'] as int),
         arguments: [id]);
   }
 
@@ -237,7 +277,17 @@ class _$CharacterDao extends CharacterDao {
             perception: row['perception'] as int,
             chakra: row['chakra'] as int,
             dodge: row['dodge'] as int,
-            throwing: row['throwing'] as int),
+            throwing: row['throwing'] as int,
+            hpBuffer: row['hpBuffer'] as int,
+            constitutionBuffer: row['constitutionBuffer'] as int,
+            ninjutsuBuffer: row['ninjutsuBuffer'] as int,
+            taijutsuBuffer: row['taijutsuBuffer'] as int,
+            genjutsuBuffer: row['genjutsuBuffer'] as int,
+            luckBuffer: row['luckBuffer'] as int,
+            perceptionBuffer: row['perceptionBuffer'] as int,
+            chakraBuffer: row['chakraBuffer'] as int,
+            dodgeBuffer: row['dodgeBuffer'] as int,
+            throwingBuffer: row['throwingBuffer'] as int),
         arguments: [name]);
   }
 

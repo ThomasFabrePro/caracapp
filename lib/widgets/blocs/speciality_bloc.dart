@@ -18,7 +18,7 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
   bool isChakraChecked = false;
   bool isSummoningChecked = false;
   bool isSealChecked = false;
-  // double scrollingHeightPercent = 1.8;
+  double titleWidthPercent = 0.33;
   TextStyle titleStyle = TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.bold,
@@ -35,6 +35,16 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
     }
     return MyDecoration.bloodColor;
   }
+
+  Map<String, String> descriptions = {
+    "Taijutsu": "+5",
+    "Ninjutsu": "+5",
+    "Genjutsu": "+5",
+    "Throwing": "+5",
+    "Chakra": "+5",
+    "Luck": "+5",
+    "Dodge": "+5",
+  };
 
   void setChecks() {
     switch (widget.character.speciality) {
@@ -148,21 +158,22 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
                     await widget.character.setSpeciality(speciality);
                     setState(() {
                       widget.character.speciality = speciality;
-                      // if (widget.scrollController != null && speciality != 0) {
-                      //   widget.scrollController!.animateTo(
-                      //       height * scrollingHeightPercent,
-                      //       curve: Curves.linear,
-                      //       duration: Duration(milliseconds: 500));
-                      // }
 
                       setChecks();
                     });
                   },
                 ),
                 //speciality name
+                SizedBox(
+                  width: width * titleWidthPercent,
+                  child: Text(
+                    "Taïjutsu",
+                    style: titleStyle,
+                  ),
+                ),
                 Text(
-                  "Taïjutsu",
-                  style: titleStyle,
+                  descriptions["Taijutsu"]!,
+                  style: MyDecoration.dataStyle,
                 ),
               ],
             ),
@@ -178,20 +189,21 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
                     await widget.character.setSpeciality(speciality);
                     setState(() {
                       widget.character.speciality = speciality;
-                      // if (widget.scrollController != null && speciality != 0) {
-                      //   widget.scrollController!.animateTo(
-                      //       height * scrollingHeightPercent,
-                      //       curve: Curves.linear,
-                      //       duration: Duration(milliseconds: 500));
-                      // }
                       setChecks();
                     });
                   },
                 ),
                 //speciality name
+                SizedBox(
+                  width: width * titleWidthPercent,
+                  child: Text(
+                    "Ninjutsu",
+                    style: titleStyle,
+                  ),
+                ),
                 Text(
-                  "Ninjutsu",
-                  style: titleStyle,
+                  descriptions["Ninjutsu"]!,
+                  style: MyDecoration.dataStyle,
                 ),
               ],
             ),
@@ -207,20 +219,21 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
                     await widget.character.setSpeciality(speciality);
                     setState(() {
                       widget.character.speciality = speciality;
-                      // if (widget.scrollController != null && speciality != 0) {
-                      //   widget.scrollController!.animateTo(
-                      //       height * scrollingHeightPercent,
-                      //       curve: Curves.linear,
-                      //       duration: Duration(milliseconds: 500));
-                      // }
                       setChecks();
                     });
                   },
                 ),
                 //speciality name
+                SizedBox(
+                  width: width * titleWidthPercent,
+                  child: Text(
+                    "Genjutsu",
+                    style: titleStyle,
+                  ),
+                ),
                 Text(
-                  "Genjutsu",
-                  style: titleStyle,
+                  descriptions["Genjutsu"]!,
+                  style: MyDecoration.dataStyle,
                 ),
               ],
             ),
@@ -236,20 +249,21 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
                     await widget.character.setSpeciality(speciality);
                     setState(() {
                       widget.character.speciality = speciality;
-                      // if (widget.scrollController != null && speciality != 0) {
-                      //   widget.scrollController!.animateTo(
-                      //       height * scrollingHeightPercent,
-                      //       curve: Curves.linear,
-                      //       duration: Duration(milliseconds: 500));
-                      // }
                       setChecks();
                     });
                   },
                 ),
                 //speciality name
+                SizedBox(
+                  width: width * titleWidthPercent,
+                  child: Text(
+                    "Lancer",
+                    style: titleStyle,
+                  ),
+                ),
                 Text(
-                  "Lancer",
-                  style: titleStyle,
+                  descriptions["Throwing"]!,
+                  style: MyDecoration.dataStyle,
                 ),
               ],
             ),
@@ -265,20 +279,21 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
                     await widget.character.setSpeciality(speciality);
                     setState(() {
                       widget.character.speciality = speciality;
-                      // if (widget.scrollController != null && speciality != 0) {
-                      //   widget.scrollController!.animateTo(
-                      //       height * scrollingHeightPercent,
-                      //       curve: Curves.linear,
-                      //       duration: Duration(milliseconds: 500));
-                      // }
                       setChecks();
                     });
                   },
                 ),
                 //speciality name
+                SizedBox(
+                  width: width * titleWidthPercent,
+                  child: Text(
+                    "Chakra",
+                    style: titleStyle,
+                  ),
+                ),
                 Text(
-                  "Chakra",
-                  style: titleStyle,
+                  descriptions["Chakra"]!,
+                  style: MyDecoration.dataStyle,
                 ),
               ],
             ),
@@ -294,20 +309,21 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
                     await widget.character.setSpeciality(speciality);
                     setState(() {
                       widget.character.speciality = speciality;
-                      // if (widget.scrollController != null && speciality != 0) {
-                      //   widget.scrollController!.animateTo(
-                      //       height * scrollingHeightPercent,
-                      //       curve: Curves.linear,
-                      //       duration: Duration(milliseconds: 500));
-                      // }
                       setChecks();
                     });
                   },
                 ),
                 //speciality name
+                SizedBox(
+                  width: width * titleWidthPercent,
+                  child: Text(
+                    "Chance",
+                    style: titleStyle,
+                  ),
+                ),
                 Text(
-                  "Invocation",
-                  style: titleStyle,
+                  descriptions["Luck"]!,
+                  style: MyDecoration.dataStyle,
                 ),
               ],
             ),
@@ -323,24 +339,25 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
                     await widget.character.setSpeciality(speciality);
                     setState(() {
                       widget.character.speciality = speciality;
-                      // if (widget.scrollController != null && speciality != 0) {
-                      //   widget.scrollController!.animateTo(
-                      //       height * scrollingHeightPercent,
-                      //       curve: Curves.linear,
-                      //       duration: Duration(milliseconds: 500));
-                      // }
                       setChecks();
                     });
                   },
                 ),
                 //speciality name
+                SizedBox(
+                  width: width * titleWidthPercent,
+                  child: Text(
+                    "Esquive /  Blocage",
+                    style: titleStyle,
+                  ),
+                ),
                 Text(
-                  "Sceaux",
-                  style: titleStyle,
+                  descriptions["Dodge"]!,
+                  style: MyDecoration.dataStyle,
                 ),
               ],
             ),
-            SpecialityDescription(speciality: widget.character.speciality),
+            // SpecialityDescription(speciality: widget.character.speciality),
           ],
         ),
       ),
@@ -348,55 +365,55 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
   }
 }
 
-class SpecialityDescription extends StatelessWidget {
-  final int speciality;
-  const SpecialityDescription({super.key, required this.speciality});
+// class SpecialityDescription extends StatelessWidget {
+//   final int speciality;
+//   const SpecialityDescription({super.key, required this.speciality});
 
-  @override
-  Widget build(BuildContext context) {
-    // String imagePath = "";
-    String description = "";
-    switch (speciality) {
-      case 1:
-        description = "Taïjutsu +10";
-        break;
-      case 2:
-        description = "Ninjutsu +10";
-        break;
-      case 3:
-        description = "Genjutsu +10";
-        break;
-      case 4:
-        description = "Lancer +10";
-        break;
-      case 5:
-        description = "Chakra +10";
-        break;
-      case 6:
-        description = "Invocation +10";
-        break;
-      case 7:
-        description = "Sceaux +10";
-        break;
-      default:
-        // imagePath = "";
-        description = "rien";
-        break;
-    }
-    return speciality > 0
-        ? Column(
-            children: [
-              // SizedBox(height: 170, child: Image.asset(imagePath)),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  description,
-                  //DATASTYLE
-                  style: MyDecoration.dataStyle,
-                ),
-              )
-            ],
-          )
-        : const SizedBox();
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     // String imagePath = "";
+//     String description = "";
+//     switch (speciality) {
+//       case 1:
+//         description = "Taïjutsu +10";
+//         break;
+//       case 2:
+//         description = "Ninjutsu +10";
+//         break;
+//       case 3:
+//         description = "Genjutsu +10";
+//         break;
+//       case 4:
+//         description = "Lancer +10";
+//         break;
+//       case 5:
+//         description = "Chakra +10";
+//         break;
+//       case 6:
+//         description = "Invocation +10";
+//         break;
+//       case 7:
+//         description = "Sceaux +10";
+//         break;
+//       default:
+//         // imagePath = "";
+//         description = "rien";
+//         break;
+//     }
+//     return speciality > 0
+//         ? Column(
+//             children: [
+//               // SizedBox(height: 170, child: Image.asset(imagePath)),
+//               Padding(
+//                 padding: const EdgeInsets.all(8.0),
+//                 child: Text(
+//                   description,
+//                   //DATASTYLE
+//                   style: MyDecoration.dataStyle,
+//                 ),
+//               )
+//             ],
+//           )
+//         : const SizedBox();
+//   }
+// }
