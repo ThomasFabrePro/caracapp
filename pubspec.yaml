@@ -26,6 +26,7 @@ flutter:
    assets:
     - assets/ninja_images/
     - assets/front/
+    - assets/attributes/
 
 
 # uses-material-design: true

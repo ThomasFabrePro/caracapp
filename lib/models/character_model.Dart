@@ -16,6 +16,7 @@ class Character {
   String origin;
   int level;
   int attribute;
+  int speciality;
   int hp;
   int constitution;
   int ninjutsu;
@@ -26,6 +27,7 @@ class Character {
   int chakra;
   int dodge;
   int throwing;
+  List<int> buffer;
 
   Character(
     {
@@ -35,6 +37,7 @@ class Character {
     this.sexe = "Non Binaire",
     this.age = 17,
     this.origin = "Konoha",
+    this.speciality=0,
     this.level=1,
     this.attribute = 0,
     this.hp=30, 
@@ -47,7 +50,11 @@ class Character {
     this.chakra=30,
     this.dodge = 30,
     this.throwing=30,
+    this.buffer=const <int>[2,2],
          });
+  
+
+  //buffer : Map<String, dynamic> 
 
   Future<void> setName(String newName)async {
     name = newName;
@@ -118,4 +125,24 @@ class Character {
     attribute = newAttribute;
     await DbHelper.database.characterDao.updateCharacter(this);
   }
+  Future<void> setSpeciality(int newSpeciality)async{
+    speciality = newSpeciality;
+    await DbHelper.database.characterDao.updateCharacter(this);
+  }
 }
+
+//ATTRIBUT
+//0 : Aucun
+//1 : jinchuriki
+//2 : Sharingan
+//3 : Byakugan
+
+//SPECIALITE
+//0 : Aucun
+//1 Taïjutsu
+//2 Ninjutsu/chakra ?
+//3 Genjutsu
+//4 Lancer
+//5 Chakra
+//6 Invocation
+//7 Sceaux  

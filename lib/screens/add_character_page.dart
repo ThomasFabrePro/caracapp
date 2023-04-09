@@ -1,10 +1,9 @@
 import 'package:caracapp/models/character_model.dart';
 import 'package:caracapp/utils/assets.dart';
-import 'package:caracapp/utils/color_theme.dart';
 import 'package:caracapp/utils/data_access_object/character_dao.dart';
-import 'package:caracapp/widgets/attribute_bloc.dart';
-import 'package:caracapp/widgets/caracteristics_upgrade_bloc.dart';
-import 'package:caracapp/widgets/character_picture.dart';
+import 'package:caracapp/widgets/blocs/attribute_bloc.dart';
+import 'package:caracapp/widgets/blocs/caracteristics_upgrade_bloc.dart';
+import 'package:caracapp/widgets/blocs/speciality_bloc.dart';
 import 'package:caracapp/widgets/lowerWidgets/my_text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -21,6 +20,7 @@ class AddCharacterPage extends StatefulWidget {
 class _AddCharacterPageState extends State<AddCharacterPage> {
   double textFieldWidthPercent = 0.65;
   bool displayPhotosGrid = false;
+  ScrollController scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -39,217 +39,299 @@ class _AddCharacterPageState extends State<AddCharacterPage> {
               begin: Alignment.topRight,
               end: Alignment.bottomLeft,
               colors: [
-                Color.fromARGB(255, 73, 223, 78),
-                Color.fromARGB(255, 33, 243, 191),
+                // Color.fromARGB(255, 73, 223, 78),
+                // Color.fromARGB(255, 33, 243, 191),
+                Color.fromARGB(255, 190, 0, 0),
+                Color.fromARGB(255, 0, 0, 0),
               ],
             ),
           ),
           child: SingleChildScrollView(
+              controller: scrollController,
               child: Column(
-            children: <Widget>[
-              //!FORMULAIRE
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    MyTextField(
-                      title: "Nom :",
-                      hint: widget.character.name,
-                      onChanged: (value) async {
-                        if (value != "" && mounted) {
-                          setState(() async {
-                            await widget.character.setName(value);
-                          });
-                        }
-                      },
-                      textFieldWidthPercent: textFieldWidthPercent,
+                children: <Widget>[
+                  //!FORMULAIRE
+                  // TODO ADD FOCUS NODES
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        MyTextField(
+                          title: "Nom :",
+                          hint: widget.character.name,
+                          onChanged: (value) async {
+                            if (value != "" && mounted) {
+                              setState(() async {
+                                await widget.character.setName(value);
+                              });
+                            }
+                          },
+                          textFieldWidthPercent: textFieldWidthPercent,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        MyTextField(
+                          title: "Sexe :",
+                          hint: widget.character.sexe,
+                          onChanged: (value) {
+                            if (value != "" && mounted) {
+                              setState(() async {
+                                await widget.character.setSexe(value);
+                              });
+                            }
+                          },
+                          textFieldWidthPercent: textFieldWidthPercent,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        MyTextField(
+                          title: "Age :",
+                          hint: "${widget.character.age}",
+                          onChanged: (value) {
+                            if (value != "" && mounted) {
+                              setState(() async {
+                                await widget.character.setAge(value);
+                              });
+                            }
+                          },
+                          textFieldWidthPercent: textFieldWidthPercent,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        MyTextField(
+                          title: "Origine :",
+                          hint: widget.character.origin,
+                          onChanged: (value) {
+                            if (value != "" && mounted) {
+                              setState(() async {
+                                await widget.character.setOrigin(value);
+                              });
+                            }
+                          },
+                          textFieldWidthPercent: textFieldWidthPercent,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                      ],
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    MyTextField(
-                      title: "Sexe :",
-                      hint: widget.character.sexe,
-                      onChanged: (value) {
-                        if (value != "" && mounted) {
-                          setState(() async {
-                            await widget.character.setSexe(value);
-                          });
-                        }
-                      },
-                      textFieldWidthPercent: textFieldWidthPercent,
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    MyTextField(
-                      title: "Age :",
-                      hint: "${widget.character.age}",
-                      onChanged: (value) {
-                        if (value != "" && mounted) {
-                          setState(() async {
-                            await widget.character.setAge(value);
-                          });
-                        }
-                      },
-                      textFieldWidthPercent: textFieldWidthPercent,
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    MyTextField(
-                      title: "Origine :",
-                      hint: widget.character.origin,
-                      onChanged: (value) {
-                        if (value != "" && mounted) {
-                          setState(() async {
-                            await widget.character.setOrigin(value);
-                          });
-                        }
-                      },
-                      textFieldWidthPercent: textFieldWidthPercent,
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                  ],
-                ),
-              ),
-              //?STOP FORMULAIRE
-              //! PHOTO
-              Padding(
-                  padding: const EdgeInsets.only(
-                    bottom: 8.0,
-                    top: 8.0,
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(left: 8.0),
-                        child: Text("Photo :",
-                            style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                            )),
+                  //?STOP FORMULAIRE
+                  //! PHOTO
+                  Padding(
+                      padding: const EdgeInsets.only(
+                        bottom: 8.0,
+                        top: 8.0,
                       ),
-
-                      displayPhotosGrid
-                          ? const SizedBox()
-                          : Center(
-                              child: GestureDetector(
-                              onTap: () => setState(() {
-                                displayPhotosGrid = true;
-                              }),
-                              child: SizedBox(
-                                  width: width * 0.4,
-                                  height: width * 0.4,
-                                  child: Image.asset(widget.character.picture)),
-                            )),
-
-                      //!Pour centrer la photo
-                      const Text("Photo :",
-                          style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.transparent)),
-                    ],
-                  )),
-              displayPhotosGrid
-                  ? Container(
-                      color: Colors.white,
-                      child: GridView.count(
-                        crossAxisCount: 3,
-                        shrinkWrap: true,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          PickImage(
-                              imagePath: MyImages().imagePath[image.ninja1]!,
-                              onTap: (String value) {
-                                setState(() {
-                                  widget.character.picture = value;
-                                  widget.character.setPicture(value);
-                                  displayPhotosGrid = false;
-                                });
-                              }),
-                          PickImage(
-                              imagePath: MyImages().imagePath[image.ninja2]!,
-                              onTap: (String value) {
-                                setState(() {
-                                  widget.character.picture = value;
-                                  widget.character.setPicture(value);
-                                  displayPhotosGrid = false;
-                                });
-                              }),
-                          PickImage(
-                              imagePath: MyImages().imagePath[image.ninja3]!,
-                              onTap: (String value) {
-                                setState(() {
-                                  widget.character.picture = value;
-                                  widget.character.setPicture(value);
-                                  displayPhotosGrid = false;
-                                });
-                              }),
-                          PickImage(
-                              imagePath: MyImages().imagePath[image.ninja4]!,
-                              onTap: (String value) {
-                                setState(() {
-                                  widget.character.picture = value;
-                                  widget.character.setPicture(value);
-                                  displayPhotosGrid = false;
-                                });
-                              }),
-                          PickImage(
-                              imagePath: MyImages().imagePath[image.ninja5]!,
-                              onTap: (String value) {
-                                setState(() {
-                                  widget.character.picture = value;
-                                  widget.character.setPicture(value);
-                                  displayPhotosGrid = false;
-                                });
-                              }),
-                          PickImage(
-                              imagePath: MyImages().imagePath[image.ninja6]!,
-                              onTap: (String value) {
-                                setState(() {
-                                  widget.character.picture = value;
-                                  widget.character.setPicture(value);
-                                  displayPhotosGrid = false;
-                                });
-                              }),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 8.0),
+                            child: Text("Photo :",
+                                style: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                )),
+                          ),
+
+                          displayPhotosGrid
+                              ? const SizedBox()
+                              : Center(
+                                  child: GestureDetector(
+                                  onTap: () => setState(() {
+                                    displayPhotosGrid = true;
+                                  }),
+                                  child: SizedBox(
+                                      width: width * 0.4,
+                                      height: width * 0.4,
+                                      child: Image.asset(
+                                          widget.character.picture)),
+                                )),
+
+                          //!Pour centrer la photo
+                          const Text("Photo :",
+                              style: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.transparent)),
                         ],
-                      ),
-                    )
-                  : const SizedBox(),
-              //?STOP PHOTO
-              const SizedBox(
-                height: 20,
-              ),
-              //!CARACTERISTIQUES
-              const Text("Caractéristiques",
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                  )),
-              const SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                    bottom: 16.0, left: 16.0, right: 16.0),
-                child: CaracteristicsUpgradeBloc(character: widget.character),
-              ),
-              //?STOP CARACTERISTIQUES
-              const SizedBox(
-                height: 20,
-              ),
-              //!ATTRIBUTE
-              Padding(
-                padding: const EdgeInsets.only(
-                    bottom: 16.0, left: 16.0, right: 16.0),
-                child: AttributeBloc(character: widget.character),
-              ),
-            ],
-          )),
+                      )),
+                  displayPhotosGrid
+                      ? Container(
+                          color: Colors.white,
+                          child: GridView.count(
+                            crossAxisCount: 3,
+                            shrinkWrap: true,
+                            children: [
+                              PickImage(
+                                  imagePath:
+                                      MyImages().imagePath[image.ninja1]!,
+                                  onTap: (String value) {
+                                    setState(() {
+                                      widget.character.picture = value;
+                                      widget.character.setPicture(value);
+                                      displayPhotosGrid = false;
+                                    });
+                                  }),
+                              PickImage(
+                                  imagePath:
+                                      MyImages().imagePath[image.ninja2]!,
+                                  onTap: (String value) {
+                                    setState(() {
+                                      widget.character.picture = value;
+                                      widget.character.setPicture(value);
+                                      displayPhotosGrid = false;
+                                    });
+                                  }),
+                              PickImage(
+                                  imagePath:
+                                      MyImages().imagePath[image.ninja3]!,
+                                  onTap: (String value) {
+                                    setState(() {
+                                      widget.character.picture = value;
+                                      widget.character.setPicture(value);
+                                      displayPhotosGrid = false;
+                                    });
+                                  }),
+                              PickImage(
+                                  imagePath:
+                                      MyImages().imagePath[image.ninja4]!,
+                                  onTap: (String value) {
+                                    setState(() {
+                                      widget.character.picture = value;
+                                      widget.character.setPicture(value);
+                                      displayPhotosGrid = false;
+                                    });
+                                  }),
+                              PickImage(
+                                  imagePath:
+                                      MyImages().imagePath[image.ninja5]!,
+                                  onTap: (String value) {
+                                    setState(() {
+                                      widget.character.picture = value;
+                                      widget.character.setPicture(value);
+                                      displayPhotosGrid = false;
+                                    });
+                                  }),
+                              PickImage(
+                                  imagePath:
+                                      MyImages().imagePath[image.ninja6]!,
+                                  onTap: (String value) {
+                                    setState(() {
+                                      widget.character.picture = value;
+                                      widget.character.setPicture(value);
+                                      displayPhotosGrid = false;
+                                    });
+                                  }),
+                            ],
+                          ),
+                        )
+                      : const SizedBox(),
+                  //?STOP PHOTO
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  //!CARACTERISTIQUES
+                  Divider(
+                    endIndent: width * 0.1,
+                    indent: width * 0.1,
+                    color: Colors.white,
+                    thickness: 2,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(bottom: 20.0, top: 10),
+                    child: Text("Caractéristiques",
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        )),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        bottom: 16.0, left: 16.0, right: 16.0),
+                    child:
+                        CaracteristicsUpgradeBloc(character: widget.character),
+                  ),
+                  //?STOP CARACTERISTIQUES
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  //!ATTRIBUTE
+                  Divider(
+                    endIndent: width * 0.1,
+                    indent: width * 0.1,
+                    color: Colors.white,
+                    thickness: 2,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(bottom: 20.0, top: 10),
+                    child: Text("Attribut",
+                        style: TextStyle(
+                          fontSize: 22,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        )),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        bottom: 16.0, left: 16.0, right: 16.0),
+                    child: AttributeBloc(
+                        character: widget.character,
+                        scrollController: scrollController),
+                  ),
+                  //?STOP ATTRIBUTE
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  //!SPECIALITE
+                  // TODO ADD BUFFER SYSTEM
+                  Divider(
+                    endIndent: width * 0.1,
+                    indent: width * 0.1,
+                    color: Colors.white,
+                    thickness: 2,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(bottom: 20.0, top: 10),
+                    child: Text("Spécialité",
+                        style: TextStyle(
+                          fontSize: 22,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        )),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        bottom: 16.0, left: 16.0, right: 16.0),
+                    child: SpecialityBloc(
+                      character: widget.character,
+                    ),
+                  ),
+
+                  //?STOP SPECIALITE
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  //!ELEMENT
+                  //!ELEMENT
+                  //!ELEMENT
+                  //!ELEMENT
+                  //!ELEMENT
+                  //!ELEMENT
+                  //!ELEMENT
+                  //!ELEMENT
+                  //!ELEMENT
+                  //!ELEMENT
+                ],
+              )),
         ),
       ),
     );

@@ -24,14 +24,14 @@ Future<void> main() async {
   List<Character> list = await characterDao.findAllCharacters();
   int fakeId = Random().nextInt(10000000);
   // if (list.isEmpty) {
-  character =
-      Character(id: fakeId, picture: MyImages().imagePath[image.ninja1]!);
-  await characterDao.insertCharacter(character);
-  runApp(MyApp(
-    character: character,
-    characterDao: characterDao,
-    addCharacter: true,
-  ));
+  //   character =
+  //       Character(id: fakeId, picture: MyImages().imagePath[image.ninja1]!);
+  //   await characterDao.insertCharacter(character);
+  //   runApp(MyApp(
+  //     character: character,
+  //     characterDao: characterDao,
+  //     addCharacter: true,
+  //   ));
   // } else {
   //   character = list[0];
   //   runApp(MyApp(
@@ -40,6 +40,25 @@ Future<void> main() async {
   //     addCharacter: false,
   //   ));
   // }
+  //!FAKE
+  if (list.isEmpty) {
+    character =
+        Character(id: fakeId, picture: MyImages().imagePath[image.ninja1]!);
+    await characterDao.insertCharacter(character);
+    runApp(MyApp(
+      character: character,
+      characterDao: characterDao,
+      addCharacter: true,
+    ));
+  } else {
+    character = list[0];
+    runApp(MyApp(
+      character: character,
+      characterDao: characterDao,
+      addCharacter: true,
+    ));
+  }
+  //!STOP FAKE
 }
 
 class MyApp extends StatelessWidget {

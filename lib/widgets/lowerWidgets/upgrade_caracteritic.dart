@@ -37,7 +37,8 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
-                color: widget.fontColor,
+                color: MyDecoration.bloodColor,
+                // color: widget.fontColor,
                 overflow: TextOverflow.ellipsis,
               )),
         ),
@@ -56,7 +57,7 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
             child: Image.asset(MyImages().imagePath[image.buttonMinus]!),
             onTap: () {
               setState(() {
-                stat--;
+                stat = (stat - 1).clamp(30, 100);
                 widget.onTap!(-1);
               });
             },
@@ -70,7 +71,7 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
           child: GestureDetector(
               onTap: () {
                 setState(() {
-                  stat++;
+                  stat = (stat + 1).clamp(30, 100);
                   widget.onTap!(1);
                 });
               },

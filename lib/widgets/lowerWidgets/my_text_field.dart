@@ -12,7 +12,7 @@ class MyTextField extends StatefulWidget {
       {super.key,
       this.titleFieldWidthPercent = 0.22,
       this.textFieldWidthPercent = 0.42,
-      this.fontColor,
+      this.fontColor = Colors.white,
       required this.title,
       required this.hint,
       required this.onChanged});
