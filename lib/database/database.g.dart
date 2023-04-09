@@ -85,7 +85,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Character` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `picture` TEXT NOT NULL, `sexe` TEXT NOT NULL, `age` INTEGER NOT NULL, `origin` TEXT NOT NULL, `level` INTEGER NOT NULL, `attribute` INTEGER NOT NULL, `speciality` INTEGER NOT NULL, `hp` INTEGER NOT NULL, `constitution` INTEGER NOT NULL, `ninjutsu` INTEGER NOT NULL, `taijutsu` INTEGER NOT NULL, `genjutsu` INTEGER NOT NULL, `luck` INTEGER NOT NULL, `perception` INTEGER NOT NULL, `chakra` INTEGER NOT NULL, `dodge` INTEGER NOT NULL, `throwing` INTEGER NOT NULL, `hpBuffer` INTEGER NOT NULL, `constitutionBuffer` INTEGER NOT NULL, `ninjutsuBuffer` INTEGER NOT NULL, `taijutsuBuffer` INTEGER NOT NULL, `genjutsuBuffer` INTEGER NOT NULL, `luckBuffer` INTEGER NOT NULL, `perceptionBuffer` INTEGER NOT NULL, `chakraBuffer` INTEGER NOT NULL, `dodgeBuffer` INTEGER NOT NULL, `throwingBuffer` INTEGER NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `Character` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `picture` TEXT NOT NULL, `sexe` TEXT NOT NULL, `age` INTEGER NOT NULL, `origin` TEXT NOT NULL, `level` INTEGER NOT NULL, `attribute` INTEGER NOT NULL, `speciality` INTEGER NOT NULL, `secondSpeciality` INTEGER NOT NULL, `hp` INTEGER NOT NULL, `constitution` INTEGER NOT NULL, `ninjutsu` INTEGER NOT NULL, `taijutsu` INTEGER NOT NULL, `genjutsu` INTEGER NOT NULL, `luck` INTEGER NOT NULL, `perception` INTEGER NOT NULL, `chakra` INTEGER NOT NULL, `dodge` INTEGER NOT NULL, `throwing` INTEGER NOT NULL, `hpBuffer` INTEGER NOT NULL, `constitutionBuffer` INTEGER NOT NULL, `ninjutsuBuffer` INTEGER NOT NULL, `taijutsuBuffer` INTEGER NOT NULL, `genjutsuBuffer` INTEGER NOT NULL, `luckBuffer` INTEGER NOT NULL, `perceptionBuffer` INTEGER NOT NULL, `chakraBuffer` INTEGER NOT NULL, `dodgeBuffer` INTEGER NOT NULL, `throwingBuffer` INTEGER NOT NULL, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -117,6 +117,7 @@ class _$CharacterDao extends CharacterDao {
                   'level': item.level,
                   'attribute': item.attribute,
                   'speciality': item.speciality,
+                  'secondSpeciality': item.secondSpeciality,
                   'hp': item.hp,
                   'constitution': item.constitution,
                   'ninjutsu': item.ninjutsu,
@@ -152,6 +153,7 @@ class _$CharacterDao extends CharacterDao {
                   'level': item.level,
                   'attribute': item.attribute,
                   'speciality': item.speciality,
+                  'secondSpeciality': item.secondSpeciality,
                   'hp': item.hp,
                   'constitution': item.constitution,
                   'ninjutsu': item.ninjutsu,
@@ -195,6 +197,7 @@ class _$CharacterDao extends CharacterDao {
             age: row['age'] as int,
             origin: row['origin'] as String,
             speciality: row['speciality'] as int,
+            secondSpeciality: row['secondSpeciality'] as int,
             level: row['level'] as int,
             attribute: row['attribute'] as int,
             hp: row['hp'] as int,
@@ -230,6 +233,7 @@ class _$CharacterDao extends CharacterDao {
             age: row['age'] as int,
             origin: row['origin'] as String,
             speciality: row['speciality'] as int,
+            secondSpeciality: row['secondSpeciality'] as int,
             level: row['level'] as int,
             attribute: row['attribute'] as int,
             hp: row['hp'] as int,
@@ -266,6 +270,7 @@ class _$CharacterDao extends CharacterDao {
             age: row['age'] as int,
             origin: row['origin'] as String,
             speciality: row['speciality'] as int,
+            secondSpeciality: row['secondSpeciality'] as int,
             level: row['level'] as int,
             attribute: row['attribute'] as int,
             hp: row['hp'] as int,

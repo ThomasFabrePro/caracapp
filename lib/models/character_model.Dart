@@ -17,6 +17,7 @@ class Character {
   int level;
   int attribute;
   int speciality;
+  int secondSpeciality;
   int hp;
   int constitution;
   int ninjutsu;
@@ -48,6 +49,7 @@ class Character {
     this.age = 17,
     this.origin = "Konoha",
     this.speciality=0,
+    this.secondSpeciality=0,
     this.level=1,
     this.attribute = 0,
     this.hp=30, 
@@ -196,53 +198,7 @@ class Character {
     attribute = newAttribute;
     await DbHelper.database.characterDao.updateCharacter(this);
   }
-  ///STATCODES
-  ///0 : Aucun /
-  ///1 : HPBuffer /
-  ///2 : ConstitutionBuffer /
-  ///3 : NinjutsuBuffer /
-  ///4 : TaijutsuBuffer /
-  ///5 : GenjutsuBuffer /
-  ///6 : LuckBuffer /
-  ///7 : PerceptionBuffer /
-  ///8 : ChakraBuffer /
-  ///9 : DodgeBuffer /
-  ///10 : ThrowingBuffer /
-  // Future<void> addToBuffer(int statCode,int newBuffer)async{
-  //   switch(statCode){
-  //     case 1:
-  //       hpBuffer += newBuffer;
-  //       break;
-  //     case 2:
-  //       constitutionBuffer += newBuffer;
-  //       break;
-  //     case 3:
-  //       ninjutsuBuffer += newBuffer;
-  //       break;
-  //     case 4:
-  //       taijutsuBuffer += newBuffer;
-  //       break;
-  //     case 5:
-  //       genjutsuBuffer += newBuffer;
-  //       break;
-  //     case 6:
-  //       luckBuffer += newBuffer;
-  //       break;
-  //     case 7:
-  //       perceptionBuffer += newBuffer;
-  //       break;
-  //     case 8:
-  //       chakraBuffer += newBuffer;
-  //       break;
-  //     case 9:
-  //       dodgeBuffer += newBuffer;
-  //       break;
-  //     case 10:
-  //       throwingBuffer += newBuffer;
-  //       break;
-  //   }
-  //   await DbHelper.database.characterDao.updateCharacter(this);
-  // }
+  
   ///SPECIALITE
   ///0 : Aucun /
   ///1 : Taïjutsu /
@@ -306,7 +262,108 @@ class Character {
     speciality = newSpeciality;
     await DbHelper.database.characterDao.updateCharacter(this);
   }
+  Future<void> setSecondSpeciality(int newSpeciality)async{
+    switch(secondSpeciality){
+      case 0:
+        break;
+      case 1:
+        taijutsuBuffer -= 5;
+        break;
+      case 2:
+        ninjutsuBuffer -= 5;
+        break;
+      case 3:
+        genjutsuBuffer -= 5;
+        break;
+      case 4:
+        throwingBuffer -= 5;
+        break;
+      case 5:
+        chakraBuffer -= 5;
+        break;
+      case 6:
+        luckBuffer -= 5;
+        break;
+      case 7:
+        dodgeBuffer -= 5;
+        break;
+    }
+    switch(newSpeciality){
+      case 0:
+        break;
+      case 1:
+        taijutsuBuffer += 5;
+        break;
+      case 2:
+        ninjutsuBuffer += 5;
+        break;
+      case 3:
+        genjutsuBuffer += 5;
+        break;
+      case 4:
+        throwingBuffer += 5;
+        break;
+      case 5:
+        chakraBuffer += 5;
+        break;
+      case 6:
+        luckBuffer += 5;
+        break;
+      case 7:
+        dodgeBuffer += 5;
+        break;
+    }
+    secondSpeciality = newSpeciality;
+    await DbHelper.database.characterDao.updateCharacter(this);
+  }
 }
 
 
 
+///STATCODES
+  ///0 : Aucun /
+  ///1 : HPBuffer /
+  ///2 : ConstitutionBuffer /
+  ///3 : NinjutsuBuffer /
+  ///4 : TaijutsuBuffer /
+  ///5 : GenjutsuBuffer /
+  ///6 : LuckBuffer /
+  ///7 : PerceptionBuffer /
+  ///8 : ChakraBuffer /
+  ///9 : DodgeBuffer /
+  ///10 : ThrowingBuffer /
+  // Future<void> addToBuffer(int statCode,int newBuffer)async{
+  //   switch(statCode){
+  //     case 1:
+  //       hpBuffer += newBuffer;
+  //       break;
+  //     case 2:
+  //       constitutionBuffer += newBuffer;
+  //       break;
+  //     case 3:
+  //       ninjutsuBuffer += newBuffer;
+  //       break;
+  //     case 4:
+  //       taijutsuBuffer += newBuffer;
+  //       break;
+  //     case 5:
+  //       genjutsuBuffer += newBuffer;
+  //       break;
+  //     case 6:
+  //       luckBuffer += newBuffer;
+  //       break;
+  //     case 7:
+  //       perceptionBuffer += newBuffer;
+  //       break;
+  //     case 8:
+  //       chakraBuffer += newBuffer;
+  //       break;
+  //     case 9:
+  //       dodgeBuffer += newBuffer;
+  //       break;
+  //     case 10:
+  //       throwingBuffer += newBuffer;
+  //       break;
+  //   }
+  //   await DbHelper.database.characterDao.updateCharacter(this);
+  // }

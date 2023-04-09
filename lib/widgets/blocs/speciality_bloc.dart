@@ -16,9 +16,12 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
   bool isGenjustsuChecked = false;
   bool isThrowingChecked = false;
   bool isChakraChecked = false;
-  bool isSummoningChecked = false;
-  bool isSealChecked = false;
+  bool isLuckChecked = false;
+  bool isDodgeChecked = false;
   double titleWidthPercent = 0.33;
+  int maxCheckCounter = 2;
+  int checkCounter = 0;
+  int noSpeciality = 0;
   TextStyle titleStyle = TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.bold,
@@ -46,86 +49,93 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
     "Dodge": "+5",
   };
 
-  void setChecks() {
-    switch (widget.character.speciality) {
+  void setChecks(int speciality) {
+    switch (speciality) {
       case 1:
         isTaijutsuChecked = true;
-        isGenjustsuChecked = false;
-        isNinjutsuChecked = false;
-        isThrowingChecked = false;
-        isChakraChecked = false;
-        isSummoningChecked = false;
-        isSealChecked = false;
+        // isGenjustsuChecked = false;
+        // isNinjutsuChecked = false;
+        // isThrowingChecked = false;
+        // isChakraChecked = false;
+        // isLuckChecked = false;
+        // isDodgeChecked = false;
         break;
       case 2:
-        isTaijutsuChecked = false;
+        // isTaijutsuChecked = false;
         isNinjutsuChecked = true;
-        isGenjustsuChecked = false;
-        isThrowingChecked = false;
-        isChakraChecked = false;
-        isSummoningChecked = false;
-        isSealChecked = false;
+        // isGenjustsuChecked = false;
+        // isThrowingChecked = false;
+        // isChakraChecked = false;
+        // isLuckChecked = false;
+        // isDodgeChecked = false;
         break;
       case 3:
-        isTaijutsuChecked = false;
-        isNinjutsuChecked = false;
+        // isTaijutsuChecked = false;
+        // isNinjutsuChecked = false;
         isGenjustsuChecked = true;
-        isThrowingChecked = false;
-        isChakraChecked = false;
-        isSummoningChecked = false;
-        isSealChecked = false;
+        // isThrowingChecked = false;
+        // isChakraChecked = false;
+        // isLuckChecked = false;
+        // isDodgeChecked = false;
         break;
       case 4:
-        isTaijutsuChecked = false;
-        isNinjutsuChecked = false;
-        isGenjustsuChecked = false;
+        // isTaijutsuChecked = false;
+        // isNinjutsuChecked = false;
+        // isGenjustsuChecked = false;
         isThrowingChecked = true;
-        isChakraChecked = false;
-        isSummoningChecked = false;
-        isSealChecked = false;
+        // isChakraChecked = false;
+        // isLuckChecked = false;
+        // isDodgeChecked = false;
         break;
       case 5:
-        isTaijutsuChecked = false;
-        isNinjutsuChecked = false;
-        isGenjustsuChecked = false;
-        isThrowingChecked = false;
+        // isTaijutsuChecked = false;
+        // isNinjutsuChecked = false;
+        // isGenjustsuChecked = false;
+        // isThrowingChecked = false;
         isChakraChecked = true;
-        isSummoningChecked = false;
-        isSealChecked = false;
+        // isLuckChecked = false;
+        // isDodgeChecked = false;
         break;
       case 6:
-        isTaijutsuChecked = false;
-        isNinjutsuChecked = false;
-        isGenjustsuChecked = false;
-        isThrowingChecked = false;
-        isChakraChecked = false;
-        isSummoningChecked = true;
-        isSealChecked = false;
+        // isTaijutsuChecked = false;
+        // isNinjutsuChecked = false;
+        // isGenjustsuChecked = false;
+        // isThrowingChecked = false;
+        // isChakraChecked = false;
+        isLuckChecked = true;
+        // isDodgeChecked = false;
         break;
       case 7:
-        isTaijutsuChecked = false;
-        isNinjutsuChecked = false;
-        isGenjustsuChecked = false;
-        isThrowingChecked = false;
-        isChakraChecked = false;
-        isSummoningChecked = false;
-        isSealChecked = true;
+        // isTaijutsuChecked = false;
+        // isNinjutsuChecked = false;
+        // isGenjustsuChecked = false;
+        // isThrowingChecked = false;
+        // isChakraChecked = false;
+        // isLuckChecked = false;
+        isDodgeChecked = true;
         break;
       default:
-        isTaijutsuChecked = false;
-        isNinjutsuChecked = false;
-        isGenjustsuChecked = false;
-        isThrowingChecked = false;
-        isChakraChecked = false;
-        isSummoningChecked = false;
-        isSealChecked = false;
+        // isTaijutsuChecked = false;
+        // isNinjutsuChecked = false;
+        // isGenjustsuChecked = false;
+        // isThrowingChecked = false;
+        // isChakraChecked = false;
+        // isLuckChecked = false;
+        // isDodgeChecked = false;
         break;
     }
   }
 
   @override
   void initState() {
-    setChecks();
+    setChecks(widget.character.speciality);
+    if (widget.character.speciality != 0) {
+      checkCounter++;
+    }
+    setChecks(widget.character.secondSpeciality);
+    if (widget.character.secondSpeciality != 0) {
+      checkCounter++;
+    }
     super.initState();
   }
 
@@ -154,13 +164,40 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
                   fillColor: MaterialStateProperty.resolveWith(getColor),
                   value: isTaijutsuChecked,
                   onChanged: (bool? value) async {
-                    int speciality = value == false ? 0 : 1;
-                    await widget.character.setSpeciality(speciality);
-                    setState(() {
-                      widget.character.speciality = speciality;
+                    print("TEST PUSHED");
 
-                      setChecks();
-                    });
+                    int specialityCode = 1;
+
+                    if (checkCounter < maxCheckCounter && value == true) {
+                      if (widget.character.speciality == noSpeciality) {
+                        await widget.character.setSpeciality(specialityCode);
+                        widget.character.speciality = specialityCode;
+                      } else if (widget.character.secondSpeciality ==
+                          noSpeciality) {
+                        await widget.character
+                            .setSecondSpeciality(specialityCode);
+                        widget.character.secondSpeciality = specialityCode;
+                      }
+
+                      setState(() {
+                        isTaijutsuChecked = true;
+                        checkCounter++;
+                      });
+                    } else if (isTaijutsuChecked == true && value == false) {
+                      if (widget.character.speciality == specialityCode) {
+                        await widget.character.setSpeciality(noSpeciality);
+                        widget.character.speciality = noSpeciality;
+                      } else if (widget.character.secondSpeciality ==
+                          specialityCode) {
+                        await widget.character
+                            .setSecondSpeciality(noSpeciality);
+                        widget.character.secondSpeciality = noSpeciality;
+                      }
+                      setState(() {
+                        isTaijutsuChecked = false;
+                        checkCounter--;
+                      });
+                    }
                   },
                 ),
                 //speciality name
@@ -185,12 +222,42 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
                   fillColor: MaterialStateProperty.resolveWith(getColor),
                   value: isNinjutsuChecked,
                   onChanged: (bool? value) async {
-                    int speciality = value == false ? 0 : 2;
-                    await widget.character.setSpeciality(speciality);
-                    setState(() {
-                      widget.character.speciality = speciality;
-                      setChecks();
-                    });
+                    print("TEST PUSHED");
+
+                    int specialityCode = 2;
+                    if (checkCounter < maxCheckCounter && value == true) {
+                      print("TEST dans premier if confirmCheck");
+                      if (widget.character.speciality == noSpeciality) {
+                        await widget.character.setSpeciality(specialityCode);
+                        widget.character.speciality = specialityCode;
+                      } else if (widget.character.secondSpeciality ==
+                          noSpeciality) {
+                        await widget.character
+                            .setSecondSpeciality(specialityCode);
+                        widget.character.secondSpeciality = specialityCode;
+                      }
+
+                      setState(() {
+                        isNinjutsuChecked = true;
+                        checkCounter++;
+                      });
+                    } else if (isNinjutsuChecked == true && value == false) {
+                      print("TEST dans else if confirmCheck");
+
+                      if (widget.character.speciality == specialityCode) {
+                        await widget.character.setSpeciality(noSpeciality);
+                        widget.character.speciality = noSpeciality;
+                      } else if (widget.character.secondSpeciality ==
+                          specialityCode) {
+                        await widget.character
+                            .setSecondSpeciality(noSpeciality);
+                        widget.character.secondSpeciality = noSpeciality;
+                      }
+                      setState(() {
+                        isNinjutsuChecked = false;
+                        checkCounter--;
+                      });
+                    }
                   },
                 ),
                 //speciality name
@@ -215,12 +282,42 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
                   fillColor: MaterialStateProperty.resolveWith(getColor),
                   value: isGenjustsuChecked,
                   onChanged: (bool? value) async {
-                    int speciality = value == false ? 0 : 3;
-                    await widget.character.setSpeciality(speciality);
-                    setState(() {
-                      widget.character.speciality = speciality;
-                      setChecks();
-                    });
+                    print("TEST PUSHED");
+
+                    int specialityCode = 3;
+                    if (checkCounter < maxCheckCounter && value == true) {
+                      print("TEST dans premier if confirmCheck");
+                      if (widget.character.speciality == noSpeciality) {
+                        await widget.character.setSpeciality(specialityCode);
+                        widget.character.speciality = specialityCode;
+                      } else if (widget.character.secondSpeciality ==
+                          noSpeciality) {
+                        await widget.character
+                            .setSecondSpeciality(specialityCode);
+                        widget.character.secondSpeciality = specialityCode;
+                      }
+
+                      setState(() {
+                        isGenjustsuChecked = true;
+                        checkCounter++;
+                      });
+                    } else if (isGenjustsuChecked == true && value == false) {
+                      print("TEST dans else if confirmCheck");
+
+                      if (widget.character.speciality == specialityCode) {
+                        await widget.character.setSpeciality(noSpeciality);
+                        widget.character.speciality = noSpeciality;
+                      } else if (widget.character.secondSpeciality ==
+                          specialityCode) {
+                        await widget.character
+                            .setSecondSpeciality(noSpeciality);
+                        widget.character.secondSpeciality = noSpeciality;
+                      }
+                      setState(() {
+                        isGenjustsuChecked = false;
+                        checkCounter--;
+                      });
+                    }
                   },
                 ),
                 //speciality name
@@ -245,12 +342,41 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
                   fillColor: MaterialStateProperty.resolveWith(getColor),
                   value: isThrowingChecked,
                   onChanged: (bool? value) async {
-                    int speciality = value == false ? 0 : 4;
-                    await widget.character.setSpeciality(speciality);
-                    setState(() {
-                      widget.character.speciality = speciality;
-                      setChecks();
-                    });
+                    print("TEST PUSHED");
+                    int specialityCode = 4;
+                    if (checkCounter < maxCheckCounter && value == true) {
+                      print("TEST dans premier if confirmCheck");
+                      if (widget.character.speciality == noSpeciality) {
+                        await widget.character.setSpeciality(specialityCode);
+                        widget.character.speciality = specialityCode;
+                      } else if (widget.character.secondSpeciality ==
+                          noSpeciality) {
+                        await widget.character
+                            .setSecondSpeciality(specialityCode);
+                        widget.character.secondSpeciality = specialityCode;
+                      }
+
+                      setState(() {
+                        isThrowingChecked = true;
+                        checkCounter++;
+                      });
+                    } else if (isThrowingChecked == true && value == false) {
+                      print("TEST dans else if confirmCheck");
+
+                      if (widget.character.speciality == specialityCode) {
+                        await widget.character.setSpeciality(noSpeciality);
+                        widget.character.speciality = noSpeciality;
+                      } else if (widget.character.secondSpeciality ==
+                          specialityCode) {
+                        await widget.character
+                            .setSecondSpeciality(noSpeciality);
+                        widget.character.secondSpeciality = noSpeciality;
+                      }
+                      setState(() {
+                        isThrowingChecked = false;
+                        checkCounter--;
+                      });
+                    }
                   },
                 ),
                 //speciality name
@@ -275,12 +401,41 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
                   fillColor: MaterialStateProperty.resolveWith(getColor),
                   value: isChakraChecked,
                   onChanged: (bool? value) async {
-                    int speciality = value == false ? 0 : 5;
-                    await widget.character.setSpeciality(speciality);
-                    setState(() {
-                      widget.character.speciality = speciality;
-                      setChecks();
-                    });
+                    print("TEST PUSHED");
+                    int specialityCode = 5;
+                    if (checkCounter < maxCheckCounter && value == true) {
+                      print("TEST dans premier if confirmCheck");
+                      if (widget.character.speciality == noSpeciality) {
+                        await widget.character.setSpeciality(specialityCode);
+                        widget.character.speciality = specialityCode;
+                      } else if (widget.character.secondSpeciality ==
+                          noSpeciality) {
+                        await widget.character
+                            .setSecondSpeciality(specialityCode);
+                        widget.character.secondSpeciality = specialityCode;
+                      }
+
+                      setState(() {
+                        isChakraChecked = true;
+                        checkCounter++;
+                      });
+                    } else if (isChakraChecked == true && value == false) {
+                      print("TEST dans else if confirmCheck");
+
+                      if (widget.character.speciality == specialityCode) {
+                        await widget.character.setSpeciality(noSpeciality);
+                        widget.character.speciality = noSpeciality;
+                      } else if (widget.character.secondSpeciality ==
+                          specialityCode) {
+                        await widget.character
+                            .setSecondSpeciality(noSpeciality);
+                        widget.character.secondSpeciality = noSpeciality;
+                      }
+                      setState(() {
+                        isChakraChecked = false;
+                        checkCounter--;
+                      });
+                    }
                   },
                 ),
                 //speciality name
@@ -303,14 +458,43 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
                 Checkbox(
                   checkColor: Colors.white,
                   fillColor: MaterialStateProperty.resolveWith(getColor),
-                  value: isSummoningChecked,
+                  value: isLuckChecked,
                   onChanged: (bool? value) async {
-                    int speciality = value == false ? 0 : 6;
-                    await widget.character.setSpeciality(speciality);
-                    setState(() {
-                      widget.character.speciality = speciality;
-                      setChecks();
-                    });
+                    print("TEST PUSHED");
+                    int specialityCode = 6;
+                    if (checkCounter < maxCheckCounter && value == true) {
+                      print("TEST dans premier if confirmCheck");
+                      if (widget.character.speciality == noSpeciality) {
+                        await widget.character.setSpeciality(specialityCode);
+                        widget.character.speciality = specialityCode;
+                      } else if (widget.character.secondSpeciality ==
+                          noSpeciality) {
+                        await widget.character
+                            .setSecondSpeciality(specialityCode);
+                        widget.character.secondSpeciality = specialityCode;
+                      }
+
+                      setState(() {
+                        isLuckChecked = true;
+                        checkCounter++;
+                      });
+                    } else if (isLuckChecked == true && value == false) {
+                      print("TEST dans else if confirmCheck");
+
+                      if (widget.character.speciality == specialityCode) {
+                        await widget.character.setSpeciality(noSpeciality);
+                        widget.character.speciality = noSpeciality;
+                      } else if (widget.character.secondSpeciality ==
+                          specialityCode) {
+                        await widget.character
+                            .setSecondSpeciality(noSpeciality);
+                        widget.character.secondSpeciality = noSpeciality;
+                      }
+                      setState(() {
+                        isLuckChecked = false;
+                        checkCounter--;
+                      });
+                    }
                   },
                 ),
                 //speciality name
@@ -333,14 +517,43 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
                 Checkbox(
                   checkColor: Colors.white,
                   fillColor: MaterialStateProperty.resolveWith(getColor),
-                  value: isSealChecked,
+                  value: isDodgeChecked,
                   onChanged: (bool? value) async {
-                    int speciality = value == false ? 0 : 7;
-                    await widget.character.setSpeciality(speciality);
-                    setState(() {
-                      widget.character.speciality = speciality;
-                      setChecks();
-                    });
+                    print("TEST PUSHED");
+                    int specialityCode = 7;
+                    if (checkCounter < maxCheckCounter && value == true) {
+                      print("TEST dans premier if confirmCheck");
+                      if (widget.character.speciality == noSpeciality) {
+                        await widget.character.setSpeciality(specialityCode);
+                        widget.character.speciality = specialityCode;
+                      } else if (widget.character.secondSpeciality ==
+                          noSpeciality) {
+                        await widget.character
+                            .setSecondSpeciality(specialityCode);
+                        widget.character.secondSpeciality = specialityCode;
+                      }
+
+                      setState(() {
+                        isDodgeChecked = true;
+                        checkCounter++;
+                      });
+                    } else if (isDodgeChecked == true && value == false) {
+                      print("TEST dans else if confirmCheck");
+
+                      if (widget.character.speciality == specialityCode) {
+                        await widget.character.setSpeciality(noSpeciality);
+                        widget.character.speciality = noSpeciality;
+                      } else if (widget.character.secondSpeciality ==
+                          specialityCode) {
+                        await widget.character
+                            .setSecondSpeciality(noSpeciality);
+                        widget.character.secondSpeciality = noSpeciality;
+                      }
+                      setState(() {
+                        isDodgeChecked = false;
+                        checkCounter--;
+                      });
+                    }
                   },
                 ),
                 //speciality name
