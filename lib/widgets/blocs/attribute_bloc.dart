@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class AttributeBloc extends StatefulWidget {
   final Character character;
   final ScrollController? scrollController;
+
   const AttributeBloc(
       {super.key, required this.character, this.scrollController});
 
@@ -193,14 +194,14 @@ class AttributeDescription extends StatelessWidget {
         imagePath = MyImages().imagePath[image.sharingan]!;
         description =
             "A activer quand on le souhaite, peut être désactivé n'importe quand mais pas réactivé derriere. "
-            "BONUS pour envoyer des jutsu, notamment ceux pas de son type, bonus d'Esquive. "
-            "BONUS Genutsu, MALUS Chakra (sorts coutent plus), MALUS Constitution";
+            "BONUS Ninjutsu notamment ceux pas de son type, BONUS Esquive. "
+            "BONUS Genjutsu, MALUS Chakra (sorts coutent plus), MALUS Constitution";
         break;
       case 3:
         imagePath = MyImages().imagePath[image.byakugan]!;
         description =
-            "Active/désactive pareil que sharringan, BONUS Taïjutsu/Perception, MALUS Chakra "
-            "+ MALUS Taïjutsu après 3/4/5 tours (à voir)";
+            "Active/désactive pareil que sharringan, BONUS Taïjutsu, BONUS Perception, MALUS Chakra, "
+            "MALUS Taïjutsu après 3/4/5 tours (à voir)";
         break;
       default:
         imagePath = "";

@@ -27,7 +27,6 @@ class Character {
   int chakra;
   int dodge;
   int throwing;
-  List<int> buffer;
 
   Character(
     {
@@ -50,7 +49,6 @@ class Character {
     this.chakra=30,
     this.dodge = 30,
     this.throwing=30,
-    this.buffer=const <int>[2,2],
          });
   
 
@@ -116,33 +114,78 @@ class Character {
     sexe = newSexe;
     await DbHelper.database.characterDao.updateCharacter(this);
   }
-
   Future<void> setPicture(String newPicture)async{
     picture = newPicture;
     await DbHelper.database.characterDao.updateCharacter(this);
   }
+  ///ATTRIBUT
+  ///0 : Aucun /
+  ///1 : jinchuriki /
+  ///2 : Sharingan /
+  ///3 : Byakugan /
   Future<void> setAttribute(int newAttribute)async{
+    //Comparaison de l'ancien attribut et du nouveau
+    //Si l'ancien attribut est différent de 0 on enleve les valeurs de l'ancien attribut
+    //Si le nouvel attribut est différent de 0 on ajoute les valeurs du nouveau attribut
+    //soustraction
+    if(attribute != 0){
+      switch(attribute){
+        case 1:
+        //pas de boost de stat pour le jinchuriki
+          break;
+        case 2:
+        //sharingan
+          ninjutsu -= 5;
+          dodge -= 5;
+          genjutsu -= 5;
+          chakra +=5;
+          constitution += 5;
+          break;
+        case 3:
+          taijutsu -= 5;
+          perception -= 5;
+          chakra += 5;
+          break;
+      }
+    }
+    //addition
+    if(newAttribute != 0){
+      switch(newAttribute){
+        case 1:
+        //pas de boost de stat pour le jinchuriki
+          break;
+        case 2:
+        //sharingan
+          ninjutsu += 5;
+          dodge += 5;
+          genjutsu += 5;
+          chakra -=5;
+          constitution -= 5;
+          break;
+        case 3:
+          taijutsu += 5;
+          perception += 5;
+          chakra -= 5;
+          break;
+      }
+    }
     attribute = newAttribute;
     await DbHelper.database.characterDao.updateCharacter(this);
   }
+  ///SPECIALITE
+  ///0 : Aucun /
+  ///1 : Taïjutsu /
+  ///2 : Ninjutsu-chakra ? /
+  ///3 : Genjutsu /
+  ///4 : Lancer /
+  ///5 : Chakra /
+  ///6 : Invocation /
+  ///7 : Sceaux /
   Future<void> setSpeciality(int newSpeciality)async{
     speciality = newSpeciality;
     await DbHelper.database.characterDao.updateCharacter(this);
   }
 }
 
-//ATTRIBUT
-//0 : Aucun
-//1 : jinchuriki
-//2 : Sharingan
-//3 : Byakugan
 
-//SPECIALITE
-//0 : Aucun
-//1 Taïjutsu
-//2 Ninjutsu/chakra ?
-//3 Genjutsu
-//4 Lancer
-//5 Chakra
-//6 Invocation
-//7 Sceaux  
+
