@@ -4,6 +4,7 @@ import 'package:caracapp/utils/data_access_object/character_dao.dart';
 import 'package:caracapp/widgets/blocs/attribute_bloc.dart';
 import 'package:caracapp/widgets/blocs/caracteristics_upgrade_bloc.dart';
 import 'package:caracapp/widgets/blocs/elements_bloc.dart';
+import 'package:caracapp/widgets/blocs/jutsus_bloc.dart';
 import 'package:caracapp/widgets/blocs/speciality_bloc.dart';
 import 'package:caracapp/widgets/lowerWidgets/my_text_field.dart';
 import 'package:flutter/material.dart';
@@ -342,6 +343,32 @@ class _AddCharacterPageState extends State<AddCharacterPage> {
                     padding: const EdgeInsets.only(
                         bottom: 16.0, left: 16.0, right: 16.0),
                     child: ElementBloc(character: widget.character),
+                  ),
+                  //?STOP ELEMENT
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  //!JUTSUS
+                  Divider(
+                    endIndent: width * 0.1,
+                    indent: width * 0.1,
+                    color: Colors.white,
+                    thickness: 2,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(bottom: 20.0, top: 10),
+                    child: Text("Jutsus",
+                        style: TextStyle(
+                          fontSize: 22,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        )),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        bottom: 16.0, left: 16.0, right: 16.0),
+                    child: JutsuBloc(character: widget.character),
                   ),
                   //?STOP ELEMENT
                   const SizedBox(

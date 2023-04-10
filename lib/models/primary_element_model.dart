@@ -1,19 +1,19 @@
 // ignore_for_file: annotate_overrides, overridden_fields
 
-import 'package:caracapp/classes/kekkais.dart';
+import 'package:caracapp/classes/elements.dart';
 import 'package:caracapp/models/element_model.dart';
 import 'package:caracapp/models/jutsu_model.dart';
 
-class Kekkai extends Element {
+class PrimaryElement extends Element {
   String name;
   String description;
   String image;
   int code;
   List<Jutsu> jutsus;
-  Kekkai({
-    this.name = "nope",
-    this.description = "nope",
-    this.image = "nope",
+  PrimaryElement({
+    this.name = "",
+    this.description = "",
+    this.image = "",
     this.code = 0,
     this.jutsus = const <Jutsu>[],
   }) : super(
@@ -23,30 +23,20 @@ class Kekkai extends Element {
           code: code,
           jutsus: jutsus,
         );
-  Kekkai getElement(int code) {
+  PrimaryElement getElement(int code) {
     switch (code) {
       case 1:
-        return Enton();
+        return Katon();
       case 2:
-        return Futton();
+        return Raiton();
       case 3:
-        return Shakuton();
+        return Suiton();
       case 4:
-        return Yoton();
+        return Futon();
       case 5:
-        return Ranton();
-      case 6:
-        return Jinton();
-      case 7:
-        return Bakuton();
-      case 8:
-        return Hyoton();
-      case 9:
-        return Mokuton();
-      case 10:
-        return Jiton();
+        return Doton();
       default:
-        return Kekkai();
+        return PrimaryElement();
     }
   }
 }

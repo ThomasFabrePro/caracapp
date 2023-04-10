@@ -1,0 +1,7 @@
+modeles elements primaires
+ajout jutsu dans list element Feu
+front jutsu bloc avec un stream 
+carte jutsu 
+
+
+ajout focus nodes sur formulaire creation personnage
