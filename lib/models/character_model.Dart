@@ -262,9 +262,6 @@ class Character {
   // }
 
   void setBuffers(int currentSpeciality,int chosenSpeciality){
-    print("TEST dans le set buffers");
-    print("TEST currentSpeciality : $currentSpeciality");
-    print("TEST chosenSpeciality : $chosenSpeciality");
     switch(currentSpeciality){
           case 0:
             break;
@@ -289,7 +286,7 @@ class Character {
           case 7:
             dodgeBuffer -= 5;
             break;
-        };
+        }
 
       switch(chosenSpeciality){
         case 0:
@@ -315,7 +312,7 @@ class Character {
         case 7:
           dodgeBuffer += 5;
           break;
-      };
+      }
   }
   ///ELEMENT
   ///0 : Aucun /

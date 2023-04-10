@@ -1,16 +1,5 @@
-import 'package:caracapp/classes/kekkai/bakuton.dart';
-import 'package:caracapp/classes/kekkai/enton.dart';
-import 'package:caracapp/classes/kekkai/futton.dart';
-import 'package:caracapp/classes/kekkai/jinton.dart';
-import 'package:caracapp/classes/kekkai/jiton.dart';
-import 'package:caracapp/classes/kekkai/mokuton.dart';
-import 'package:caracapp/classes/kekkai/ranton.dart';
-import 'package:caracapp/classes/kekkai/shakuton.dart';
-import 'package:caracapp/classes/kekkai/yoton.dart';
-import 'package:caracapp/main.dart';
 import 'package:caracapp/models/character_model.dart';
-import 'package:caracapp/classes/kekkai/hyoton.dart';
-import 'package:caracapp/models/kekkais/kekkai_model.dart';
+import 'package:caracapp/models/kekkai_model.dart';
 import 'package:caracapp/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
@@ -355,7 +344,7 @@ class KekkaiDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Kekkai kekkai = Kekkai().getKekkai(kekkaiCode);
+    Kekkai kekkai = Kekkai().getElement(kekkaiCode);
     return Column(
       children: [
         Padding(

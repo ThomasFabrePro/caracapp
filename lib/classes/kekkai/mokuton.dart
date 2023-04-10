@@ -1,6 +1,6 @@
 import 'package:caracapp/utils/assets.dart';
 
-import '../../models/kekkais/kekkai_model.dart';
+import '../../models/kekkai_model.dart';
 
 class Mokuton extends Kekkai {
   Mokuton()
