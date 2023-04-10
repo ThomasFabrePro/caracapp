@@ -1,4 +1,5 @@
 import 'package:caracapp/models/character_model.dart';
+import 'package:caracapp/models/element_model.dart';
 import 'package:caracapp/models/jutsu_model.dart';
 import 'package:caracapp/models/kekkai_model.dart';
 import 'package:caracapp/models/primary_element_model.dart';
@@ -82,13 +83,20 @@ class _JutsuBlocState extends State<JutsuBloc> {
               }
             }
             return Padding(
-              padding: const EdgeInsets.only(top: 16.0),
+              padding: const EdgeInsets.only(top: 16.0, bottom: 24.0),
               child: Column(
                 children: [
-                  CardsList(title: mainElement.name, cards: jutsuCardsList[0]),
-                  CardsList(
-                      title: secondElement.name, cards: jutsuCardsList[1]),
-                  CardsList(title: kekkai.name, cards: jutsuCardsList[2]),
+                  jutsuCardsList[0].isNotEmpty
+                      ? CardsList(
+                          element: mainElement, cards: jutsuCardsList[0])
+                      : const SizedBox(),
+                  jutsuCardsList[1].isNotEmpty
+                      ? CardsList(
+                          element: secondElement, cards: jutsuCardsList[1])
+                      : const SizedBox(),
+                  jutsuCardsList[2].isNotEmpty
+                      ? CardsList(element: kekkai, cards: jutsuCardsList[2])
+                      : const SizedBox(),
                 ],
               ),
             );
@@ -98,18 +106,34 @@ class _JutsuBlocState extends State<JutsuBloc> {
 }
 
 class CardsList extends StatelessWidget {
-  final String title;
+  final NatureElement element;
   final List<JutsuCard> cards;
-  const CardsList({super.key, required this.title, required this.cards});
+  const CardsList({super.key, required this.element, required this.cards});
 
   @override
   Widget build(BuildContext context) {
+    cards.sort(
+        (a, b) => a.jutsu.ninjutsuMinimum.compareTo(b.jutsu.ninjutsuMinimum));
+
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Padding(
         padding: const EdgeInsets.only(left: 10.0, bottom: 10),
-        child: Text(
-          title,
-          style: MyDecoration.titleStyle,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              element.name,
+              style: const TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: MyDecoration.bloodColor,
+              ),
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            SizedBox(height: 30, child: Image.asset(element.image))
+          ],
         ),
       ),
       ...cards,

@@ -8,8 +8,12 @@ class Katon extends PrimaryElement {
       : super(
           name: "Katon",
           description: "",
-          image: "",
-          jutsus: <Jutsu>[GokakyuNoJutsu()],
+          image: MyImages().imagePath[image.katonIcon]!,
+          jutsus: <Jutsu>[
+            FireBall(),
+            AshCloud(),
+            BreathOfFire(),
+          ],
           // code: 1,
         );
 }

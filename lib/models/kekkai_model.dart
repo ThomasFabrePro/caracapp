@@ -4,7 +4,7 @@ import 'package:caracapp/classes/kekkais.dart';
 import 'package:caracapp/models/element_model.dart';
 import 'package:caracapp/models/jutsu_model.dart';
 
-class Kekkai extends Element {
+class Kekkai extends NatureElement {
   String name;
   String description;
   String image;

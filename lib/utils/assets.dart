@@ -23,6 +23,7 @@ class MyImages {
     image.thunder: "assets/elements/thunder.jpg",
     image.earth: "assets/elements/earth.jpg",
     //elements icons
+    image.katonIcon: "assets/elements/icons/katon_icon.png",
     image.entonIcon: "assets/elements/icons/enton_icon.png",
     image.futtonIcon: "assets/elements/icons/futton_icon.png",
     image.hyotonIcon: "assets/elements/icons/hyoton_icon.png",
@@ -34,7 +35,9 @@ class MyImages {
     image.yotonIcon: "assets/elements/icons/yoton_icon.png",
     image.bakutonIcon: "assets/elements/icons/bakuton_icon.png",
     //jutsus
-    image.katonJutsu1: "assets/jutsus/katon_1.jpg",
+    image.jutsuFireBall: "assets/jutsus/fire_ball.jpg",
+    image.jutsuAshCloud: "assets/jutsus/ash_cloud.jpg",
+    image.jutsuBreathOfFire: "assets/jutsus/breath_of_fire.jpg",
   };
 }
 
@@ -58,7 +61,10 @@ enum image {
   hyotonIcon,
   jintonIcon,
   jitonIcon,
-  katonJutsu1,
+  katonIcon,
+  jutsuAshCloud,
+  jutsuFireBall,
+  jutsuBreathOfFire,
   mokutonIcon,
   rantonIcon,
   shakutonIcon,

@@ -30,8 +30,8 @@ class JutsuCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(jutsu.description, style: MyDecoration.dataStyle),
-                Text("Ninjutsu ≥ ${jutsu.ninjutsuMinimum}",
+                Text(jutsu.name, style: MyDecoration.dataStyle),
+                Text("Requis : Ninjutsu ≥ ${jutsu.ninjutsuMinimum}",
                     style: TextStyle(
                       color: isAvailable ? Colors.black : Colors.red,
                       fontSize: 18,

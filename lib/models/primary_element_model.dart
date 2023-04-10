@@ -4,7 +4,7 @@ import 'package:caracapp/classes/elements.dart';
 import 'package:caracapp/models/element_model.dart';
 import 'package:caracapp/models/jutsu_model.dart';
 
-class PrimaryElement extends Element {
+class PrimaryElement extends NatureElement {
   String name;
   String description;
   String image;
