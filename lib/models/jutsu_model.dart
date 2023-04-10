@@ -1,13 +1,7 @@
 import 'package:caracapp/widgets/lowerWidgets/jutsu_card.dart';
 
-///Code
-/// 0 : None /
-/// 1 : Hyoton /
-/// 2 :Futton
-///
-
 class Jutsu {
-  final String name;
+  // final String name;
   final String description;
   final String image;
   final int ninjutsuMinimum;
@@ -15,7 +9,7 @@ class Jutsu {
   // final int code;
 
   Jutsu({
-    this.name = "nope",
+    // this.name = "nope",
     this.description = "nope",
     this.image = "",
     this.ninjutsuMinimum = 50,
@@ -49,9 +43,9 @@ class Jutsu {
   //       return Jutsu();
   //   }
   // }
-  JutsuCard toCard() {
-    return JutsuCard(
-      jutsu: this,
-    );
-  }
+  // JutsuCard toCard() {
+  //   return JutsuCard(
+  //     jutsu: this,
+  //   );
+  // }
 }

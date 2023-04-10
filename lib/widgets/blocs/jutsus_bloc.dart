@@ -57,53 +57,62 @@ class _JutsuBlocState extends State<JutsuBloc> {
         borderRadius: BorderRadius.circular(10),
         boxShadow: [MyDecoration.boxShadow],
       ),
-      child: Padding(
-        padding: EdgeInsets.all(8.0),
-        child: StreamBuilder<Character>(
-            stream: getCharacterJutsus(),
-            builder: (context, snapshot) {
-              print("TEST BUILD");
-              mainElement =
-                  mainElement.getElement(widget.character.mainElement);
-              secondElement =
-                  secondElement.getElement(widget.character.secondElement);
-              kekkai = kekkai.getElement(widget.character.kekkaiGenkai);
-
-              // prrint("")
-              jutsusLists = <List<Jutsu>>[
-                mainElement.jutsus,
-                secondElement.jutsus,
-                kekkai.jutsus,
-              ];
-              jutsuCardsList = [[], [], []];
-              for (int i = 0; i < jutsusLists.length; i++) {
-                for (var jutsu in jutsusLists[i]) {
-                  jutsuCardsList[i].add(
-                    JutsuCard(
-                      jutsu: jutsu,
-                    ),
-                  );
-                }
+      child: StreamBuilder<Character>(
+          stream: getCharacterJutsus(),
+          builder: (context, snapshot) {
+            mainElement = mainElement.getElement(widget.character.mainElement);
+            secondElement =
+                secondElement.getElement(widget.character.secondElement);
+            kekkai = kekkai.getElement(widget.character.kekkaiGenkai);
+            jutsusLists = <List<Jutsu>>[
+              mainElement.jutsus,
+              secondElement.jutsus,
+              kekkai.jutsus,
+            ];
+            jutsuCardsList = [[], [], []];
+            for (int i = 0; i < jutsusLists.length; i++) {
+              for (var jutsu in jutsusLists[i]) {
+                jutsuCardsList[i].add(
+                  JutsuCard(
+                    jutsu: jutsu,
+                    characterNinjutsuValue: widget.character.ninjutsu +
+                        widget.character.ninjutsuBuffer,
+                  ),
+                );
               }
-              return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(mainElement.name),
-                    ...jutsuCardsList[0],
-                    Text("secondlement"),
-                    const Text("kekkai"),
-                  ]);
-            }),
-      ),
+            }
+            return Padding(
+              padding: const EdgeInsets.only(top: 16.0),
+              child: Column(
+                children: [
+                  CardsList(title: mainElement.name, cards: jutsuCardsList[0]),
+                  CardsList(
+                      title: secondElement.name, cards: jutsuCardsList[1]),
+                  CardsList(title: kekkai.name, cards: jutsuCardsList[2]),
+                ],
+              ),
+            );
+          }),
     );
   }
 }
 
 class CardsList extends StatelessWidget {
-  const CardsList({super.key});
+  final String title;
+  final List<JutsuCard> cards;
+  const CardsList({super.key, required this.title, required this.cards});
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Padding(
+        padding: const EdgeInsets.only(left: 10.0, bottom: 10),
+        child: Text(
+          title,
+          style: MyDecoration.titleStyle,
+        ),
+      ),
+      ...cards,
+    ]);
   }
 }

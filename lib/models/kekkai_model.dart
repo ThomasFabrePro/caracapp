@@ -11,9 +11,9 @@ class Kekkai extends Element {
   int code;
   List<Jutsu> jutsus;
   Kekkai({
-    this.name = "nope",
-    this.description = "nope",
-    this.image = "nope",
+    this.name = "",
+    this.description = "",
+    this.image = "",
     this.code = 0,
     this.jutsus = const <Jutsu>[],
   }) : super(

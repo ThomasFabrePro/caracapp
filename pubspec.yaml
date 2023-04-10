@@ -27,6 +27,7 @@ flutter:
     - assets/ninja_images/
     - assets/front/
     - assets/attributes/
+    - assets/jutsus/
     - assets/elements/
     - assets/elements/icons/
 

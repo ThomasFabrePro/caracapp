@@ -2,22 +2,27 @@ import 'package:flutter/material.dart';
 
 class MyImages {
   Map<image, String> imagePath = {
+    //photos
     image.ninja1: "assets/ninja_images/ninja_1.jpg",
     image.ninja2: "assets/ninja_images/ninja_2.png",
     image.ninja3: "assets/ninja_images/ninja_3.png",
     image.ninja4: "assets/ninja_images/ninja_4.png",
     image.ninja5: "assets/ninja_images/ninja_5.jpeg",
     image.ninja6: "assets/ninja_images/ninja_6.jpeg",
+    //attributes
     image.byakugan: "assets/attributes/byakugan.jpg",
     image.sharingan: "assets/attributes/sharingan.jpg",
     image.jinchuriki: "assets/attributes/jinchuriki.jpg",
+    //fronts
     image.buttonPlus: "assets/front/plus_button.png",
     image.buttonMinus: "assets/front/minus_button.png",
+    //elements
     image.fire: "assets/elements/fire.jpg",
     image.water: "assets/elements/water.jpg",
     image.wind: "assets/elements/wind.jpg",
     image.thunder: "assets/elements/thunder.jpg",
     image.earth: "assets/elements/earth.jpg",
+    //elements icons
     image.entonIcon: "assets/elements/icons/enton_icon.png",
     image.futtonIcon: "assets/elements/icons/futton_icon.png",
     image.hyotonIcon: "assets/elements/icons/hyoton_icon.png",
@@ -28,7 +33,8 @@ class MyImages {
     image.shakutonIcon: "assets/elements/icons/shakuton_icon.png",
     image.yotonIcon: "assets/elements/icons/yoton_icon.png",
     image.bakutonIcon: "assets/elements/icons/bakuton_icon.png",
-    image.katonJutsu1: "assets/jutsus/katon_1.png",
+    //jutsus
+    image.katonJutsu1: "assets/jutsus/katon_1.jpg",
   };
 }
 
