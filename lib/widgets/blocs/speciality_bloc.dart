@@ -49,104 +49,66 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
     "Dodge": "+5",
   };
 
-  void setChecks(int speciality) {
-    switch (speciality) {
+  void setChecks(int mainSpe) {
+    switch (mainSpe) {
       case 1:
         isTaijutsuChecked = true;
-        // isGenjustsuChecked = false;
-        // isNinjutsuChecked = false;
-        // isThrowingChecked = false;
-        // isChakraChecked = false;
-        // isLuckChecked = false;
-        // isDodgeChecked = false;
         break;
       case 2:
-        // isTaijutsuChecked = false;
         isNinjutsuChecked = true;
-        // isGenjustsuChecked = false;
-        // isThrowingChecked = false;
-        // isChakraChecked = false;
-        // isLuckChecked = false;
-        // isDodgeChecked = false;
         break;
       case 3:
-        // isTaijutsuChecked = false;
-        // isNinjutsuChecked = false;
         isGenjustsuChecked = true;
-        // isThrowingChecked = false;
-        // isChakraChecked = false;
-        // isLuckChecked = false;
-        // isDodgeChecked = false;
         break;
       case 4:
-        // isTaijutsuChecked = false;
-        // isNinjutsuChecked = false;
-        // isGenjustsuChecked = false;
         isThrowingChecked = true;
-        // isChakraChecked = false;
-        // isLuckChecked = false;
-        // isDodgeChecked = false;
         break;
       case 5:
-        // isTaijutsuChecked = false;
-        // isNinjutsuChecked = false;
-        // isGenjustsuChecked = false;
-        // isThrowingChecked = false;
         isChakraChecked = true;
-        // isLuckChecked = false;
-        // isDodgeChecked = false;
         break;
       case 6:
-        // isTaijutsuChecked = false;
-        // isNinjutsuChecked = false;
-        // isGenjustsuChecked = false;
-        // isThrowingChecked = false;
-        // isChakraChecked = false;
         isLuckChecked = true;
-        // isDodgeChecked = false;
         break;
       case 7:
-        // isTaijutsuChecked = false;
-        // isNinjutsuChecked = false;
-        // isGenjustsuChecked = false;
-        // isThrowingChecked = false;
-        // isChakraChecked = false;
-        // isLuckChecked = false;
         isDodgeChecked = true;
         break;
       default:
-        // isTaijutsuChecked = false;
-        // isNinjutsuChecked = false;
-        // isGenjustsuChecked = false;
-        // isThrowingChecked = false;
-        // isChakraChecked = false;
-        // isLuckChecked = false;
-        // isDodgeChecked = false;
         break;
     }
   }
 
   @override
   void initState() {
-    setChecks(widget.character.speciality);
-    if (widget.character.speciality != 0) {
+    setChecks(widget.character.mainSpe);
+    if (widget.character.mainSpe != 0) {
       checkCounter++;
     }
-    setChecks(widget.character.secondSpeciality);
-    if (widget.character.secondSpeciality != 0) {
+    setChecks(widget.character.secondSpe);
+    if (widget.character.secondSpe != 0) {
       checkCounter++;
     }
     super.initState();
   }
 
+  Future<bool> confirmCheck(
+      {required int code, required bool value, required bool check}) async {
+    if ((checkCounter < maxCheckCounter && value == true) ||
+        (check == true && value == false)) {
+      value == true ? checkCounter++ : checkCounter--;
+      check = value;
+      await widget.character.setSpeciality(code, add: value);
+      setState(() {});
+      return check;
+    } else {
+      return false;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
     return Container(
       width: width,
-      // height: 200,
-      // color: Colors.white,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -164,43 +126,14 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
                   fillColor: MaterialStateProperty.resolveWith(getColor),
                   value: isTaijutsuChecked,
                   onChanged: (bool? value) async {
-                    print("TEST PUSHED");
-
                     int specialityCode = 1;
-
-                    if (checkCounter < maxCheckCounter && value == true) {
-                      if (widget.character.speciality == noSpeciality) {
-                        await widget.character.setSpeciality(specialityCode);
-                        widget.character.speciality = specialityCode;
-                      } else if (widget.character.secondSpeciality ==
-                          noSpeciality) {
-                        await widget.character
-                            .setSecondSpeciality(specialityCode);
-                        widget.character.secondSpeciality = specialityCode;
-                      }
-
-                      setState(() {
-                        isTaijutsuChecked = true;
-                        checkCounter++;
-                      });
-                    } else if (isTaijutsuChecked == true && value == false) {
-                      if (widget.character.speciality == specialityCode) {
-                        await widget.character.setSpeciality(noSpeciality);
-                        widget.character.speciality = noSpeciality;
-                      } else if (widget.character.secondSpeciality ==
-                          specialityCode) {
-                        await widget.character
-                            .setSecondSpeciality(noSpeciality);
-                        widget.character.secondSpeciality = noSpeciality;
-                      }
-                      setState(() {
-                        isTaijutsuChecked = false;
-                        checkCounter--;
-                      });
-                    }
+                    isTaijutsuChecked = await confirmCheck(
+                        code: specialityCode,
+                        value: value!,
+                        check: isTaijutsuChecked);
                   },
                 ),
-                //speciality name
+                //mainSpe name
                 SizedBox(
                   width: width * titleWidthPercent,
                   child: Text(
@@ -222,45 +155,14 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
                   fillColor: MaterialStateProperty.resolveWith(getColor),
                   value: isNinjutsuChecked,
                   onChanged: (bool? value) async {
-                    print("TEST PUSHED");
-
                     int specialityCode = 2;
-                    if (checkCounter < maxCheckCounter && value == true) {
-                      print("TEST dans premier if confirmCheck");
-                      if (widget.character.speciality == noSpeciality) {
-                        await widget.character.setSpeciality(specialityCode);
-                        widget.character.speciality = specialityCode;
-                      } else if (widget.character.secondSpeciality ==
-                          noSpeciality) {
-                        await widget.character
-                            .setSecondSpeciality(specialityCode);
-                        widget.character.secondSpeciality = specialityCode;
-                      }
-
-                      setState(() {
-                        isNinjutsuChecked = true;
-                        checkCounter++;
-                      });
-                    } else if (isNinjutsuChecked == true && value == false) {
-                      print("TEST dans else if confirmCheck");
-
-                      if (widget.character.speciality == specialityCode) {
-                        await widget.character.setSpeciality(noSpeciality);
-                        widget.character.speciality = noSpeciality;
-                      } else if (widget.character.secondSpeciality ==
-                          specialityCode) {
-                        await widget.character
-                            .setSecondSpeciality(noSpeciality);
-                        widget.character.secondSpeciality = noSpeciality;
-                      }
-                      setState(() {
-                        isNinjutsuChecked = false;
-                        checkCounter--;
-                      });
-                    }
+                    isNinjutsuChecked = await confirmCheck(
+                        code: specialityCode,
+                        value: value!,
+                        check: isNinjutsuChecked);
                   },
                 ),
-                //speciality name
+                //mainSpe name
                 SizedBox(
                   width: width * titleWidthPercent,
                   child: Text(
@@ -282,45 +184,14 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
                   fillColor: MaterialStateProperty.resolveWith(getColor),
                   value: isGenjustsuChecked,
                   onChanged: (bool? value) async {
-                    print("TEST PUSHED");
-
                     int specialityCode = 3;
-                    if (checkCounter < maxCheckCounter && value == true) {
-                      print("TEST dans premier if confirmCheck");
-                      if (widget.character.speciality == noSpeciality) {
-                        await widget.character.setSpeciality(specialityCode);
-                        widget.character.speciality = specialityCode;
-                      } else if (widget.character.secondSpeciality ==
-                          noSpeciality) {
-                        await widget.character
-                            .setSecondSpeciality(specialityCode);
-                        widget.character.secondSpeciality = specialityCode;
-                      }
-
-                      setState(() {
-                        isGenjustsuChecked = true;
-                        checkCounter++;
-                      });
-                    } else if (isGenjustsuChecked == true && value == false) {
-                      print("TEST dans else if confirmCheck");
-
-                      if (widget.character.speciality == specialityCode) {
-                        await widget.character.setSpeciality(noSpeciality);
-                        widget.character.speciality = noSpeciality;
-                      } else if (widget.character.secondSpeciality ==
-                          specialityCode) {
-                        await widget.character
-                            .setSecondSpeciality(noSpeciality);
-                        widget.character.secondSpeciality = noSpeciality;
-                      }
-                      setState(() {
-                        isGenjustsuChecked = false;
-                        checkCounter--;
-                      });
-                    }
+                    isGenjustsuChecked = await confirmCheck(
+                        code: specialityCode,
+                        value: value!,
+                        check: isGenjustsuChecked);
                   },
                 ),
-                //speciality name
+                //mainSpe name
                 SizedBox(
                   width: width * titleWidthPercent,
                   child: Text(
@@ -342,44 +213,14 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
                   fillColor: MaterialStateProperty.resolveWith(getColor),
                   value: isThrowingChecked,
                   onChanged: (bool? value) async {
-                    print("TEST PUSHED");
                     int specialityCode = 4;
-                    if (checkCounter < maxCheckCounter && value == true) {
-                      print("TEST dans premier if confirmCheck");
-                      if (widget.character.speciality == noSpeciality) {
-                        await widget.character.setSpeciality(specialityCode);
-                        widget.character.speciality = specialityCode;
-                      } else if (widget.character.secondSpeciality ==
-                          noSpeciality) {
-                        await widget.character
-                            .setSecondSpeciality(specialityCode);
-                        widget.character.secondSpeciality = specialityCode;
-                      }
-
-                      setState(() {
-                        isThrowingChecked = true;
-                        checkCounter++;
-                      });
-                    } else if (isThrowingChecked == true && value == false) {
-                      print("TEST dans else if confirmCheck");
-
-                      if (widget.character.speciality == specialityCode) {
-                        await widget.character.setSpeciality(noSpeciality);
-                        widget.character.speciality = noSpeciality;
-                      } else if (widget.character.secondSpeciality ==
-                          specialityCode) {
-                        await widget.character
-                            .setSecondSpeciality(noSpeciality);
-                        widget.character.secondSpeciality = noSpeciality;
-                      }
-                      setState(() {
-                        isThrowingChecked = false;
-                        checkCounter--;
-                      });
-                    }
+                    isThrowingChecked = await confirmCheck(
+                        code: specialityCode,
+                        value: value!,
+                        check: isThrowingChecked);
                   },
                 ),
-                //speciality name
+                //mainSpe name
                 SizedBox(
                   width: width * titleWidthPercent,
                   child: Text(
@@ -401,44 +242,14 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
                   fillColor: MaterialStateProperty.resolveWith(getColor),
                   value: isChakraChecked,
                   onChanged: (bool? value) async {
-                    print("TEST PUSHED");
                     int specialityCode = 5;
-                    if (checkCounter < maxCheckCounter && value == true) {
-                      print("TEST dans premier if confirmCheck");
-                      if (widget.character.speciality == noSpeciality) {
-                        await widget.character.setSpeciality(specialityCode);
-                        widget.character.speciality = specialityCode;
-                      } else if (widget.character.secondSpeciality ==
-                          noSpeciality) {
-                        await widget.character
-                            .setSecondSpeciality(specialityCode);
-                        widget.character.secondSpeciality = specialityCode;
-                      }
-
-                      setState(() {
-                        isChakraChecked = true;
-                        checkCounter++;
-                      });
-                    } else if (isChakraChecked == true && value == false) {
-                      print("TEST dans else if confirmCheck");
-
-                      if (widget.character.speciality == specialityCode) {
-                        await widget.character.setSpeciality(noSpeciality);
-                        widget.character.speciality = noSpeciality;
-                      } else if (widget.character.secondSpeciality ==
-                          specialityCode) {
-                        await widget.character
-                            .setSecondSpeciality(noSpeciality);
-                        widget.character.secondSpeciality = noSpeciality;
-                      }
-                      setState(() {
-                        isChakraChecked = false;
-                        checkCounter--;
-                      });
-                    }
+                    isChakraChecked = await confirmCheck(
+                        code: specialityCode,
+                        value: value!,
+                        check: isChakraChecked);
                   },
                 ),
-                //speciality name
+                //mainSpe name
                 SizedBox(
                   width: width * titleWidthPercent,
                   child: Text(
@@ -460,44 +271,14 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
                   fillColor: MaterialStateProperty.resolveWith(getColor),
                   value: isLuckChecked,
                   onChanged: (bool? value) async {
-                    print("TEST PUSHED");
                     int specialityCode = 6;
-                    if (checkCounter < maxCheckCounter && value == true) {
-                      print("TEST dans premier if confirmCheck");
-                      if (widget.character.speciality == noSpeciality) {
-                        await widget.character.setSpeciality(specialityCode);
-                        widget.character.speciality = specialityCode;
-                      } else if (widget.character.secondSpeciality ==
-                          noSpeciality) {
-                        await widget.character
-                            .setSecondSpeciality(specialityCode);
-                        widget.character.secondSpeciality = specialityCode;
-                      }
-
-                      setState(() {
-                        isLuckChecked = true;
-                        checkCounter++;
-                      });
-                    } else if (isLuckChecked == true && value == false) {
-                      print("TEST dans else if confirmCheck");
-
-                      if (widget.character.speciality == specialityCode) {
-                        await widget.character.setSpeciality(noSpeciality);
-                        widget.character.speciality = noSpeciality;
-                      } else if (widget.character.secondSpeciality ==
-                          specialityCode) {
-                        await widget.character
-                            .setSecondSpeciality(noSpeciality);
-                        widget.character.secondSpeciality = noSpeciality;
-                      }
-                      setState(() {
-                        isLuckChecked = false;
-                        checkCounter--;
-                      });
-                    }
+                    isLuckChecked = await confirmCheck(
+                        code: specialityCode,
+                        value: value!,
+                        check: isLuckChecked);
                   },
                 ),
-                //speciality name
+                //mainSpe name
                 SizedBox(
                   width: width * titleWidthPercent,
                   child: Text(
@@ -519,44 +300,14 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
                   fillColor: MaterialStateProperty.resolveWith(getColor),
                   value: isDodgeChecked,
                   onChanged: (bool? value) async {
-                    print("TEST PUSHED");
                     int specialityCode = 7;
-                    if (checkCounter < maxCheckCounter && value == true) {
-                      print("TEST dans premier if confirmCheck");
-                      if (widget.character.speciality == noSpeciality) {
-                        await widget.character.setSpeciality(specialityCode);
-                        widget.character.speciality = specialityCode;
-                      } else if (widget.character.secondSpeciality ==
-                          noSpeciality) {
-                        await widget.character
-                            .setSecondSpeciality(specialityCode);
-                        widget.character.secondSpeciality = specialityCode;
-                      }
-
-                      setState(() {
-                        isDodgeChecked = true;
-                        checkCounter++;
-                      });
-                    } else if (isDodgeChecked == true && value == false) {
-                      print("TEST dans else if confirmCheck");
-
-                      if (widget.character.speciality == specialityCode) {
-                        await widget.character.setSpeciality(noSpeciality);
-                        widget.character.speciality = noSpeciality;
-                      } else if (widget.character.secondSpeciality ==
-                          specialityCode) {
-                        await widget.character
-                            .setSecondSpeciality(noSpeciality);
-                        widget.character.secondSpeciality = noSpeciality;
-                      }
-                      setState(() {
-                        isDodgeChecked = false;
-                        checkCounter--;
-                      });
-                    }
+                    isDodgeChecked = await confirmCheck(
+                        code: specialityCode,
+                        value: value!,
+                        check: isDodgeChecked);
                   },
                 ),
-                //speciality name
+                //mainSpe name
                 SizedBox(
                   width: width * titleWidthPercent,
                   child: Text(
@@ -570,63 +321,10 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
                 ),
               ],
             ),
-            // SpecialityDescription(speciality: widget.character.speciality),
+            // SpecialityDescription(mainSpe: widget.character.mainSpe),
           ],
         ),
       ),
     );
   }
 }
-
-// class SpecialityDescription extends StatelessWidget {
-//   final int speciality;
-//   const SpecialityDescription({super.key, required this.speciality});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     // String imagePath = "";
-//     String description = "";
-//     switch (speciality) {
-//       case 1:
-//         description = "Taïjutsu +10";
-//         break;
-//       case 2:
-//         description = "Ninjutsu +10";
-//         break;
-//       case 3:
-//         description = "Genjutsu +10";
-//         break;
-//       case 4:
-//         description = "Lancer +10";
-//         break;
-//       case 5:
-//         description = "Chakra +10";
-//         break;
-//       case 6:
-//         description = "Invocation +10";
-//         break;
-//       case 7:
-//         description = "Sceaux +10";
-//         break;
-//       default:
-//         // imagePath = "";
-//         description = "rien";
-//         break;
-//     }
-//     return speciality > 0
-//         ? Column(
-//             children: [
-//               // SizedBox(height: 170, child: Image.asset(imagePath)),
-//               Padding(
-//                 padding: const EdgeInsets.all(8.0),
-//                 child: Text(
-//                   description,
-//                   //DATASTYLE
-//                   style: MyDecoration.dataStyle,
-//                 ),
-//               )
-//             ],
-//           )
-//         : const SizedBox();
-//   }
-// }

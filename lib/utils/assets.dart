@@ -13,10 +13,37 @@ class MyImages {
     image.jinchuriki: "assets/attributes/jinchuriki.jpg",
     image.buttonPlus: "assets/front/plus_button.png",
     image.buttonMinus: "assets/front/minus_button.png",
+    image.fire: "assets/elements/fire.jpg",
+    image.water: "assets/elements/water.jpg",
+    image.wind: "assets/elements/wind.jpg",
+    image.thunder: "assets/elements/thunder.jpg",
+    image.earth: "assets/elements/earth.jpg",
+    image.entonIcon:
+        "assets/elements/icons/enton_icon.png", //SI MODIF, MODIFIER AUSSI DANS ENTON
+    image.futtonIcon:
+        "assets/elements/icons/futton_icon.png", //SI MODIF, MODIFIER AUSSI DANS FUTTON
+    image.hyotonIcon:
+        "assets/elements/icons/hyoton_icon.png", //SI MODIF, MODIFIER AUSSI DANS HYOTON
+    image.jintonIcon:
+        "assets/elements/icons/jinton_icon.png", //SI MODIF, MODIFIER AUSSI DANS JINTON
+    image.jitonIcon:
+        "assets/elements/icons/jiton_icon.png", //SI MODIF, MODIFIER AUSSI DANS JITON
+    image.mokutonIcon:
+        "assets/elements/icons/mokuton_icon.png", //SI MODIF, MODIFIER AUSSI DANS MOKUTON
+    image.rantonIcon:
+        "assets/elements/icons/ranton_icon.png", //SI MODIF, MODIFIER AUSSI DANS RANTON
+    image.shakutonIcon:
+        "assets/elements/icons/shakuton_icon.png", //SI MODIF, MODIFIER AUSSI DANS SHAKUTON
+    image.yotonIcon:
+        "assets/elements/icons/yoton_icon.png", //SI MODIF, MODIFIER AUSSI DANS YOTON
+    image.bakutonIcon:
+        "assets/elements/icons/bakuton_icon.png", //SI MODIF, MODIFIER AUSSI DANS BAKUTON
   };
 }
 
 enum image {
+  buttonMinus,
+  buttonPlus,
   ninja1,
   ninja2,
   ninja3,
@@ -26,8 +53,21 @@ enum image {
   byakugan,
   sharingan,
   jinchuriki,
-  buttonPlus,
-  buttonMinus,
+  bakutonIcon,
+  earth,
+  entonIcon,
+  fire,
+  futtonIcon,
+  hyotonIcon,
+  jintonIcon,
+  jitonIcon,
+  mokutonIcon,
+  rantonIcon,
+  shakutonIcon,
+  thunder,
+  water,
+  wind,
+  yotonIcon,
 }
 
 class MyDecoration {
