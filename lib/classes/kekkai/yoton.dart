@@ -7,7 +7,7 @@ class Yoton extends Kekkai {
       : super(
             name: "Yôton",
             description:
-                "Alors que la majorité des kekkei genkai sont tous identiques d'un utilisateur à l'autre, le Yôton se présente sous différentes formes selon les personnes qui l'utilisent.",
+                "Cette affinité permet à son utilisateur de cracher de la lave sous différentes formes.",
             image: MyImages().imagePath[image.yotonIcon]!,
             code: 4);
 }

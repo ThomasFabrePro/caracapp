@@ -7,7 +7,7 @@ class Enton extends Kekkai {
       : super(
           name: "Enton",
           description:
-              "Lié à l'usage de l'arcane Amaterasu du mangekyō sharingan de Sasuke et Itachi Uchiwa.Le feu noir crée par la nature.",
+              "Lié à l'usage de l'arcane Amaterasu du mangekyō sharingan de Sasuke et Itachi Uchiwa. Le feu noir crée par la nature.",
           image: MyImages().imagePath[image.entonIcon]!,
           code: 1,
         );

@@ -49,8 +49,8 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
     "Dodge": "+5",
   };
 
-  void setChecks(int mainSpe) {
-    switch (mainSpe) {
+  void setChecks(int spe) {
+    switch (spe) {
       case 1:
         isTaijutsuChecked = true;
         break;
