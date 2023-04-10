@@ -11,10 +11,11 @@ class JutsuCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    double containerHeight = 90;
     bool isAvailable = jutsu.ninjutsuMinimum < characterNinjutsuValue;
     return Container(
       width: width,
-      height: 80,
+      height: containerHeight,
       child: Stack(
         children: [
           Row(children: [
@@ -30,7 +31,11 @@ class JutsuCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(jutsu.name, style: MyDecoration.dataStyle),
+                Text(jutsu.name,
+                    style: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.bold)),
+                Text("Coût Chakra : ${jutsu.chakraCost}",
+                    style: MyDecoration.dataStyle),
                 Text("Requis : Ninjutsu ≥ ${jutsu.ninjutsuMinimum}",
                     style: TextStyle(
                       color: isAvailable ? Colors.black : Colors.red,
@@ -43,7 +48,7 @@ class JutsuCard extends StatelessWidget {
           ]),
           Container(
             width: width,
-            height: 80,
+            height: containerHeight,
             color: isAvailable ? null : Colors.grey[900]!.withOpacity(0.5),
           )
         ],

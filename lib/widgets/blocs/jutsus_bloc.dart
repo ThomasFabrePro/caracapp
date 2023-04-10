@@ -83,7 +83,7 @@ class _JutsuBlocState extends State<JutsuBloc> {
               }
             }
             return Padding(
-              padding: const EdgeInsets.only(top: 16.0, bottom: 24.0),
+              padding: const EdgeInsets.only(top: 8.0, bottom: 24.0),
               child: Column(
                 children: [
                   jutsuCardsList[0].isNotEmpty
@@ -117,7 +117,7 @@ class CardsList extends StatelessWidget {
 
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Padding(
-        padding: const EdgeInsets.only(left: 10.0, bottom: 10),
+        padding: const EdgeInsets.only(left: 10.0, bottom: 8, top: 8),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

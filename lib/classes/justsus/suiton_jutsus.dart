@@ -3,7 +3,7 @@
 import 'package:caracapp/models/jutsu_model.dart';
 import 'package:caracapp/utils/assets.dart';
 
-class FireBall extends Jutsu {
+class WaterDragon extends Jutsu {
   @override
   String name;
   // String description;
@@ -12,22 +12,22 @@ class FireBall extends Jutsu {
   @override
   int malus;
 
-  FireBall({
-    this.name = "Boule de Feu",
+  WaterDragon({
+    this.name = "Dragon d'eau",
     // this.description = "Boule de feu",
-    this.ninjutsuMinimum = 50,
-    this.malus = 5,
+    this.ninjutsuMinimum = 85,
+    this.malus = 20,
   }) : super(
           name: name,
           // description: description,
-          image: MyImages().imagePath[image.jutsuFireBall]!,
+          image: MyImages().imagePath[image.jutsuWaterDragon]!,
           ninjutsuMinimum: ninjutsuMinimum,
           malus: malus,
-          chakraCost: 15,
+          chakraCost: 30,
         );
 }
 
-class AshCloud extends Jutsu {
+class WaterSword extends Jutsu {
   @override
   String name;
   // String description;
@@ -36,22 +36,22 @@ class AshCloud extends Jutsu {
   @override
   int malus;
 
-  AshCloud({
-    this.name = "Fumée Explosive",
-    // this.description = "",
-    this.ninjutsuMinimum = 30,
+  WaterSword({
+    this.name = "Épée d'eau",
+    // this.description = "Boule de feu",
+    this.ninjutsuMinimum = 25,
     this.malus = 0,
   }) : super(
           name: name,
-          // description: "Boule de feu",
-          image: MyImages().imagePath[image.jutsuAshCloud]!,
+          // description: description,
+          image: MyImages().imagePath[image.jutsuWaterSword]!,
           ninjutsuMinimum: ninjutsuMinimum,
           malus: malus,
           chakraCost: 10,
         );
 }
 
-class BreathOfFire extends Jutsu {
+class WaterClone extends Jutsu {
   @override
   String name;
   // String description;
@@ -60,22 +60,22 @@ class BreathOfFire extends Jutsu {
   @override
   int malus;
 
-  BreathOfFire({
-    this.name = "Souffle de feu",
-    // this.description = "",
-    this.ninjutsuMinimum = 60,
-    this.malus = 10,
+  WaterClone({
+    this.name = "Clone d'eau",
+    // this.description = "Boule de feu",
+    this.ninjutsuMinimum = 35,
+    this.malus = 5,
   }) : super(
           name: name,
-          // description: "Boule de feu",
-          image: MyImages().imagePath[image.jutsuBreathOfFire]!,
+          // description: description,
+          image: MyImages().imagePath[image.jutsuWaterClone]!,
           ninjutsuMinimum: ninjutsuMinimum,
           malus: malus,
-          chakraCost: 20,
+          chakraCost: 5,
         );
 }
 
-class SmallFireBalls extends Jutsu {
+class WaterPrison extends Jutsu {
   @override
   String name;
   // String description;
@@ -84,22 +84,22 @@ class SmallFireBalls extends Jutsu {
   @override
   int malus;
 
-  SmallFireBalls({
-    this.name = "Petites Boules de Feu",
-    // this.description = "",
+  WaterPrison({
+    this.name = "Prison d'eau",
+    // this.description = "Boule de feu",
     this.ninjutsuMinimum = 45,
     this.malus = 10,
   }) : super(
           name: name,
-          // description: "Boule de feu",
-          image: MyImages().imagePath[image.jutsuSmallFireBalls]!,
+          // description: description,
+          image: MyImages().imagePath[image.jutsuWaterPrison]!,
           ninjutsuMinimum: ninjutsuMinimum,
           malus: malus,
           chakraCost: 15,
         );
 }
 
-class FlameBurst extends Jutsu {
+class Tsunami extends Jutsu {
   @override
   String name;
   // String description;
@@ -108,41 +108,41 @@ class FlameBurst extends Jutsu {
   @override
   int malus;
 
-  FlameBurst({
-    this.name = "Burst ",
-    // this.description = "",
+  Tsunami({
+    this.name = "Tsunami",
+    // this.description = "Boule de feu",
     this.ninjutsuMinimum = 70,
-    this.malus = 15,
+    this.malus = 25,
   }) : super(
           name: name,
-          // description: "Boule de feu",
-          image: MyImages().imagePath[image.jutsuFlameBurst]!,
-          ninjutsuMinimum: ninjutsuMinimum,
-          malus: malus,
-          chakraCost: 25,
-        );
-}
-
-class FireDragon extends Jutsu {
-  @override
-  String name;
-  // String description;
-  @override
-  int ninjutsuMinimum;
-  @override
-  int malus;
-
-  FireDragon({
-    this.name = "Dragon de Feu",
-    // this.description = "",
-    this.ninjutsuMinimum = 85,
-    this.malus = 20,
-  }) : super(
-          name: name,
-          // description: "Boule de feu",
-          image: MyImages().imagePath[image.jutsuFireDragon]!,
+          // description: description,
+          image: MyImages().imagePath[image.jutsuTsunami]!,
           ninjutsuMinimum: ninjutsuMinimum,
           malus: malus,
           chakraCost: 30,
+        );
+}
+
+class WaterRelease extends Jutsu {
+  @override
+  String name;
+  // String description;
+  @override
+  int ninjutsuMinimum;
+  @override
+  int malus;
+
+  WaterRelease({
+    this.name = "Torrent",
+    // this.description = "Boule de feu",
+    this.ninjutsuMinimum = 50,
+    this.malus = 10,
+  }) : super(
+          name: name,
+          // description: description,
+          image: MyImages().imagePath[image.jutsuWaterRelease]!,
+          ninjutsuMinimum: ninjutsuMinimum,
+          malus: malus,
+          chakraCost: 20,
         );
 }

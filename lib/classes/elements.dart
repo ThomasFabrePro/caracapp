@@ -1,4 +1,5 @@
 import 'package:caracapp/classes/justsus/katon_jutsus.dart';
+import 'package:caracapp/classes/justsus/suiton_jutsus.dart';
 import 'package:caracapp/models/jutsu_model.dart';
 import 'package:caracapp/models/primary_element_model.dart';
 import 'package:caracapp/utils/assets.dart';
@@ -13,6 +14,9 @@ class Katon extends PrimaryElement {
             FireBall(),
             AshCloud(),
             BreathOfFire(),
+            SmallFireBalls(),
+            FlameBurst(),
+            FireDragon(),
           ],
           // code: 1,
         );
@@ -23,8 +27,15 @@ class Suiton extends PrimaryElement {
       : super(
           name: "Suiton",
           description: "",
-          image: "",
-          jutsus: <Jutsu>[],
+          image: MyImages().imagePath[image.waterIcon]!,
+          jutsus: <Jutsu>[
+            WaterDragon(),
+            WaterSword(),
+            WaterClone(),
+            WaterPrison(),
+            Tsunami(),
+            WaterRelease(),
+          ],
           // code: 1,
         );
 }
