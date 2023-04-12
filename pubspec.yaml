@@ -27,9 +27,21 @@ flutter:
     - assets/ninja_images/
     - assets/front/
     - assets/attributes/
-    - assets/jutsus/fire/
-    - assets/jutsus/water/
-    - assets/jutsus/wind/
+    - assets/jutsus/katon/
+    - assets/jutsus/suiton/
+    - assets/jutsus/futon/
+    - assets/jutsus/bakuton/
+    - assets/jutsus/doton/
+    - assets/jutsus/futton/
+    - assets/jutsus/hyoton/
+    - assets/jutsus/jinton/
+    - assets/jutsus/jiton/
+    - assets/jutsus/koton/
+    - assets/jutsus/mokuton/
+    - assets/jutsus/raiton/
+    - assets/jutsus/ranton/
+    - assets/jutsus/shakuton/
+    - assets/jutsus/yoton/
     - assets/elements/
     - assets/elements/icons/
 

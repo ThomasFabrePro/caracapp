@@ -6,7 +6,7 @@ class WindDragon extends Jutsu {
       : super(
           name: "Dragon du Vent",
           // description: description,
-          image: "assets/jutsus/wind/wind_dragon.jpg",
+          image: "assets/jutsus/futon/wind_dragon.jpg",
           ninjutsuMinimum: 85,
           malus: 20,
           chakraCost: 30,
@@ -18,7 +18,7 @@ class MegaBreath extends Jutsu {
       : super(
           name: "Méga Souffle",
           // description: description,
-          image: "assets/jutsus/wind/mega_breath.jpg",
+          image: "assets/jutsus/futon/mega_breath.jpg",
           ninjutsuMinimum: 30,
           malus: 0,
           chakraCost: 10,
@@ -30,7 +30,7 @@ class Rasengan extends Jutsu {
       : super(
           name: "Rasengan",
           // description: description,
-          image: "assets/jutsus/wind/rasengan.jpg",
+          image: "assets/jutsus/futon/rasengan.jpg",
           ninjutsuMinimum: 55,
           malus: 10,
           chakraCost: 15,
@@ -42,7 +42,7 @@ class RazorBlades extends Jutsu {
       : super(
           name: "Lames Rasoir",
           // description: description,
-          image: "assets/jutsus/wind/razor_blades.jpg",
+          image: "assets/jutsus/futon/razor_blades.jpg",
           ninjutsuMinimum: 40,
           malus: 5,
           chakraCost: 15,
@@ -54,7 +54,7 @@ class Tornado extends Jutsu {
       : super(
           name: "Tornade",
           // description: description,
-          image: "assets/jutsus/wind/tornado.jpg",
+          image: "assets/jutsus/futon/tornado.jpg",
           ninjutsuMinimum: 70,
           malus: 15,
           chakraCost: 25,
@@ -66,7 +66,7 @@ class WindBlade extends Jutsu {
       : super(
           name: "Arme du Vent",
           // description: description,
-          image: "assets/jutsus/wind/wind_blade.jpg",
+          image: "assets/jutsus/futon/wind_blade.jpg",
           ninjutsuMinimum: 25,
           malus: 0,
           chakraCost: 10,

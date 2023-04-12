@@ -1,4 +1,8 @@
 import 'package:caracapp/classes/justsus/bakuton_jutsus.dart';
+import 'package:caracapp/classes/justsus/futton_jutsus.dart';
+import 'package:caracapp/classes/justsus/hyoton_jutsus.dart';
+import 'package:caracapp/classes/justsus/jinton_jutsus.dart';
+import 'package:caracapp/classes/justsus/jiton_jutsus.dart';
 import 'package:caracapp/models/jutsu_model.dart';
 import 'package:caracapp/utils/assets.dart';
 
@@ -21,7 +25,12 @@ class Futton extends Kekkai {
             name: "Futton",
             description:
                 "Libération d'Ébullition. Utilisation de la vapeur, notamment la vapeur acide. (Exemple Kage Meï Terumi)",
-            image: MyImages().imagePath[image.futtonIcon]!,
+            image: "assets/elements/icons/futton_icon.png",
+            jutsus: <Jutsu>[
+              AcidSmoke(),
+              ExplosiveMyst(),
+              HellSauna(),
+            ],
             code: 2);
 }
 
@@ -62,7 +71,12 @@ class Jinton extends Kekkai {
             name: "Jinton",
             description:
                 "Permet d'utiliser des mouvements à une vitesse pratiquement instantanée, donnant à l'utilisateur un avantage face aux adversaires ayant plus de force que de vitesse.",
-            image: MyImages().imagePath[image.jintonIcon]!,
+            image: "assets/elements/icons/jinton_icon.png",
+            jutsus: <Jutsu>[
+              MagicCube(),
+              ProtectiveDust(),
+              VoidNiddle(),
+            ],
             code: 6);
 }
 
@@ -88,7 +102,12 @@ class Hyoton extends Kekkai {
             name: "Hyoton",
             description:
                 "Permet de créer et manipuler de la glace, lui donnant diverses formes variées",
-            image: MyImages().imagePath[image.hyotonIcon]!,
+            image: "assets/elements/icons/hyoton_icon.png",
+            jutsus: <Jutsu>[
+              IceWall(),
+              IcePic(),
+              IceSwallow(),
+            ],
             code: 8);
 }
 
@@ -108,6 +127,12 @@ class Jiton extends Kekkai {
             name: "Jiton",
             description:
                 "Libération de Magnétisme\nLes utilisateurs du Jiton génèrent un champ magnétique qu'ils appliquent sur diverses substances afin de les utiliser dans différentes situations.",
-            image: MyImages().imagePath[image.jitonIcon]!,
+            image: "assets/elements/icons/jiton_icon.png",
+            jutsus: <Jutsu>[
+              Repulsion(),
+              Attraction(),
+              FlyingSticks(),
+              Destruction(),
+            ],
             code: 10);
 }

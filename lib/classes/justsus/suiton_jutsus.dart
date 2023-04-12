@@ -20,7 +20,7 @@ class WaterDragon extends Jutsu {
   }) : super(
           name: name,
           // description: description,
-          image: MyImages().imagePath[image.jutsuWaterDragon]!,
+          image: "assets/jutsus/suiton/water_dragon.jpg",
           ninjutsuMinimum: ninjutsuMinimum,
           malus: malus,
           chakraCost: 30,
@@ -44,7 +44,7 @@ class WaterSword extends Jutsu {
   }) : super(
           name: name,
           // description: description,
-          image: MyImages().imagePath[image.jutsuWaterSword]!,
+          image: "assets/jutsus/suiton/water_sword.jpg",
           ninjutsuMinimum: ninjutsuMinimum,
           malus: malus,
           chakraCost: 10,
@@ -68,7 +68,7 @@ class WaterClone extends Jutsu {
   }) : super(
           name: name,
           // description: description,
-          image: MyImages().imagePath[image.jutsuWaterClone]!,
+          image: "assets/jutsus/suiton/water_clone.jpg",
           ninjutsuMinimum: ninjutsuMinimum,
           malus: malus,
           chakraCost: 5,
@@ -92,7 +92,7 @@ class WaterPrison extends Jutsu {
   }) : super(
           name: name,
           // description: description,
-          image: MyImages().imagePath[image.jutsuWaterPrison]!,
+          image: "assets/jutsus/suiton/water_prison.jpg",
           ninjutsuMinimum: ninjutsuMinimum,
           malus: malus,
           chakraCost: 15,
@@ -116,7 +116,7 @@ class Tsunami extends Jutsu {
   }) : super(
           name: name,
           // description: description,
-          image: MyImages().imagePath[image.jutsuTsunami]!,
+          image: "assets/jutsus/suiton/tsunami.jpg",
           ninjutsuMinimum: ninjutsuMinimum,
           malus: malus,
           chakraCost: 30,
@@ -140,7 +140,7 @@ class WaterRelease extends Jutsu {
   }) : super(
           name: name,
           // description: description,
-          image: MyImages().imagePath[image.jutsuWaterRelease]!,
+          image: "assets/jutsus/suiton/water_release.jpg",
           ninjutsuMinimum: ninjutsuMinimum,
           malus: malus,
           chakraCost: 20,

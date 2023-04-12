@@ -1,6 +1,7 @@
 import 'package:caracapp/classes/justsus/doton_jutsus.dart';
 import 'package:caracapp/classes/justsus/futon_jutsus.dart';
 import 'package:caracapp/classes/justsus/katon_jutsus.dart';
+import 'package:caracapp/classes/justsus/raiton_jutsus.dart';
 import 'package:caracapp/classes/justsus/suiton_jutsus.dart';
 import 'package:caracapp/models/jutsu_model.dart';
 import 'package:caracapp/models/primary_element_model.dart';
@@ -66,7 +67,14 @@ class Raiton extends PrimaryElement {
           name: "Raiton",
           description: "",
           image: "assets/elements/icons/raiton_icon.png",
-          jutsus: <Jutsu>[],
+          jutsus: <Jutsu>[
+            ThunderAbsorption(),
+            ThunderWeapon(),
+            FatalThunder(),
+            SuperSpeed(),
+            Shidori(),
+            Electrocution(),
+          ],
           // code: 1,
         );
 }
@@ -75,8 +83,8 @@ class Doton extends PrimaryElement {
   Doton()
       : super(
           name: "Doton",
-          description: "assets/elements/icons/doton_icon.png",
-          image: "",
+          description: "",
+          image: "assets/elements/icons/doton_icon.png",
           jutsus: <Jutsu>[
             RockGolem(),
             RockWall(),

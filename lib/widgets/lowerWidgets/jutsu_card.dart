@@ -12,7 +12,7 @@ class JutsuCard extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double containerHeight = 90;
-    bool isAvailable = jutsu.ninjutsuMinimum < characterNinjutsuValue;
+    bool isAvailable = jutsu.ninjutsuMinimum <= characterNinjutsuValue;
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: Container(

@@ -22,7 +22,7 @@ class FireBall extends Jutsu {
   }) : super(
           name: name,
           // description: description,
-          image: MyImages().imagePath[image.jutsuFireBall]!,
+          image: "assets/jutsus/katon/fire_ball.jpg",
           ninjutsuMinimum: ninjutsuMinimum,
           malus: malus,
           chakraCost: 15,
@@ -46,7 +46,7 @@ class AshCloud extends Jutsu {
   }) : super(
           name: name,
           // description: "Boule de feu",
-          image: MyImages().imagePath[image.jutsuAshCloud]!,
+          image: "assets/jutsus/katon/ash_cloud.jpg",
           ninjutsuMinimum: ninjutsuMinimum,
           malus: malus,
           chakraCost: 10,
@@ -70,7 +70,7 @@ class BreathOfFire extends Jutsu {
   }) : super(
           name: name,
           // description: "Boule de feu",
-          image: MyImages().imagePath[image.jutsuBreathOfFire]!,
+          image: "assets/jutsus/katon/breath_of_fire.jpg",
           ninjutsuMinimum: ninjutsuMinimum,
           malus: malus,
           chakraCost: 20,
@@ -94,7 +94,7 @@ class SmallFireBalls extends Jutsu {
   }) : super(
           name: name,
           // description: "Boule de feu",
-          image: MyImages().imagePath[image.jutsuSmallFireBalls]!,
+          image: "assets/jutsus/katon/small_fire_balls.jpg",
           ninjutsuMinimum: ninjutsuMinimum,
           malus: malus,
           chakraCost: 15,
@@ -118,7 +118,7 @@ class FlameBurst extends Jutsu {
   }) : super(
           name: name,
           // description: "Boule de feu",
-          image: MyImages().imagePath[image.jutsuFlameBurst]!,
+          image: "assets/jutsus/katon/flame_burst.jpg",
           ninjutsuMinimum: ninjutsuMinimum,
           malus: malus,
           chakraCost: 25,
@@ -142,7 +142,7 @@ class FireDragon extends Jutsu {
   }) : super(
           name: name,
           // description: "Boule de feu",
-          image: MyImages().imagePath[image.jutsuFireDragon]!,
+          image: "assets/jutsus/katon/fire_dragon.jpg",
           ninjutsuMinimum: ninjutsuMinimum,
           malus: malus,
           chakraCost: 30,
