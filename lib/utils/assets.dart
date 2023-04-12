@@ -14,8 +14,8 @@ class MyImages {
     image.sharingan: "assets/attributes/sharingan.jpg",
     image.jinchuriki: "assets/attributes/jinchuriki.jpg",
     //fronts
-    image.buttonPlus: "assets/front/plus_button.png",
-    image.buttonMinus: "assets/front/minus_button.png",
+    image.buttonPlus: "assets/front/plus_button.jpg",
+    image.buttonMinus: "assets/front/minus_button.jpg",
     //elements
     image.fire: "assets/elements/fire.jpg",
     image.water: "assets/elements/water.jpg",

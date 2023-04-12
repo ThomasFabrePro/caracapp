@@ -70,7 +70,10 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
         SizedBox(
           width: width * 0.1,
           child: GestureDetector(
-            child: Image.asset(MyImages().imagePath[image.buttonMinus]!),
+            child: Image.asset(
+              MyImages().imagePath[image.buttonMinus]!,
+              color: Colors.red[900],
+            ),
             onTap: () {
               setState(() {
                 stat = (stat - 1).clamp(30, 100);
@@ -91,7 +94,10 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
                   widget.onTap!(1);
                 });
               },
-              child: Image.asset(MyImages().imagePath[image.buttonPlus]!)
+              child: Image.asset(
+                MyImages().imagePath[image.buttonPlus]!,
+                color: Colors.green[800],
+              )
 
               // child: MaterialIcons.plus,
               ),

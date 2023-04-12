@@ -44,7 +44,7 @@ class IceWolf extends Jutsu {
       : super(
           name: "Invocation de Loup",
           description: "Invoque un gros loup de glace",
-          image: "assets/jutsus/hyoton/ice_wolf.jpg",
+          image: "assets/jutsus/hyoton/wolf_invocation.jpg",
           ninjutsuMinimum: 65,
           malus: 10,
           chakraCost: 20,

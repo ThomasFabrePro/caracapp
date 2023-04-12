@@ -3,6 +3,11 @@ import 'package:caracapp/classes/justsus/futton_jutsus.dart';
 import 'package:caracapp/classes/justsus/hyoton_jutsus.dart';
 import 'package:caracapp/classes/justsus/jinton_jutsus.dart';
 import 'package:caracapp/classes/justsus/jiton_jutsus.dart';
+import 'package:caracapp/classes/justsus/koton_jutsus.dart';
+import 'package:caracapp/classes/justsus/mokuton_jutsus.dart';
+import 'package:caracapp/classes/justsus/ranton_jutsus.dart';
+import 'package:caracapp/classes/justsus/shakuton_jutsus.dart';
+import 'package:caracapp/classes/justsus/yoton_jutsus.dart';
 import 'package:caracapp/models/jutsu_model.dart';
 import 'package:caracapp/utils/assets.dart';
 
@@ -14,7 +19,12 @@ class Koton extends Kekkai {
           name: "Koton",
           description: "Manipulation du métal",
           image: "assets/elements/icons/koton_icon.png",
-          jutsus: <Jutsu>[],
+          jutsus: <Jutsu>[
+            StealAffinity(),
+            StealProduction(),
+            StealSkin(),
+            Bullet(),
+          ],
           code: 1,
         );
 }
@@ -40,7 +50,13 @@ class Shakuton extends Kekkai {
             name: "Shakuton",
             description:
                 "Créé une chaleur intense capable d'augmenter la température corporelle d'un ennemi, au point que l'eau stockée dans son organisme finit par s'évaporer, tuant la victime et laissant le corps dans un état desséché.",
-            image: MyImages().imagePath[image.shakutonIcon]!,
+            image: "assets/elements/icons/shakuton_icon.png",
+            jutsus: <Jutsu>[
+              DryOut(),
+              ExplosiveGasBall(),
+              ProtectiveBalls(),
+              FireAbsorption(),
+            ],
             code: 3);
 }
 
@@ -50,7 +66,13 @@ class Yoton extends Kekkai {
           name: "Yôton",
           description:
               "Cette affinité permet à son utilisateur de cracher de la lave sous différentes formes.",
-          image: MyImages().imagePath[image.yotonIcon]!,
+          image: "assets/elements/icons/yoton_icon.png",
+          jutsus: <Jutsu>[
+            ExplosiveLava(),
+            Ignite(),
+            LavaTorrent(),
+            Cataclysm(),
+          ],
           code: 4,
         );
 }
@@ -61,7 +83,13 @@ class Ranton extends Kekkai {
             name: "Ranton",
             description:
                 "Permet de créer des faisceaux d'énergie pouvant être dirigés vers l'ennemi.",
-            image: MyImages().imagePath[image.rantonIcon]!,
+            image: "assets/elements/icons/ranton_icon.png",
+            jutsus: <Jutsu>[
+              LaserSurge(),
+              GuidedLasers(),
+              ThunderPanther(),
+              BlackThunder(),
+            ],
             code: 5);
 }
 
@@ -107,6 +135,7 @@ class Hyoton extends Kekkai {
               IceWall(),
               IcePic(),
               IceSwallow(),
+              IceWolf(),
             ],
             code: 8);
 }
@@ -117,7 +146,13 @@ class Mokuton extends Kekkai {
             name: "Mokuton",
             description:
                 " Il fut utilisé par Hashirama Senju et aucune personne autre que lui n’est connue pour avoir maîtrisé le Mokuton naturellement.\nElément puissant et polyvalent.",
-            image: MyImages().imagePath[image.mokutonIcon]!,
+            image: "assets/elements/icons/mokuton_icon.png",
+            jutsus: <Jutsu>[
+              Hindrance(),
+              // WoodenGolem(),
+              Arena(),
+              GreatGrowth(),
+            ],
             code: 9);
 }
 
