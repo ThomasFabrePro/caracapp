@@ -13,7 +13,7 @@ class WaterDragon extends Jutsu {
   int malus;
 
   WaterDragon({
-    this.name = "Dragon d'eau",
+    this.name = "Dragon d'Eau",
     // this.description = "Boule de feu",
     this.ninjutsuMinimum = 85,
     this.malus = 20,
@@ -37,7 +37,7 @@ class WaterSword extends Jutsu {
   int malus;
 
   WaterSword({
-    this.name = "Épée d'eau",
+    this.name = "Épée d'Eau",
     // this.description = "Boule de feu",
     this.ninjutsuMinimum = 25,
     this.malus = 0,
@@ -61,7 +61,7 @@ class WaterClone extends Jutsu {
   int malus;
 
   WaterClone({
-    this.name = "Clone d'eau",
+    this.name = "Clone d'Eau",
     // this.description = "Boule de feu",
     this.ninjutsuMinimum = 35,
     this.malus = 5,
@@ -85,7 +85,7 @@ class WaterPrison extends Jutsu {
   int malus;
 
   WaterPrison({
-    this.name = "Prison d'eau",
+    this.name = "Prison d'Eau",
     // this.description = "Boule de feu",
     this.ninjutsuMinimum = 45,
     this.malus = 10,

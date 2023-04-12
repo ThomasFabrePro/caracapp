@@ -1,6 +1,6 @@
 class Jutsu {
   final String name;
-  // final String description;
+  final String description;
   final String image;
   final int ninjutsuMinimum;
   final int malus;
@@ -9,7 +9,7 @@ class Jutsu {
 
   Jutsu({
     this.name = "",
-    // this.description = "",
+    this.description = "",
     this.image = "",
     this.ninjutsuMinimum = 30,
     this.malus = 0,

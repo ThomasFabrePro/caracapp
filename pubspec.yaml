@@ -29,6 +29,7 @@ flutter:
     - assets/attributes/
     - assets/jutsus/fire/
     - assets/jutsus/water/
+    - assets/jutsus/wind/
     - assets/elements/
     - assets/elements/icons/
 

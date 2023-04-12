@@ -36,17 +36,17 @@ class MyImages {
     image.bakutonIcon: "assets/elements/icons/bakuton_icon.png",
     image.waterIcon: "assets/elements/icons/water_icon.png",
     //jutsus
-    image.jutsuFireBall: "assets/jutsus/fire/fire_ball.jpg",
-    image.jutsuAshCloud: "assets/jutsus/fire/ash_cloud.jpg",
-    image.jutsuBreathOfFire: "assets/jutsus/fire/breath_of_fire.jpg",
-    image.jutsuSmallFireBalls: "assets/jutsus/fire/small_fire_balls.jpg",
-    image.jutsuFlameBurst: "assets/jutsus/fire/flame_burst.jpg",
-    image.jutsuFireDragon: "assets/jutsus/fire/fire_dragon.jpg",
-    image.jutsuWaterDragon: "assets/jutsus/water/water_dragon.jpg",
-    image.jutsuWaterSword: "assets/jutsus/water/water_sword.jpg",
-    image.jutsuWaterClone: "assets/jutsus/water/water_clone.jpg",
-    image.jutsuWaterPrison: "assets/jutsus/water/water_prison.jpg",
-    image.jutsuTsunami: "assets/jutsus/water/tsunami.jpg",
+    image.jutsuFireBall: "assets/jutsus/katon/fire_ball.jpg",
+    image.jutsuAshCloud: "assets/jutsus/katon/ash_cloud.jpg",
+    image.jutsuBreathOfFire: "assets/jutsus/katon/breath_of_fire.jpg",
+    image.jutsuSmallFireBalls: "assets/jutsus/katon/small_fire_balls.jpg",
+    image.jutsuFlameBurst: "assets/jutsus/katon/flame_burst.jpg",
+    image.jutsuFireDragon: "assets/jutsus/katon/fire_dragon.jpg",
+    image.jutsuWaterDragon: "assets/jutsus/suiton/water_dragon.jpg",
+    image.jutsuWaterSword: "assets/jutsus/suiton/water_sword.jpg",
+    image.jutsuWaterClone: "assets/jutsus/suiton/water_clone.jpg",
+    image.jutsuWaterPrison: "assets/jutsus/suiton/water_prison.jpg",
+    image.jutsuTsunami: "assets/jutsus/suiton/tsunami.jpg",
     image.jutsuWaterRelease: "assets/jutsus/water/water_release.jpg",
   };
 }
@@ -108,7 +108,7 @@ class MyDecoration {
     offset: const Offset(3, 3), // changes position of shadow
   );
   static Color green = Colors.green;
-  static const Color bloodColor = Color.fromARGB(251, 121, 0, 0);
+  static const Color bloodColor = Color.fromARGB(250, 107, 0, 0);
   static const TextStyle dataStyle = TextStyle(
     fontSize: 18,
   );

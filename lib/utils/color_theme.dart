@@ -13,7 +13,7 @@ class MyColorTheme {
   //   800: Color.fromRGBO(14, 136, 61, .9),
   //   900: Color.fromRGBO(14, 136, 61, 1),
   // };
-  static const MaterialColor colorCustom = MaterialColor(0xFFAF1212, {
+  static const MaterialColor colorCustom = MaterialColor(0xFF490000, {
     50: Color.fromRGBO(14, 136, 61, .1),
     100: Color.fromRGBO(14, 136, 61, .2),
     200: Color.fromRGBO(14, 136, 61, .3),

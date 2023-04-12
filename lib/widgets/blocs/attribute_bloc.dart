@@ -211,7 +211,9 @@ class AttributeDescription extends StatelessWidget {
     return attribute > 0
         ? Column(
             children: [
-              SizedBox(height: 170, child: Image.asset(imagePath)),
+              ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: SizedBox(height: 170, child: Image.asset(imagePath))),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(

@@ -1,3 +1,5 @@
+import 'package:caracapp/classes/justsus/doton_jutsus.dart';
+import 'package:caracapp/classes/justsus/futon_jutsus.dart';
 import 'package:caracapp/classes/justsus/katon_jutsus.dart';
 import 'package:caracapp/classes/justsus/suiton_jutsus.dart';
 import 'package:caracapp/models/jutsu_model.dart';
@@ -9,7 +11,7 @@ class Katon extends PrimaryElement {
       : super(
           name: "Katon",
           description: "",
-          image: MyImages().imagePath[image.katonIcon]!,
+          image: "assets/elements/icons/katon_icon.png",
           jutsus: <Jutsu>[
             FireBall(),
             AshCloud(),
@@ -27,7 +29,7 @@ class Suiton extends PrimaryElement {
       : super(
           name: "Suiton",
           description: "",
-          image: MyImages().imagePath[image.waterIcon]!,
+          image: "assets/elements/icons/suiton_icon.png",
           jutsus: <Jutsu>[
             WaterDragon(),
             WaterSword(),
@@ -45,8 +47,15 @@ class Futon extends PrimaryElement {
       : super(
           name: "Futon",
           description: "",
-          image: "",
-          jutsus: <Jutsu>[],
+          image: "assets/elements/icons/futon_icon.png",
+          jutsus: <Jutsu>[
+            WindDragon(),
+            MegaBreath(),
+            Rasengan(),
+            WindBlade(),
+            RazorBlades(),
+            Tornado(),
+          ],
           // code: 1,
         );
 }
@@ -56,7 +65,7 @@ class Raiton extends PrimaryElement {
       : super(
           name: "Raiton",
           description: "",
-          image: "",
+          image: "assets/elements/icons/raiton_icon.png",
           jutsus: <Jutsu>[],
           // code: 1,
         );
@@ -66,9 +75,16 @@ class Doton extends PrimaryElement {
   Doton()
       : super(
           name: "Doton",
-          description: "",
+          description: "assets/elements/icons/doton_icon.png",
           image: "",
-          jutsus: <Jutsu>[],
+          jutsus: <Jutsu>[
+            RockGolem(),
+            RockWall(),
+            RockJavelin(),
+            Dome(),
+            MultiRockClones(),
+            MudTermiteMound(),
+          ],
           // code: 1,
         );
 }

@@ -26,7 +26,7 @@ class Kekkai extends NatureElement {
   Kekkai getElement(int code) {
     switch (code) {
       case 1:
-        return Enton();
+        return Koton();
       case 2:
         return Futton();
       case 3:

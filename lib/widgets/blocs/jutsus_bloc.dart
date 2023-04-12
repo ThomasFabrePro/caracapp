@@ -51,13 +51,13 @@ class _JutsuBlocState extends State<JutsuBloc> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    return Container(
+    return SizedBox(
       width: width,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [MyDecoration.boxShadow],
-      ),
+      // decoration: BoxDecoration(
+      //   // color: Colors.white,
+      //   borderRadius: BorderRadius.circular(10),
+      //   // boxShadow: [MyDecoration.boxShadow],
+      // ),
       child: StreamBuilder<Character>(
           stream: getCharacterJutsus(),
           builder: (context, snapshot) {
@@ -83,7 +83,9 @@ class _JutsuBlocState extends State<JutsuBloc> {
               }
             }
             return Padding(
-              padding: const EdgeInsets.only(top: 8.0, bottom: 24.0),
+              padding: const EdgeInsets.only(
+                top: 8.0,
+              ),
               child: Column(
                 children: [
                   jutsuCardsList[0].isNotEmpty
@@ -126,7 +128,7 @@ class CardsList extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
-                color: MyDecoration.bloodColor,
+                color: Colors.white,
               ),
             ),
             const SizedBox(

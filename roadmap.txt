@@ -3,3 +3,5 @@
 
 ajout focus nodes sur formulaire creation personnage
 faire plusieurs map d'imagePath
+changer les images "plus" et "moins" dans les caracteristiques
+fitted box sur les images des éléments

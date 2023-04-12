@@ -1,14 +1,16 @@
+import 'package:caracapp/classes/justsus/bakuton_jutsus.dart';
+import 'package:caracapp/models/jutsu_model.dart';
 import 'package:caracapp/utils/assets.dart';
 
 import '../../models/kekkai_model.dart';
 
-class Enton extends Kekkai {
-  Enton()
+class Koton extends Kekkai {
+  Koton()
       : super(
-          name: "Enton",
-          description:
-              "Lié à l'usage de l'arcane Amaterasu du mangekyō sharingan de Sasuke et Itachi Uchiwa. Le feu noir crée par la nature.",
-          image: MyImages().imagePath[image.entonIcon]!,
+          name: "Koton",
+          description: "Manipulation du métal",
+          image: "assets/elements/icons/koton_icon.png",
+          jutsus: <Jutsu>[],
           code: 1,
         );
 }
@@ -70,7 +72,13 @@ class Bakuton extends Kekkai {
             name: "Bakuton",
             description:
                 "Elle permet à l'utilisateur de transformer son chakra en puissance explosive, qu'il peut manier ensuite comme bon lui semble. (Exemple Deidara)",
-            image: MyImages().imagePath[image.bakutonIcon]!,
+            image: "assets/elements/icons/bakuton_icon.png",
+            jutsus: <Jutsu>[
+              ExplosiveHands(),
+              Explosion(),
+              Scolopandre(),
+              BigBird(),
+            ],
             code: 7);
 }
 

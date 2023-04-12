@@ -3,6 +3,8 @@
 import 'package:caracapp/models/jutsu_model.dart';
 import 'package:caracapp/utils/assets.dart';
 
+//raiton
+//koton
 class FireBall extends Jutsu {
   @override
   String name;
