@@ -11,8 +11,9 @@ class Character {
   String name;
   String picture;
   String sexe;
-  int age;
   String origin;
+  String inventory;
+  int age;
   int level;
   int attribute;
   int mainSpe;
@@ -48,6 +49,7 @@ class Character {
     this.picture = "",
     this.sexe = "Non Binaire",
     this.age = 17,
+    this.inventory = "",
     this.origin = "Konoha",
     this.mainSpe = 0,
     this.secondSpe = 0,
@@ -79,9 +81,8 @@ class Character {
     this.throwingBuffer = 0,
   });
 
-  //buffer : Map<String, dynamic>
   Map<String, int> kekkaisMap = {
-    "[1, 2]": 1, //Koton    acier
+    "[1, 2]": 1, //Koton    //acier
     "[1, 3]": 2, //Futton   //ebullition
     "[1, 4]": 3, //Shakuton //incandescence
     "[1, 5]": 4, //Yoton    //lave
@@ -165,6 +166,11 @@ class Character {
 
   Future<void> setSexe(String newSexe) async {
     sexe = newSexe;
+    await DbHelper.database.characterDao.updateCharacter(this);
+  }
+
+  Future<void> setInventory(String newInventory) async {
+    inventory = newInventory;
     await DbHelper.database.characterDao.updateCharacter(this);
   }
 
@@ -357,6 +363,8 @@ class Character {
       List<int> characterElements = [mainElement, secondElement];
       characterElements.sort();
       String index = characterElements.toString();
+      //buffer : Map<String, dynamic>
+
       kekkaiGenkai = kekkaisMap[index] ?? 0;
     } else {
       kekkaiGenkai = 0;

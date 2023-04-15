@@ -4,6 +4,7 @@ import 'package:caracapp/utils/data_access_object/character_dao.dart';
 import 'package:caracapp/widgets/blocs/attribute_bloc.dart';
 import 'package:caracapp/widgets/blocs/caracteristics_upgrade_bloc.dart';
 import 'package:caracapp/widgets/blocs/elements_bloc.dart';
+import 'package:caracapp/widgets/blocs/inventory_bloc.dart';
 import 'package:caracapp/widgets/blocs/jutsus_bloc.dart';
 import 'package:caracapp/widgets/blocs/speciality_bloc.dart';
 import 'package:caracapp/widgets/lowerWidgets/my_text_field.dart';
@@ -387,6 +388,32 @@ class _AddCharacterPageState extends State<AddCharacterPage> {
                         child: JutsuBloc(character: widget.character),
                       ),
                       //?STOP ELEMENT
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      //!INVENTORY
+                      Divider(
+                        endIndent: width * 0.1,
+                        indent: width * 0.1,
+                        color: Colors.white,
+                        thickness: 2,
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 10, bottom: 20),
+                        child: Text("Inventaire",
+                            style: TextStyle(
+                              fontSize: 22,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            )),
+                      ),
+
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            bottom: 16.0, left: 16.0, right: 16.0),
+                        child: InventoryBloc(character: widget.character),
+                      ),
+                      //?STOP INVENTORY
                       const SizedBox(
                         height: 20,
                       ),

@@ -34,7 +34,7 @@ class Shidori extends Jutsu {
           description:
               "Foncez vers votre cible pour la pourfendre avec un éclair",
           image: "assets/jutsus/raiton/shidori.jpg",
-          ninjutsuMinimum: 55,
+          ninjutsuMinimum: 60,
           malus: 5,
           chakraCost: 15,
         );
