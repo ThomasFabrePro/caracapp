@@ -1,11 +1,11 @@
 import 'package:caracapp/models/jutsu_model.dart';
-import 'package:caracapp/utils/assets.dart';
 
 class WindDragon extends Jutsu {
   WindDragon()
       : super(
           name: "Dragon du Vent",
-          // description: description,
+          description:
+              "Fait apparaitre un dragon de vent qui va s'écraser sur la cible",
           image: "assets/jutsus/futon/wind_dragon.jpg",
           ninjutsuMinimum: 85,
           malus: 20,
@@ -17,7 +17,7 @@ class MegaBreath extends Jutsu {
   MegaBreath()
       : super(
           name: "Méga Souffle",
-          // description: description,
+          description: "Repousse l'ennemi avec un souffle puissant",
           image: "assets/jutsus/futon/mega_breath.jpg",
           ninjutsuMinimum: 30,
           malus: 0,
@@ -29,7 +29,7 @@ class Rasengan extends Jutsu {
   Rasengan()
       : super(
           name: "Rasengan",
-          // description: description,
+          description: "Créé une boule de vent pour la projeter sur l'ennemi",
           image: "assets/jutsus/futon/rasengan.jpg",
           ninjutsuMinimum: 55,
           malus: 10,
@@ -41,7 +41,7 @@ class RazorBlades extends Jutsu {
   RazorBlades()
       : super(
           name: "Lames Rasoir",
-          // description: description,
+          description: "Des lames de vent cisaillent la zone devant vous",
           image: "assets/jutsus/futon/razor_blades.jpg",
           ninjutsuMinimum: 40,
           malus: 5,
@@ -53,7 +53,7 @@ class Tornado extends Jutsu {
   Tornado()
       : super(
           name: "Tornade",
-          // description: description,
+          description: "Forme une tornade qui dévaste la zone",
           image: "assets/jutsus/futon/tornado.jpg",
           ninjutsuMinimum: 70,
           malus: 15,
@@ -65,7 +65,7 @@ class WindBlade extends Jutsu {
   WindBlade()
       : super(
           name: "Arme du Vent",
-          // description: description,
+          description: "Votre arme devient plus coupante que le vent",
           image: "assets/jutsus/futon/wind_blade.jpg",
           ninjutsuMinimum: 25,
           malus: 0,

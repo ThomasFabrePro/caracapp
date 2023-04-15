@@ -7,7 +7,7 @@ class Cataclysm extends Jutsu {
       : super(
           name: "Cataclysme",
           description:
-              "Vous explosez comme un volcan et faites déferler lave et cendre tout autour de vous",
+              "Vous explosez comme un volcan et faites déferler lave et cendres tout autour de vous",
           image: "assets/jutsus/yoton/cataclysm.jpg",
           ninjutsuMinimum: 80,
           malus: 20,

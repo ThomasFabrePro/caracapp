@@ -4,145 +4,75 @@ import 'package:caracapp/models/jutsu_model.dart';
 import 'package:caracapp/utils/assets.dart';
 
 class WaterDragon extends Jutsu {
-  @override
-  String name;
-  // String description;
-  @override
-  int ninjutsuMinimum;
-  @override
-  int malus;
-
-  WaterDragon({
-    this.name = "Dragon d'Eau",
-    // this.description = "Boule de feu",
-    this.ninjutsuMinimum = 85,
-    this.malus = 20,
-  }) : super(
-          name: name,
-          // description: description,
+  WaterDragon()
+      : super(
+          name: "Dragon d'Eau",
+          description:
+              "Crée un énorme dragon liquide, qui frappe l'adversaire avec une formidable puissance",
           image: "assets/jutsus/suiton/water_dragon.jpg",
-          ninjutsuMinimum: ninjutsuMinimum,
-          malus: malus,
+          ninjutsuMinimum: 85,
+          malus: 20,
           chakraCost: 30,
         );
 }
 
 class WaterSword extends Jutsu {
-  @override
-  String name;
-  // String description;
-  @override
-  int ninjutsuMinimum;
-  @override
-  int malus;
-
-  WaterSword({
-    this.name = "Épée d'Eau",
-    // this.description = "Boule de feu",
-    this.ninjutsuMinimum = 25,
-    this.malus = 0,
-  }) : super(
-          name: name,
-          // description: description,
+  WaterSword()
+      : super(
+          name: "Épée d'Eau",
+          description: "Votre arme devient un sabre d'eau",
           image: "assets/jutsus/suiton/water_sword.jpg",
-          ninjutsuMinimum: ninjutsuMinimum,
-          malus: malus,
+          ninjutsuMinimum: 25,
+          malus: 0,
           chakraCost: 10,
         );
 }
 
 class WaterClone extends Jutsu {
-  @override
-  String name;
-  // String description;
-  @override
-  int ninjutsuMinimum;
-  @override
-  int malus;
-
-  WaterClone({
-    this.name = "Clone d'Eau",
-    // this.description = "Boule de feu",
-    this.ninjutsuMinimum = 35,
-    this.malus = 5,
-  }) : super(
-          name: name,
-          // description: description,
+  WaterClone()
+      : super(
+          name: "Clone d'Eau",
+          description: "Invoque un clone d'eau",
           image: "assets/jutsus/suiton/water_clone.jpg",
-          ninjutsuMinimum: ninjutsuMinimum,
-          malus: malus,
+          ninjutsuMinimum: 35,
+          malus: 5,
           chakraCost: 5,
         );
 }
 
 class WaterPrison extends Jutsu {
-  @override
-  String name;
-  // String description;
-  @override
-  int ninjutsuMinimum;
-  @override
-  int malus;
-
-  WaterPrison({
-    this.name = "Prison d'Eau",
-    // this.description = "Boule de feu",
-    this.ninjutsuMinimum = 45,
-    this.malus = 10,
-  }) : super(
-          name: name,
-          // description: description,
+  WaterPrison()
+      : super(
+          name: "Prison d'Eau",
+          description:
+              "Enferme la cible dans une prison d'eau capable de la noyer",
           image: "assets/jutsus/suiton/water_prison.jpg",
-          ninjutsuMinimum: ninjutsuMinimum,
-          malus: malus,
+          ninjutsuMinimum: 45,
+          malus: 10,
           chakraCost: 15,
         );
 }
 
 class Tsunami extends Jutsu {
-  @override
-  String name;
-  // String description;
-  @override
-  int ninjutsuMinimum;
-  @override
-  int malus;
-
-  Tsunami({
-    this.name = "Tsunami",
-    // this.description = "Boule de feu",
-    this.ninjutsuMinimum = 70,
-    this.malus = 25,
-  }) : super(
-          name: name,
-          // description: description,
+  Tsunami()
+      : super(
+          name: "Tsunami",
+          description: "Faire surgir un tsunami qui s'abat sur la zone",
           image: "assets/jutsus/suiton/tsunami.jpg",
-          ninjutsuMinimum: ninjutsuMinimum,
-          malus: malus,
+          ninjutsuMinimum: 75,
+          malus: 25,
           chakraCost: 30,
         );
 }
 
 class WaterRelease extends Jutsu {
-  @override
-  String name;
-  // String description;
-  @override
-  int ninjutsuMinimum;
-  @override
-  int malus;
-
-  WaterRelease({
-    this.name = "Torrent",
-    // this.description = "Boule de feu",
-    this.ninjutsuMinimum = 50,
-    this.malus = 10,
-  }) : super(
-          name: name,
-          // description: description,
+  WaterRelease()
+      : super(
+          name: "Karcher",
+          description: "Envoie un jet d'eau à haute pression devant vous",
           image: "assets/jutsus/suiton/water_release.jpg",
-          ninjutsuMinimum: ninjutsuMinimum,
-          malus: malus,
+          ninjutsuMinimum: 55,
+          malus: 10,
           chakraCost: 20,
         );
 }

@@ -6,145 +6,76 @@ import 'package:caracapp/utils/assets.dart';
 //raiton
 //koton
 class FireBall extends Jutsu {
-  @override
-  String name;
-  // String description;
-  @override
-  int ninjutsuMinimum;
-  @override
-  int malus;
-
-  FireBall({
-    this.name = "Boule de Feu",
-    // this.description = "Boule de feu",
-    this.ninjutsuMinimum = 50,
-    this.malus = 5,
-  }) : super(
-          name: name,
-          // description: description,
+  FireBall()
+      : super(
+          name: "Boule de Feu",
+          description: "Envoie une boule de feu sur l'ennemi",
           image: "assets/jutsus/katon/fire_ball.jpg",
-          ninjutsuMinimum: ninjutsuMinimum,
-          malus: malus,
+          ninjutsuMinimum: 50,
+          malus: 5,
           chakraCost: 15,
         );
 }
 
 class AshCloud extends Jutsu {
-  @override
-  String name;
-  // String description;
-  @override
-  int ninjutsuMinimum;
-  @override
-  int malus;
-
-  AshCloud({
-    this.name = "Fumée Explosive",
-    // this.description = "",
-    this.ninjutsuMinimum = 30,
-    this.malus = 0,
-  }) : super(
-          name: name,
-          // description: "Boule de feu",
+  AshCloud()
+      : super(
+          name: "Fumée Explosive",
+          description: "Crache un panache de fumée qui explose sur commande",
           image: "assets/jutsus/katon/ash_cloud.jpg",
-          ninjutsuMinimum: ninjutsuMinimum,
-          malus: malus,
+          ninjutsuMinimum: 30,
+          malus: 0,
           chakraCost: 10,
         );
 }
 
 class BreathOfFire extends Jutsu {
-  @override
-  String name;
-  // String description;
-  @override
-  int ninjutsuMinimum;
-  @override
-  int malus;
-
-  BreathOfFire({
-    this.name = "Souffle de feu",
-    // this.description = "",
-    this.ninjutsuMinimum = 60,
-    this.malus = 10,
-  }) : super(
-          name: name,
-          // description: "Boule de feu",
+  BreathOfFire()
+      : super(
+          name: "Souffle de feu",
+          description:
+              "Brule tout ce qui se trouve devant vous dans une vague de flammes",
           image: "assets/jutsus/katon/breath_of_fire.jpg",
-          ninjutsuMinimum: ninjutsuMinimum,
-          malus: malus,
+          ninjutsuMinimum: 60,
+          malus: 10,
           chakraCost: 20,
         );
 }
 
 class SmallFireBalls extends Jutsu {
-  @override
-  String name;
-  // String description;
-  @override
-  int ninjutsuMinimum;
-  @override
-  int malus;
-
-  SmallFireBalls({
-    this.name = "Petites Boules de Feu",
-    // this.description = "",
-    this.ninjutsuMinimum = 45,
-    this.malus = 10,
-  }) : super(
-          name: name,
-          // description: "Boule de feu",
+  SmallFireBalls()
+      : super(
+          name: "Petites Boules de Feu",
+          description: "Expulse des petites boules de feu autour de vous",
           image: "assets/jutsus/katon/small_fire_balls.jpg",
-          ninjutsuMinimum: ninjutsuMinimum,
-          malus: malus,
+          ninjutsuMinimum: 45,
+          malus: 10,
           chakraCost: 15,
         );
 }
 
 class FlameBurst extends Jutsu {
-  @override
-  String name;
-  // String description;
-  @override
-  int ninjutsuMinimum;
-  @override
-  int malus;
-
-  FlameBurst({
-    this.name = "Burst ",
-    // this.description = "",
-    this.ninjutsuMinimum = 70,
-    this.malus = 15,
-  }) : super(
-          name: name,
-          // description: "Boule de feu",
+  FlameBurst()
+      : super(
+          name: "Burst",
+          description:
+              "Crache une colonne de feu capable de désintégrer la cible",
           image: "assets/jutsus/katon/flame_burst.jpg",
-          ninjutsuMinimum: ninjutsuMinimum,
-          malus: malus,
+          ninjutsuMinimum: 70,
+          malus: 15,
           chakraCost: 25,
         );
 }
 
 class FireDragon extends Jutsu {
-  @override
-  String name;
-  // String description;
-  @override
-  int ninjutsuMinimum;
-  @override
-  int malus;
-
-  FireDragon({
-    this.name = "Dragon de Feu",
-    // this.description = "",
-    this.ninjutsuMinimum = 85,
-    this.malus = 20,
-  }) : super(
-          name: name,
-          // description: "Boule de feu",
+  FireDragon()
+      : super(
+          name: "Dragon de Feu",
+          description:
+              "Envoie une énorme flamme en forme de dragon qui suit la cible sans relâche",
           image: "assets/jutsus/katon/fire_dragon.jpg",
-          ninjutsuMinimum: ninjutsuMinimum,
-          malus: malus,
+          ninjutsuMinimum: 85,
+          malus: 20,
           chakraCost: 30,
         );
 }

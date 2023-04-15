@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+import 'dart:async';
 import 'package:caracapp/models/character_model.dart';
 import 'package:caracapp/models/element_model.dart';
 import 'package:caracapp/models/jutsu_model.dart';
@@ -16,6 +18,7 @@ class JutsuBloc extends StatefulWidget {
 }
 
 class _JutsuBlocState extends State<JutsuBloc> {
+  Character character = Character();
   double titleWidthPercent = 0.33;
   int maxCheckCounter = 2;
   int checkCounter = 0;
@@ -23,34 +26,63 @@ class _JutsuBlocState extends State<JutsuBloc> {
   PrimaryElement mainElement = PrimaryElement();
   PrimaryElement secondElement = PrimaryElement();
   Kekkai kekkai = Kekkai();
-  TextStyle titleStyle = TextStyle(
+  TextStyle titleStyle = const TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.bold,
     color: MyDecoration.bloodColor,
   );
   List<List<Jutsu>> jutsusLists = <List<Jutsu>>[];
-  List<List<JutsuCard>> jutsuCardsList = <List<JutsuCard>>[
-    [],
-    [],
-    [],
-  ];
-
+  List<List<JutsuCard>> jutsuCardsList = <List<JutsuCard>>[[], [], []];
+  int lastElement = 0;
+  int lastSecondElement = 0;
+  Timer? timerRebuild;
   @override
   void initState() {
     super.initState();
+    character = widget.character;
+    timerRebuild = Timer.periodic(const Duration(seconds: 2), (timer) async {
+      // await Future.delayed(const Duration(seconds: 2));
+      Character newCharacter = await widget.character.getCharacter();
+      if (newCharacter.mainElement != lastElement ||
+          newCharacter.secondElement != lastSecondElement) {
+        setState(() {
+          character = newCharacter;
+        });
+      }
+    });
   }
 
-  Stream<Character> getCharacterJutsus() async* {
-    // var random = Random(2);
-    while (true) {
-      await Future.delayed(const Duration(seconds: 2));
-      yield widget.character;
-    }
+  @override
+  void dispose() {
+    super.dispose();
+    timerRebuild?.cancel();
   }
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    lastElement = character.mainElement;
+    lastSecondElement = character.secondElement;
+    mainElement = mainElement.getElement(widget.character.mainElement);
+    secondElement = secondElement.getElement(widget.character.secondElement);
+    kekkai = kekkai.getElement(widget.character.kekkaiGenkai);
+    jutsusLists = <List<Jutsu>>[
+      mainElement.jutsus,
+      secondElement.jutsus,
+      kekkai.jutsus,
+    ];
+    jutsuCardsList = [[], [], []];
+    for (int i = 0; i < jutsusLists.length; i++) {
+      for (var jutsu in jutsusLists[i]) {
+        jutsuCardsList[i].add(
+          JutsuCard(
+            jutsu: jutsu,
+            characterNinjutsuValue:
+                widget.character.ninjutsu + widget.character.ninjutsuBuffer,
+          ),
+        );
+      }
+    }
     return SizedBox(
       width: width,
       // decoration: BoxDecoration(
@@ -58,51 +90,24 @@ class _JutsuBlocState extends State<JutsuBloc> {
       //   borderRadius: BorderRadius.circular(10),
       //   // boxShadow: [MyDecoration.boxShadow],
       // ),
-      child: StreamBuilder<Character>(
-          stream: getCharacterJutsus(),
-          builder: (context, snapshot) {
-            mainElement = mainElement.getElement(widget.character.mainElement);
-            secondElement =
-                secondElement.getElement(widget.character.secondElement);
-            kekkai = kekkai.getElement(widget.character.kekkaiGenkai);
-            jutsusLists = <List<Jutsu>>[
-              mainElement.jutsus,
-              secondElement.jutsus,
-              kekkai.jutsus,
-            ];
-            jutsuCardsList = [[], [], []];
-            for (int i = 0; i < jutsusLists.length; i++) {
-              for (var jutsu in jutsusLists[i]) {
-                jutsuCardsList[i].add(
-                  JutsuCard(
-                    jutsu: jutsu,
-                    characterNinjutsuValue: widget.character.ninjutsu +
-                        widget.character.ninjutsuBuffer,
-                  ),
-                );
-              }
-            }
-            return Padding(
-              padding: const EdgeInsets.only(
-                top: 8.0,
-              ),
-              child: Column(
-                children: [
-                  jutsuCardsList[0].isNotEmpty
-                      ? CardsList(
-                          element: mainElement, cards: jutsuCardsList[0])
-                      : const SizedBox(),
-                  jutsuCardsList[1].isNotEmpty
-                      ? CardsList(
-                          element: secondElement, cards: jutsuCardsList[1])
-                      : const SizedBox(),
-                  jutsuCardsList[2].isNotEmpty
-                      ? CardsList(element: kekkai, cards: jutsuCardsList[2])
-                      : const SizedBox(),
-                ],
-              ),
-            );
-          }),
+      child: Padding(
+        padding: const EdgeInsets.only(
+          top: 8.0,
+        ),
+        child: Column(
+          children: [
+            jutsuCardsList[0].isNotEmpty
+                ? CardsList(element: mainElement, cards: jutsuCardsList[0])
+                : const SizedBox(),
+            jutsuCardsList[1].isNotEmpty
+                ? CardsList(element: secondElement, cards: jutsuCardsList[1])
+                : const SizedBox(),
+            jutsuCardsList[2].isNotEmpty
+                ? CardsList(element: kekkai, cards: jutsuCardsList[2])
+                : const SizedBox(),
+          ],
+        ),
+      ),
     );
   }
 }

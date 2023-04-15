@@ -93,6 +93,9 @@ class Character {
     "[3, 5]": 9, //Mokuton  //bois
     "[4, 5]": 10, //Jiton //Magnétisme
   };
+  Future<Character> getCharacter() async {
+    return await DbHelper.database.characterDao.findCharacterByName(name);
+  }
 
   Future<void> setName(String newName) async {
     name = newName;

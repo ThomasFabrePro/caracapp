@@ -30,7 +30,7 @@ class LaserSurge extends Jutsu {
   LaserSurge()
       : super(
           name: "Purge",
-          description: "Déferlement de Foudre",
+          description: "Déferlement de lasers",
           image: "assets/jutsus/ranton/laser_surge.jpg",
           ninjutsuMinimum: 75,
           malus: 10,

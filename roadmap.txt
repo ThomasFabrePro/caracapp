@@ -3,6 +3,6 @@
 
 ajout focus nodes sur formulaire creation personnage
 faire plusieurs map d'imagePath
-changer les images "plus" et "moins" dans les caracteristiques
+changer les images "plus" et "moins" dans les caracteristiques =======OK
 fitted box sur les images des éléments
-remplacer stream par du bloc management ?
+remplacer stream par du bloc management ? ======== TIMER ========OK
