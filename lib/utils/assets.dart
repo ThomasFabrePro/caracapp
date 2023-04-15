@@ -3,12 +3,7 @@ import 'package:flutter/material.dart';
 class MyImages {
   Map<image, String> imagePath = {
     //photos
-    image.ninja1: "assets/ninja_images/ninja_1.jpg",
-    image.ninja2: "assets/ninja_images/ninja_2.png",
-    image.ninja3: "assets/ninja_images/ninja_3.png",
-    image.ninja4: "assets/ninja_images/ninja_4.png",
-    image.ninja5: "assets/ninja_images/ninja_5.jpeg",
-    image.ninja6: "assets/ninja_images/ninja_6.jpeg",
+
     //attributes
     image.byakugan: "assets/attributes/byakugan.jpg",
     image.sharingan: "assets/attributes/sharingan.jpg",

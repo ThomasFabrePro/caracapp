@@ -9,7 +9,6 @@ import 'package:caracapp/classes/justsus/ranton_jutsus.dart';
 import 'package:caracapp/classes/justsus/shakuton_jutsus.dart';
 import 'package:caracapp/classes/justsus/yoton_jutsus.dart';
 import 'package:caracapp/models/jutsu_model.dart';
-import 'package:caracapp/utils/assets.dart';
 
 import '../../models/kekkai_model.dart';
 

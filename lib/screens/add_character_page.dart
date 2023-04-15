@@ -4,8 +4,10 @@ import 'package:caracapp/utils/data_access_object/character_dao.dart';
 import 'package:caracapp/widgets/blocs/attribute_bloc.dart';
 import 'package:caracapp/widgets/blocs/caracteristics_upgrade_bloc.dart';
 import 'package:caracapp/widgets/blocs/elements_bloc.dart';
+import 'package:caracapp/widgets/blocs/infos_bloc.dart';
 import 'package:caracapp/widgets/blocs/inventory_bloc.dart';
 import 'package:caracapp/widgets/blocs/jutsus_bloc.dart';
+import 'package:caracapp/widgets/blocs/photo_bloc.dart';
 import 'package:caracapp/widgets/blocs/speciality_bloc.dart';
 import 'package:caracapp/widgets/lowerWidgets/my_text_field.dart';
 import 'package:flutter/material.dart';
@@ -67,190 +69,10 @@ class _AddCharacterPageState extends State<AddCharacterPage> {
                     children: <Widget>[
                       //!FORMULAIRE
                       // TODO ADD FOCUS NODES
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          children: [
-                            MyTextField(
-                              title: "Nom :",
-                              hint: widget.character.name,
-                              onChanged: (value) async {
-                                if (value != "" && mounted) {
-                                  setState(() async {
-                                    await widget.character.setName(value);
-                                  });
-                                }
-                              },
-                              textFieldWidthPercent: textFieldWidthPercent,
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            MyTextField(
-                              title: "Sexe :",
-                              hint: widget.character.sexe,
-                              onChanged: (value) {
-                                if (value != "" && mounted) {
-                                  setState(() async {
-                                    await widget.character.setSexe(value);
-                                  });
-                                }
-                              },
-                              textFieldWidthPercent: textFieldWidthPercent,
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            MyTextField(
-                              title: "Age :",
-                              hint: "${widget.character.age}",
-                              onChanged: (value) {
-                                if (value != "" && mounted) {
-                                  setState(() async {
-                                    await widget.character.setAge(value);
-                                  });
-                                }
-                              },
-                              textFieldWidthPercent: textFieldWidthPercent,
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            MyTextField(
-                              title: "Origine :",
-                              hint: widget.character.origin,
-                              onChanged: (value) {
-                                if (value != "" && mounted) {
-                                  setState(() async {
-                                    await widget.character.setOrigin(value);
-                                  });
-                                }
-                              },
-                              textFieldWidthPercent: textFieldWidthPercent,
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                          ],
-                        ),
-                      ),
+                      InfosBloc(widget.character, textFieldWidthPercent),
                       //?STOP FORMULAIRE
                       //! PHOTO
-                      Padding(
-                          padding: const EdgeInsets.only(
-                            bottom: 8.0,
-                            top: 8.0,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Padding(
-                                padding: EdgeInsets.only(left: 8.0),
-                                child: Text("Photo :",
-                                    style: TextStyle(
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                    )),
-                              ),
-
-                              displayPhotosGrid
-                                  ? const SizedBox()
-                                  : Center(
-                                      child: GestureDetector(
-                                      onTap: () => setState(() {
-                                        displayPhotosGrid = true;
-                                      }),
-                                      child: SizedBox(
-                                          width: width * 0.4,
-                                          height: width * 0.4,
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            child: Image.asset(
-                                                widget.character.picture),
-                                          )),
-                                    )),
-
-                              //!Pour centrer la photo
-                              const Text("Photo :",
-                                  style: TextStyle(
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.transparent)),
-                            ],
-                          )),
-                      displayPhotosGrid
-                          ? Container(
-                              color: Colors.white,
-                              child: GridView.count(
-                                crossAxisCount: 3,
-                                shrinkWrap: true,
-                                children: [
-                                  PickImage(
-                                      imagePath:
-                                          MyImages().imagePath[image.ninja1]!,
-                                      onTap: (String value) {
-                                        setState(() {
-                                          widget.character.picture = value;
-                                          widget.character.setPicture(value);
-                                          displayPhotosGrid = false;
-                                        });
-                                      }),
-                                  PickImage(
-                                      imagePath:
-                                          MyImages().imagePath[image.ninja2]!,
-                                      onTap: (String value) {
-                                        setState(() {
-                                          widget.character.picture = value;
-                                          widget.character.setPicture(value);
-                                          displayPhotosGrid = false;
-                                        });
-                                      }),
-                                  PickImage(
-                                      imagePath:
-                                          MyImages().imagePath[image.ninja3]!,
-                                      onTap: (String value) {
-                                        setState(() {
-                                          widget.character.picture = value;
-                                          widget.character.setPicture(value);
-                                          displayPhotosGrid = false;
-                                        });
-                                      }),
-                                  PickImage(
-                                      imagePath:
-                                          MyImages().imagePath[image.ninja4]!,
-                                      onTap: (String value) {
-                                        setState(() {
-                                          widget.character.picture = value;
-                                          widget.character.setPicture(value);
-                                          displayPhotosGrid = false;
-                                        });
-                                      }),
-                                  PickImage(
-                                      imagePath:
-                                          MyImages().imagePath[image.ninja5]!,
-                                      onTap: (String value) {
-                                        setState(() {
-                                          widget.character.picture = value;
-                                          widget.character.setPicture(value);
-                                          displayPhotosGrid = false;
-                                        });
-                                      }),
-                                  PickImage(
-                                      imagePath:
-                                          MyImages().imagePath[image.ninja6]!,
-                                      onTap: (String value) {
-                                        setState(() {
-                                          widget.character.picture = value;
-                                          widget.character.setPicture(value);
-                                          displayPhotosGrid = false;
-                                        });
-                                      }),
-                                ],
-                              ),
-                            )
-                          : const SizedBox(),
+                      PhotoBloc(widget.character),
                       //?STOP PHOTO
                       const SizedBox(
                         height: 20,
@@ -423,33 +245,6 @@ class _AddCharacterPageState extends State<AddCharacterPage> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class PickImage extends StatefulWidget {
-  final String imagePath;
-  final Function onTap;
-
-  const PickImage({super.key, required this.imagePath, required this.onTap});
-
-  @override
-  State<PickImage> createState() => _PickImageState();
-}
-
-class _PickImageState extends State<PickImage> {
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        widget.onTap(widget.imagePath);
-      },
-      child: SizedBox(
-          width: 100,
-          height: 100,
-          child: Image(
-            image: AssetImage(widget.imagePath),
-          )),
     );
   }
 }

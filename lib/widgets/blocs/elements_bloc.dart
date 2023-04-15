@@ -22,7 +22,7 @@ class _ElementBlocState extends State<ElementBloc> {
   int maxCheckCounter = 2;
   int checkCounter = 0;
   int noElement = 0;
-  TextStyle titleStyle = TextStyle(
+  TextStyle titleStyle = const TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.bold,
     color: MyDecoration.bloodColor,
@@ -56,7 +56,6 @@ class _ElementBlocState extends State<ElementBloc> {
       case 5:
         isEarthChecked = true;
         break;
-
       default:
         break;
     }
@@ -92,7 +91,6 @@ class _ElementBlocState extends State<ElementBloc> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
     return Container(
       width: width,
       decoration: BoxDecoration(
