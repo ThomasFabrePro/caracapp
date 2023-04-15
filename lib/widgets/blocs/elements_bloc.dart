@@ -122,9 +122,13 @@ class _ElementBlocState extends State<ElementBloc> {
                 //!FIRE
                 Stack(
                   children: [
-                    Image.asset(
-                      MyImages().imagePath[image.fire]!,
-                      fit: BoxFit.fitWidth,
+                    SizedBox(
+                      width: width,
+                      child: FittedBox(
+                        child: Image.asset(
+                          "assets/elements/fire.jpg",
+                        ),
+                      ),
                     ),
                     Row(
                       children: [
@@ -168,9 +172,14 @@ class _ElementBlocState extends State<ElementBloc> {
                     Transform(
                       alignment: Alignment.center,
                       transform: Matrix4.rotationY(math.pi),
-                      child: Image.asset(
-                        MyImages().imagePath[image.thunder]!,
-                        fit: BoxFit.fitWidth,
+                      child: SizedBox(
+                        width: width,
+                        child: FittedBox(
+                          fit: BoxFit.fill,
+                          child: Image.asset(
+                            "assets/elements/thunder.jpg",
+                          ),
+                        ),
                       ),
                     ),
                     Row(
@@ -213,11 +222,12 @@ class _ElementBlocState extends State<ElementBloc> {
                 //!WATER
                 Stack(
                   children: [
-                    Transform(
-                      alignment: Alignment.center,
-                      transform: Matrix4.rotationY(math.pi),
-                      child: Image.asset(
-                        "assets/elements/water1.jpg",
+                    SizedBox(
+                      width: width,
+                      child: FittedBox(
+                        child: Image.asset(
+                          "assets/elements/water.jpg",
+                        ),
                       ),
                     ),
                     Row(
@@ -264,9 +274,13 @@ class _ElementBlocState extends State<ElementBloc> {
                     Transform(
                       alignment: Alignment.center,
                       transform: Matrix4.rotationY(math.pi),
-                      child: Image.asset(
-                        MyImages().imagePath[image.wind]!,
-                        fit: BoxFit.fitWidth,
+                      child: SizedBox(
+                        width: width,
+                        child: FittedBox(
+                          child: Image.asset(
+                            "assets/elements/wind.jpg",
+                          ),
+                        ),
                       ),
                     ),
                     Row(
@@ -311,9 +325,13 @@ class _ElementBlocState extends State<ElementBloc> {
                     Transform(
                       alignment: Alignment.center,
                       transform: Matrix4.rotationY(math.pi),
-                      child: Image.asset(
-                        MyImages().imagePath[image.earth]!,
-                        fit: BoxFit.fitWidth,
+                      child: SizedBox(
+                        width: width,
+                        child: FittedBox(
+                          child: Image.asset(
+                            "assets/elements/earth.jpg",
+                          ),
+                        ),
                       ),
                     ),
                     Row(
