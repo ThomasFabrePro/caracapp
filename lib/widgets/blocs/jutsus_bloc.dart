@@ -34,6 +34,8 @@ class _JutsuBlocState extends State<JutsuBloc> {
   List<List<Jutsu>> jutsusLists = <List<Jutsu>>[];
   List<List<JutsuCard>> jutsuCardsList = <List<JutsuCard>>[[], [], []];
   Timer? timerRebuild;
+  int main = 0;
+  int second = 0;
   @override
   void initState() {
     super.initState();
@@ -42,8 +44,8 @@ class _JutsuBlocState extends State<JutsuBloc> {
     timerRebuild = Timer.periodic(const Duration(seconds: 2), (timer) async {
       // await Future.delayed(const Duration(seconds: 2));
       Character newCharacter = await widget.character.getCharacter();
-      if (newCharacter.mainElement != widget.character.mainElement ||
-          newCharacter.secondElement != widget.character.secondElement) {
+      if (newCharacter.mainElement != main ||
+          newCharacter.secondElement != second) {
         setState(() {
           character = newCharacter;
         });
@@ -60,8 +62,10 @@ class _JutsuBlocState extends State<JutsuBloc> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    mainElement = mainElement.getElement(widget.character.mainElement);
-    secondElement = secondElement.getElement(widget.character.secondElement);
+    main = widget.character.mainElement; //important pour le setState
+    second = widget.character.secondElement; //important pour le setState
+    mainElement = mainElement.getElement(main);
+    secondElement = secondElement.getElement(second);
     kekkai = kekkai.getElement(widget.character.kekkaiGenkai);
     jutsusLists = <List<Jutsu>>[
       mainElement.jutsus,
