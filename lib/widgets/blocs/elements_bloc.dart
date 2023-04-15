@@ -217,8 +217,7 @@ class _ElementBlocState extends State<ElementBloc> {
                       alignment: Alignment.center,
                       transform: Matrix4.rotationY(math.pi),
                       child: Image.asset(
-                        MyImages().imagePath[image.water]!,
-                        fit: BoxFit.fitWidth,
+                        "assets/elements/water1.jpg",
                       ),
                     ),
                     Row(

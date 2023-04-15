@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:caracapp/database/db_helper.dart';
 import 'package:caracapp/models/character_model.dart';
 import 'package:caracapp/utils/assets.dart';
-import 'package:caracapp/widgets/lowerWidgets/upgrade_caracteritic.dart';
+import 'package:caracapp/widgets/lowerWidgets/upgrade_caracteristic.dart';
 import 'package:flutter/material.dart';
 
 class CaracteristicsUpgradeBloc extends StatefulWidget {

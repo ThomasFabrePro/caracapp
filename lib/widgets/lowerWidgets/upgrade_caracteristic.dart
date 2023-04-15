@@ -36,12 +36,13 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
     double width = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-      child: FittedBox(
+      child: SizedBox(
+        height: 35,
         child: Row(children: [
           SizedBox(
             width: width * 0.38,
             child: Text(widget.title,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
                   color: MyDecoration.bloodColor,

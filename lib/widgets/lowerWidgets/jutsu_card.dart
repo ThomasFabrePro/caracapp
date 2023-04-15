@@ -99,15 +99,32 @@ class _JutsuCardState extends State<JutsuCard> {
                         Text(jutsu.name,
                             style: const TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.bold)),
-                        Text("Coût Chakra : ${jutsu.chakraCost}",
-                            style: MyDecoration.dataStyle),
-                        Text("Requis : Ninjutsu ≥ ${jutsu.ninjutsuMinimum}",
-                            style: TextStyle(
-                              color: isAvailable ? Colors.black : Colors.red,
-                              fontSize: 18,
-                            )),
-                        Text("Malus au dé : ${jutsu.malus}",
-                            style: MyDecoration.dataStyle),
+                        SizedBox(
+                          height: 18,
+                          child: FittedBox(
+                            child: Text("Coût Chakra : ${jutsu.chakraCost}",
+                                style: MyDecoration.dataStyle),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 18,
+                          child: FittedBox(
+                            child: Text(
+                                "Requis : Ninjutsu ≥ ${jutsu.ninjutsuMinimum}",
+                                style: TextStyle(
+                                  color:
+                                      isAvailable ? Colors.black : Colors.red,
+                                  fontSize: 18,
+                                )),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 18,
+                          child: FittedBox(
+                            child: Text("Malus au dé : ${jutsu.malus}",
+                                style: MyDecoration.dataStyle),
+                          ),
+                        ),
                       ],
                     ),
             )
