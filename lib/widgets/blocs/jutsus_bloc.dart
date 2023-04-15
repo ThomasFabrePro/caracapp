@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 import 'dart:async';
+import 'package:caracapp/classes/genjutsus.dart';
 import 'package:caracapp/models/character_model.dart';
 import 'package:caracapp/models/element_model.dart';
 import 'package:caracapp/models/jutsu_model.dart';
@@ -26,6 +27,7 @@ class _JutsuBlocState extends State<JutsuBloc> {
   PrimaryElement mainElement = PrimaryElement();
   PrimaryElement secondElement = PrimaryElement();
   Kekkai kekkai = Kekkai();
+  Genjutsu genjutsu = Genjutsu();
   TextStyle titleStyle = const TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.bold,
@@ -72,17 +74,29 @@ class _JutsuBlocState extends State<JutsuBloc> {
       secondElement.jutsus,
       kekkai.jutsus,
     ];
-    jutsuCardsList = [[], [], []];
-    for (int i = 0; i < jutsusLists.length; i++) {
+    jutsuCardsList = [[], [], [], []];
+    int i;
+    for (i = 0; i < jutsusLists.length; i++) {
       for (var jutsu in jutsusLists[i]) {
         jutsuCardsList[i].add(
           JutsuCard(
             jutsu: jutsu,
-            characterNinjutsuValue:
+            statValue:
                 widget.character.ninjutsu + widget.character.ninjutsuBuffer,
           ),
         );
       }
+    }
+    for (var jutsu in genjutsu.jutsus) {
+      //! Ajout des Genjutsus
+      jutsuCardsList[i].add(
+        JutsuCard(
+          jutsu: jutsu,
+          statValue:
+              widget.character.genjutsu + widget.character.genjutsuBuffer,
+          isGenjutsu: true,
+        ),
+      );
     }
     return Column(
       children: [
@@ -123,6 +137,9 @@ class _JutsuBlocState extends State<JutsuBloc> {
                       : const SizedBox(),
                   jutsuCardsList[2].isNotEmpty
                       ? CardsList(element: kekkai, cards: jutsuCardsList[2])
+                      : const SizedBox(),
+                  jutsuCardsList[3].isNotEmpty
+                      ? CardsList(element: genjutsu, cards: jutsuCardsList[3])
                       : const SizedBox(),
                 ],
               ),

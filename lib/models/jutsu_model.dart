@@ -3,6 +3,7 @@ class Jutsu {
   final String description;
   final String image;
   final int ninjutsuMinimum;
+  final int genjutsuMinimum;
   final int malus;
   final int chakraCost;
   // final int code;
@@ -11,7 +12,8 @@ class Jutsu {
     this.name = "",
     this.description = "",
     this.image = "",
-    this.ninjutsuMinimum = 30,
+    this.ninjutsuMinimum = 0,
+    this.genjutsuMinimum = 0,
     this.malus = 0,
     this.chakraCost = 0,
     // this.code = 1,

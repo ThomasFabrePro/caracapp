@@ -6,9 +6,13 @@ import 'package:flutter/material.dart';
 
 class JutsuCard extends StatefulWidget {
   final Jutsu jutsu;
-  final int characterNinjutsuValue;
+  final int statValue;
+  final bool isGenjutsu;
   const JutsuCard(
-      {super.key, required this.jutsu, required this.characterNinjutsuValue});
+      {super.key,
+      this.isGenjutsu = false,
+      required this.jutsu,
+      required this.statValue});
 
   @override
   State<JutsuCard> createState() => _JutsuCardState();
@@ -16,13 +20,27 @@ class JutsuCard extends StatefulWidget {
 
 class _JutsuCardState extends State<JutsuCard> {
   bool _showFrontSide = true;
+  String statName = "";
+  int minimumStat = 0;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    if (widget.isGenjutsu) {
+      statName = "Genjutsu";
+      minimumStat = widget.jutsu.genjutsuMinimum;
+    } else {
+      statName = "Ninjutsu";
+      minimumStat = widget.jutsu.ninjutsuMinimum;
+    }
+  }
+
   Widget _buildFront() {
     return __buildLayout(
       key: const ValueKey(true),
       jutsu: widget.jutsu,
       paddingValues: 0,
-      isAvailable:
-          widget.jutsu.ninjutsuMinimum <= widget.characterNinjutsuValue,
+      isAvailable: minimumStat <= widget.statValue,
       showDescription: false,
       width: MediaQuery.of(context).size.width,
     );
@@ -33,8 +51,7 @@ class _JutsuCardState extends State<JutsuCard> {
       key: const ValueKey(false),
       jutsu: widget.jutsu,
       paddingValues: 0,
-      isAvailable:
-          widget.jutsu.ninjutsuMinimum <= widget.characterNinjutsuValue,
+      isAvailable: minimumStat <= widget.statValue,
       showDescription: true,
       width: MediaQuery.of(context).size.width,
     );
@@ -110,7 +127,7 @@ class _JutsuCardState extends State<JutsuCard> {
                           height: 18,
                           child: FittedBox(
                             child: Text(
-                                "Requis : Ninjutsu ≥ ${jutsu.ninjutsuMinimum}",
+                                "Requis : $statName ≥ ${jutsu.ninjutsuMinimum}",
                                 style: TextStyle(
                                   color:
                                       isAvailable ? Colors.black : Colors.red,
