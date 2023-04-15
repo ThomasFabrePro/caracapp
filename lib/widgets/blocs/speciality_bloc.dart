@@ -107,224 +107,240 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    return Container(
-      width: width,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [MyDecoration.boxShadow],
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                //checkbox
-                Checkbox(
-                  checkColor: Colors.white,
-                  fillColor: MaterialStateProperty.resolveWith(getColor),
-                  value: isTaijutsuChecked,
-                  onChanged: (bool? value) async {
-                    int specialityCode = 1;
-                    isTaijutsuChecked = await confirmCheck(
-                        code: specialityCode,
-                        value: value!,
-                        check: isTaijutsuChecked);
-                  },
-                ),
-                //mainSpe name
-                SizedBox(
-                  width: width * titleWidthPercent,
-                  child: Text(
-                    "Taïjutsu",
-                    style: titleStyle,
-                  ),
-                ),
-                Text(
-                  descriptions["Taijutsu"]!,
-                  style: MyDecoration.dataStyle,
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                //checkbox
-                Checkbox(
-                  checkColor: Colors.white,
-                  fillColor: MaterialStateProperty.resolveWith(getColor),
-                  value: isNinjutsuChecked,
-                  onChanged: (bool? value) async {
-                    int specialityCode = 2;
-                    isNinjutsuChecked = await confirmCheck(
-                        code: specialityCode,
-                        value: value!,
-                        check: isNinjutsuChecked);
-                  },
-                ),
-                //mainSpe name
-                SizedBox(
-                  width: width * titleWidthPercent,
-                  child: Text(
-                    "Ninjutsu",
-                    style: titleStyle,
-                  ),
-                ),
-                Text(
-                  descriptions["Ninjutsu"]!,
-                  style: MyDecoration.dataStyle,
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                //checkbox
-                Checkbox(
-                  checkColor: Colors.white,
-                  fillColor: MaterialStateProperty.resolveWith(getColor),
-                  value: isGenjustsuChecked,
-                  onChanged: (bool? value) async {
-                    int specialityCode = 3;
-                    isGenjustsuChecked = await confirmCheck(
-                        code: specialityCode,
-                        value: value!,
-                        check: isGenjustsuChecked);
-                  },
-                ),
-                //mainSpe name
-                SizedBox(
-                  width: width * titleWidthPercent,
-                  child: Text(
-                    "Genjutsu",
-                    style: titleStyle,
-                  ),
-                ),
-                Text(
-                  descriptions["Genjutsu"]!,
-                  style: MyDecoration.dataStyle,
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                //checkbox
-                Checkbox(
-                  checkColor: Colors.white,
-                  fillColor: MaterialStateProperty.resolveWith(getColor),
-                  value: isThrowingChecked,
-                  onChanged: (bool? value) async {
-                    int specialityCode = 4;
-                    isThrowingChecked = await confirmCheck(
-                        code: specialityCode,
-                        value: value!,
-                        check: isThrowingChecked);
-                  },
-                ),
-                //mainSpe name
-                SizedBox(
-                  width: width * titleWidthPercent,
-                  child: Text(
-                    "Lancer",
-                    style: titleStyle,
-                  ),
-                ),
-                Text(
-                  descriptions["Throwing"]!,
-                  style: MyDecoration.dataStyle,
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                //checkbox
-                Checkbox(
-                  checkColor: Colors.white,
-                  fillColor: MaterialStateProperty.resolveWith(getColor),
-                  value: isChakraChecked,
-                  onChanged: (bool? value) async {
-                    int specialityCode = 5;
-                    isChakraChecked = await confirmCheck(
-                        code: specialityCode,
-                        value: value!,
-                        check: isChakraChecked);
-                  },
-                ),
-                //mainSpe name
-                SizedBox(
-                  width: width * titleWidthPercent,
-                  child: Text(
-                    "Chakra",
-                    style: titleStyle,
-                  ),
-                ),
-                Text(
-                  descriptions["Chakra"]!,
-                  style: MyDecoration.dataStyle,
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                //checkbox
-                Checkbox(
-                  checkColor: Colors.white,
-                  fillColor: MaterialStateProperty.resolveWith(getColor),
-                  value: isLuckChecked,
-                  onChanged: (bool? value) async {
-                    int specialityCode = 6;
-                    isLuckChecked = await confirmCheck(
-                        code: specialityCode,
-                        value: value!,
-                        check: isLuckChecked);
-                  },
-                ),
-                //mainSpe name
-                SizedBox(
-                  width: width * titleWidthPercent,
-                  child: Text(
-                    "Chance",
-                    style: titleStyle,
-                  ),
-                ),
-                Text(
-                  descriptions["Luck"]!,
-                  style: MyDecoration.dataStyle,
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                //checkbox
-                Checkbox(
-                  checkColor: Colors.white,
-                  fillColor: MaterialStateProperty.resolveWith(getColor),
-                  value: isDodgeChecked,
-                  onChanged: (bool? value) async {
-                    int specialityCode = 7;
-                    isDodgeChecked = await confirmCheck(
-                        code: specialityCode,
-                        value: value!,
-                        check: isDodgeChecked);
-                  },
-                ),
-                //mainSpe name
-                SizedBox(
-                  width: width * titleWidthPercent,
-                  child: Text(
-                    "Esquive /  Blocage",
-                    style: titleStyle,
-                  ),
-                ),
-                Text(
-                  descriptions["Dodge"]!,
-                  style: MyDecoration.dataStyle,
-                ),
-              ],
-            ),
-            // SpecialityDescription(mainSpe: widget.character.mainSpe),
-          ],
+    return Column(
+      children: [
+        const Padding(
+          padding: EdgeInsets.only(bottom: 20.0, top: 10),
+          child: Text("Spécialité",
+              style: TextStyle(
+                fontSize: 22,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              )),
         ),
-      ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 16.0, left: 16.0, right: 16.0),
+          child: Container(
+            width: width,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [MyDecoration.boxShadow],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      //checkbox
+                      Checkbox(
+                        checkColor: Colors.white,
+                        fillColor: MaterialStateProperty.resolveWith(getColor),
+                        value: isTaijutsuChecked,
+                        onChanged: (bool? value) async {
+                          int specialityCode = 1;
+                          isTaijutsuChecked = await confirmCheck(
+                              code: specialityCode,
+                              value: value!,
+                              check: isTaijutsuChecked);
+                        },
+                      ),
+                      //mainSpe name
+                      SizedBox(
+                        width: width * titleWidthPercent,
+                        child: Text(
+                          "Taïjutsu",
+                          style: titleStyle,
+                        ),
+                      ),
+                      Text(
+                        descriptions["Taijutsu"]!,
+                        style: MyDecoration.dataStyle,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      //checkbox
+                      Checkbox(
+                        checkColor: Colors.white,
+                        fillColor: MaterialStateProperty.resolveWith(getColor),
+                        value: isNinjutsuChecked,
+                        onChanged: (bool? value) async {
+                          int specialityCode = 2;
+                          isNinjutsuChecked = await confirmCheck(
+                              code: specialityCode,
+                              value: value!,
+                              check: isNinjutsuChecked);
+                        },
+                      ),
+                      //mainSpe name
+                      SizedBox(
+                        width: width * titleWidthPercent,
+                        child: Text(
+                          "Ninjutsu",
+                          style: titleStyle,
+                        ),
+                      ),
+                      Text(
+                        descriptions["Ninjutsu"]!,
+                        style: MyDecoration.dataStyle,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      //checkbox
+                      Checkbox(
+                        checkColor: Colors.white,
+                        fillColor: MaterialStateProperty.resolveWith(getColor),
+                        value: isGenjustsuChecked,
+                        onChanged: (bool? value) async {
+                          int specialityCode = 3;
+                          isGenjustsuChecked = await confirmCheck(
+                              code: specialityCode,
+                              value: value!,
+                              check: isGenjustsuChecked);
+                        },
+                      ),
+                      //mainSpe name
+                      SizedBox(
+                        width: width * titleWidthPercent,
+                        child: Text(
+                          "Genjutsu",
+                          style: titleStyle,
+                        ),
+                      ),
+                      Text(
+                        descriptions["Genjutsu"]!,
+                        style: MyDecoration.dataStyle,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      //checkbox
+                      Checkbox(
+                        checkColor: Colors.white,
+                        fillColor: MaterialStateProperty.resolveWith(getColor),
+                        value: isThrowingChecked,
+                        onChanged: (bool? value) async {
+                          int specialityCode = 4;
+                          isThrowingChecked = await confirmCheck(
+                              code: specialityCode,
+                              value: value!,
+                              check: isThrowingChecked);
+                        },
+                      ),
+                      //mainSpe name
+                      SizedBox(
+                        width: width * titleWidthPercent,
+                        child: Text(
+                          "Lancer",
+                          style: titleStyle,
+                        ),
+                      ),
+                      Text(
+                        descriptions["Throwing"]!,
+                        style: MyDecoration.dataStyle,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      //checkbox
+                      Checkbox(
+                        checkColor: Colors.white,
+                        fillColor: MaterialStateProperty.resolveWith(getColor),
+                        value: isChakraChecked,
+                        onChanged: (bool? value) async {
+                          int specialityCode = 5;
+                          isChakraChecked = await confirmCheck(
+                              code: specialityCode,
+                              value: value!,
+                              check: isChakraChecked);
+                        },
+                      ),
+                      //mainSpe name
+                      SizedBox(
+                        width: width * titleWidthPercent,
+                        child: Text(
+                          "Chakra",
+                          style: titleStyle,
+                        ),
+                      ),
+                      Text(
+                        descriptions["Chakra"]!,
+                        style: MyDecoration.dataStyle,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      //checkbox
+                      Checkbox(
+                        checkColor: Colors.white,
+                        fillColor: MaterialStateProperty.resolveWith(getColor),
+                        value: isLuckChecked,
+                        onChanged: (bool? value) async {
+                          int specialityCode = 6;
+                          isLuckChecked = await confirmCheck(
+                              code: specialityCode,
+                              value: value!,
+                              check: isLuckChecked);
+                        },
+                      ),
+                      //mainSpe name
+                      SizedBox(
+                        width: width * titleWidthPercent,
+                        child: Text(
+                          "Chance",
+                          style: titleStyle,
+                        ),
+                      ),
+                      Text(
+                        descriptions["Luck"]!,
+                        style: MyDecoration.dataStyle,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      //checkbox
+                      Checkbox(
+                        checkColor: Colors.white,
+                        fillColor: MaterialStateProperty.resolveWith(getColor),
+                        value: isDodgeChecked,
+                        onChanged: (bool? value) async {
+                          int specialityCode = 7;
+                          isDodgeChecked = await confirmCheck(
+                              code: specialityCode,
+                              value: value!,
+                              check: isDodgeChecked);
+                        },
+                      ),
+                      //mainSpe name
+                      SizedBox(
+                        width: width * titleWidthPercent,
+                        child: Text(
+                          "Esquive /  Blocage",
+                          style: titleStyle,
+                        ),
+                      ),
+                      Text(
+                        descriptions["Dodge"]!,
+                        style: MyDecoration.dataStyle,
+                      ),
+                    ],
+                  ),
+                  // SpecialityDescription(mainSpe: widget.character.mainSpe),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

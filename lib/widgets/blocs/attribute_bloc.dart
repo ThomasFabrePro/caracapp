@@ -69,108 +69,127 @@ class _AttributeBlocState extends State<AttributeBloc> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    return Container(
-      width: width,
-      // height: 200,
-      // color: Colors.white,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [MyDecoration.boxShadow],
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            AttributeDescription(attribute: widget.character.attribute),
-            Row(
-              children: [
-                //checkbox
-                Checkbox(
-                  checkColor: Colors.white,
-                  fillColor: MaterialStateProperty.resolveWith(getColor),
-                  value: isJinchurikiChecked,
-                  onChanged: (bool? value) async {
-                    int attribute = value == false ? 0 : 1;
-                    await widget.character.setAttribute(attribute);
-                    setState(() {
-                      widget.character.attribute = attribute;
-                      if (widget.scrollController != null && attribute != 0) {
-                        widget.scrollController!.animateTo(height * 1.1,
-                            curve: Curves.linear,
-                            duration: Duration(milliseconds: 500));
-                      }
-
-                      setChecks();
-                    });
-                  },
-                ),
-                //attribute name
-                Text(
-                  "Jinchuriki",
-                  style: titleStyle,
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                //checkbox
-                Checkbox(
-                  checkColor: Colors.white,
-                  fillColor: MaterialStateProperty.resolveWith(getColor),
-                  value: isSharinganChecked,
-                  onChanged: (bool? value) async {
-                    int attribute = value == false ? 0 : 2;
-                    await widget.character.setAttribute(attribute);
-                    setState(() {
-                      widget.character.attribute = attribute;
-                      if (widget.scrollController != null && attribute != 0) {
-                        widget.scrollController!.animateTo(height * 1.1,
-                            curve: Curves.linear,
-                            duration: Duration(milliseconds: 500));
-                      }
-                      setChecks();
-                    });
-                  },
-                ),
-                //attribute name
-                Text(
-                  "Sharingan",
-                  style: titleStyle,
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                //checkbox
-                Checkbox(
-                  checkColor: Colors.white,
-                  fillColor: MaterialStateProperty.resolveWith(getColor),
-                  value: isByakuganChecked,
-                  onChanged: (bool? value) async {
-                    int attribute = value == false ? 0 : 3;
-                    await widget.character.setAttribute(attribute);
-                    setState(() {
-                      widget.character.attribute = attribute;
-                      if (widget.scrollController != null && attribute != 0) {
-                        widget.scrollController!.animateTo(height * 1.1,
-                            curve: Curves.linear,
-                            duration: Duration(milliseconds: 500));
-                      }
-                      setChecks();
-                    });
-                  },
-                ),
-                //attribute name
-                Text(
-                  "Byakugan",
-                  style: titleStyle,
-                ),
-              ],
-            ),
-          ],
+    return Column(
+      children: [
+        const Padding(
+          padding: EdgeInsets.only(bottom: 20.0, top: 10),
+          child: Text("Attribut",
+              style: TextStyle(
+                fontSize: 22,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              )),
         ),
-      ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 16.0, left: 16.0, right: 16.0),
+          child: Container(
+            width: width,
+            // height: 200,
+            // color: Colors.white,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [MyDecoration.boxShadow],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  AttributeDescription(attribute: widget.character.attribute),
+                  Row(
+                    children: [
+                      //checkbox
+                      Checkbox(
+                        checkColor: Colors.white,
+                        fillColor: MaterialStateProperty.resolveWith(getColor),
+                        value: isJinchurikiChecked,
+                        onChanged: (bool? value) async {
+                          int attribute = value == false ? 0 : 1;
+                          await widget.character.setAttribute(attribute);
+                          setState(() {
+                            widget.character.attribute = attribute;
+                            if (widget.scrollController != null &&
+                                attribute != 0) {
+                              widget.scrollController!.animateTo(height * 1.1,
+                                  curve: Curves.linear,
+                                  duration: Duration(milliseconds: 500));
+                            }
+
+                            setChecks();
+                          });
+                        },
+                      ),
+                      //attribute name
+                      Text(
+                        "Jinchuriki",
+                        style: titleStyle,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      //checkbox
+                      Checkbox(
+                        checkColor: Colors.white,
+                        fillColor: MaterialStateProperty.resolveWith(getColor),
+                        value: isSharinganChecked,
+                        onChanged: (bool? value) async {
+                          int attribute = value == false ? 0 : 2;
+                          await widget.character.setAttribute(attribute);
+                          setState(() {
+                            widget.character.attribute = attribute;
+                            if (widget.scrollController != null &&
+                                attribute != 0) {
+                              widget.scrollController!.animateTo(height * 1.1,
+                                  curve: Curves.linear,
+                                  duration: Duration(milliseconds: 500));
+                            }
+                            setChecks();
+                          });
+                        },
+                      ),
+                      //attribute name
+                      Text(
+                        "Sharingan",
+                        style: titleStyle,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      //checkbox
+                      Checkbox(
+                        checkColor: Colors.white,
+                        fillColor: MaterialStateProperty.resolveWith(getColor),
+                        value: isByakuganChecked,
+                        onChanged: (bool? value) async {
+                          int attribute = value == false ? 0 : 3;
+                          await widget.character.setAttribute(attribute);
+                          setState(() {
+                            widget.character.attribute = attribute;
+                            if (widget.scrollController != null &&
+                                attribute != 0) {
+                              widget.scrollController!.animateTo(height * 1.1,
+                                  curve: Curves.linear,
+                                  duration: Duration(milliseconds: 500));
+                            }
+                            setChecks();
+                          });
+                        },
+                      ),
+                      //attribute name
+                      Text(
+                        "Byakugan",
+                        style: titleStyle,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -185,20 +204,20 @@ class AttributeDescription extends StatelessWidget {
     String description = "";
     switch (attribute) {
       case 1:
-        imagePath = MyImages().imagePath[image.jinchuriki]!;
+        imagePath = "assets/attributes/jinchuriki.jpg";
         description =
             "Une fois à 20% des Hp : Reserve chakra grandement augmenté, peut envoyer 2 ninjutsu par tour, "
             "possibilité de perdre le controle à chaque tour (ex : lancé de dés raté = attaque un allié) ";
         break;
       case 2:
-        imagePath = MyImages().imagePath[image.sharingan]!;
+        imagePath = "assets/attributes/sharingan.jpg";
         description =
             "A activer quand on le souhaite, peut être désactivé n'importe quand mais pas réactivé derriere. "
             "BONUS Ninjutsu notamment ceux pas de son type, BONUS Esquive. "
             "BONUS Genjutsu, MALUS Chakra (sorts coutent plus), MALUS Constitution";
         break;
       case 3:
-        imagePath = MyImages().imagePath[image.byakugan]!;
+        imagePath = "assets/attributes/byakugan.jpg";
         description =
             "Active/désactive pareil que sharringan, BONUS Taïjutsu, BONUS Perception, MALUS Chakra, "
             "MALUS Taïjutsu après 3/4/5 tours (à voir)";

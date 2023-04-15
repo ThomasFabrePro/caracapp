@@ -33,18 +33,17 @@ class _JutsuBlocState extends State<JutsuBloc> {
   );
   List<List<Jutsu>> jutsusLists = <List<Jutsu>>[];
   List<List<JutsuCard>> jutsuCardsList = <List<JutsuCard>>[[], [], []];
-  int lastElement = 0;
-  int lastSecondElement = 0;
   Timer? timerRebuild;
   @override
   void initState() {
     super.initState();
     character = widget.character;
+
     timerRebuild = Timer.periodic(const Duration(seconds: 2), (timer) async {
       // await Future.delayed(const Duration(seconds: 2));
       Character newCharacter = await widget.character.getCharacter();
-      if (newCharacter.mainElement != lastElement ||
-          newCharacter.secondElement != lastSecondElement) {
+      if (newCharacter.mainElement != widget.character.mainElement ||
+          newCharacter.secondElement != widget.character.secondElement) {
         setState(() {
           character = newCharacter;
         });
@@ -61,8 +60,6 @@ class _JutsuBlocState extends State<JutsuBloc> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    lastElement = character.mainElement;
-    lastSecondElement = character.secondElement;
     mainElement = mainElement.getElement(widget.character.mainElement);
     secondElement = secondElement.getElement(widget.character.secondElement);
     kekkai = kekkai.getElement(widget.character.kekkaiGenkai);
@@ -83,31 +80,49 @@ class _JutsuBlocState extends State<JutsuBloc> {
         );
       }
     }
-    return SizedBox(
-      width: width,
-      // decoration: BoxDecoration(
-      //   // color: Colors.white,
-      //   borderRadius: BorderRadius.circular(10),
-      //   // boxShadow: [MyDecoration.boxShadow],
-      // ),
-      child: Padding(
-        padding: const EdgeInsets.only(
-          top: 8.0,
+    return Column(
+      children: [
+        const Padding(
+          padding: EdgeInsets.only(top: 10),
+          child: Text("Jutsus",
+              style: TextStyle(
+                fontSize: 22,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              )),
         ),
-        child: Column(
-          children: [
-            jutsuCardsList[0].isNotEmpty
-                ? CardsList(element: mainElement, cards: jutsuCardsList[0])
-                : const SizedBox(),
-            jutsuCardsList[1].isNotEmpty
-                ? CardsList(element: secondElement, cards: jutsuCardsList[1])
-                : const SizedBox(),
-            jutsuCardsList[2].isNotEmpty
-                ? CardsList(element: kekkai, cards: jutsuCardsList[2])
-                : const SizedBox(),
-          ],
+        Padding(
+          padding: const EdgeInsets.only(bottom: 16.0, left: 16.0, right: 16.0),
+          child: SizedBox(
+            width: width,
+            // decoration: BoxDecoration(
+            //   // color: Colors.white,
+            //   borderRadius: BorderRadius.circular(10),
+            //   // boxShadow: [MyDecoration.boxShadow],
+            // ),
+            child: Padding(
+              padding: const EdgeInsets.only(
+                top: 8.0,
+              ),
+              child: Column(
+                children: [
+                  jutsuCardsList[0].isNotEmpty
+                      ? CardsList(
+                          element: mainElement, cards: jutsuCardsList[0])
+                      : const SizedBox(),
+                  jutsuCardsList[1].isNotEmpty
+                      ? CardsList(
+                          element: secondElement, cards: jutsuCardsList[1])
+                      : const SizedBox(),
+                  jutsuCardsList[2].isNotEmpty
+                      ? CardsList(element: kekkai, cards: jutsuCardsList[2])
+                      : const SizedBox(),
+                ],
+              ),
+            ),
+          ),
         ),
-      ),
+      ],
     );
   }
 }

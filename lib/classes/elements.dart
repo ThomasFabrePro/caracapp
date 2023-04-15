@@ -21,7 +21,6 @@ class Katon extends PrimaryElement {
             FlameBurst(),
             FireDragon(),
           ],
-          // code: 1,
         );
 }
 

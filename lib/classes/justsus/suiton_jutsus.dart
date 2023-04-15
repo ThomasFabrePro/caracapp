@@ -57,7 +57,7 @@ class Tsunami extends Jutsu {
   Tsunami()
       : super(
           name: "Tsunami",
-          description: "Faire surgir un tsunami qui s'abat sur la zone",
+          description: "Fait surgir un tsunami qui s'abat sur la zone",
           image: "assets/jutsus/suiton/tsunami.jpg",
           ninjutsuMinimum: 75,
           malus: 25,

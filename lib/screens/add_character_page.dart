@@ -67,175 +67,78 @@ class _AddCharacterPageState extends State<AddCharacterPage> {
                   controller: scrollController,
                   child: Column(
                     children: <Widget>[
-                      //!FORMULAIRE
                       // TODO ADD FOCUS NODES
                       InfosBloc(widget.character, textFieldWidthPercent),
-                      //?STOP FORMULAIRE
-                      //! PHOTO
+
                       PhotoBloc(widget.character),
-                      //?STOP PHOTO
                       const SizedBox(
                         height: 20,
                       ),
-                      //!CARACTERISTIQUES
                       Divider(
                         endIndent: width * 0.1,
                         indent: width * 0.1,
                         color: Colors.white,
                         thickness: 2,
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(bottom: 20.0, top: 10),
-                        child: Text("Caractéristiques",
-                            style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            bottom: 16.0, left: 16.0, right: 16.0),
-                        child: CaracteristicsUpgradeBloc(
-                            character: widget.character),
-                      ),
-                      //?STOP CARACTERISTIQUES
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      //!ATTRIBUTE
-                      Divider(
-                        endIndent: width * 0.1,
-                        indent: width * 0.1,
-                        color: Colors.white,
-                        thickness: 2,
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(bottom: 20.0, top: 10),
-                        child: Text("Attribut",
-                            style: TextStyle(
-                              fontSize: 22,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            )),
                       ),
 
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            bottom: 16.0, left: 16.0, right: 16.0),
-                        child: AttributeBloc(
-                            character: widget.character,
-                            scrollController: scrollController),
-                      ),
-                      //?STOP ATTRIBUTE
+                      CaracteristicsUpgradeBloc(character: widget.character),
                       const SizedBox(
                         height: 20,
                       ),
-                      //!SPECIALITE
-                      // TODO ADD BUFFER SYSTEM
                       Divider(
                         endIndent: width * 0.1,
                         indent: width * 0.1,
                         color: Colors.white,
                         thickness: 2,
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(bottom: 20.0, top: 10),
-                        child: Text("Spécialité",
-                            style: TextStyle(
-                              fontSize: 22,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            )),
-                      ),
 
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            bottom: 16.0, left: 16.0, right: 16.0),
-                        child: SpecialityBloc(
+                      AttributeBloc(
                           character: widget.character,
-                        ),
-                      ),
-
-                      //?STOP SPECIALITE
+                          scrollController: scrollController),
                       const SizedBox(
                         height: 20,
                       ),
-                      //!ELEMENT
                       Divider(
                         endIndent: width * 0.1,
                         indent: width * 0.1,
                         color: Colors.white,
                         thickness: 2,
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(bottom: 20.0, top: 10),
-                        child: Text("Éléments",
-                            style: TextStyle(
-                              fontSize: 22,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            )),
-                      ),
 
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            bottom: 16.0, left: 16.0, right: 16.0),
-                        child: ElementBloc(character: widget.character),
-                      ),
-                      //?STOP ELEMENT
+                      SpecialityBloc(character: widget.character),
                       const SizedBox(
                         height: 20,
                       ),
-                      //!JUTSUS
                       Divider(
                         endIndent: width * 0.1,
                         indent: width * 0.1,
                         color: Colors.white,
                         thickness: 2,
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(top: 10),
-                        child: Text("Jutsus",
-                            style: TextStyle(
-                              fontSize: 22,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            )),
-                      ),
 
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            bottom: 16.0, left: 16.0, right: 16.0),
-                        child: JutsuBloc(character: widget.character),
-                      ),
-                      //?STOP ELEMENT
+                      ElementBloc(character: widget.character),
                       const SizedBox(
                         height: 20,
                       ),
-                      //!INVENTORY
                       Divider(
                         endIndent: width * 0.1,
                         indent: width * 0.1,
                         color: Colors.white,
                         thickness: 2,
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(top: 10, bottom: 20),
-                        child: Text("Inventaire",
-                            style: TextStyle(
-                              fontSize: 22,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            )),
+
+                      JutsuBloc(character: widget.character),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Divider(
+                        endIndent: width * 0.1,
+                        indent: width * 0.1,
+                        color: Colors.white,
+                        thickness: 2,
                       ),
 
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            bottom: 16.0, left: 16.0, right: 16.0),
-                        child: InventoryBloc(character: widget.character),
-                      ),
-                      //?STOP INVENTORY
+                      InventoryBloc(character: widget.character),
                       const SizedBox(
                         height: 20,
                       ),

@@ -91,247 +91,274 @@ class _ElementBlocState extends State<ElementBloc> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    return Container(
-      width: width,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [MyDecoration.boxShadow],
-      ),
-      child: Column(
-        children: [
-          //!KEKKAI
-          widget.character.kekkaiGenkai == 0
-              ? const SizedBox()
-              : KekkaiDescription(
-                  kekkaiCode: widget.character.kekkaiGenkai,
-                ),
-          //!FIRE
-          Stack(
-            children: [
-              Image.asset(
-                MyImages().imagePath[image.fire]!,
-                fit: BoxFit.fitWidth,
-              ),
-              Row(
-                children: [
-                  //checkbox
-                  Container(
-                    height: 40,
-                    color: const Color.fromARGB(172, 255, 255, 255),
-                    child: Checkbox(
-                      checkColor: Colors.white,
-                      fillColor: MaterialStateProperty.resolveWith(getColor),
-                      value: isFireChecked,
-                      onChanged: (bool? value) async {
-                        isFireChecked = await confirmCheck(
-                            code: 1, value: value!, check: isFireChecked);
-                      },
+    return Column(
+      children: [
+        const Padding(
+          padding: EdgeInsets.only(bottom: 20.0, top: 10),
+          child: Text("Éléments",
+              style: TextStyle(
+                fontSize: 22,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              )),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 16.0, left: 16.0, right: 16.0),
+          child: Container(
+            width: width,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [MyDecoration.boxShadow],
+            ),
+            child: Column(
+              children: [
+                //!KEKKAI
+                widget.character.kekkaiGenkai == 0
+                    ? const SizedBox()
+                    : KekkaiDescription(
+                        kekkaiCode: widget.character.kekkaiGenkai,
+                      ),
+                //!FIRE
+                Stack(
+                  children: [
+                    Image.asset(
+                      MyImages().imagePath[image.fire]!,
+                      fit: BoxFit.fitWidth,
                     ),
-                  ),
-                  //mainElement name
-                  Container(
-                    height: 40,
-                    color: const Color.fromARGB(172, 255, 255, 255),
-                    child: SizedBox(
-                      // width: width * titleWidthPercent,
-                      child: Center(
-                        child: Text(
-                          "Feu  ",
-                          style: titleStyle,
+                    Row(
+                      children: [
+                        //checkbox
+                        Container(
+                          height: 40,
+                          color: const Color.fromARGB(172, 255, 255, 255),
+                          child: Checkbox(
+                            checkColor: Colors.white,
+                            fillColor:
+                                MaterialStateProperty.resolveWith(getColor),
+                            value: isFireChecked,
+                            onChanged: (bool? value) async {
+                              isFireChecked = await confirmCheck(
+                                  code: 1, value: value!, check: isFireChecked);
+                            },
+                          ),
                         ),
+                        //mainElement name
+                        Container(
+                          height: 40,
+                          color: const Color.fromARGB(172, 255, 255, 255),
+                          child: SizedBox(
+                            // width: width * titleWidthPercent,
+                            child: Center(
+                              child: Text(
+                                "Feu  ",
+                                style: titleStyle,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 2),
+                //!THUNDER
+                Stack(
+                  children: [
+                    Transform(
+                      alignment: Alignment.center,
+                      transform: Matrix4.rotationY(math.pi),
+                      child: Image.asset(
+                        MyImages().imagePath[image.thunder]!,
+                        fit: BoxFit.fitWidth,
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          const SizedBox(height: 2),
-          //!THUNDER
-          Stack(
-            children: [
-              Transform(
-                alignment: Alignment.center,
-                transform: Matrix4.rotationY(math.pi),
-                child: Image.asset(
-                  MyImages().imagePath[image.thunder]!,
-                  fit: BoxFit.fitWidth,
-                ),
-              ),
-              Row(
-                children: [
-                  //checkbox
-                  Container(
-                    height: 40,
-                    color: const Color.fromARGB(172, 255, 255, 255),
-                    child: Checkbox(
-                      checkColor: Colors.white,
-                      fillColor: MaterialStateProperty.resolveWith(getColor),
-                      value: isThunderChecked,
-                      onChanged: (bool? value) async {
-                        isThunderChecked = await confirmCheck(
-                            code: 2, value: value!, check: isThunderChecked);
-                      },
-                    ),
-                  ),
-                  //mainElement name
-                  Container(
-                    height: 40,
-                    color: const Color.fromARGB(172, 255, 255, 255),
-                    child: SizedBox(
-                      child: Center(
-                        child: Text(
-                          "Foudre  ",
-                          style: titleStyle,
+                    Row(
+                      children: [
+                        //checkbox
+                        Container(
+                          height: 40,
+                          color: const Color.fromARGB(172, 255, 255, 255),
+                          child: Checkbox(
+                            checkColor: Colors.white,
+                            fillColor:
+                                MaterialStateProperty.resolveWith(getColor),
+                            value: isThunderChecked,
+                            onChanged: (bool? value) async {
+                              isThunderChecked = await confirmCheck(
+                                  code: 2,
+                                  value: value!,
+                                  check: isThunderChecked);
+                            },
+                          ),
                         ),
+                        //mainElement name
+                        Container(
+                          height: 40,
+                          color: const Color.fromARGB(172, 255, 255, 255),
+                          child: SizedBox(
+                            child: Center(
+                              child: Text(
+                                "Foudre  ",
+                                style: titleStyle,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 2),
+                //!WATER
+                Stack(
+                  children: [
+                    Transform(
+                      alignment: Alignment.center,
+                      transform: Matrix4.rotationY(math.pi),
+                      child: Image.asset(
+                        MyImages().imagePath[image.water]!,
+                        fit: BoxFit.fitWidth,
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          const SizedBox(height: 2),
-          //!WATER
-          Stack(
-            children: [
-              Transform(
-                alignment: Alignment.center,
-                transform: Matrix4.rotationY(math.pi),
-                child: Image.asset(
-                  MyImages().imagePath[image.water]!,
-                  fit: BoxFit.fitWidth,
-                ),
-              ),
-              Row(
-                children: [
-                  //checkbox
-                  Container(
-                    height: 40,
-                    color: const Color.fromARGB(172, 255, 255, 255),
-                    child: Checkbox(
-                      checkColor: Colors.white,
-                      fillColor: MaterialStateProperty.resolveWith(getColor),
-                      value: isWaterChecked,
-                      onChanged: (bool? value) async {
-                        isWaterChecked = await confirmCheck(
-                            code: 3, value: value!, check: isWaterChecked);
-                      },
-                    ),
-                  ),
-                  //mainElement name
-                  Container(
-                    height: 40,
-                    color: const Color.fromARGB(172, 255, 255, 255),
-                    child: SizedBox(
-                      // width: width * titleWidthPercent,
-                      child: Center(
-                        child: Text(
-                          "Eau  ",
-                          style: titleStyle,
+                    Row(
+                      children: [
+                        //checkbox
+                        Container(
+                          height: 40,
+                          color: const Color.fromARGB(172, 255, 255, 255),
+                          child: Checkbox(
+                            checkColor: Colors.white,
+                            fillColor:
+                                MaterialStateProperty.resolveWith(getColor),
+                            value: isWaterChecked,
+                            onChanged: (bool? value) async {
+                              isWaterChecked = await confirmCheck(
+                                  code: 3,
+                                  value: value!,
+                                  check: isWaterChecked);
+                            },
+                          ),
                         ),
+                        //mainElement name
+                        Container(
+                          height: 40,
+                          color: const Color.fromARGB(172, 255, 255, 255),
+                          child: SizedBox(
+                            // width: width * titleWidthPercent,
+                            child: Center(
+                              child: Text(
+                                "Eau  ",
+                                style: titleStyle,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 2),
+                //!WIND
+                Stack(
+                  children: [
+                    Transform(
+                      alignment: Alignment.center,
+                      transform: Matrix4.rotationY(math.pi),
+                      child: Image.asset(
+                        MyImages().imagePath[image.wind]!,
+                        fit: BoxFit.fitWidth,
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          const SizedBox(height: 2),
-          //!WIND
-          Stack(
-            children: [
-              Transform(
-                alignment: Alignment.center,
-                transform: Matrix4.rotationY(math.pi),
-                child: Image.asset(
-                  MyImages().imagePath[image.wind]!,
-                  fit: BoxFit.fitWidth,
-                ),
-              ),
-              Row(
-                children: [
-                  //checkbox
-                  Container(
-                    height: 40,
-                    color: const Color.fromARGB(172, 255, 255, 255),
-                    child: Checkbox(
-                      checkColor: Colors.white,
-                      fillColor: MaterialStateProperty.resolveWith(getColor),
-                      value: isWindChecked,
-                      onChanged: (bool? value) async {
-                        isWindChecked = await confirmCheck(
-                            code: 4, value: value!, check: isWindChecked);
-                      },
-                    ),
-                  ),
-                  //mainElement name
-                  Container(
-                    height: 40,
-                    color: const Color.fromARGB(172, 255, 255, 255),
-                    child: SizedBox(
-                      // width: width * titleWidthPercent,
-                      child: Center(
-                        child: Text(
-                          "Vent  ",
-                          style: titleStyle,
+                    Row(
+                      children: [
+                        //checkbox
+                        Container(
+                          height: 40,
+                          color: const Color.fromARGB(172, 255, 255, 255),
+                          child: Checkbox(
+                            checkColor: Colors.white,
+                            fillColor:
+                                MaterialStateProperty.resolveWith(getColor),
+                            value: isWindChecked,
+                            onChanged: (bool? value) async {
+                              isWindChecked = await confirmCheck(
+                                  code: 4, value: value!, check: isWindChecked);
+                            },
+                          ),
                         ),
+                        //mainElement name
+                        Container(
+                          height: 40,
+                          color: const Color.fromARGB(172, 255, 255, 255),
+                          child: SizedBox(
+                            // width: width * titleWidthPercent,
+                            child: Center(
+                              child: Text(
+                                "Vent  ",
+                                style: titleStyle,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 2),
+                //!EARTH
+                Stack(
+                  children: [
+                    Transform(
+                      alignment: Alignment.center,
+                      transform: Matrix4.rotationY(math.pi),
+                      child: Image.asset(
+                        MyImages().imagePath[image.earth]!,
+                        fit: BoxFit.fitWidth,
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          const SizedBox(height: 2),
-          //!EARTH
-          Stack(
-            children: [
-              Transform(
-                alignment: Alignment.center,
-                transform: Matrix4.rotationY(math.pi),
-                child: Image.asset(
-                  MyImages().imagePath[image.earth]!,
-                  fit: BoxFit.fitWidth,
-                ),
-              ),
-              Row(
-                children: [
-                  //checkbox
-                  Container(
-                    height: 40,
-                    color: const Color.fromARGB(172, 255, 255, 255),
-                    child: Checkbox(
-                      checkColor: Colors.white,
-                      fillColor: MaterialStateProperty.resolveWith(getColor),
-                      value: isEarthChecked,
-                      onChanged: (bool? value) async {
-                        isEarthChecked = await confirmCheck(
-                            code: 5, value: value!, check: isEarthChecked);
-                      },
-                    ),
-                  ),
-                  //mainElement name
-                  Container(
-                    height: 40,
-                    color: const Color.fromARGB(172, 255, 255, 255),
-                    child: SizedBox(
-                      // width: width * titleWidthPercent,
-                      child: Center(
-                        child: Text(
-                          "Terre  ",
-                          style: titleStyle,
+                    Row(
+                      children: [
+                        //checkbox
+                        Container(
+                          height: 40,
+                          color: const Color.fromARGB(172, 255, 255, 255),
+                          child: Checkbox(
+                            checkColor: Colors.white,
+                            fillColor:
+                                MaterialStateProperty.resolveWith(getColor),
+                            value: isEarthChecked,
+                            onChanged: (bool? value) async {
+                              isEarthChecked = await confirmCheck(
+                                  code: 5,
+                                  value: value!,
+                                  check: isEarthChecked);
+                            },
+                          ),
                         ),
-                      ),
+                        //mainElement name
+                        Container(
+                          height: 40,
+                          color: const Color.fromARGB(172, 255, 255, 255),
+                          child: SizedBox(
+                            // width: width * titleWidthPercent,
+                            child: Center(
+                              child: Text(
+                                "Terre  ",
+                                style: titleStyle,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
