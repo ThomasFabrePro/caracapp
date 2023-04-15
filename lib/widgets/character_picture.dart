@@ -49,14 +49,14 @@ class _CharacterPictureState extends State<CharacterPicture> {
                     setState(() {
                       String newPicture = "";
                       int rand = Random().nextInt(2);
-                      switch (rand) {
-                        case 0:
-                          newPicture = MyImages().imagePath[image.ninja4]!;
-                          break;
-                        case 1:
-                          newPicture = MyImages().imagePath[image.ninja5]!;
-                          break;
-                      }
+                      // switch (rand) {
+                      //   case 0:
+                      //     newPicture = MyImages().imagePath[image.ninja4]!;
+                      //     break;
+                      //   case 1:
+                      //     newPicture = MyImages().imagePath[image.ninja5]!;
+                      //     break;
+                      // }
                       widget.character.setPicture(newPicture);
                       widget.characterDao.updateCharacter(widget.character);
                     });

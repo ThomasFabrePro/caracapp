@@ -73,7 +73,7 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
             width: width * 0.1,
             child: GestureDetector(
               child: Image.asset(
-                MyImages().imagePath[image.buttonMinus]!,
+                "assets/front/minus_button.jpg",
                 color: Colors.red[900],
               ),
               onTap: () {
@@ -97,7 +97,7 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
                   });
                 },
                 child: Image.asset(
-                  MyImages().imagePath[image.buttonPlus]!,
+                  "assets/front/plus_button.jpg",
                   color: Colors.green[800],
                 )
 
