@@ -124,10 +124,9 @@ class _ElementBlocState extends State<ElementBloc> {
                   children: [
                     SizedBox(
                       width: width,
-                      child: FittedBox(
-                        child: Image.asset(
-                          "assets/elements/fire.jpg",
-                        ),
+                      child: Image.asset(
+                        "assets/elements/fire.jpg",
+                        fit: BoxFit.contain,
                       ),
                     ),
                     Row(
@@ -174,11 +173,9 @@ class _ElementBlocState extends State<ElementBloc> {
                       transform: Matrix4.rotationY(math.pi),
                       child: SizedBox(
                         width: width,
-                        child: FittedBox(
-                          fit: BoxFit.fill,
-                          child: Image.asset(
-                            "assets/elements/thunder.jpg",
-                          ),
+                        child: Image.asset(
+                          "assets/elements/thunder.jpg",
+                          fit: BoxFit.contain,
                         ),
                       ),
                     ),
@@ -224,10 +221,9 @@ class _ElementBlocState extends State<ElementBloc> {
                   children: [
                     SizedBox(
                       width: width,
-                      child: FittedBox(
-                        child: Image.asset(
-                          "assets/elements/water.jpg",
-                        ),
+                      child: Image.asset(
+                        "assets/elements/water.jpg",
+                        fit: BoxFit.contain,
                       ),
                     ),
                     Row(
@@ -276,10 +272,9 @@ class _ElementBlocState extends State<ElementBloc> {
                       transform: Matrix4.rotationY(math.pi),
                       child: SizedBox(
                         width: width,
-                        child: FittedBox(
-                          child: Image.asset(
-                            "assets/elements/wind.jpg",
-                          ),
+                        child: Image.asset(
+                          "assets/elements/wind.jpg",
+                          fit: BoxFit.contain,
                         ),
                       ),
                     ),
@@ -327,10 +322,9 @@ class _ElementBlocState extends State<ElementBloc> {
                       transform: Matrix4.rotationY(math.pi),
                       child: SizedBox(
                         width: width,
-                        child: FittedBox(
-                          child: Image.asset(
-                            "assets/elements/earth.jpg",
-                          ),
+                        child: Image.asset(
+                          "assets/elements/earth.jpg",
+                          fit: BoxFit.contain,
                         ),
                       ),
                     ),

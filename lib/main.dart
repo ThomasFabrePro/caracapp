@@ -5,7 +5,7 @@ import 'package:caracapp/database/db_helper.dart';
 import 'package:caracapp/models/character_model.dart';
 import 'package:caracapp/screens/add_character_page.dart';
 import 'package:caracapp/screens/my_character_page.dart';
-import 'package:caracapp/utils/assets.dart';
+// import 'package:caracapp/utils/assets.dart';
 import 'package:caracapp/utils/color_theme.dart';
 import 'package:caracapp/utils/data_access_object/character_dao.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +42,8 @@ Future<void> main() async {
   // }
   //!FAKE
   if (list.isEmpty) {
-    character = Character(id: fakeId, name: 'Ashley', picture: "");
+    character = Character(
+        id: fakeId, name: 'Ashley', picture: "assets/ninja_images/ninja_1.jpg");
     await characterDao.insertCharacter(character);
     runApp(MyApp(
       character: character,
