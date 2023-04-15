@@ -16,69 +16,74 @@ class _InfosBlocState extends State<InfosBloc> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Column(
-        children: [
-          MyTextField(
-            title: "Nom :",
-            hint: widget.character.name,
-            onChanged: (value) async {
-              if (value != "" && mounted) {
-                setState(() async {
-                  await widget.character.setName(value);
-                });
-              }
-            },
-            textFieldWidthPercent: widget.textFieldWidthPercent,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          MyTextField(
-            title: "Sexe :",
-            hint: widget.character.sexe,
-            onChanged: (value) {
-              if (value != "" && mounted) {
-                setState(() async {
-                  await widget.character.setSexe(value);
-                });
-              }
-            },
-            textFieldWidthPercent: widget.textFieldWidthPercent,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          MyTextField(
-            title: "Age :",
-            hint: "${widget.character.age}",
-            onChanged: (value) {
-              if (value != "" && mounted) {
-                setState(() async {
-                  await widget.character.setAge(value);
-                });
-              }
-            },
-            textFieldWidthPercent: widget.textFieldWidthPercent,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          MyTextField(
-            title: "Origine :",
-            hint: widget.character.origin,
-            onChanged: (value) {
-              if (value != "" && mounted) {
-                setState(() async {
-                  await widget.character.setOrigin(value);
-                });
-              }
-            },
-            textFieldWidthPercent: widget.textFieldWidthPercent,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-        ],
+      child: Container(
+        constraints: const BoxConstraints(
+          maxWidth: 1000,
+        ),
+        child: Column(
+          children: [
+            MyTextField(
+              title: "Nom :",
+              hint: widget.character.name,
+              onChanged: (value) async {
+                if (value != "" && mounted) {
+                  setState(() async {
+                    await widget.character.setName(value);
+                  });
+                }
+              },
+              textFieldWidthPercent: widget.textFieldWidthPercent,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            MyTextField(
+              title: "Sexe :",
+              hint: widget.character.sexe,
+              onChanged: (value) {
+                if (value != "" && mounted) {
+                  setState(() async {
+                    await widget.character.setSexe(value);
+                  });
+                }
+              },
+              textFieldWidthPercent: widget.textFieldWidthPercent,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            MyTextField(
+              title: "Age :",
+              hint: "${widget.character.age}",
+              onChanged: (value) {
+                if (value != "" && mounted) {
+                  setState(() async {
+                    await widget.character.setAge(value);
+                  });
+                }
+              },
+              textFieldWidthPercent: widget.textFieldWidthPercent,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            MyTextField(
+              title: "Origine :",
+              hint: widget.character.origin,
+              onChanged: (value) {
+                if (value != "" && mounted) {
+                  setState(() async {
+                    await widget.character.setOrigin(value);
+                  });
+                }
+              },
+              textFieldWidthPercent: widget.textFieldWidthPercent,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+          ],
+        ),
       ),
     );
   }

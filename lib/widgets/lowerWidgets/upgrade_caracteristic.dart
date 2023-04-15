@@ -33,11 +33,14 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
     } else {
       bufferText = "($buffer)";
     }
-    double width = MediaQuery.of(context).size.width;
+    double width = (MediaQuery.of(context).size.width).clamp(0, 1000);
     return Padding(
       padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-      child: SizedBox(
+      child: Container(
         height: 35,
+        constraints: const BoxConstraints(
+          maxWidth: 1000,
+        ),
         child: Row(children: [
           SizedBox(
             width: width * 0.38,

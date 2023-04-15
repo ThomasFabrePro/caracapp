@@ -42,11 +42,13 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
             padding:
                 const EdgeInsets.only(bottom: 16.0, left: 16.0, right: 16.0),
             child: Container(
+              constraints: const BoxConstraints(
+                maxWidth: 1000,
+              ),
               width: width,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
-                boxShadow: [MyDecoration.boxShadow],
               ),
               child: Padding(
                   padding: const EdgeInsets.all(8.0),

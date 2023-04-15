@@ -25,7 +25,7 @@ class _MyTextFieldState extends State<MyTextField> {
   @override
   Widget build(BuildContext context) {
     // double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    double width = (MediaQuery.of(context).size.width).clamp(0, 1000);
     return Row(
       children: [
         SizedBox(

@@ -97,7 +97,10 @@ class _JutsuBlocState extends State<JutsuBloc> {
         ),
         Padding(
           padding: const EdgeInsets.only(bottom: 16.0, left: 16.0, right: 16.0),
-          child: SizedBox(
+          child: Container(
+            constraints: const BoxConstraints(
+              maxWidth: 1000,
+            ),
             width: width,
             // decoration: BoxDecoration(
             //   // color: Colors.white,

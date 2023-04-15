@@ -29,7 +29,7 @@ class _AddCharacterPageState extends State<AddCharacterPage> {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
+    double width = (MediaQuery.of(context).size.width);
     double height = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
@@ -39,27 +39,34 @@ class _AddCharacterPageState extends State<AddCharacterPage> {
         body: Container(
           height: height,
           width: width,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: [
-                // Color.fromARGB(255, 73, 223, 78),
-                // Color.fromARGB(255, 33, 243, 191),
-                Color.fromARGB(255, 190, 0, 0),
-                Color.fromARGB(255, 0, 0, 0),
-              ],
-            ),
-          ),
+          color: Color.fromARGB(255, 0, 0, 0),
+          // color: Colors.green,
+          // decoration: const BoxDecoration(
+          // gradient: LinearGradient(
+          //   begin: Alignment.topRight,
+          //   end: Alignment.bottomLeft,
+          //   colors: [
+          //     // Color.fromARGB(255, 73, 223, 78),
+          //     // Color.fromARGB(255, 33, 243, 191),
+          //     Color.fromARGB(255, 190, 0, 0),
+          //     Color.fromARGB(255, 0, 0, 0),
+          //   ],
+          // ),
+          // ),
           child: Stack(
             children: [
-              SizedBox(
-                width: width,
-                height: height,
-                child: FittedBox(
-                  fit: BoxFit.fill,
-                  child: Image.asset(
-                    "assets/front/background2.jpg",
+              Center(
+                child: Container(
+                  constraints: const BoxConstraints(
+                    maxWidth: 1000,
+                  ),
+                  width: width,
+                  height: height,
+                  child: FittedBox(
+                    fit: BoxFit.fitWidth,
+                    child: Image.asset(
+                      "assets/front/background2.jpg",
+                    ),
                   ),
                 ),
               ),

@@ -84,8 +84,9 @@ class _AttributeBlocState extends State<AttributeBloc> {
           padding: const EdgeInsets.only(bottom: 16.0, left: 16.0, right: 16.0),
           child: Container(
             width: width,
-            // height: 200,
-            // color: Colors.white,
+            constraints: const BoxConstraints(
+              maxWidth: 1000,
+            ),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),

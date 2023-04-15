@@ -23,7 +23,7 @@ class _PhotoBlocState extends State<PhotoBloc> {
 
   @override
   Widget build(BuildContext context) {
-    final double width = MediaQuery.of(context).size.width;
+    final double width = (MediaQuery.of(context).size.width).clamp(0, 1000);
     return Column(
       children: [
         Padding(
@@ -31,94 +31,101 @@ class _PhotoBlocState extends State<PhotoBloc> {
               bottom: 8.0,
               top: 8.0,
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: 8.0),
-                  child: Text("Photo :",
+            child: Container(
+              constraints: const BoxConstraints(
+                maxWidth: 1000,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text("Photo :",
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       )),
-                ),
 
-                displayPhotosGrid
-                    ? const SizedBox()
-                    : Center(
-                        child: GestureDetector(
-                        onTap: () => setState(() {
-                          displayPhotosGrid = true;
-                        }),
-                        child: SizedBox(
-                            width: width * 0.4,
-                            height: width * 0.4,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Image.asset(widget.character.picture),
-                            )),
-                      )),
+                  displayPhotosGrid
+                      ? const SizedBox()
+                      : Center(
+                          child: GestureDetector(
+                          onTap: () => setState(() {
+                            displayPhotosGrid = true;
+                          }),
+                          child: SizedBox(
+                              width: width * 0.4,
+                              height: width * 0.4,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Image.asset(widget.character.picture),
+                              )),
+                        )),
 
-                //!Pour centrer la photo
-                const Text("Photo :",
-                    style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.transparent)),
-              ],
+                  //!Pour centrer la photo
+                  const Text("Photo :",
+                      style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.transparent)),
+                ],
+              ),
             )),
         displayPhotosGrid
-            ? GridView.count(
-                crossAxisCount: 3,
-                shrinkWrap: true,
-                children: [
-                  PickImage(
-                      imagePath: "assets/ninja_images/ninja_1.jpg",
-                      onTap: (String value) {
-                        updatePhoto(value);
-                      }),
-                  PickImage(
-                      imagePath: "assets/ninja_images/ninja_2.jpg",
-                      onTap: (String value) {
-                        updatePhoto(value);
-                      }),
-                  PickImage(
-                      imagePath: "assets/ninja_images/ninja_3.jpg",
-                      onTap: (String value) {
-                        updatePhoto(value);
-                      }),
-                  PickImage(
-                      imagePath: "assets/ninja_images/ninja_4.jpg",
-                      onTap: (String value) {
-                        updatePhoto(value);
-                      }),
-                  PickImage(
-                      imagePath: "assets/ninja_images/ninja_5.jpg",
-                      onTap: (String value) {
-                        updatePhoto(value);
-                      }),
-                  PickImage(
-                      imagePath: "assets/ninja_images/ninja_6.jpg",
-                      onTap: (String value) {
-                        updatePhoto(value);
-                      }),
-                  PickImage(
-                      imagePath: "assets/ninja_images/ninja_7.jpg",
-                      onTap: (String value) {
-                        updatePhoto(value);
-                      }),
-                  PickImage(
-                      imagePath: "assets/ninja_images/ninja_8.jpg",
-                      onTap: (String value) {
-                        updatePhoto(value);
-                      }),
-                  PickImage(
-                      imagePath: "assets/ninja_images/ninja_9.jpg",
-                      onTap: (String value) {
-                        updatePhoto(value);
-                      }),
-                ],
+            ? Container(
+                constraints: const BoxConstraints(
+                  maxWidth: 1000,
+                ),
+                child: GridView.count(
+                  crossAxisCount: 3,
+                  shrinkWrap: true,
+                  children: [
+                    PickImage(
+                        imagePath: "assets/ninja_images/ninja_1.jpg",
+                        onTap: (String value) {
+                          updatePhoto(value);
+                        }),
+                    PickImage(
+                        imagePath: "assets/ninja_images/ninja_2.jpg",
+                        onTap: (String value) {
+                          updatePhoto(value);
+                        }),
+                    PickImage(
+                        imagePath: "assets/ninja_images/ninja_3.jpg",
+                        onTap: (String value) {
+                          updatePhoto(value);
+                        }),
+                    PickImage(
+                        imagePath: "assets/ninja_images/ninja_4.jpg",
+                        onTap: (String value) {
+                          updatePhoto(value);
+                        }),
+                    PickImage(
+                        imagePath: "assets/ninja_images/ninja_5.jpg",
+                        onTap: (String value) {
+                          updatePhoto(value);
+                        }),
+                    PickImage(
+                        imagePath: "assets/ninja_images/ninja_6.jpg",
+                        onTap: (String value) {
+                          updatePhoto(value);
+                        }),
+                    PickImage(
+                        imagePath: "assets/ninja_images/ninja_7.jpg",
+                        onTap: (String value) {
+                          updatePhoto(value);
+                        }),
+                    PickImage(
+                        imagePath: "assets/ninja_images/ninja_8.jpg",
+                        onTap: (String value) {
+                          updatePhoto(value);
+                        }),
+                    PickImage(
+                        imagePath: "assets/ninja_images/ninja_9.jpg",
+                        onTap: (String value) {
+                          updatePhoto(value);
+                        }),
+                  ],
+                ),
               )
             : const SizedBox(),
       ],
