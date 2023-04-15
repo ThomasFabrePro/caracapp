@@ -364,9 +364,9 @@ class _JutsuCardState extends State<JutsuCard> {
         // print("TEST touché");
       }),
       child: AnimatedSwitcher(
-        duration: Duration(milliseconds: 200),
+        duration: Duration(milliseconds: 500),
         transitionBuilder: __transitionBuilder,
-        // layoutBuilder: (widget, list) => Stack(children: [widget!, ...list]),
+        layoutBuilder: (widget, list) => Stack(children: [widget!, ...list]),
         child: _showFrontSide ? _buildFront() : _buildRear(),
         // switchInCurve: Curves.easeInBack,
         // switchOutCurve: Curves.easeOutBack,
@@ -386,7 +386,7 @@ class _JutsuCardState extends State<JutsuCard> {
         final value =
             isUnder ? min(rotateAnim.value, pi / 2) : rotateAnim.value;
         return Transform(
-          transform: Matrix4.rotationY(value)..setEntry(3, 0, tilt),
+          transform: Matrix4.rotationX(value)..setEntry(0, 3, tilt),
           child: widget,
           alignment: Alignment.center,
         );

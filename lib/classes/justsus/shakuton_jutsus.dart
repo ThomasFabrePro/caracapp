@@ -8,7 +8,7 @@ class ProtectiveBalls extends Jutsu {
           name: "Boules Protectrices",
           description:
               "Fait tournoyer des boules de gaz défensives autour de vous",
-          image: "assets/jutsus/shakuton/black_thunder.jpg",
+          image: "assets/jutsus/shakuton/protective_balls.jpg",
           ninjutsuMinimum: 40,
           malus: 0,
           chakraCost: 10,
