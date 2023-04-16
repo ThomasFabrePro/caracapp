@@ -42,7 +42,8 @@ class _JutsuBlocState extends State<JutsuBloc> {
   void initState() {
     super.initState();
     character = widget.character;
-
+    main = widget.character.mainElement; //important pour le setState
+    second = widget.character.secondElement; //important pour le setState
     timerRebuild = Timer.periodic(const Duration(seconds: 2), (timer) async {
       // await Future.delayed(const Duration(seconds: 2));
       Character newCharacter = await widget.character.getCharacter();
@@ -51,6 +52,7 @@ class _JutsuBlocState extends State<JutsuBloc> {
         setState(() {
           character = newCharacter;
         });
+        print("Test setState");
       }
     });
   }
@@ -63,6 +65,7 @@ class _JutsuBlocState extends State<JutsuBloc> {
 
   @override
   Widget build(BuildContext context) {
+    print("Test build");
     double width = MediaQuery.of(context).size.width;
     main = widget.character.mainElement; //important pour le setState
     second = widget.character.secondElement; //important pour le setState

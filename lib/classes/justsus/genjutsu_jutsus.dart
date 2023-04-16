@@ -51,7 +51,8 @@ class Execution extends Jutsu {
   Execution()
       : super(
           name: "Exécution",
-          description: "La victime vit sa propre mort à travers une illusion",
+          description:
+              "La victime vit sa propre mort à travers une illusion ce qui laisse un lourd traumatisme",
           image: "assets/jutsus/genjutsu/execution.jpg",
           genjutsuMinimum: 60,
           ninjutsuMinimum:

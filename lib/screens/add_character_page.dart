@@ -1,4 +1,6 @@
+import 'package:caracapp/main.dart';
 import 'package:caracapp/models/character_model.dart';
+import 'package:caracapp/screens/my_character_page.dart';
 import 'package:caracapp/utils/assets.dart';
 import 'package:caracapp/utils/data_access_object/character_dao.dart';
 import 'package:caracapp/widgets/blocs/attribute_bloc.dart';
@@ -14,9 +16,7 @@ import 'package:flutter/material.dart';
 
 class AddCharacterPage extends StatefulWidget {
   final Character character;
-  final CharacterDao characterDao;
-  const AddCharacterPage(
-      {super.key, required this.characterDao, required this.character});
+  const AddCharacterPage({super.key, required this.character});
 
   @override
   State<AddCharacterPage> createState() => _AddCharacterPageState();
@@ -26,6 +26,12 @@ class _AddCharacterPageState extends State<AddCharacterPage> {
   double textFieldWidthPercent = 0.65;
   bool displayPhotosGrid = false;
   ScrollController scrollController = ScrollController();
+  @override
+  void dispose() {
+    super.dispose();
+    scrollController.dispose();
+    print("TEST disposed");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,19 +46,6 @@ class _AddCharacterPageState extends State<AddCharacterPage> {
           height: height,
           width: width,
           color: Color.fromARGB(255, 0, 0, 0),
-          // color: Colors.green,
-          // decoration: const BoxDecoration(
-          // gradient: LinearGradient(
-          //   begin: Alignment.topRight,
-          //   end: Alignment.bottomLeft,
-          //   colors: [
-          //     // Color.fromARGB(255, 73, 223, 78),
-          //     // Color.fromARGB(255, 33, 243, 191),
-          //     Color.fromARGB(255, 190, 0, 0),
-          //     Color.fromARGB(255, 0, 0, 0),
-          //   ],
-          // ),
-          // ),
           child: Stack(
             children: [
               Center(
@@ -78,80 +71,106 @@ class _AddCharacterPageState extends State<AddCharacterPage> {
                       InfosBloc(widget.character, textFieldWidthPercent),
 
                       PhotoBloc(widget.character),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 20),
                       Divider(
-                        endIndent: width * 0.1,
-                        indent: width * 0.1,
-                        color: Colors.white,
-                        thickness: 2,
-                      ),
+                          endIndent: width * 0.1,
+                          indent: width * 0.1,
+                          color: Colors.white,
+                          thickness: 2),
 
                       CaracteristicsUpgradeBloc(character: widget.character),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 20),
                       Divider(
-                        endIndent: width * 0.1,
-                        indent: width * 0.1,
-                        color: Colors.white,
-                        thickness: 2,
-                      ),
+                          endIndent: width * 0.1,
+                          indent: width * 0.1,
+                          color: Colors.white,
+                          thickness: 2),
 
                       AttributeBloc(
                           character: widget.character,
                           scrollController: scrollController),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 20),
                       Divider(
-                        endIndent: width * 0.1,
-                        indent: width * 0.1,
-                        color: Colors.white,
-                        thickness: 2,
-                      ),
+                          endIndent: width * 0.1,
+                          indent: width * 0.1,
+                          color: Colors.white,
+                          thickness: 2),
 
                       SpecialityBloc(character: widget.character),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 20),
                       Divider(
-                        endIndent: width * 0.1,
-                        indent: width * 0.1,
-                        color: Colors.white,
-                        thickness: 2,
-                      ),
+                          endIndent: width * 0.1,
+                          indent: width * 0.1,
+                          color: Colors.white,
+                          thickness: 2),
 
                       ElementBloc(character: widget.character),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 20),
                       Divider(
-                        endIndent: width * 0.1,
-                        indent: width * 0.1,
-                        color: Colors.white,
-                        thickness: 2,
-                      ),
+                          endIndent: width * 0.1,
+                          indent: width * 0.1,
+                          color: Colors.white,
+                          thickness: 2),
 
                       JutsuBloc(character: widget.character),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Divider(
-                        endIndent: width * 0.1,
-                        indent: width * 0.1,
-                        color: Colors.white,
-                        thickness: 2,
-                      ),
+                      const SizedBox(height: 20),
 
-                      InventoryBloc(character: widget.character),
-                      const SizedBox(
-                        height: 20,
+                      ValidateButton(
+                        character: widget.character,
                       ),
+                      const SizedBox(height: 50),
                     ],
                   )),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ValidateButton extends StatefulWidget {
+  final Character character;
+  const ValidateButton({
+    super.key,
+    required this.character,
+  });
+
+  @override
+  State<ValidateButton> createState() => _ValidateButtonState();
+}
+
+class _ValidateButtonState extends State<ValidateButton> {
+  @override
+  Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    return Container(
+      width: width * 0.5,
+      height: height * 0.07,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          color: Colors.white,
+          width: 2,
+        ),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        child: ElevatedButton(
+          onPressed: () {
+            runApp(MyApp(
+              character: widget.character,
+              addCharacter: false,
+            ));
+          },
+          child: const Center(
+            child: Text(
+              'TERMINER',
+              style: TextStyle(
+                fontSize: 18,
+              ),
+            ),
           ),
         ),
       ),
