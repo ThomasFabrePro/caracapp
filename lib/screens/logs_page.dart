@@ -1,19 +1,6 @@
-import 'package:caracapp/main.dart';
 import 'package:caracapp/models/character_model.dart';
-import 'package:caracapp/screens/my_character_page.dart';
 import 'package:caracapp/utils/assets.dart';
 import 'package:caracapp/utils/color_theme.dart';
-import 'package:caracapp/utils/data_access_object/character_dao.dart';
-import 'package:caracapp/widgets/blocs/attribute_bloc.dart';
-import 'package:caracapp/widgets/blocs/caracteristics_bloc.dart';
-import 'package:caracapp/widgets/blocs/caracteristics_upgrade_bloc.dart';
-import 'package:caracapp/widgets/blocs/elements_bloc.dart';
-import 'package:caracapp/widgets/blocs/infos_bloc.dart';
-import 'package:caracapp/widgets/blocs/inventory_bloc.dart';
-import 'package:caracapp/widgets/blocs/jutsus_bloc.dart';
-import 'package:caracapp/widgets/blocs/photo_bloc.dart';
-import 'package:caracapp/widgets/blocs/speciality_bloc.dart';
-import 'package:caracapp/widgets/lowerWidgets/my_text_field.dart';
 import 'package:flutter/material.dart';
 
 class LogsPage extends StatefulWidget {
@@ -68,7 +55,10 @@ class _LogsPageState extends State<LogsPage> {
               child: SingleChildScrollView(
                 child: Padding(
                   padding: EdgeInsets.only(
-                      bottom: 16.0, left: width * 0.1, right: width * 0.1),
+                      bottom: 16.0,
+                      left: width * 0.1,
+                      right: width * 0.1,
+                      top: 16),
                   child: widget.character.logs != ""
                       ? FittedBox(
                           child: Container(
@@ -83,10 +73,34 @@ class _LogsPageState extends State<LogsPage> {
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Text(widget.character.logs,
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                  )),
+                              child: Stack(
+                                children: [
+                                  Text(widget.character.logs,
+                                      style: const TextStyle(
+                                        color: Colors.black,
+                                      )),
+                                  Positioned(
+                                    right: 0,
+                                    top: 0,
+                                    child: Container(
+                                      width: 50,
+                                      height: 50,
+                                      constraints: BoxConstraints(
+                                          maxWidth: 100, maxHeight: 100),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            widget.character.logs = "";
+                                          });
+                                        },
+                                        child: Image.asset(
+                                            "assets/front/trash.jpg",
+                                            color: Colors.black),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         )
