@@ -74,6 +74,8 @@ class _InventoryBlocState extends State<InventoryBloc> {
                                 child: TextFormField(
                                   initialValue: widget.character.inventory,
                                   maxLines: null,
+                                  textInputAction: TextInputAction.done,
+                                  keyboardType: TextInputType.multiline,
                                   style: const TextStyle(
                                     fontSize: 18,
                                     color: Colors.black,
@@ -89,6 +91,11 @@ class _InventoryBlocState extends State<InventoryBloc> {
                                   ),
                                   onChanged: (value) async {
                                     widget.character.setInventory(value);
+                                  },
+                                  onEditingComplete: () {
+                                    widget.character.addToLogsAndUpdate(
+                                        "Inventaire mis à jour :\n${widget.character.inventory}");
+                                    FocusScope.of(context).unfocus();
                                   },
                                 ),
                               ),

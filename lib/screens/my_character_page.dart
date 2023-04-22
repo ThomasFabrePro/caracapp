@@ -6,6 +6,7 @@ import 'package:caracapp/widgets/blocs/caracteristics_bloc.dart';
 import 'package:caracapp/widgets/blocs/infos_bloc.dart';
 import 'package:caracapp/widgets/blocs/inventory_bloc.dart';
 import 'package:caracapp/widgets/blocs/jutsus_bloc.dart';
+import 'package:caracapp/widgets/blocs/navigator_bloc.dart';
 import 'package:caracapp/widgets/blocs/photo_bloc.dart';
 import 'package:flutter/material.dart';
 
@@ -35,27 +36,28 @@ class _MyCharacterPageState extends State<MyCharacterPage> {
           backgroundColor: MyColorTheme.colorCustom,
           title: FittedBox(
               child: Text(
-                  "${widget.character.name} de ${widget.character.origin}\n${widget.character.sexe} - ${widget.character.age} ans")),
-          leading: GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => LogsPage(
-                          character: widget.character,
-                        )),
-              );
-              deactivate();
-            },
-            child: Padding(
-              padding:
-                  const EdgeInsets.only(top: 10.0, left: 10.0, bottom: 10.0),
-              child: Image.asset(
-                "assets/front/paper_icon.jpg",
-                color: Colors.white,
-              ),
-            ),
-          ),
+                  "${widget.character.name} de ${widget.character.origin}\n${widget.character.sexe} - ${widget.character.age} ans - level ${widget.character.level}")),
+          leading: null,
+          //   GestureDetector(
+          //     onTap: () {
+          //       Navigator.push(
+          //         context,
+          //         MaterialPageRoute(
+          //             builder: (context) => LogsPage(
+          //                   character: widget.character,
+          //                 )),
+          //       );
+          //       deactivate();
+          //     },
+          //     child: Padding(
+          //       padding:
+          //           const EdgeInsets.only(top: 10.0, left: 10.0, bottom: 10.0),
+          //       child: Image.asset(
+          //         "assets/front/paper_icon.jpg",
+          //         color: Colors.white,
+          //       ),
+          //     ),
+          //   ),
         ),
         body: Container(
           height: height,
@@ -89,6 +91,13 @@ class _MyCharacterPageState extends State<MyCharacterPage> {
                       indent: width * 0.1,
                       color: Colors.white,
                       thickness: 2),
+                  NavigatorBloc(character: widget.character),
+                  const SizedBox(height: 20),
+                  Divider(
+                      endIndent: width * 0.1,
+                      indent: width * 0.1,
+                      color: Colors.white,
+                      thickness: 2),
                   CaracteristicsBloc(
                     character: widget.character,
                     isEditable: false,
@@ -108,7 +117,7 @@ class _MyCharacterPageState extends State<MyCharacterPage> {
                       thickness: 2),
                   JutsuBloc(
                       character: widget.character,
-                      hideUnavailableJutsus: true,
+                      // hideUnavailableJutsus: true,
                       updateBlocOntimer: false),
                   const SizedBox(height: 20),
                 ],

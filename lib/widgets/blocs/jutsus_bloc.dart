@@ -13,11 +13,11 @@ import 'package:flutter/material.dart';
 class JutsuBloc extends StatefulWidget {
   final Character character;
   final bool updateBlocOntimer;
-  final bool hideUnavailableJutsus;
+  // final bool hideUnavailableJutsus;
   const JutsuBloc(
       {super.key,
       this.updateBlocOntimer = true,
-      this.hideUnavailableJutsus = true,
+      // this.hideUnavailableJutsus = true,
       required this.character});
 
   @override
@@ -27,6 +27,7 @@ class JutsuBloc extends StatefulWidget {
 class _JutsuBlocState extends State<JutsuBloc> {
   Character character = Character();
   double titleWidthPercent = 0.33;
+  bool hideUnavailableJutsus = false;
   int maxCheckCounter = 2;
   int checkCounter = 0;
   int noSpeciality = 0;
@@ -46,10 +47,23 @@ class _JutsuBlocState extends State<JutsuBloc> {
   int second = 0;
   int ninjutsuValue = 0;
   int genjutsuValue = 0;
+  Color getColor(Set<MaterialState> states) {
+    const Set<MaterialState> interactiveStates = <MaterialState>{
+      MaterialState.pressed,
+      MaterialState.hovered,
+      MaterialState.focused,
+    };
+    if (states.any(interactiveStates.contains)) {
+      return Colors.red;
+    }
+    return MyDecoration.bloodColor;
+  }
+
   @override
   void initState() {
     super.initState();
     character = widget.character;
+    // hideUnavailableJutsus = hideUnavailableJutsus;
     setUsefullValues(); //important pour le setState
     if (widget.updateBlocOntimer) {
       timerRebuild = Timer.periodic(const Duration(seconds: 2), (timer) async {
@@ -88,7 +102,7 @@ class _JutsuBlocState extends State<JutsuBloc> {
       for (var jutsu in jutsusLists[i]) {
         if (!(jutsu.ninjutsuMinimum >
                 widget.character.ninjutsu + widget.character.ninjutsuBuffer &&
-            widget.hideUnavailableJutsus)) {
+            hideUnavailableJutsus)) {
           jutsuCardsList[i].add(
             JutsuCard(
               jutsu: jutsu,
@@ -103,7 +117,7 @@ class _JutsuBlocState extends State<JutsuBloc> {
       //! Ajout des Genjutsus
       if (!(jutsu.genjutsuMinimum >
               widget.character.genjutsu + widget.character.genjutsuBuffer &&
-          widget.hideUnavailableJutsus)) {
+          hideUnavailableJutsus)) {
         jutsuCardsList[i].add(JutsuCard(
           jutsu: jutsu,
           statValue:
@@ -135,14 +149,69 @@ class _JutsuBlocState extends State<JutsuBloc> {
     fillLists();
     return Column(
       children: [
-        const Padding(
-          padding: EdgeInsets.only(top: 10),
-          child: Text("Jutsus",
-              style: TextStyle(
-                fontSize: 22,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              )),
+        Container(
+          constraints: const BoxConstraints(
+            maxWidth: 1000,
+          ),
+          width: width,
+          child: Stack(
+            children: [
+              const Center(
+                child: Padding(
+                  padding: EdgeInsets.only(top: 10),
+                  child: Text("Jutsus",
+                      style: TextStyle(
+                        fontSize: 22,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      )),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 16.0, top: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    //checkbox
+                    // Text("Jutsus",
+                    //     style: TextStyle(
+                    //       fontSize: 22,
+                    //       color: Colors.white,
+                    //       fontWeight: FontWeight.bold,
+                    //     )),
+                    Container(
+                      height: 40,
+                      color: const Color.fromARGB(172, 255, 255, 255),
+                      child: Checkbox(
+                        checkColor: Colors.white,
+                        fillColor: MaterialStateProperty.resolveWith(getColor),
+                        value: !hideUnavailableJutsus,
+                        onChanged: (bool? value) async {
+                          setState(() {
+                            hideUnavailableJutsus = !hideUnavailableJutsus;
+                          });
+                          // await widget.character.setHideUnavailableJutsus(value);
+                        },
+                      ),
+                    ),
+                    //mainElement name
+                    Container(
+                      height: 40,
+                      color: const Color.fromARGB(172, 255, 255, 255),
+                      child: SizedBox(
+                        child: Center(
+                          child: Text(
+                            "Tous  ",
+                            style: titleStyle,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
         Padding(
           padding: const EdgeInsets.only(bottom: 16.0, left: 16.0, right: 16.0),
@@ -156,28 +225,22 @@ class _JutsuBlocState extends State<JutsuBloc> {
             //   borderRadius: BorderRadius.circular(10),
             //   // boxShadow: [MyDecoration.boxShadow],
             // ),
-            child: Padding(
-              padding: const EdgeInsets.only(
-                top: 8.0,
-              ),
-              child: Column(
-                children: [
-                  jutsuCardsList[0].isNotEmpty
-                      ? CardsList(
-                          element: mainElement, cards: jutsuCardsList[0])
-                      : const SizedBox(),
-                  jutsuCardsList[1].isNotEmpty
-                      ? CardsList(
-                          element: secondElement, cards: jutsuCardsList[1])
-                      : const SizedBox(),
-                  jutsuCardsList[2].isNotEmpty
-                      ? CardsList(element: kekkai, cards: jutsuCardsList[2])
-                      : const SizedBox(),
-                  jutsuCardsList[3].isNotEmpty
-                      ? CardsList(element: genjutsu, cards: jutsuCardsList[3])
-                      : const SizedBox(),
-                ],
-              ),
+            child: Column(
+              children: [
+                jutsuCardsList[0].isNotEmpty
+                    ? CardsList(element: mainElement, cards: jutsuCardsList[0])
+                    : const SizedBox(),
+                jutsuCardsList[1].isNotEmpty
+                    ? CardsList(
+                        element: secondElement, cards: jutsuCardsList[1])
+                    : const SizedBox(),
+                jutsuCardsList[2].isNotEmpty
+                    ? CardsList(element: kekkai, cards: jutsuCardsList[2])
+                    : const SizedBox(),
+                jutsuCardsList[3].isNotEmpty
+                    ? CardsList(element: genjutsu, cards: jutsuCardsList[3])
+                    : const SizedBox(),
+              ],
             ),
           ),
         ),
