@@ -2,21 +2,20 @@ import 'package:caracapp/models/character_model.dart';
 import 'package:caracapp/widgets/lowerWidgets/upgrade_caracteristic.dart';
 import 'package:flutter/material.dart';
 
-class CaracteristicsUpgradeBloc extends StatefulWidget {
+class CaracteristicsBloc extends StatefulWidget {
   final Character character;
   final bool isEditable;
-  const CaracteristicsUpgradeBloc({
+  const CaracteristicsBloc({
     super.key,
     required this.character,
     this.isEditable = true,
   });
 
   @override
-  State<CaracteristicsUpgradeBloc> createState() =>
-      _CaracteristicsUpgradeBlocState();
+  State<CaracteristicsBloc> createState() => _CaracteristicsBlocState();
 }
 
-class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
+class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
   late bool isEditable;
   @override
   void initState() {
@@ -67,9 +66,20 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             UpgradeCaracteristic(
-                                title: "HP Max",
+                                title: "HP max",
                                 stat: widget.character.hp,
-                                isEditable: isEditable,
+                                isEditable: true,
+                                buffer: widget.character.hpBuffer,
+                                onTap: (int value) async {
+                                  widget.character.hp += value;
+                                  // (widget.character.hp + value).clamp(30, 100);
+                                  await widget.character
+                                      .setHp(widget.character.hp);
+                                }),
+                            UpgradeCaracteristic(
+                                title: "HP",
+                                stat: widget.character.hp,
+                                isEditable: true,
                                 buffer: widget.character.hpBuffer,
                                 onTap: (int value) async {
                                   widget.character.hp += value;
@@ -113,7 +123,7 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                                       widget.character.perception);
                                 }),
                             UpgradeCaracteristic(
-                                title: "Chakra Max",
+                                title: "Chakra",
                                 isEditable: isEditable,
                                 stat: widget.character.chakra,
                                 buffer: widget.character.chakraBuffer,

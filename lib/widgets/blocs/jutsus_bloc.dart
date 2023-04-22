@@ -12,7 +12,13 @@ import 'package:flutter/material.dart';
 
 class JutsuBloc extends StatefulWidget {
   final Character character;
-  const JutsuBloc({super.key, required this.character});
+  final bool updateBlocOntimer;
+  final bool hideUnavailableJutsus;
+  const JutsuBloc(
+      {super.key,
+      this.updateBlocOntimer = true,
+      this.hideUnavailableJutsus = true,
+      required this.character});
 
   @override
   State<JutsuBloc> createState() => _JutsuBlocState();
@@ -44,17 +50,52 @@ class _JutsuBlocState extends State<JutsuBloc> {
     character = widget.character;
     main = widget.character.mainElement; //important pour le setState
     second = widget.character.secondElement; //important pour le setState
-    timerRebuild = Timer.periodic(const Duration(seconds: 2), (timer) async {
-      // await Future.delayed(const Duration(seconds: 2));
-      Character newCharacter = await widget.character.getCharacter();
-      if (newCharacter.mainElement != main ||
-          newCharacter.secondElement != second) {
-        setState(() {
-          character = newCharacter;
-        });
-        print("Test setState");
+    if (widget.updateBlocOntimer) {
+      timerRebuild = Timer.periodic(const Duration(seconds: 2), (timer) async {
+        // await Future.delayed(const Duration(seconds: 2));
+        Character newCharacter = await widget.character.getCharacter();
+        if (newCharacter.mainElement != main ||
+            newCharacter.secondElement != second) {
+          setState(() {
+            character = newCharacter;
+          });
+          print("Test setState");
+        }
+      });
+    }
+  }
+
+  void fillLists() {
+    jutsuCardsList = [[], [], [], []];
+    int i;
+    for (i = 0; i < jutsusLists.length; i++) {
+      for (var jutsu in jutsusLists[i]) {
+        if (!(jutsu.ninjutsuMinimum >
+                widget.character.ninjutsu + widget.character.ninjutsuBuffer &&
+            widget.hideUnavailableJutsus)) {
+          jutsuCardsList[i].add(
+            JutsuCard(
+              jutsu: jutsu,
+              statValue:
+                  widget.character.ninjutsu + widget.character.ninjutsuBuffer,
+            ),
+          );
+        }
       }
-    });
+    }
+    for (var jutsu in genjutsu.jutsus) {
+      //! Ajout des Genjutsus
+      if (!(jutsu.genjutsuMinimum >
+              widget.character.genjutsu + widget.character.genjutsuBuffer &&
+          widget.hideUnavailableJutsus)) {
+        jutsuCardsList[i].add(JutsuCard(
+          jutsu: jutsu,
+          statValue:
+              widget.character.genjutsu + widget.character.genjutsuBuffer,
+          isGenjutsu: true,
+        ));
+      }
+    }
   }
 
   @override
@@ -65,7 +106,6 @@ class _JutsuBlocState extends State<JutsuBloc> {
 
   @override
   Widget build(BuildContext context) {
-    print("Test build");
     double width = MediaQuery.of(context).size.width;
     main = widget.character.mainElement; //important pour le setState
     second = widget.character.secondElement; //important pour le setState
@@ -77,30 +117,7 @@ class _JutsuBlocState extends State<JutsuBloc> {
       secondElement.jutsus,
       kekkai.jutsus,
     ];
-    jutsuCardsList = [[], [], [], []];
-    int i;
-    for (i = 0; i < jutsusLists.length; i++) {
-      for (var jutsu in jutsusLists[i]) {
-        jutsuCardsList[i].add(
-          JutsuCard(
-            jutsu: jutsu,
-            statValue:
-                widget.character.ninjutsu + widget.character.ninjutsuBuffer,
-          ),
-        );
-      }
-    }
-    for (var jutsu in genjutsu.jutsus) {
-      //! Ajout des Genjutsus
-      jutsuCardsList[i].add(
-        JutsuCard(
-          jutsu: jutsu,
-          statValue:
-              widget.character.genjutsu + widget.character.genjutsuBuffer,
-          isGenjutsu: true,
-        ),
-      );
-    }
+    fillLists();
     return Column(
       children: [
         const Padding(

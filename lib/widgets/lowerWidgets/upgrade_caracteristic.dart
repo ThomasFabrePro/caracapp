@@ -7,9 +7,11 @@ class UpgradeCaracteristic extends StatefulWidget {
   final int buffer;
   final Color? fontColor;
   final Function? onTap;
+  final bool isEditable;
   const UpgradeCaracteristic(
       {super.key,
       this.fontColor,
+      required this.isEditable,
       required this.title,
       required this.onTap,
       required this.stat,
@@ -23,6 +25,13 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
   int stat = 0;
   int buffer = 0;
   String bufferText = "";
+  late bool isEditable;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    isEditable = widget.isEditable;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,78 +45,85 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
     double width = (MediaQuery.of(context).size.width).clamp(0, 1000);
     return Padding(
       padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-      child: Container(
-        height: 35,
-        constraints: const BoxConstraints(
-          maxWidth: 1000,
-        ),
-        child: Row(children: [
-          SizedBox(
-            width: width * 0.38,
-            child: Text(widget.title,
-                style: const TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: MyDecoration.bloodColor,
-                  // color: widget.fontColor,
-                  overflow: TextOverflow.ellipsis,
-                )),
-          ),
-          SizedBox(
-            width: width * 0.09,
-            child: Text((stat + buffer).toString(),
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: buffer > 0
-                      ? Colors.green
-                      : buffer < 0
-                          ? Colors.red
-                          : Colors.black,
-                )),
-          ),
-          buffer != 0
-              ? SizedBox(
-                  width: width * 0.11,
-                  child: Text(bufferText, style: MyDecoration.dataStyle),
-                )
-              : SizedBox(width: width * 0.11),
-          SizedBox(
-            width: width * 0.1,
-            child: GestureDetector(
-              child: Image.asset(
-                "assets/front/minus_button.jpg",
-                color: Colors.red[900],
-              ),
-              onTap: () {
-                setState(() {
-                  stat = (stat - 1).clamp(30, 100);
-                  widget.onTap!(-1);
-                });
-              },
+      child: FittedBox(
+        child: SizedBox(
+          height: 35,
+          // color: Colors.green,
+          // constraints: const BoxConstraints(
+          //   maxWidth: 1000,
+          // ),
+          child: Row(children: [
+            SizedBox(
+              width: width * 0.38,
+              child: Text(widget.title,
+                  style: const TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: MyDecoration.bloodColor,
+                    // color: widget.fontColor,
+                    overflow: TextOverflow.ellipsis,
+                  )),
             ),
-          ),
-          const SizedBox(
-            width: 20,
-          ),
-          SizedBox(
-            width: width * 0.1,
-            child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    stat = (stat + 1).clamp(30, 100);
-                    widget.onTap!(1);
-                  });
-                },
-                child: Image.asset(
-                  "assets/front/plus_button.jpg",
-                  color: Colors.green[800],
-                )
+            SizedBox(
+              width: width * 0.09,
+              child: Text((stat + buffer).toString(),
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: buffer > 0
+                        ? Colors.green
+                        : buffer < 0
+                            ? Colors.red
+                            : Colors.black,
+                  )),
+            ),
+            buffer != 0
+                ? SizedBox(
+                    width: width * 0.11,
+                    child: Text(bufferText, style: MyDecoration.dataStyle),
+                  )
+                : SizedBox(width: width * 0.11),
+            isEditable
+                ? SizedBox(
+                    width: width * 0.1,
+                    child: GestureDetector(
+                      child: Image.asset(
+                        "assets/front/minus_button.jpg",
+                        color: Colors.red[900],
+                      ),
+                      onTap: () {
+                        setState(() {
+                          stat = (stat - 1).clamp(30, 100);
+                          widget.onTap!(-1);
+                        });
+                      },
+                    ),
+                  )
+                : const SizedBox(),
+            SizedBox(
+              width: isEditable ? 20 : null,
+            ),
+            isEditable
+                ? SizedBox(
+                    width: width * 0.1,
+                    child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            stat = (stat + 1).clamp(30, 100);
+                            widget.onTap!(1);
+                          });
+                        },
+                        child: Image.asset(
+                          "assets/front/plus_button.jpg",
+                          color: Colors.green[800],
+                        )
 
-                // child: MaterialIcons.plus,
-                ),
-          ),
-        ]),
+                        // child: MaterialIcons.plus,
+                        ),
+                  )
+                : const SizedBox(),
+          ]),
+        ),
       ),
     );
   }

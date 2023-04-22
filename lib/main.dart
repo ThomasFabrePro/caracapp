@@ -75,7 +75,7 @@ class MyApp extends StatelessWidget {
               character: character,
             )
           : MyCharacterPage(
-              title: 'Carac App Home Page',
+              // title: 'Carac App Home Page',
               character: character,
             ),
     );
