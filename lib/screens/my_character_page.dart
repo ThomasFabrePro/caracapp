@@ -4,6 +4,7 @@ import 'package:caracapp/screens/logs_page.dart';
 import 'package:caracapp/utils/color_theme.dart';
 import 'package:caracapp/widgets/blocs/caracteristics_bloc.dart';
 import 'package:caracapp/widgets/blocs/infos_bloc.dart';
+import 'package:caracapp/widgets/blocs/inventory_bloc.dart';
 import 'package:caracapp/widgets/blocs/jutsus_bloc.dart';
 import 'package:caracapp/widgets/blocs/photo_bloc.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class _MyCharacterPageState extends State<MyCharacterPage> {
           backgroundColor: MyColorTheme.colorCustom,
           title: FittedBox(
               child: Text(
-                  "${widget.character.name} de ${widget.character.origin}")),
+                  "${widget.character.name} de ${widget.character.origin}\n${widget.character.sexe} - ${widget.character.age} ans")),
           leading: GestureDetector(
             onTap: () {
               Navigator.push(
@@ -80,6 +81,7 @@ class _MyCharacterPageState extends State<MyCharacterPage> {
               SingleChildScrollView(
                   child: Column(
                 children: <Widget>[
+                  const SizedBox(height: 20),
                   PhotoBloc(widget.character),
                   const SizedBox(height: 20),
                   Divider(
@@ -91,6 +93,13 @@ class _MyCharacterPageState extends State<MyCharacterPage> {
                     character: widget.character,
                     isEditable: false,
                   ),
+                  const SizedBox(height: 20),
+                  Divider(
+                      endIndent: width * 0.1,
+                      indent: width * 0.1,
+                      color: Colors.white,
+                      thickness: 2),
+                  InventoryBloc(character: widget.character),
                   const SizedBox(height: 20),
                   Divider(
                       endIndent: width * 0.1,
@@ -112,54 +121,41 @@ class _MyCharacterPageState extends State<MyCharacterPage> {
   }
 }
 
-class ValidateButton extends StatefulWidget {
-  final Character character;
-  const ValidateButton({
-    super.key,
-    required this.character,
-  });
+class PickImage extends StatefulWidget {
+  final String imagePath;
+  final Function onTap;
+
+  const PickImage({super.key, required this.imagePath, required this.onTap});
 
   @override
-  State<ValidateButton> createState() => _ValidateButtonState();
+  State<PickImage> createState() => _PickImageState();
 }
 
-class _ValidateButtonState extends State<ValidateButton> {
+class _PickImageState extends State<PickImage> {
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-    return Container(
-      width: width * 0.5,
-      height: height * 0.07,
-      decoration: BoxDecoration(
+    return GestureDetector(
+      onTap: () {
+        widget.onTap(widget.imagePath);
+      },
+      child: SizedBox(
+          child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(
-          color: Colors.white,
-          width: 2,
-        ),
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(10),
-        child: ElevatedButton(
-          onPressed: () {
-            runApp(MyApp(
-              character: widget.character,
-              addCharacter: false,
-            ));
-          },
-          child: const Center(
-            child: Text(
-              'TERMINER',
-              style: TextStyle(
-                fontSize: 18,
-              ),
+        child: FittedBox(
+          child: SizedBox(
+            width: 70,
+            height: 70,
+            child: Image.asset(
+              widget.imagePath,
             ),
           ),
         ),
-      ),
+      )),
     );
   }
 }
+
+
 
 // Row(
 //                                 children: [

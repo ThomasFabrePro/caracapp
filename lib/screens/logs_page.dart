@@ -84,9 +84,8 @@ class _LogsPageState extends State<LogsPage> {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(widget.character.logs,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.black,
-                                    // fontSize: tooHigh ? 20 : 40,
                                   )),
                             ),
                           ),

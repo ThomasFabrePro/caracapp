@@ -1,4 +1,5 @@
 import 'package:caracapp/models/character_model.dart';
+import 'package:caracapp/screens/my_character_page.dart';
 import 'package:caracapp/widgets/lowerWidgets/my_text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -26,50 +27,21 @@ class _PhotoBlocState extends State<PhotoBloc> {
     final double width = (MediaQuery.of(context).size.width).clamp(0, 1000);
     return Column(
       children: [
-        Padding(
-            padding: const EdgeInsets.only(
-              bottom: 8.0,
-              top: 8.0,
-            ),
-            child: Container(
-              constraints: const BoxConstraints(
-                maxWidth: 1000,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text("Photo :",
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      )),
-
-                  displayPhotosGrid
-                      ? const SizedBox()
-                      : Center(
-                          child: GestureDetector(
-                          onTap: () => setState(() {
-                            displayPhotosGrid = true;
-                          }),
-                          child: SizedBox(
-                              width: width * 0.4,
-                              height: width * 0.4,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.asset(widget.character.picture),
-                              )),
-                        )),
-
-                  //!Pour centrer la photo
-                  const Text("Photo :",
-                      style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.transparent)),
-                ],
-              ),
-            )),
+        displayPhotosGrid
+            ? const SizedBox()
+            : Center(
+                child: GestureDetector(
+                onTap: () => setState(() {
+                  displayPhotosGrid = true;
+                }),
+                child: SizedBox(
+                    width: width * 0.4,
+                    height: width * 0.4,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.asset(widget.character.picture),
+                    )),
+              )),
         displayPhotosGrid
             ? Container(
                 constraints: const BoxConstraints(

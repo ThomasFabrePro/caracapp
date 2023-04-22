@@ -27,9 +27,8 @@ class _InfosBlocState extends State<InfosBloc> {
               hint: widget.character.name,
               onChanged: (value) async {
                 if (value != "" && mounted) {
-                  setState(() async {
-                    await widget.character.setName(value);
-                  });
+                  await widget.character.setName(value);
+                  setState(() {});
                 }
               },
               textFieldWidthPercent: widget.textFieldWidthPercent,
@@ -40,11 +39,10 @@ class _InfosBlocState extends State<InfosBloc> {
             MyTextField(
               title: "Sexe :",
               hint: widget.character.sexe,
-              onChanged: (value) {
+              onChanged: (value) async {
                 if (value != "" && mounted) {
-                  setState(() async {
-                    await widget.character.setSexe(value);
-                  });
+                  await widget.character.setSexe(value);
+                  setState(() {});
                 }
               },
               textFieldWidthPercent: widget.textFieldWidthPercent,
@@ -55,11 +53,10 @@ class _InfosBlocState extends State<InfosBloc> {
             MyTextField(
               title: "Age :",
               hint: "${widget.character.age}",
-              onChanged: (value) {
+              onChanged: (value) async {
                 if (value != "" && mounted) {
-                  setState(() async {
-                    await widget.character.setAge(value);
-                  });
+                  await widget.character.setAge(value);
+                  setState(() {});
                 }
               },
               textFieldWidthPercent: widget.textFieldWidthPercent,
@@ -70,11 +67,10 @@ class _InfosBlocState extends State<InfosBloc> {
             MyTextField(
               title: "Origine :",
               hint: widget.character.origin,
-              onChanged: (value) {
+              onChanged: (value) async {
                 if (value != "" && mounted) {
-                  setState(() async {
-                    await widget.character.setOrigin(value);
-                  });
+                  await widget.character.setOrigin(value);
+                  setState(() {});
                 }
               },
               textFieldWidthPercent: widget.textFieldWidthPercent,

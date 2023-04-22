@@ -90,17 +90,6 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                                   await widget.character
                                       .setChakra(widget.character.chakra);
                                 }),
-                            // UpgradeCaracteristic(
-                            //     title: "HP max",
-                            //     stat: widget.character.hpMax,
-                            //     isEditable: false,
-                            //     buffer: widget.character.hpBuffer,
-                            //     onTap: (int value) async {
-                            //       widget.character.hpMax += value;
-                            //       // (widget.character.hp + value).clamp(30, 100);
-                            //       await widget.character
-                            //           .setHp(widget.character.hpMax);
-                            //     }),
                             DiceCaracteristic(
                                 character: widget.character,
                                 title: "Constitution",
@@ -136,7 +125,6 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                                   await widget.character.setPerception(
                                       widget.character.perception);
                                 }),
-
                             DiceCaracteristic(
                                 character: widget.character,
                                 title: "Esq/Bloc",
