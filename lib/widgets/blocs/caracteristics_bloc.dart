@@ -67,7 +67,7 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             UpgradeCaracteristic(
-                                title: "HP / ${widget.character.hpMax} max",
+                                title: "HP /${widget.character.hpMax}",
                                 stat: widget.character.hp,
                                 isEditable: true,
                                 buffer: 0,
@@ -79,8 +79,7 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                                       .setHp(widget.character.hp);
                                 }),
                             UpgradeCaracteristic(
-                                title:
-                                    "Chakra / ${widget.character.chakraMax} max",
+                                title: "Chakra /${widget.character.chakraMax}",
                                 stat: widget.character.chakra,
                                 buffer: widget.character.chakraBuffer,
                                 isEditable: true,
@@ -103,6 +102,7 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                             //           .setHp(widget.character.hpMax);
                             //     }),
                             DiceCaracteristic(
+                                character: widget.character,
                                 title: "Constitution",
                                 stat: widget.character.constitution,
                                 buffer: widget.character.constitutionBuffer,
@@ -114,6 +114,7 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                                       widget.character.constitution);
                                 }),
                             DiceCaracteristic(
+                                character: widget.character,
                                 title: "Chance",
                                 stat: widget.character.luck,
                                 buffer: widget.character.luckBuffer,
@@ -124,6 +125,7 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                                       .setLuck(widget.character.luck);
                                 }),
                             DiceCaracteristic(
+                                character: widget.character,
                                 title: "Perception",
                                 stat: widget.character.perception,
                                 buffer: widget.character.perceptionBuffer,
@@ -136,6 +138,7 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                                 }),
 
                             DiceCaracteristic(
+                                character: widget.character,
                                 title: "Esq/Bloc",
                                 stat: widget.character.dodge,
                                 buffer: widget.character.dodgeBuffer,
@@ -146,6 +149,7 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                                       .setDodge(widget.character.dodge);
                                 }),
                             DiceCaracteristic(
+                                character: widget.character,
                                 title: "Lancer",
                                 stat: widget.character.throwing,
                                 buffer: widget.character.throwingBuffer,
@@ -157,6 +161,7 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                                       .setThrowing(widget.character.throwing);
                                 }),
                             DiceCaracteristic(
+                                character: widget.character,
                                 title: "Ninjutsu",
                                 stat: widget.character.ninjutsu,
                                 buffer: widget.character.ninjutsuBuffer,
@@ -168,6 +173,7 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                                       .setNinjutsu(widget.character.ninjutsu);
                                 }),
                             DiceCaracteristic(
+                                character: widget.character,
                                 title: "Taijutsu",
                                 stat: widget.character.taijutsu,
                                 buffer: widget.character.taijutsuBuffer,
@@ -179,6 +185,7 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                                       .setTaijutsu(widget.character.taijutsu);
                                 }),
                             DiceCaracteristic(
+                                character: widget.character,
                                 title: "Genjutsu",
                                 stat: widget.character.genjutsu,
                                 buffer: widget.character.genjutsuBuffer,

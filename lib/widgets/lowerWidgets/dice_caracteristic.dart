@@ -1,9 +1,11 @@
 import 'dart:math';
 
+import 'package:caracapp/models/character_model.dart';
 import 'package:caracapp/utils/assets.dart';
 import 'package:flutter/material.dart';
 
 class DiceCaracteristic extends StatefulWidget {
+  final Character character;
   final String title;
   final int stat;
   final int buffer;
@@ -15,7 +17,8 @@ class DiceCaracteristic extends StatefulWidget {
       required this.title,
       required this.onTap,
       required this.stat,
-      required this.buffer});
+      required this.buffer,
+      required this.character});
 
   @override
   State<DiceCaracteristic> createState() => _DiceCaracteristicState();
@@ -42,53 +45,60 @@ class _DiceCaracteristicState extends State<DiceCaracteristic> {
     double width = (MediaQuery.of(context).size.width).clamp(0, 1000);
     return Padding(
       padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-      child: FittedBox(
-        child: SizedBox(
-          height: 40,
-          // color: Colors.green,
-          // constraints: const BoxConstraints(
-          //   maxWidth: 1000,
-          // ),
-          child: Row(children: [
-            SizedBox(
-              width: width * 0.38,
-              child: Text(widget.title,
-                  style: const TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: MyDecoration.bloodColor,
-                    // color: widget.fontColor,
-                    overflow: TextOverflow.ellipsis,
-                  )),
-            ),
-            SizedBox(
-              width: width * 0.09,
-              child: Text((stat + buffer).toString(),
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: buffer > 0
-                        ? Colors.green
-                        : buffer < 0
-                            ? Colors.red
-                            : Colors.black,
-                  )),
-            ),
-            buffer != 0
-                ? SizedBox(
-                    width: width * 0.11,
-                    child: Text(bufferText, style: MyDecoration.dataStyle),
-                  )
-                : SizedBox(width: width * 0.11),
-            DiceButton(width: width, stat: stat, buffer: buffer),
-          ]),
-        ),
+      child: SizedBox(
+        height: 40,
+        // color: Colors.green,
+        // constraints: const BoxConstraints(
+        //   maxWidth: 1000,
+        // ),
+        child: Row(children: [
+          SizedBox(
+            width: width * 0.38,
+            child: Text(widget.title,
+                style: const TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: MyDecoration.bloodColor,
+                  // color: widget.fontColor,
+                  overflow: TextOverflow.ellipsis,
+                )),
+          ),
+          SizedBox(
+            width: width * 0.09,
+            child: Text((stat + buffer).toString(),
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: buffer > 0
+                      ? Colors.green
+                      : buffer < 0
+                          ? Colors.red
+                          : Colors.black,
+                )),
+          ),
+          buffer != 0
+              ? SizedBox(
+                  width: width * 0.11,
+                  child: Text(bufferText, style: MyDecoration.dataStyle),
+                )
+              : SizedBox(width: width * 0.11),
+          Expanded(
+            child: DiceButton(
+                character: widget.character,
+                title: widget.title,
+                width: width,
+                stat: stat,
+                buffer: buffer),
+          ),
+        ]),
       ),
     );
   }
 }
 
 class DiceButton extends StatefulWidget {
+  final Character character;
+  final String title;
   final double width;
   final int stat;
   final int buffer;
@@ -96,7 +106,9 @@ class DiceButton extends StatefulWidget {
       {super.key,
       required this.width,
       required this.stat,
-      required this.buffer});
+      required this.buffer,
+      required this.character,
+      required this.title});
 
   @override
   State<DiceButton> createState() => _DiceButtonState();
@@ -139,7 +151,7 @@ class _DiceButtonState extends State<DiceButton> {
   }) {
     return Container(
       key: key,
-      width: width * 0.3,
+      // width: width * 0.3,
       height: 30,
       decoration: BoxDecoration(
         color: showResult ? Colors.white : MyDecoration.bloodColor,
@@ -171,29 +183,30 @@ class _DiceButtonState extends State<DiceButton> {
 
   Widget _buildFlipAnimation() {
     return GestureDetector(
-      onTap: () => setState(() {
-        setState(() {
-          if (_showFrontSide) {
-            int random = Random().nextInt(101);
-            result = "$random";
-            if (random <= 5) {
-              textColor = Color.fromARGB(255, 182, 164, 0);
-              result += " succès crit.";
-            } else if (random >= 95) {
-              textColor = MyDecoration.bloodColor;
-              result += " échec crit.";
-            } else if (random > (widget.stat + widget.buffer)) {
-              textColor = Colors.red;
-              result += " échec";
-            } else {
-              textColor = Colors.green;
-              result += " succès";
-            }
+      onTap: () {
+        if (_showFrontSide) {
+          int random = Random().nextInt(101);
+          result = "$random";
+          if (random <= 5) {
+            textColor = Color.fromARGB(255, 182, 164, 0);
+            result += " succès crit.";
+          } else if (random >= 95) {
+            textColor = MyDecoration.bloodColor;
+            result += " échec crit.";
+          } else if (random > (widget.stat + widget.buffer)) {
+            textColor = Colors.red;
+            result += " échec";
+          } else {
+            textColor = Colors.green;
+            result += " succès";
           }
+          widget.character.addToLogsAndUpdate("${widget.title} $result");
+        }
 
+        setState(() {
           _showFrontSide = !_showFrontSide;
         });
-      }),
+      },
       child: AnimatedSwitcher(
         duration: const Duration(milliseconds: 500),
         transitionBuilder: __transitionBuilder,

@@ -13,6 +13,7 @@ class Character {
   String sexe;
   String origin;
   String inventory;
+  String logs;
   int age;
   int level;
   int attribute;
@@ -52,6 +53,7 @@ class Character {
     this.sexe = "Non Binaire",
     this.age = 17,
     this.inventory = "",
+    this.logs = "",
     this.origin = "Konoha",
     this.mainSpe = 0,
     this.secondSpe = 0,
@@ -202,6 +204,13 @@ class Character {
     await DbHelper.database.characterDao.updateCharacter(this);
   }
 
+  Future<void> addToLogsAndUpdate(String log) async {
+    String dt = DateTime.now().toString().substring(0, 19);
+    String newLogs = "$dt\n$log\n\n =====================\n";
+    logs = newLogs + logs;
+    await update();
+  }
+
   Future<void> setName(String newName) async {
     name = newName;
     await update();
@@ -209,17 +218,17 @@ class Character {
 
   Future<void> setLevel(int newLevel) async {
     level = newLevel;
-    await update();
+    await addToLogsAndUpdate("Level up : ${newLevel - 1} => $newLevel");
   }
 
   Future<void> setHpMax(int newHpMax) async {
     hpMax = newHpMax;
-    await update();
+    await addToLogsAndUpdate("Nouveau montant de hpMax : $newHpMax");
   }
 
   Future<void> setHp(int newHp) async {
     hp = newHp;
-    await update();
+    await addToLogsAndUpdate("Nouveau montant de hp : $newHp");
   }
 
   Future<void> setConstitution(int newConstitution) async {
@@ -254,7 +263,7 @@ class Character {
 
   Future<void> setChakra(int newChakra) async {
     chakra = newChakra;
-    await update();
+    await addToLogsAndUpdate("Nouveau montant de chakra : $newChakra");
   }
 
   Future<void> setChakraMax(int newChakraMax) async {
@@ -329,26 +338,27 @@ class Character {
         chakraBuffer -= 5 * sign;
         break;
     }
-
-    await update();
+    await addToLogsAndUpdate(enabled ? "Buff d'attribut" : "Débuff d'attribut");
+    // await update();
   }
 
-  Future<void> setSpeciality(int newSpeciality, {required bool add}) async {
+  Future<void> setSpecialityBuffer(int newSpeciality,
+      {required bool add}) async {
     int noSpe = 0;
     if (add) {
       if (mainSpe == noSpe) {
-        setBuffers(mainSpe, newSpeciality);
+        setSpecialityBuffers(mainSpe, newSpeciality);
         mainSpe = newSpeciality;
       } else if (secondSpe == noSpe) {
-        setBuffers(secondSpe, newSpeciality);
+        setSpecialityBuffers(secondSpe, newSpeciality);
         secondSpe = newSpeciality;
       }
     } else {
       if (mainSpe == newSpeciality) {
-        setBuffers(mainSpe, noSpe);
+        setSpecialityBuffers(mainSpe, noSpe);
         mainSpe = noSpe;
       } else if (secondSpe == newSpeciality) {
-        setBuffers(secondSpe, noSpe);
+        setSpecialityBuffers(secondSpe, noSpe);
         secondSpe = noSpe;
       }
     }
@@ -376,7 +386,7 @@ class Character {
   //   await update();
   // }
 
-  void setBuffers(int currentSpeciality, int chosenSpeciality) {
+  void setSpecialityBuffers(int currentSpeciality, int chosenSpeciality) {
     switch (currentSpeciality) {
       case 0:
         break;

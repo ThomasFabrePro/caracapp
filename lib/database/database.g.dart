@@ -85,7 +85,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Character` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `picture` TEXT NOT NULL, `sexe` TEXT NOT NULL, `origin` TEXT NOT NULL, `inventory` TEXT NOT NULL, `age` INTEGER NOT NULL, `level` INTEGER NOT NULL, `attribute` INTEGER NOT NULL, `mainSpe` INTEGER NOT NULL, `secondSpe` INTEGER NOT NULL, `mainElement` INTEGER NOT NULL, `secondElement` INTEGER NOT NULL, `kekkaiGenkai` INTEGER NOT NULL, `hpMax` INTEGER NOT NULL, `hp` INTEGER NOT NULL, `constitution` INTEGER NOT NULL, `ninjutsu` INTEGER NOT NULL, `taijutsu` INTEGER NOT NULL, `genjutsu` INTEGER NOT NULL, `luck` INTEGER NOT NULL, `perception` INTEGER NOT NULL,`chakraMax` INTEGER NOT NULL, `chakra` INTEGER NOT NULL, `dodge` INTEGER NOT NULL, `throwing` INTEGER NOT NULL, `hpBuffer` INTEGER NOT NULL, `constitutionBuffer` INTEGER NOT NULL, `ninjutsuBuffer` INTEGER NOT NULL, `taijutsuBuffer` INTEGER NOT NULL, `genjutsuBuffer` INTEGER NOT NULL, `luckBuffer` INTEGER NOT NULL, `perceptionBuffer` INTEGER NOT NULL, `chakraBuffer` INTEGER NOT NULL, `dodgeBuffer` INTEGER NOT NULL, `throwingBuffer` INTEGER NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `Character` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `picture` TEXT NOT NULL, `sexe` TEXT NOT NULL, `origin` TEXT NOT NULL, `inventory` TEXT NOT NULL, `logs` TEXT NOT NULL, `age` INTEGER NOT NULL, `level` INTEGER NOT NULL, `attribute` INTEGER NOT NULL, `mainSpe` INTEGER NOT NULL, `secondSpe` INTEGER NOT NULL, `mainElement` INTEGER NOT NULL, `secondElement` INTEGER NOT NULL, `kekkaiGenkai` INTEGER NOT NULL, `hpMax` INTEGER NOT NULL, `hp` INTEGER NOT NULL, `constitution` INTEGER NOT NULL, `ninjutsu` INTEGER NOT NULL, `taijutsu` INTEGER NOT NULL, `genjutsu` INTEGER NOT NULL, `luck` INTEGER NOT NULL, `perception` INTEGER NOT NULL,`chakraMax` INTEGER NOT NULL, `chakra` INTEGER NOT NULL, `dodge` INTEGER NOT NULL, `throwing` INTEGER NOT NULL, `hpBuffer` INTEGER NOT NULL, `constitutionBuffer` INTEGER NOT NULL, `ninjutsuBuffer` INTEGER NOT NULL, `taijutsuBuffer` INTEGER NOT NULL, `genjutsuBuffer` INTEGER NOT NULL, `luckBuffer` INTEGER NOT NULL, `perceptionBuffer` INTEGER NOT NULL, `chakraBuffer` INTEGER NOT NULL, `dodgeBuffer` INTEGER NOT NULL, `throwingBuffer` INTEGER NOT NULL, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -114,6 +114,7 @@ class _$CharacterDao extends CharacterDao {
                   'sexe': item.sexe,
                   'origin': item.origin,
                   'inventory': item.inventory,
+                  'logs': item.logs,
                   'age': item.age,
                   'level': item.level,
                   'attribute': item.attribute,
@@ -156,6 +157,7 @@ class _$CharacterDao extends CharacterDao {
                   'sexe': item.sexe,
                   'origin': item.origin,
                   'inventory': item.inventory,
+                  'logs': item.logs,
                   'age': item.age,
                   'level': item.level,
                   'attribute': item.attribute,
@@ -208,6 +210,7 @@ class _$CharacterDao extends CharacterDao {
             sexe: row['sexe'] as String,
             age: row['age'] as int,
             inventory: row['inventory'] as String,
+            logs: row['logs'] as String,
             origin: row['origin'] as String,
             mainSpe: row['mainSpe'] as int,
             secondSpe: row['secondSpe'] as int,
@@ -250,6 +253,7 @@ class _$CharacterDao extends CharacterDao {
             sexe: row['sexe'] as String,
             age: row['age'] as int,
             inventory: row['inventory'] as String,
+            logs: row['logs'] as String,
             origin: row['origin'] as String,
             mainSpe: row['mainSpe'] as int,
             secondSpe: row['secondSpe'] as int,
@@ -293,6 +297,7 @@ class _$CharacterDao extends CharacterDao {
             sexe: row['sexe'] as String,
             age: row['age'] as int,
             inventory: row['inventory'] as String,
+            logs: row['logs'] as String,
             origin: row['origin'] as String,
             mainSpe: row['mainSpe'] as int,
             secondSpe: row['secondSpe'] as int,

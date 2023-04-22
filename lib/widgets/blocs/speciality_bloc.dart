@@ -96,7 +96,7 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
         (check == true && value == false)) {
       value == true ? checkCounter++ : checkCounter--;
       check = value;
-      await widget.character.setSpeciality(code, add: value);
+      await widget.character.setSpecialityBuffer(code, add: value);
       setState(() {});
       return check;
     } else {

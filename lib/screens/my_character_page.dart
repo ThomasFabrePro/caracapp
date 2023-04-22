@@ -1,19 +1,11 @@
 import 'package:caracapp/main.dart';
 import 'package:caracapp/models/character_model.dart';
-import 'package:caracapp/screens/my_character_page.dart';
-import 'package:caracapp/utils/assets.dart';
+import 'package:caracapp/screens/logs_page.dart';
 import 'package:caracapp/utils/color_theme.dart';
-import 'package:caracapp/utils/data_access_object/character_dao.dart';
-import 'package:caracapp/widgets/blocs/attribute_bloc.dart';
 import 'package:caracapp/widgets/blocs/caracteristics_bloc.dart';
-import 'package:caracapp/widgets/blocs/caracteristics_upgrade_bloc.dart';
-import 'package:caracapp/widgets/blocs/elements_bloc.dart';
 import 'package:caracapp/widgets/blocs/infos_bloc.dart';
-import 'package:caracapp/widgets/blocs/inventory_bloc.dart';
 import 'package:caracapp/widgets/blocs/jutsus_bloc.dart';
 import 'package:caracapp/widgets/blocs/photo_bloc.dart';
-import 'package:caracapp/widgets/blocs/speciality_bloc.dart';
-import 'package:caracapp/widgets/lowerWidgets/my_text_field.dart';
 import 'package:flutter/material.dart';
 
 class MyCharacterPage extends StatefulWidget {
@@ -45,13 +37,20 @@ class _MyCharacterPageState extends State<MyCharacterPage> {
                   "${widget.character.name} de ${widget.character.origin}")),
           leading: GestureDetector(
             onTap: () {
-              // Navigator.pop(context); //TODO decommenter
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => LogsPage(
+                          character: widget.character,
+                        )),
+              );
+              deactivate();
             },
             child: Padding(
               padding:
                   const EdgeInsets.only(top: 10.0, left: 10.0, bottom: 10.0),
               child: Image.asset(
-                "assets/front/star.jpg",
+                "assets/front/paper_icon.jpg",
                 color: Colors.white,
               ),
             ),
@@ -81,9 +80,6 @@ class _MyCharacterPageState extends State<MyCharacterPage> {
               SingleChildScrollView(
                   child: Column(
                 children: <Widget>[
-                  // TODO ADD FOCUS NODES
-                  InfosBloc(widget.character, textFieldWidthPercent),
-
                   PhotoBloc(widget.character),
                   const SizedBox(height: 20),
                   Divider(
@@ -91,7 +87,6 @@ class _MyCharacterPageState extends State<MyCharacterPage> {
                       indent: width * 0.1,
                       color: Colors.white,
                       thickness: 2),
-
                   CaracteristicsBloc(
                     character: widget.character,
                     isEditable: false,
@@ -102,28 +97,11 @@ class _MyCharacterPageState extends State<MyCharacterPage> {
                       indent: width * 0.1,
                       color: Colors.white,
                       thickness: 2),
-
-                  // Divider(
-                  //     endIndent: width * 0.1,
-                  //     indent: width * 0.1,
-                  //     color: Colors.white,
-                  //     thickness: 2),
-
-                  // SpecialityBloc(character: widget.character),
-                  // const SizedBox(height: 20),
-                  // Divider(
-                  //     endIndent: width * 0.1,
-                  //     indent: width * 0.1,
-                  //     color: Colors.white,
-                  //     thickness: 2),
-
                   JutsuBloc(
                       character: widget.character,
                       hideUnavailableJutsus: true,
                       updateBlocOntimer: false),
                   const SizedBox(height: 20),
-
-                  const SizedBox(height: 50),
                 ],
               )),
             ],

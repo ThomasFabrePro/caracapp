@@ -160,11 +160,12 @@ class _ValidateButtonState extends State<ValidateButton> {
         child: ElevatedButton(
           onPressed: () async {
             Character character = widget.character;
+            print("TEST ninjutsu before : ${character.ninjutsu}");
             character
               ..chakraMax = character.chakraMax + character.chakraBuffer
-              ..chakra = character.chakraMax + character.chakraBuffer
+              ..chakra = character.chakraMax
               ..hpMax = character.hpMax + character.hpBuffer
-              ..hp = character.hpMax + character.hpBuffer
+              ..hp = character.hpMax
               ..dodge = character.dodge + character.dodgeBuffer
               ..constitution =
                   character.constitution + character.constitutionBuffer
@@ -183,7 +184,9 @@ class _ValidateButtonState extends State<ValidateButton> {
               ..luckBuffer = 0
               ..perceptionBuffer = 0
               ..throwingBuffer = 0
-              ..chakraBuffer = 0;
+              ..chakraBuffer = 0
+              ..logs = "";
+            print("TEST ninjutsu after : ${character.ninjutsu}");
             await character.update();
             runApp(MyApp(
               character: character,
