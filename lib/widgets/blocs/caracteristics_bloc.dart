@@ -1,4 +1,5 @@
 import 'package:caracapp/models/character_model.dart';
+import 'package:caracapp/widgets/lowerWidgets/dice_caracteristic.dart';
 import 'package:caracapp/widgets/lowerWidgets/upgrade_caracteristic.dart';
 import 'package:flutter/material.dart';
 
@@ -87,9 +88,8 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                                   await widget.character
                                       .setHp(widget.character.hp);
                                 }),
-                            UpgradeCaracteristic(
+                            DiceCaracteristic(
                                 title: "Constitution",
-                                isEditable: isEditable,
                                 stat: widget.character.constitution,
                                 buffer: widget.character.constitutionBuffer,
                                 onTap: (int value) async {
@@ -99,9 +99,8 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                                   await widget.character.setConstitution(
                                       widget.character.constitution);
                                 }),
-                            UpgradeCaracteristic(
+                            DiceCaracteristic(
                                 title: "Chance",
-                                isEditable: isEditable,
                                 stat: widget.character.luck,
                                 buffer: widget.character.luckBuffer,
                                 onTap: (int value) async {
@@ -110,9 +109,8 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                                   await widget.character
                                       .setLuck(widget.character.luck);
                                 }),
-                            UpgradeCaracteristic(
+                            DiceCaracteristic(
                                 title: "Perception",
-                                isEditable: isEditable,
                                 stat: widget.character.perception,
                                 buffer: widget.character.perceptionBuffer,
                                 onTap: (int value) async {
@@ -122,9 +120,8 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                                   await widget.character.setPerception(
                                       widget.character.perception);
                                 }),
-                            UpgradeCaracteristic(
+                            DiceCaracteristic(
                                 title: "Chakra",
-                                isEditable: isEditable,
                                 stat: widget.character.chakra,
                                 buffer: widget.character.chakraBuffer,
                                 onTap: (int value) async {
@@ -133,9 +130,8 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                                   await widget.character
                                       .setChakra(widget.character.chakra);
                                 }),
-                            UpgradeCaracteristic(
+                            DiceCaracteristic(
                                 title: "Esq/Bloc",
-                                isEditable: isEditable,
                                 stat: widget.character.dodge,
                                 buffer: widget.character.dodgeBuffer,
                                 onTap: (int value) async {
@@ -144,9 +140,8 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                                   await widget.character
                                       .setDodge(widget.character.dodge);
                                 }),
-                            UpgradeCaracteristic(
+                            DiceCaracteristic(
                                 title: "Lancer",
-                                isEditable: isEditable,
                                 stat: widget.character.throwing,
                                 buffer: widget.character.throwingBuffer,
                                 onTap: (int value) async {
@@ -156,9 +151,8 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                                   await widget.character
                                       .setThrowing(widget.character.throwing);
                                 }),
-                            UpgradeCaracteristic(
+                            DiceCaracteristic(
                                 title: "Ninjutsu",
-                                isEditable: isEditable,
                                 stat: widget.character.ninjutsu,
                                 buffer: widget.character.ninjutsuBuffer,
                                 onTap: (int value) async {
@@ -168,9 +162,8 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                                   await widget.character
                                       .setNinjutsu(widget.character.ninjutsu);
                                 }),
-                            UpgradeCaracteristic(
+                            DiceCaracteristic(
                                 title: "Taijutsu",
-                                isEditable: isEditable,
                                 stat: widget.character.taijutsu,
                                 buffer: widget.character.taijutsuBuffer,
                                 onTap: (int value) async {
@@ -180,9 +173,8 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                                   await widget.character
                                       .setTaijutsu(widget.character.taijutsu);
                                 }),
-                            UpgradeCaracteristic(
+                            DiceCaracteristic(
                                 title: "Genjutsu",
-                                isEditable: isEditable,
                                 stat: widget.character.genjutsu,
                                 buffer: widget.character.genjutsuBuffer,
                                 onTap: (int value) async {
