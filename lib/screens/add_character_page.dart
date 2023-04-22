@@ -158,9 +158,35 @@ class _ValidateButtonState extends State<ValidateButton> {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
         child: ElevatedButton(
-          onPressed: () {
+          onPressed: () async {
+            Character character = widget.character;
+            character
+              ..chakraMax = character.chakraMax + character.chakraBuffer
+              ..chakra = character.chakraMax + character.chakraBuffer
+              ..hpMax = character.hpMax + character.hpBuffer
+              ..hp = character.hpMax + character.hpBuffer
+              ..dodge = character.dodge + character.dodgeBuffer
+              ..constitution =
+                  character.constitution + character.constitutionBuffer
+              ..genjutsu = character.genjutsu + character.genjutsuBuffer
+              ..ninjutsu = character.ninjutsu + character.ninjutsuBuffer
+              ..taijutsu = character.taijutsu + character.taijutsuBuffer
+              ..luck = character.luck + character.luckBuffer
+              ..perception = character.perception + character.perceptionBuffer
+              ..throwing = character.throwing + character.throwingBuffer
+              ..hpBuffer = 0
+              ..dodgeBuffer = 0
+              ..constitutionBuffer = 0
+              ..genjutsuBuffer = 0
+              ..ninjutsuBuffer = 0
+              ..taijutsuBuffer = 0
+              ..luckBuffer = 0
+              ..perceptionBuffer = 0
+              ..throwingBuffer = 0
+              ..chakraBuffer = 0;
+            await character.update();
             runApp(MyApp(
-              character: widget.character,
+              character: character,
               addCharacter: false,
             ));
           },

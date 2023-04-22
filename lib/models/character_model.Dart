@@ -21,6 +21,7 @@ class Character {
   int mainElement;
   int secondElement;
   int kekkaiGenkai;
+  int hpMax;
   int hp;
   int constitution;
   int ninjutsu;
@@ -28,6 +29,7 @@ class Character {
   int genjutsu;
   int luck;
   int perception;
+  int chakraMax;
   int chakra;
   int dodge;
   int throwing;
@@ -58,6 +60,7 @@ class Character {
     this.kekkaiGenkai = 0,
     this.level = 1,
     this.attribute = 0,
+    this.hpMax = 30,
     this.hp = 30,
     this.constitution = 30,
     this.ninjutsu = 30,
@@ -65,6 +68,7 @@ class Character {
     this.genjutsu = 30,
     this.luck = 30,
     this.perception = 30,
+    this.chakraMax = 30,
     this.chakra = 30,
     this.dodge = 30,
     this.throwing = 30,
@@ -80,6 +84,103 @@ class Character {
     this.dodgeBuffer = 0,
     this.throwingBuffer = 0,
   });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'picture': picture,
+      'sexe': sexe,
+      'age': age,
+      'inventory': inventory,
+      'origin': origin,
+      'mainSpe': mainSpe,
+      'secondSpe': secondSpe,
+      'mainElement': mainElement,
+      'secondElement': secondElement,
+      'kekkaiGenkai': kekkaiGenkai,
+      'level': level,
+      'attribute': attribute,
+      'hpMax': hpMax,
+      'hp': hp,
+      'constitution': constitution,
+      'ninjutsu': ninjutsu,
+      'taijutsu': taijutsu,
+      'genjutsu': genjutsu,
+      'luck': luck,
+      'perception': perception,
+      'chakraMax': chakraMax,
+      'chakra': chakra,
+      'dodge': dodge,
+      'throwing': throwing,
+      //buffers
+      'hpBuffer': hpBuffer,
+      'constitutionBuffer': constitutionBuffer,
+      'ninjutsuBuffer': ninjutsuBuffer,
+      'taijutsuBuffer': taijutsuBuffer,
+      'genjutsuBuffer': genjutsuBuffer,
+      'luckBuffer': luckBuffer,
+      'perceptionBuffer': perceptionBuffer,
+      'chakraBuffer': chakraBuffer,
+      'dodgeBuffer': dodgeBuffer,
+      'throwingBuffer': throwingBuffer,
+    };
+  }
+
+  factory Character.fromMap(Map<String, dynamic> map) {
+    return Character(
+      id: map['id'],
+      name: map['name'],
+      picture: map['picture'],
+      sexe: map['sexe'],
+      age: map['age'],
+      inventory: map['inventory'],
+      origin: map['origin'],
+      mainSpe: map['mainSpe'],
+      secondSpe: map['secondSpe'],
+      mainElement: map['mainElement'],
+      secondElement: map['secondElement'],
+      kekkaiGenkai: map['kekkaiGenkai'],
+      level: map['level'],
+      attribute: map['attribute'],
+      hpMax: map['hpMax'],
+      hp: map['hp'],
+      constitution: map['constitution'],
+      ninjutsu: map['ninjutsu'],
+      taijutsu: map['taijutsu'],
+      genjutsu: map['genjutsu'],
+      luck: map['luck'],
+      perception: map['perception'],
+      chakraMax: map['chakraMax'],
+      chakra: map['chakra'],
+      dodge: map['dodge'],
+      throwing: map['throwing'],
+      //buffers
+      hpBuffer: map['hpBuffer'],
+      constitutionBuffer: map['constitutionBuffer'],
+      ninjutsuBuffer: map['ninjutsuBuffer'],
+      taijutsuBuffer: map['taijutsuBuffer'],
+      genjutsuBuffer: map['genjutsuBuffer'],
+      luckBuffer: map['luckBuffer'],
+      perceptionBuffer: map['perceptionBuffer'],
+      chakraBuffer: map['chakraBuffer'],
+      dodgeBuffer: map['dodgeBuffer'],
+      throwingBuffer: map['throwingBuffer'],
+    );
+  }
+
+  String compareCharacters(Character secondCharacter) {
+    String result = "";
+    Map<String, dynamic> characterMap = this.toMap();
+    Map<String, dynamic> secondCharacterMap = secondCharacter.toMap();
+    characterMap.forEach((key, value) {
+      if (value != secondCharacterMap[key]) {
+        result += "$key : $value -> ${secondCharacterMap[key]} //";
+      }
+    });
+
+    return result;
+  }
 
   Map<String, int> kekkaisMap = {
     "[1, 2]": 1, //Koton    //acier
@@ -97,89 +198,103 @@ class Character {
     return await DbHelper.database.characterDao.findCharacterByName(name);
   }
 
+  Future<void> update() async {
+    await DbHelper.database.characterDao.updateCharacter(this);
+  }
+
   Future<void> setName(String newName) async {
     name = newName;
-    await DbHelper.database.characterDao.updateCharacter(this);
+    await update();
   }
 
   Future<void> setLevel(int newLevel) async {
     level = newLevel;
-    await DbHelper.database.characterDao.updateCharacter(this);
+    await update();
+  }
+
+  Future<void> setHpMax(int newHpMax) async {
+    hpMax = newHpMax;
+    await update();
   }
 
   Future<void> setHp(int newHp) async {
     hp = newHp;
-    await DbHelper.database.characterDao.updateCharacter(this);
+    await update();
   }
 
   Future<void> setConstitution(int newConstitution) async {
     constitution = newConstitution;
-    await DbHelper.database.characterDao.updateCharacter(this);
+    await update();
   }
 
   Future<void> setNinjutsu(int newNinjutsu) async {
     ninjutsu = newNinjutsu;
-    await DbHelper.database.characterDao.updateCharacter(this);
+    await update();
   }
 
   Future<void> setTaijutsu(int newTaijutsu) async {
     taijutsu = newTaijutsu;
-    await DbHelper.database.characterDao.updateCharacter(this);
+    await update();
   }
 
   Future<void> setGenjutsu(int newGenjutsu) async {
     genjutsu = newGenjutsu;
-    await DbHelper.database.characterDao.updateCharacter(this);
+    await update();
   }
 
   Future<void> setLuck(int newLuck) async {
     luck = newLuck;
-    await DbHelper.database.characterDao.updateCharacter(this);
+    await update();
   }
 
   Future<void> setPerception(int newPerception) async {
     perception = newPerception;
-    await DbHelper.database.characterDao.updateCharacter(this);
+    await update();
   }
 
   Future<void> setChakra(int newChakra) async {
     chakra = newChakra;
-    await DbHelper.database.characterDao.updateCharacter(this);
+    await update();
+  }
+
+  Future<void> setChakraMax(int newChakraMax) async {
+    chakraMax = newChakraMax;
+    await update();
   }
 
   Future<void> setDodge(int newDodge) async {
     dodge = newDodge;
-    await DbHelper.database.characterDao.updateCharacter(this);
+    await update();
   }
 
   Future<void> setThrowing(int newThrowing) async {
     throwing = newThrowing;
-    await DbHelper.database.characterDao.updateCharacter(this);
+    await update();
   }
 
   Future<void> setAge(int newAge) async {
     age = newAge;
-    await DbHelper.database.characterDao.updateCharacter(this);
+    await update();
   }
 
   Future<void> setOrigin(String newOrigin) async {
     origin = newOrigin;
-    await DbHelper.database.characterDao.updateCharacter(this);
+    await update();
   }
 
   Future<void> setSexe(String newSexe) async {
     sexe = newSexe;
-    await DbHelper.database.characterDao.updateCharacter(this);
+    await update();
   }
 
   Future<void> setInventory(String newInventory) async {
     inventory = newInventory;
-    await DbHelper.database.characterDao.updateCharacter(this);
+    await update();
   }
 
   Future<void> setPicture(String newPicture) async {
     picture = newPicture;
-    await DbHelper.database.characterDao.updateCharacter(this);
+    await update();
   }
 
   ///ATTRIBUT
@@ -188,55 +303,34 @@ class Character {
   ///2 : Sharingan /
   ///3 : Byakugan /
   Future<void> setAttribute(int newAttribute) async {
-    //Comparaison de l'ancien attribut et du nouveau
-    //Si l'ancien attribut est différent de 0 on enleve les valeurs de l'ancien attribut
-    //Si le nouvel attribut est différent de 0 on ajoute les valeurs du nouveau attribut
-    //soustraction
-    if (attribute != 0) {
-      switch (attribute) {
-        case 1:
-          //pas de boost de stat pour le jinchuriki
-          break;
-        case 2:
-          //sharingan
-          ninjutsuBuffer -= 5;
-          dodgeBuffer -= 5;
-          genjutsuBuffer -= 5;
-          chakraBuffer += 5;
-          constitutionBuffer += 5;
-          break;
-        case 3:
-          //byakugan
-          taijutsuBuffer -= 5;
-          perceptionBuffer -= 5;
-          chakraBuffer += 5;
-          break;
-      }
-    }
-    //addition
-    if (newAttribute != 0) {
-      switch (newAttribute) {
-        case 1:
-          //pas de boost de stat pour le jinchuriki
-          break;
-        case 2:
-          //sharingan
-          ninjutsuBuffer += 5;
-          dodgeBuffer += 5;
-          genjutsuBuffer += 5;
-          chakraBuffer -= 5;
-          constitutionBuffer -= 5;
-          break;
-        case 3:
-          //byakugan
-          taijutsuBuffer += 5;
-          perceptionBuffer += 5;
-          chakraBuffer -= 5;
-          break;
-      }
-    }
     attribute = newAttribute;
-    await DbHelper.database.characterDao.updateCharacter(this);
+    await update();
+  }
+
+  Future<void> attributeBoost(bool enabled) async {
+    int sign = enabled ? 1 : -1;
+
+    switch (attribute) {
+      case 1:
+        //pas de boost de stat pour le jinchuriki
+        break;
+      case 2:
+        //sharingan
+        ninjutsuBuffer += 5 * sign;
+        dodgeBuffer += 5 * sign;
+        genjutsuBuffer += 5 * sign;
+        chakraBuffer -= 5 * sign;
+        constitutionBuffer -= 5 * sign;
+        break;
+      case 3:
+        //byakugan
+        taijutsuBuffer += 5 * sign;
+        perceptionBuffer += 5 * sign;
+        chakraBuffer -= 5 * sign;
+        break;
+    }
+
+    await update();
   }
 
   Future<void> setSpeciality(int newSpeciality, {required bool add}) async {
@@ -258,7 +352,7 @@ class Character {
         secondSpe = noSpe;
       }
     }
-    await DbHelper.database.characterDao.updateCharacter(this);
+    await update();
   }
 
   ///SPECIALITE
@@ -273,13 +367,13 @@ class Character {
   // Future<void> updateSpeciality(int newSpeciality)async{
   //   setBuffers(mainSpe, newSpeciality);
   //   mainSpe = newSpeciality;
-  //   await DbHelper.database.characterDao.updateCharacter(this);
+  //   await update();
   // }
 
   // Future<void> updateSecondSpeciality(int newSpeciality)async{
   //   setBuffers(secondSpe, newSpeciality);
   //   secondSpe = newSpeciality;
-  //   await DbHelper.database.characterDao.updateCharacter(this);
+  //   await update();
   // }
 
   void setBuffers(int currentSpeciality, int chosenSpeciality) {
@@ -358,7 +452,7 @@ class Character {
       }
     }
     setKekkaiGenkai();
-    await DbHelper.database.characterDao.updateCharacter(this);
+    await update();
   }
 
   void setKekkaiGenkai() {

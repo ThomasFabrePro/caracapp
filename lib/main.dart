@@ -34,7 +34,7 @@ Future<void> main() async {
     character = list[0];
     runApp(MyApp(
       character: character,
-      addCharacter: false,
+      addCharacter: true,
     ));
   }
   //!FAKE

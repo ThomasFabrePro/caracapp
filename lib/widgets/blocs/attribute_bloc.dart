@@ -17,7 +17,7 @@ class _AttributeBlocState extends State<AttributeBloc> {
   bool isJinchurikiChecked = false;
   bool isSharinganChecked = false;
   bool isByakuganChecked = false;
-  TextStyle titleStyle = TextStyle(
+  TextStyle titleStyle = const TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.bold,
     color: MyDecoration.bloodColor,

@@ -68,14 +68,14 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                           children: <Widget>[
                             UpgradeCaracteristic(
                                 title: "HP Max",
-                                stat: widget.character.hp,
+                                stat: widget.character.hpMax,
                                 isEditable: isEditable,
                                 buffer: widget.character.hpBuffer,
                                 onTap: (int value) async {
-                                  widget.character.hp += value;
-                                  // (widget.character.hp + value).clamp(30, 100);
+                                  widget.character.hpMax += value;
+                                  // (widget.character.hpMax + value).clamp(30, 100);
                                   await widget.character
-                                      .setHp(widget.character.hp);
+                                      .setHpMax(widget.character.hpMax);
                                 }),
                             UpgradeCaracteristic(
                                 title: "Constitution",
@@ -115,13 +115,13 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                             UpgradeCaracteristic(
                                 title: "Chakra Max",
                                 isEditable: isEditable,
-                                stat: widget.character.chakra,
+                                stat: widget.character.chakraMax,
                                 buffer: widget.character.chakraBuffer,
                                 onTap: (int value) async {
-                                  widget.character.chakra += value;
-                                  // (snapshot.data!.chakra + value).clamp(30, 100);
+                                  widget.character.chakraMax += value;
+                                  // (snapshot.data!.chakraMax + value).clamp(30, 100);
                                   await widget.character
-                                      .setChakra(widget.character.chakra);
+                                      .setChakraMax(widget.character.chakraMax);
                                 }),
                             UpgradeCaracteristic(
                                 title: "Esq/Bloc",

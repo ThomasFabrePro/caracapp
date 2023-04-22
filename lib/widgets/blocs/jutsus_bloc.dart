@@ -44,18 +44,25 @@ class _JutsuBlocState extends State<JutsuBloc> {
   Timer? timerRebuild;
   int main = 0;
   int second = 0;
+  int ninjutsuValue = 0;
+  int genjutsuValue = 0;
   @override
   void initState() {
     super.initState();
     character = widget.character;
-    main = widget.character.mainElement; //important pour le setState
-    second = widget.character.secondElement; //important pour le setState
+    setUsefullValues(); //important pour le setState
     if (widget.updateBlocOntimer) {
       timerRebuild = Timer.periodic(const Duration(seconds: 2), (timer) async {
         // await Future.delayed(const Duration(seconds: 2));
         Character newCharacter = await widget.character.getCharacter();
+        int newCharacterActualNinjutsu =
+            newCharacter.ninjutsu + newCharacter.ninjutsuBuffer;
+        int newCharacterActualGenjutsu =
+            newCharacter.genjutsu + newCharacter.genjutsuBuffer;
         if (newCharacter.mainElement != main ||
-            newCharacter.secondElement != second) {
+            newCharacter.secondElement != second ||
+            newCharacterActualNinjutsu != ninjutsuValue ||
+            newCharacterActualGenjutsu != genjutsuValue) {
           setState(() {
             character = newCharacter;
           });
@@ -63,6 +70,15 @@ class _JutsuBlocState extends State<JutsuBloc> {
         }
       });
     }
+  }
+
+  void setUsefullValues() {
+    main = widget.character.mainElement; //important pour le setState
+    second = widget.character.secondElement; //important pour le setState
+    ninjutsuValue = widget.character.ninjutsu +
+        widget.character.ninjutsuBuffer; //important pour le setState
+    genjutsuValue = widget.character.genjutsu +
+        widget.character.genjutsuBuffer; //important pour le setState
   }
 
   void fillLists() {
@@ -107,8 +123,7 @@ class _JutsuBlocState extends State<JutsuBloc> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    main = widget.character.mainElement; //important pour le setState
-    second = widget.character.secondElement; //important pour le setState
+    setUsefullValues();
     mainElement = mainElement.getElement(main);
     secondElement = secondElement.getElement(second);
     kekkai = kekkai.getElement(widget.character.kekkaiGenkai);
