@@ -67,27 +67,41 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             UpgradeCaracteristic(
-                                title: "HP max",
+                                title: "HP / ${widget.character.hpMax} max",
                                 stat: widget.character.hp,
                                 isEditable: true,
-                                buffer: widget.character.hpBuffer,
+                                buffer: 0,
                                 onTap: (int value) async {
-                                  widget.character.hp += value;
-                                  // (widget.character.hp + value).clamp(30, 100);
+                                  widget.character.hp =
+                                      (widget.character.hp + value)
+                                          .clamp(0, widget.character.hpMax);
                                   await widget.character
                                       .setHp(widget.character.hp);
                                 }),
                             UpgradeCaracteristic(
-                                title: "HP",
-                                stat: widget.character.hp,
+                                title:
+                                    "Chakra / ${widget.character.chakraMax} max",
+                                stat: widget.character.chakra,
+                                buffer: widget.character.chakraBuffer,
                                 isEditable: true,
-                                buffer: widget.character.hpBuffer,
                                 onTap: (int value) async {
-                                  widget.character.hp += value;
-                                  // (widget.character.hp + value).clamp(30, 100);
+                                  widget.character.chakra =
+                                      (widget.character.chakra + value)
+                                          .clamp(0, widget.character.chakraMax);
                                   await widget.character
-                                      .setHp(widget.character.hp);
+                                      .setChakra(widget.character.chakra);
                                 }),
+                            // UpgradeCaracteristic(
+                            //     title: "HP max",
+                            //     stat: widget.character.hpMax,
+                            //     isEditable: false,
+                            //     buffer: widget.character.hpBuffer,
+                            //     onTap: (int value) async {
+                            //       widget.character.hpMax += value;
+                            //       // (widget.character.hp + value).clamp(30, 100);
+                            //       await widget.character
+                            //           .setHp(widget.character.hpMax);
+                            //     }),
                             DiceCaracteristic(
                                 title: "Constitution",
                                 stat: widget.character.constitution,
@@ -120,16 +134,7 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                                   await widget.character.setPerception(
                                       widget.character.perception);
                                 }),
-                            DiceCaracteristic(
-                                title: "Chakra",
-                                stat: widget.character.chakra,
-                                buffer: widget.character.chakraBuffer,
-                                onTap: (int value) async {
-                                  widget.character.chakra += value;
-                                  // (snapshot.data!.chakra + value).clamp(30, 100);
-                                  await widget.character
-                                      .setChakra(widget.character.chakra);
-                                }),
+
                             DiceCaracteristic(
                                 title: "Esq/Bloc",
                                 stat: widget.character.dodge,
