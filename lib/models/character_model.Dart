@@ -22,6 +22,7 @@ class Character {
   int mainElement;
   int secondElement;
   int kekkaiGenkai;
+  int pointsLeftToSpend;
   int hpMax;
   int hp;
   int constitution;
@@ -62,6 +63,7 @@ class Character {
     this.kekkaiGenkai = 0,
     this.level = 1,
     this.attribute = 0,
+    this.pointsLeftToSpend = 5,
     this.hpMax = 30,
     this.hp = 30,
     this.constitution = 30,
@@ -71,7 +73,7 @@ class Character {
     this.luck = 30,
     this.perception = 30,
     this.chakraMax = 30,
-    this.chakra = 30,
+    this.chakra = 50,
     this.dodge = 30,
     this.throwing = 30,
     //buffers
@@ -95,6 +97,7 @@ class Character {
       'sexe': sexe,
       'age': age,
       'inventory': inventory,
+      'logs': logs,
       'origin': origin,
       'mainSpe': mainSpe,
       'secondSpe': secondSpe,
@@ -103,6 +106,7 @@ class Character {
       'kekkaiGenkai': kekkaiGenkai,
       'level': level,
       'attribute': attribute,
+      'pointsLeftToSpend': pointsLeftToSpend,
       'hpMax': hpMax,
       'hp': hp,
       'constitution': constitution,
@@ -137,6 +141,7 @@ class Character {
       sexe: map['sexe'],
       age: map['age'],
       inventory: map['inventory'],
+      logs: map['logs'],
       origin: map['origin'],
       mainSpe: map['mainSpe'],
       secondSpe: map['secondSpe'],
@@ -145,6 +150,7 @@ class Character {
       kekkaiGenkai: map['kekkaiGenkai'],
       level: map['level'],
       attribute: map['attribute'],
+      pointsLeftToSpend: map['pointsLeftToSpend'],
       hpMax: map['hpMax'],
       hp: map['hp'],
       constitution: map['constitution'],
@@ -299,6 +305,12 @@ class Character {
   Future<void> setInventory(String newInventory) async {
     inventory = newInventory;
     await update();
+  }
+
+  Future<void> setPointsLeftToSpend(int newPointsLeftToSpend) async {
+    // int difference = newPointsLeftToSpend - pointsLeftToSpend;
+    // pointsLeftToSpend = newPointsLeftToSpend;
+    await addToLogsAndUpdate("Nombre de points restants : $pointsLeftToSpend");
   }
 
   Future<void> setPicture(String newPicture) async {

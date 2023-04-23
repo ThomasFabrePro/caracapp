@@ -34,13 +34,22 @@ class _PhotoBlocState extends State<PhotoBloc> {
                 onTap: () => setState(() {
                   displayPhotosGrid = true;
                 }),
-                child: SizedBox(
-                    width: width * 0.4,
-                    height: width * 0.4,
+                child: Container(
+                  width: width * 0.4,
+                  height: width * 0.4,
+                  constraints: BoxConstraints(maxHeight: 300, maxWidth: 300),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(3.0),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Image.asset(widget.character.picture),
-                    )),
+                    ),
+                  ),
+                ),
               )),
         displayPhotosGrid
             ? Container(

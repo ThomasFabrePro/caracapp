@@ -1,9 +1,6 @@
-import 'package:caracapp/main.dart';
 import 'package:caracapp/models/character_model.dart';
-import 'package:caracapp/screens/logs_page.dart';
 import 'package:caracapp/utils/color_theme.dart';
 import 'package:caracapp/widgets/blocs/caracteristics_bloc.dart';
-import 'package:caracapp/widgets/blocs/infos_bloc.dart';
 import 'package:caracapp/widgets/blocs/inventory_bloc.dart';
 import 'package:caracapp/widgets/blocs/jutsus_bloc.dart';
 import 'package:caracapp/widgets/blocs/navigator_bloc.dart';
@@ -20,44 +17,23 @@ class MyCharacterPage extends StatefulWidget {
 
 class _MyCharacterPageState extends State<MyCharacterPage> {
   double textFieldWidthPercent = 0.65;
-  @override
-  void dispose() {
-    super.dispose();
-    print("TEST disposed");
-  }
 
   @override
   Widget build(BuildContext context) {
     double width = (MediaQuery.of(context).size.width);
     double height = MediaQuery.of(context).size.height;
+    Character character = widget.character;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: MyColorTheme.colorCustom,
           title: FittedBox(
-              child: Text(
-                  "${widget.character.name} de ${widget.character.origin}\n${widget.character.sexe} - ${widget.character.age} ans - level ${widget.character.level}")),
-          leading: null,
-          //   GestureDetector(
-          //     onTap: () {
-          //       Navigator.push(
-          //         context,
-          //         MaterialPageRoute(
-          //             builder: (context) => LogsPage(
-          //                   character: widget.character,
-          //                 )),
-          //       );
-          //       deactivate();
-          //     },
-          //     child: Padding(
-          //       padding:
-          //           const EdgeInsets.only(top: 10.0, left: 10.0, bottom: 10.0),
-          //       child: Image.asset(
-          //         "assets/front/paper_icon.jpg",
-          //         color: Colors.white,
-          //       ),
-          //     ),
-          //   ),
+            child: Text(
+              "${widget.character.name} de ${widget.character.origin}\n${widget.character.sexe} - ${character.age} ans - level ${widget.character.level}",
+              textAlign: TextAlign.center,
+            ),
+          ),
+          leading: const SizedBox(),
         ),
         body: Container(
           height: height,
@@ -73,7 +49,7 @@ class _MyCharacterPageState extends State<MyCharacterPage> {
                   width: width,
                   height: height,
                   child: FittedBox(
-                    fit: BoxFit.fitWidth,
+                    fit: BoxFit.contain,
                     child: Image.asset(
                       "assets/front/background2.jpg",
                     ),
@@ -116,9 +92,9 @@ class _MyCharacterPageState extends State<MyCharacterPage> {
                       color: Colors.white,
                       thickness: 2),
                   JutsuBloc(
-                      character: widget.character,
-                      // hideUnavailableJutsus: true,
-                      updateBlocOntimer: false),
+                    character: widget.character,
+                    updateBlocOntimer: false,
+                  ),
                   const SizedBox(height: 20),
                 ],
               )),
@@ -130,39 +106,7 @@ class _MyCharacterPageState extends State<MyCharacterPage> {
   }
 }
 
-class PickImage extends StatefulWidget {
-  final String imagePath;
-  final Function onTap;
 
-  const PickImage({super.key, required this.imagePath, required this.onTap});
-
-  @override
-  State<PickImage> createState() => _PickImageState();
-}
-
-class _PickImageState extends State<PickImage> {
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        widget.onTap(widget.imagePath);
-      },
-      child: SizedBox(
-          child: ClipRRect(
-        borderRadius: BorderRadius.circular(10),
-        child: FittedBox(
-          child: SizedBox(
-            width: 70,
-            height: 70,
-            child: Image.asset(
-              widget.imagePath,
-            ),
-          ),
-        ),
-      )),
-    );
-  }
-}
 
 
 

@@ -1,17 +1,13 @@
 import 'package:caracapp/main.dart';
 import 'package:caracapp/models/character_model.dart';
-import 'package:caracapp/screens/my_character_page.dart';
-import 'package:caracapp/utils/assets.dart';
-import 'package:caracapp/utils/data_access_object/character_dao.dart';
+
 import 'package:caracapp/widgets/blocs/attribute_bloc.dart';
 import 'package:caracapp/widgets/blocs/caracteristics_upgrade_bloc.dart';
 import 'package:caracapp/widgets/blocs/elements_bloc.dart';
 import 'package:caracapp/widgets/blocs/infos_bloc.dart';
-import 'package:caracapp/widgets/blocs/inventory_bloc.dart';
 import 'package:caracapp/widgets/blocs/jutsus_bloc.dart';
 import 'package:caracapp/widgets/blocs/photo_bloc.dart';
 import 'package:caracapp/widgets/blocs/speciality_bloc.dart';
-import 'package:caracapp/widgets/lowerWidgets/my_text_field.dart';
 import 'package:flutter/material.dart';
 
 class AddCharacterPage extends StatefulWidget {
@@ -78,7 +74,9 @@ class _AddCharacterPageState extends State<AddCharacterPage> {
                           color: Colors.white,
                           thickness: 2),
 
-                      CaracteristicsUpgradeBloc(character: widget.character),
+                      CaracteristicsUpgradeBloc(
+                        character: widget.character,
+                      ),
                       const SizedBox(height: 20),
                       Divider(
                           endIndent: width * 0.1,
@@ -185,6 +183,7 @@ class _ValidateButtonState extends State<ValidateButton> {
               ..perceptionBuffer = 0
               ..throwingBuffer = 0
               ..chakraBuffer = 0
+              ..pointsLeftToSpend = 0
               ..logs = "";
             print("TEST ninjutsu after : ${character.ninjutsu}");
             await character.update();

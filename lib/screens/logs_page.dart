@@ -88,10 +88,11 @@ class _LogsPageState extends State<LogsPage> {
                                       constraints: BoxConstraints(
                                           maxWidth: 100, maxHeight: 100),
                                       child: GestureDetector(
-                                        onTap: () {
+                                        onTap: () async {
                                           setState(() {
                                             widget.character.logs = "";
                                           });
+                                          await widget.character.update();
                                         },
                                         child: Image.asset(
                                             "assets/front/trash.jpg",

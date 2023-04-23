@@ -1,6 +1,8 @@
 import 'package:caracapp/models/character_model.dart';
+import 'package:caracapp/screens/level_up_page.dart';
 import 'package:caracapp/screens/logs_page.dart';
 import 'package:caracapp/utils/assets.dart';
+import 'package:caracapp/widgets/lowerWidgets/navigator_box.dart';
 import 'package:flutter/material.dart';
 
 class NavigatorBloc extends StatefulWidget {
@@ -57,7 +59,7 @@ class _NavigatorBlocState extends State<NavigatorBloc> {
                   title: "Level UP",
                   iconPath: "assets/front/route_icons/level_up.jpg",
                   size: size,
-                  route: LogsPage(
+                  route: LevelUpPage(
                     character: widget.character,
                   ),
                 ),
@@ -66,84 +68,6 @@ class _NavigatorBlocState extends State<NavigatorBloc> {
           ),
         ),
       ],
-    );
-  }
-}
-
-class NavigatorBox extends StatefulWidget {
-  final String title;
-  final String iconPath;
-  final double size;
-  final Widget route;
-  const NavigatorBox(
-      {super.key,
-      required this.size,
-      required this.route,
-      required this.iconPath,
-      required this.title});
-
-  @override
-  State<NavigatorBox> createState() => _NavigatorBoxState();
-}
-
-class _NavigatorBoxState extends State<NavigatorBox> {
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => widget.route),
-        );
-      },
-      child: Column(
-        children: [
-          const SizedBox(
-            height: 20,
-          ),
-          Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.black,
-                boxShadow: [MyDecoration.boxShadow]),
-            width: widget.size,
-            height: widget.size,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Padding(
-                padding: const EdgeInsets.all(2.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: MyDecoration.bloodColor,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image.asset(
-                      widget.iconPath,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            widget.title,
-            style: const TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              // color: Colors.white,
-            ),
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-        ],
-      ),
     );
   }
 }

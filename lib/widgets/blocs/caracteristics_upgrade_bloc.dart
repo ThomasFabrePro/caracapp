@@ -1,4 +1,5 @@
 import 'package:caracapp/models/character_model.dart';
+import 'package:caracapp/utils/assets.dart';
 import 'package:caracapp/widgets/lowerWidgets/upgrade_caracteristic.dart';
 import 'package:flutter/material.dart';
 
@@ -37,14 +38,24 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
     double width = double.infinity;
     return Column(
       children: [
-        const Padding(
-          padding: EdgeInsets.only(bottom: 20.0, top: 10),
-          child: Text("Caractéristiques",
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              )),
+        Container(
+          constraints: const BoxConstraints(
+            maxWidth: 1000,
+          ),
+          width: width,
+          child: const Center(
+            child: Padding(
+              padding: EdgeInsets.only(
+                bottom: 20,
+              ),
+              child: Text("Caractéristiques",
+                  style: TextStyle(
+                    fontSize: 22,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  )),
+            ),
+          ),
         ),
         Padding(
             padding:
@@ -66,14 +77,38 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(right: 16.0),
+                              child: Container(
+                                height: 40,
+                                color: const Color.fromARGB(172, 255, 255, 255),
+                                child: Center(
+                                  child: Text(
+                                    "Points restants: ${widget.character.pointsLeftToSpend}",
+                                    style: const TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold,
+                                      color: MyDecoration.bloodColor,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
                             UpgradeCaracteristic(
                                 title: "HP Max",
                                 stat: widget.character.hpMax,
                                 isEditable: isEditable,
                                 buffer: widget.character.hpBuffer,
                                 onTap: (int value) async {
+                                  if (widget.character.pointsLeftToSpend +
+                                          (-value) <
+                                      0) {
+                                    return;
+                                  }
+                                  //!Ne pas mettre dans le widget car casse CararcteristicsBloc
                                   widget.character.hpMax += value;
-                                  // (widget.character.hpMax + value).clamp(30, 100);
+                                  widget.character.pointsLeftToSpend +=
+                                      (-value);
                                   await widget.character
                                       .setHpMax(widget.character.hpMax);
                                 }),
@@ -83,7 +118,14 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                                 stat: widget.character.constitution,
                                 buffer: widget.character.constitutionBuffer,
                                 onTap: (int value) async {
+                                  if (widget.character.pointsLeftToSpend +
+                                          (-value) <
+                                      0) {
+                                    return;
+                                  }
                                   widget.character.constitution += value;
+                                  widget.character.pointsLeftToSpend +=
+                                      (-value);
                                   // (widget.character.constitution + value)
                                   //     .clamp(30, 100);
                                   await widget.character.setConstitution(
@@ -95,7 +137,14 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                                 stat: widget.character.luck,
                                 buffer: widget.character.luckBuffer,
                                 onTap: (int value) async {
+                                  if (widget.character.pointsLeftToSpend +
+                                          (-value) <
+                                      0) {
+                                    return;
+                                  }
                                   widget.character.luck += value;
+                                  widget.character.pointsLeftToSpend +=
+                                      (-value);
                                   // (widget.character.luck + value).clamp(30, 100);
                                   await widget.character
                                       .setLuck(widget.character.luck);
@@ -106,7 +155,14 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                                 stat: widget.character.perception,
                                 buffer: widget.character.perceptionBuffer,
                                 onTap: (int value) async {
+                                  if (widget.character.pointsLeftToSpend +
+                                          (-value) <
+                                      0) {
+                                    return;
+                                  }
                                   widget.character.perception += value;
+                                  widget.character.pointsLeftToSpend +=
+                                      (-value);
                                   // (widget.character.perception + value)
                                   //     .clamp(30, 100);
                                   await widget.character.setPerception(
@@ -118,7 +174,14 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                                 stat: widget.character.chakraMax,
                                 buffer: widget.character.chakraBuffer,
                                 onTap: (int value) async {
+                                  if (widget.character.pointsLeftToSpend +
+                                          (-value) <
+                                      0) {
+                                    return;
+                                  }
                                   widget.character.chakraMax += value;
+                                  widget.character.pointsLeftToSpend +=
+                                      (-value);
                                   // (snapshot.data!.chakraMax + value).clamp(30, 100);
                                   await widget.character
                                       .setChakraMax(widget.character.chakraMax);
@@ -129,7 +192,14 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                                 stat: widget.character.dodge,
                                 buffer: widget.character.dodgeBuffer,
                                 onTap: (int value) async {
+                                  if (widget.character.pointsLeftToSpend +
+                                          (-value) <
+                                      0) {
+                                    return;
+                                  }
                                   widget.character.dodge += value;
+                                  widget.character.pointsLeftToSpend +=
+                                      (-value);
                                   // (widget.character.dodge + value).clamp(30, 100);
                                   await widget.character
                                       .setDodge(widget.character.dodge);
@@ -140,7 +210,14 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                                 stat: widget.character.throwing,
                                 buffer: widget.character.throwingBuffer,
                                 onTap: (int value) async {
+                                  if (widget.character.pointsLeftToSpend +
+                                          (-value) <
+                                      0) {
+                                    return;
+                                  }
                                   widget.character.throwing += value;
+                                  widget.character.pointsLeftToSpend +=
+                                      (-value);
                                   // (widget.character.throwing + value)
                                   //     .clamp(30, 100);
                                   await widget.character
@@ -152,7 +229,14 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                                 stat: widget.character.ninjutsu,
                                 buffer: widget.character.ninjutsuBuffer,
                                 onTap: (int value) async {
+                                  if (widget.character.pointsLeftToSpend +
+                                          (-value) <
+                                      0) {
+                                    return;
+                                  }
                                   widget.character.ninjutsu += value;
+                                  widget.character.pointsLeftToSpend +=
+                                      (-value);
                                   // (widget.character.ninjutsu + value)
                                   //     .clamp(30, 100);
                                   await widget.character
@@ -164,7 +248,14 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                                 stat: widget.character.taijutsu,
                                 buffer: widget.character.taijutsuBuffer,
                                 onTap: (int value) async {
+                                  if (widget.character.pointsLeftToSpend +
+                                          (-value) <
+                                      0) {
+                                    return;
+                                  }
                                   widget.character.taijutsu += value;
+                                  widget.character.pointsLeftToSpend +=
+                                      (-value);
                                   // (widget.character.taijutsu + value)
                                   //     .clamp(30, 100);
                                   await widget.character
@@ -176,7 +267,14 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                                 stat: widget.character.genjutsu,
                                 buffer: widget.character.genjutsuBuffer,
                                 onTap: (int value) async {
+                                  if (widget.character.pointsLeftToSpend +
+                                          (-value) <
+                                      0) {
+                                    return;
+                                  }
                                   widget.character.genjutsu += value;
+                                  widget.character.pointsLeftToSpend +=
+                                      (-value);
                                   // (widget.character.genjutsu + value)
                                   //     .clamp(30, 100);
                                   await widget.character

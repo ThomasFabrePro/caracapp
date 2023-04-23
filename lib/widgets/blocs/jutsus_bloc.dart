@@ -158,7 +158,7 @@ class _JutsuBlocState extends State<JutsuBloc> {
             children: [
               const Center(
                 child: Padding(
-                  padding: EdgeInsets.only(top: 10),
+                  padding: EdgeInsets.only(top: 15),
                   child: Text("Jutsus",
                       style: TextStyle(
                         fontSize: 22,
