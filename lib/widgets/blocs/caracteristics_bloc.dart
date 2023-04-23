@@ -70,7 +70,8 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                                 title: "HP /${widget.character.hpMax}",
                                 stat: widget.character.hp,
                                 isEditable: true,
-                                buffer: 0,
+                                buffer: widget.character.hpBuffer,
+                                minValue: 0,
                                 onTap: (int value) async {
                                   widget.character.hp =
                                       (widget.character.hp + value)
@@ -82,6 +83,7 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                                 title: "Chakra /${widget.character.chakraMax}",
                                 stat: widget.character.chakra,
                                 buffer: widget.character.chakraBuffer,
+                                minValue: 0,
                                 isEditable: true,
                                 onTap: (int value) async {
                                   widget.character.chakra =

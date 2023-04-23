@@ -5,12 +5,14 @@ class UpgradeCaracteristic extends StatefulWidget {
   final String title;
   final int stat;
   final int buffer;
+  final int? minValue;
   final Color? fontColor;
   final Function? onTap;
   final bool isEditable;
   const UpgradeCaracteristic(
       {super.key,
       this.fontColor,
+      this.minValue,
       required this.isEditable,
       required this.title,
       required this.onTap,
@@ -24,6 +26,7 @@ class UpgradeCaracteristic extends StatefulWidget {
 class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
   int stat = 0;
   int buffer = 0;
+  int minValue = 0;
   String bufferText = "";
   late bool isEditable;
   @override
@@ -31,6 +34,9 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
     // TODO: implement initState
     super.initState();
     isEditable = widget.isEditable;
+    if (widget.minValue == null) {
+      minValue = widget.stat;
+    }
   }
 
   @override
@@ -83,10 +89,10 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
                     child: Text(bufferText, style: MyDecoration.dataStyle),
                   )
                 : SizedBox(width: width * 0.11),
-            isEditable
-                ? SizedBox(
-                    width: width * 0.1,
-                    child: GestureDetector(
+            SizedBox(
+              width: width * 0.1,
+              child: isEditable && stat > minValue
+                  ? GestureDetector(
                       child: Image.asset(
                         "assets/front/minus_button.jpg",
                         color: Colors.red[900],
@@ -97,9 +103,9 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
                           widget.onTap!(-1);
                         });
                       },
-                    ),
-                  )
-                : const SizedBox(),
+                    )
+                  : const SizedBox(),
+            ),
             SizedBox(
               width: isEditable ? 20 : null,
             ),
