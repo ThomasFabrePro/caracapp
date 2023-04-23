@@ -240,12 +240,6 @@ class _DiceButtonState extends State<DiceButton> {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double containerHeight = 90;
-
-    return GestureDetector(
-      child: Container(child: _buildFlipAnimation()),
-      onTap: () {},
-    );
+    return _buildFlipAnimation();
   }
 }
