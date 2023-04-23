@@ -63,7 +63,7 @@ class Character {
     this.kekkaiGenkai = 0,
     this.level = 1,
     this.attribute = 0,
-    this.pointsLeftToSpend = 5,
+    this.pointsLeftToSpend = 150,
     this.hpMax = 30,
     this.hp = 30,
     this.constitution = 30,

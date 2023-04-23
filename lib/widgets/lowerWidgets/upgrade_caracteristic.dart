@@ -6,14 +6,18 @@ class UpgradeCaracteristic extends StatefulWidget {
   final int stat;
   final int buffer;
   final int? minValue;
+  // final int? maxValue;
   final Color? fontColor;
   final Function? onTap;
   final bool isEditable;
+  final bool isMax;
   const UpgradeCaracteristic(
       {super.key,
       this.fontColor,
       this.minValue,
+      // this.maxValue,
       required this.isEditable,
+      required this.isMax,
       required this.title,
       required this.onTap,
       required this.stat,
@@ -27,13 +31,16 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
   int stat = 0;
   int buffer = 0;
   int minValue = 0;
+  // int maxValue = 0;
   String bufferText = "";
   late bool isEditable;
+  bool isMax = false;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     isEditable = widget.isEditable;
+
     if (widget.minValue == null) {
       minValue = widget.stat;
     }
@@ -41,7 +48,9 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
 
   @override
   Widget build(BuildContext context) {
+    print("TEST build upgrade caracteristic");
     stat = widget.stat;
+    isMax = widget.isMax;
     buffer = widget.buffer;
     if (buffer > 0) {
       bufferText = "(+$buffer)";
@@ -109,7 +118,7 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
             SizedBox(
               width: isEditable ? 20 : null,
             ),
-            isEditable
+            isEditable && !isMax
                 ? SizedBox(
                     width: width * 0.1,
                     child: GestureDetector(
