@@ -39,22 +39,24 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
     double width = double.infinity;
     return Column(
       children: [
-        Container(
-          constraints: const BoxConstraints(
-            maxWidth: 1000,
-          ),
-          width: width,
-          child: const Center(
-            child: Padding(
-              padding: EdgeInsets.only(
-                bottom: 20,
+        Center(
+          child: Container(
+            constraints: const BoxConstraints(
+              maxWidth: 1000,
+            ),
+            width: width,
+            child: const Center(
+              child: Padding(
+                padding: EdgeInsets.only(
+                  bottom: 20,
+                ),
+                child: Text("Caractéristiques",
+                    style: TextStyle(
+                      fontSize: 22,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    )),
               ),
-              child: Text("Caractéristiques",
-                  style: TextStyle(
-                    fontSize: 22,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  )),
             ),
           ),
         ),

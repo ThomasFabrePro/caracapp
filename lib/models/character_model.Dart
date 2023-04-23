@@ -72,7 +72,7 @@ class Character {
     this.genjutsu = 30,
     this.luck = 30,
     this.perception = 30,
-    this.chakraMax = 30,
+    this.chakraMax = 50,
     this.chakra = 50,
     this.dodge = 30,
     this.throwing = 30,
@@ -214,6 +214,9 @@ class Character {
     String dt = DateTime.now().toString().substring(0, 19);
     String newLogs = "$dt\n$log\n\n =====================\n";
     logs = newLogs + logs;
+    if (logs.length > 10000) {
+      logs = logs.substring(0, 10000);
+    }
     await update();
   }
 
@@ -223,68 +226,79 @@ class Character {
   }
 
   Future<void> setLevel(int newLevel) async {
-    level = newLevel;
-    await addToLogsAndUpdate("Level up : ${newLevel - 1} => $newLevel");
+    // level = newLevel;
+    await addToLogsAndUpdate(
+        "Level up : ${newLevel - 1} => $newLevel\nTotal de points à dépenser : $pointsLeftToSpend");
   }
 
   Future<void> setHpMax(int newHpMax) async {
-    hpMax = newHpMax;
+    // hpMax = newHpMax;
     await addToLogsAndUpdate("Nouveau montant de hpMax : $newHpMax");
   }
 
   Future<void> setHp(int newHp) async {
-    hp = newHp;
+    // hp = newHp;
     await addToLogsAndUpdate("Nouveau montant de hp : $newHp");
   }
 
   Future<void> setConstitution(int newConstitution) async {
-    constitution = newConstitution;
-    await update();
+    // constitution = newConstitution;
+    // await update();
+    await addToLogsAndUpdate(
+        "Nouveau score de Constitution : $newConstitution");
   }
 
   Future<void> setNinjutsu(int newNinjutsu) async {
-    ninjutsu = newNinjutsu;
-    await update();
+    // ninjutsu = newNinjutsu;
+    // await update();
+    await addToLogsAndUpdate("Nouveau score de Ninjutsu : $newNinjutsu");
   }
 
   Future<void> setTaijutsu(int newTaijutsu) async {
-    taijutsu = newTaijutsu;
-    await update();
+    // taijutsu = newTaijutsu;
+    // await update();
+    await addToLogsAndUpdate("Nouveau score de Taijutsu : $newTaijutsu");
   }
 
   Future<void> setGenjutsu(int newGenjutsu) async {
-    genjutsu = newGenjutsu;
-    await update();
+    // genjutsu = newGenjutsu;
+    // await update();
+    await addToLogsAndUpdate("Nouveau score de Genjutsu : $newGenjutsu");
   }
 
   Future<void> setLuck(int newLuck) async {
-    luck = newLuck;
-    await update();
+    // luck = newLuck;
+    // await update();
+    await addToLogsAndUpdate("Nouveau score de Luck : $newLuck");
   }
 
   Future<void> setPerception(int newPerception) async {
-    perception = newPerception;
-    await update();
+    // perception = newPerception;
+    // await update();
+    await addToLogsAndUpdate("Nouveau score de Perception : $newPerception");
   }
 
   Future<void> setChakra(int newChakra) async {
-    chakra = newChakra;
+    // chakra = newChakra;
     await addToLogsAndUpdate("Nouveau montant de chakra : $newChakra");
   }
 
   Future<void> setChakraMax(int newChakraMax) async {
-    chakraMax = newChakraMax;
-    await update();
+    // chakraMax = newChakraMax;
+    // await update();
+    await addToLogsAndUpdate("Nouveau montant de ChakraMax : $newChakraMax");
   }
 
   Future<void> setDodge(int newDodge) async {
-    dodge = newDodge;
-    await update();
+    // dodge = newDodge;
+    // await update();
+    await addToLogsAndUpdate("Nouveau score d'esquive / blocage : $newDodge");
   }
 
   Future<void> setThrowing(int newThrowing) async {
-    throwing = newThrowing;
-    await update();
+    // throwing = newThrowing;
+    // await update();
+    await addToLogsAndUpdate("Nouveau score de Lancer : $newThrowing");
   }
 
   Future<void> setAge(int newAge) async {
@@ -314,8 +328,9 @@ class Character {
   }
 
   Future<void> setPicture(String newPicture) async {
-    picture = newPicture;
-    await update();
+    // picture = newPicture;
+    // await update();
+    await addToLogsAndUpdate("Changement de la photo");
   }
 
   ///ATTRIBUT
@@ -324,7 +339,7 @@ class Character {
   ///2 : Sharingan /
   ///3 : Byakugan /
   Future<void> setAttribute(int newAttribute) async {
-    attribute = newAttribute;
+    // attribute = newAttribute;
     await update();
   }
 

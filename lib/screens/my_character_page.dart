@@ -30,7 +30,7 @@ class _MyCharacterPageState extends State<MyCharacterPage> {
           title: FittedBox(
             child: Text(
               "${widget.character.name} de ${widget.character.origin}\n${widget.character.sexe} - ${character.age} ans - level ${widget.character.level}",
-              textAlign: TextAlign.center,
+              // textAlign: TextAlign.center,
             ),
           ),
           leading: const SizedBox(),
