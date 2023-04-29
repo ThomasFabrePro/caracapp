@@ -41,7 +41,7 @@ class _JutsuBlocState extends State<JutsuBloc> {
     color: MyDecoration.bloodColor,
   );
   List<List<Jutsu>> jutsusLists = <List<Jutsu>>[];
-  List<List<JutsuCard>> jutsuCardsList = <List<JutsuCard>>[[], [], []];
+  List<List<JutsuCard>> jutsuCardsList = <List<JutsuCard>>[[], [], [], []];
   Timer? timerRebuild;
   int main = 0;
   int second = 0;

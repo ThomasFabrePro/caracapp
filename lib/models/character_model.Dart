@@ -233,12 +233,12 @@ class Character {
 
   Future<void> setHpMax(int newHpMax) async {
     // hpMax = newHpMax;
-    await addToLogsAndUpdate("Nouveau montant de hpMax : $newHpMax");
+    await addToLogsAndUpdate("Nouveau montant de HP Max : $newHpMax");
   }
 
   Future<void> setHp(int newHp) async {
     // hp = newHp;
-    await addToLogsAndUpdate("Nouveau montant de hp : $newHp");
+    await addToLogsAndUpdate("Nouveau montant de HP : $newHp");
   }
 
   Future<void> setConstitution(int newConstitution) async {
