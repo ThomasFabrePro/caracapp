@@ -52,7 +52,7 @@ class _AddCharacterPageState extends State<AddCharacterPage> {
                   width: width,
                   height: height,
                   child: FittedBox(
-                    fit: BoxFit.fitWidth,
+                    fit: BoxFit.contain,
                     child: Image.asset(
                       "assets/front/background2.jpg",
                     ),

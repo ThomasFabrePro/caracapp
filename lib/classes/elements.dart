@@ -5,7 +5,6 @@ import 'package:caracapp/classes/justsus/raiton_jutsus.dart';
 import 'package:caracapp/classes/justsus/suiton_jutsus.dart';
 import 'package:caracapp/models/jutsu_model.dart';
 import 'package:caracapp/models/primary_element_model.dart';
-import 'package:caracapp/utils/assets.dart';
 
 class Katon extends PrimaryElement {
   Katon()

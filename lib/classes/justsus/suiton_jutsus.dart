@@ -1,7 +1,6 @@
 // ignore_for_file: overridden_fields, annotate_overrides
 
 import 'package:caracapp/models/jutsu_model.dart';
-import 'package:caracapp/utils/assets.dart';
 
 class WaterDragon extends Jutsu {
   WaterDragon()
