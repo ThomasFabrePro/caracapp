@@ -101,7 +101,8 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                                 title: "HP Max",
                                 stat: widget.character.hpMax,
                                 isEditable: isEditable,
-                                isMax: widget.character.pointsLeftToSpend == 0,
+                                cantAddMoreThan:
+                                    widget.character.pointsLeftToSpend == 0,
                                 buffer: widget.character.hpBuffer,
                                 onTap: (int value) async {
                                   if (widget.character.pointsLeftToSpend +
@@ -119,7 +120,8 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                             UpgradeCaracteristic(
                                 title: "Constitution",
                                 isEditable: isEditable,
-                                isMax: widget.character.pointsLeftToSpend == 0,
+                                cantAddMoreThan:
+                                    widget.character.pointsLeftToSpend == 0,
                                 stat: widget.character.constitution,
                                 buffer: widget.character.constitutionBuffer,
                                 onTap: (int value) async {
@@ -139,7 +141,8 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                             UpgradeCaracteristic(
                                 title: "Chance",
                                 isEditable: isEditable,
-                                isMax: widget.character.pointsLeftToSpend == 0,
+                                cantAddMoreThan:
+                                    widget.character.pointsLeftToSpend == 0,
                                 stat: widget.character.luck,
                                 buffer: widget.character.luckBuffer,
                                 onTap: (int value) async {
@@ -158,7 +161,8 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                             UpgradeCaracteristic(
                                 title: "Perception",
                                 isEditable: isEditable,
-                                isMax: widget.character.pointsLeftToSpend == 0,
+                                cantAddMoreThan:
+                                    widget.character.pointsLeftToSpend == 0,
                                 stat: widget.character.perception,
                                 buffer: widget.character.perceptionBuffer,
                                 onTap: (int value) async {
@@ -178,7 +182,8 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                             UpgradeCaracteristic(
                                 title: "Chakra Max",
                                 isEditable: isEditable,
-                                isMax: widget.character.pointsLeftToSpend == 0,
+                                cantAddMoreThan:
+                                    widget.character.pointsLeftToSpend == 0,
                                 stat: widget.character.chakraMax,
                                 buffer: widget.character.chakraBuffer,
                                 onTap: (int value) async {
@@ -196,7 +201,8 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                                 }),
                             UpgradeCaracteristic(
                                 title: "Esq/Bloc",
-                                isMax: widget.character.pointsLeftToSpend == 0,
+                                cantAddMoreThan:
+                                    widget.character.pointsLeftToSpend == 0,
                                 isEditable: isEditable,
                                 stat: widget.character.dodge,
                                 buffer: widget.character.dodgeBuffer,
@@ -215,7 +221,8 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                                 }),
                             UpgradeCaracteristic(
                                 title: "Lancer",
-                                isMax: widget.character.pointsLeftToSpend == 0,
+                                cantAddMoreThan:
+                                    widget.character.pointsLeftToSpend == 0,
                                 isEditable: isEditable,
                                 stat: widget.character.throwing,
                                 buffer: widget.character.throwingBuffer,
@@ -236,7 +243,8 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                             UpgradeCaracteristic(
                                 title: "Ninjutsu",
                                 isEditable: isEditable,
-                                isMax: widget.character.pointsLeftToSpend == 0,
+                                cantAddMoreThan:
+                                    widget.character.pointsLeftToSpend == 0,
                                 stat: widget.character.ninjutsu,
                                 buffer: widget.character.ninjutsuBuffer,
                                 onTap: (int value) async {
@@ -257,7 +265,8 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                                 title: "Taijutsu",
                                 isEditable: isEditable,
                                 stat: widget.character.taijutsu,
-                                isMax: widget.character.pointsLeftToSpend == 0,
+                                cantAddMoreThan:
+                                    widget.character.pointsLeftToSpend == 0,
                                 buffer: widget.character.taijutsuBuffer,
                                 onTap: (int value) async {
                                   if (widget.character.pointsLeftToSpend +
@@ -276,7 +285,8 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                             UpgradeCaracteristic(
                                 title: "Genjutsu",
                                 isEditable: isEditable,
-                                isMax: widget.character.pointsLeftToSpend == 0,
+                                cantAddMoreThan:
+                                    widget.character.pointsLeftToSpend == 0,
                                 stat: widget.character.genjutsu,
                                 buffer: widget.character.genjutsuBuffer,
                                 onTap: (int value) async {

@@ -6,18 +6,20 @@ class UpgradeCaracteristic extends StatefulWidget {
   final int stat;
   final int buffer;
   final int? minValue;
+  final int? onMaxValue;
   // final int? maxValue;
   final Color? fontColor;
   final Function? onTap;
   final bool isEditable;
-  final bool isMax;
+  final bool cantAddMoreThan;
   const UpgradeCaracteristic(
       {super.key,
       this.fontColor,
       this.minValue,
+      this.onMaxValue,
       // this.maxValue,
       required this.isEditable,
-      required this.isMax,
+      required this.cantAddMoreThan,
       required this.title,
       required this.onTap,
       required this.stat,
@@ -31,10 +33,11 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
   int stat = 0;
   int buffer = 0;
   int minValue = 0;
+  String onMaxValue = "";
   // int maxValue = 0;
   String bufferText = "";
   late bool isEditable;
-  bool isMax = false;
+  bool cantAddMoreThan = false;
   @override
   void initState() {
     // TODO: implement initState
@@ -44,16 +47,19 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
     if (widget.minValue == null) {
       minValue = widget.stat;
     }
+    onMaxValue = widget.onMaxValue != null ? "/${widget.onMaxValue}" : "";
   }
 
   @override
   Widget build(BuildContext context) {
     print("TEST build upgrade caracteristic");
     stat = widget.stat;
-    isMax = widget.isMax;
+    cantAddMoreThan = widget.cantAddMoreThan;
     buffer = widget.buffer;
     if (buffer > 0) {
       bufferText = "(+$buffer)";
+    } else if (buffer == 0) {
+      bufferText = "";
     } else {
       bufferText = "($buffer)";
     }
@@ -63,7 +69,6 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
       child: FittedBox(
         child: SizedBox(
           height: 35,
-          // color: Colors.green,
           // constraints: const BoxConstraints(
           //   maxWidth: 1000,
           // ),
@@ -80,30 +85,48 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
                   )),
             ),
             SizedBox(
-              width: width * 0.09,
-              child: Text((stat + buffer).toString(),
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: buffer > 0
-                        ? Colors.green
-                        : buffer < 0
-                            ? Colors.red
-                            : Colors.black,
-                  )),
-            ),
-            buffer != 0
-                ? SizedBox(
-                    width: width * 0.11,
-                    child: Text(bufferText, style: MyDecoration.dataStyle),
-                  )
-                : SizedBox(width: width * 0.11),
+                width: width * 0.2,
+                child: RichText(
+                    text: TextSpan(children: [
+                  TextSpan(
+                    text: '${(stat + buffer).toString()}$onMaxValue',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: buffer > 0
+                          ? Colors.green
+                          : buffer < 0
+                              ? Colors.red
+                              : Colors.black,
+                    ),
+                  ),
+                  TextSpan(text: bufferText, style: MyDecoration.dataStyle),
+                ]))
+
+                // Text('${(stat + buffer).toString()}$onMaxValue',
+                //     style: TextStyle(
+                //       fontSize: 22,
+                //       fontWeight: FontWeight.bold,
+                //       color: buffer > 0
+                //           ? Colors.green
+                //           : buffer < 0
+                //               ? Colors.red
+                //               : Colors.black,
+                //     )),
+                ),
+            // buffer != 0
+            //     ? SizedBox(
+            //         width: width * 0.11,
+            //         child: Text(bufferText, style: MyDecoration.dataStyle),
+            //       )
+            //     : SizedBox(width: width * 0.06),
             SizedBox(
               width: width * 0.1,
               child: isEditable && stat > minValue
                   ? GestureDetector(
-                      child: Image.asset(
-                        "assets/front/minus_button.jpg",
+                      child: Icon(
+                        Icons.remove,
+                        size: 35,
                         color: Colors.red[900],
                       ),
                       onTap: () {
@@ -118,7 +141,7 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
             SizedBox(
               width: isEditable ? 20 : null,
             ),
-            isEditable && !isMax
+            isEditable && !cantAddMoreThan
                 ? SizedBox(
                     width: width * 0.1,
                     child: GestureDetector(
@@ -128,9 +151,11 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
                             widget.onTap!(1);
                           });
                         },
-                        child: Image.asset(
-                          "assets/front/plus_button.jpg",
-                          color: Colors.green[800],
+                        child: const Icon(
+                          Icons.add,
+                          size: 35,
+                          // Icons.exposure_plus_1_outlined,
+                          color: Colors.green,
                         )
 
                         // child: MaterialIcons.plus,

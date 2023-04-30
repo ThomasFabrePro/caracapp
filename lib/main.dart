@@ -2,6 +2,7 @@ import 'package:caracapp/database/database.dart';
 import 'package:caracapp/database/db_helper.dart';
 import 'package:caracapp/models/character_model.dart';
 import 'package:caracapp/screens/add_character_page.dart';
+import 'package:caracapp/screens/fight_page.dart';
 import 'package:caracapp/screens/level_up_page.dart';
 import 'package:caracapp/screens/logs_page.dart';
 import 'package:caracapp/screens/my_character_page.dart';
@@ -92,37 +93,35 @@ class _MyAppState extends State<MyApp> {
               appBar: AppBar(
                 backgroundColor: MyColorTheme.colorCustom,
                 title: FittedBox(
-                  child:
-                      // Text(
-                      //   "${widget.character.name} de ${widget.character.origin}\n${widget.character.sexe} - ${widget.character.age} ans - level ${widget.character.level}",
-                      //   // textAlign: TextAlign.center,
-                      // ),
-                      [
-                    const Text(
-                      "Logs",
-                      textAlign: TextAlign.center,
-                    ),
+                  child: [
+                    const Text("Logs"),
                     Text(
                       "${widget.character.name} de ${widget.character.origin}\n${widget.character.sexe} - ${widget.character.age} ans - level ${widget.character.level}",
-                      // textAlign: TextAlign.center,
                     ),
-                    const Text(
-                      "Combat",
-                      // textAlign: TextAlign.center,
-                    ),
-                    const Text(
-                      "Level Up",
-                      // textAlign: TextAlign.center,
-                    ),
+                    const Text("Combat"),
+                    const Text("Level Up"),
                   ][_currentIndex],
                 ),
-                // leading: const SizedBox(),
+                leading: _currentIndex == 0
+                    ? GestureDetector(
+                        onTap: () async {
+                          widget.character.logs = "";
+
+                          await widget.character.update();
+                          setCurrentIndex(1);
+                        },
+                        child: const Icon(
+                          Icons.delete_outline,
+                          size: 40,
+                        ),
+                      )
+                    : null,
               ),
               bottomNavigationBar: BottomNavigationBar(
                 currentIndex: _currentIndex,
                 onTap: (index) => setCurrentIndex(index),
                 showUnselectedLabels: true,
-                selectedItemColor: Colors.red,
+                selectedItemColor: Colors.white,
                 unselectedItemColor: Colors.grey,
                 type: BottomNavigationBarType.fixed,
                 backgroundColor: MyColorTheme.colorCustom,
@@ -148,7 +147,7 @@ class _MyAppState extends State<MyApp> {
               body: [
                 LogsPage(character: widget.character),
                 MyCharacterPage(character: widget.character),
-                LevelUpPage(character: widget.character),
+                FightPage(character: widget.character),
                 LevelUpPage(character: widget.character),
               ][_currentIndex],
             ),
