@@ -34,7 +34,6 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
   int buffer = 0;
   int minValue = 0;
   String onMaxValue = "";
-  // int maxValue = 0;
   String bufferText = "";
   late bool isEditable;
   bool cantAddMoreThan = false;
@@ -67,9 +66,6 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
       child: FittedBox(
         child: SizedBox(
           height: 35,
-          // constraints: const BoxConstraints(
-          //   maxWidth: 1000,
-          // ),
           child: Row(children: [
             SizedBox(
               width: width * 0.38,
@@ -83,41 +79,32 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
                   )),
             ),
             SizedBox(
-                width: width * 0.2,
-                child: RichText(
-                    text: TextSpan(children: [
-                  TextSpan(
-                    text: '${(stat + buffer).toString()}$onMaxValue',
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: buffer > 0
-                          ? Colors.green
-                          : buffer < 0
-                              ? Colors.red
-                              : Colors.black,
+              width: width * 0.2,
+              child: RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: '${(stat + buffer).toString()}$onMaxValue',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: buffer > 0
+                            ? Colors.green
+                            : buffer < 0
+                                ? Colors.red
+                                : Colors.black,
+                      ),
                     ),
-                  ),
-                  TextSpan(text: bufferText, style: MyDecoration.dataStyle),
-                ]))
-
-                // Text('${(stat + buffer).toString()}$onMaxValue',
-                //     style: TextStyle(
-                //       fontSize: 22,
-                //       fontWeight: FontWeight.bold,
-                //       color: buffer > 0
-                //           ? Colors.green
-                //           : buffer < 0
-                //               ? Colors.red
-                //               : Colors.black,
-                //     )),
+                    TextSpan(
+                        text: " $bufferText",
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                        )),
+                  ],
                 ),
-            // buffer != 0
-            //     ? SizedBox(
-            //         width: width * 0.11,
-            //         child: Text(bufferText, style: MyDecoration.dataStyle),
-            //       )
-            //     : SizedBox(width: width * 0.06),
+              ),
+            ),
             SizedBox(
               width: width * 0.1,
               child: isEditable && stat > minValue

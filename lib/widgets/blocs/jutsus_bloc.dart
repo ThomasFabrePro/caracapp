@@ -12,48 +12,23 @@ import 'package:flutter/material.dart';
 
 class JutsuBloc extends StatefulWidget {
   final Character character;
-  final bool updateBlocOntimer;
   final bool hideNotLearnedJutsus;
   const JutsuBloc(
-      {super.key,
-      this.updateBlocOntimer = true,
-      this.hideNotLearnedJutsus = true,
-      required this.character});
+      {super.key, this.hideNotLearnedJutsus = true, required this.character});
 
   @override
   State<JutsuBloc> createState() => _JutsuBlocState();
 }
 
 class _JutsuBlocState extends State<JutsuBloc> {
-  // Character character = Character();
-  double titleWidthPercent = 0.33;
   bool hideNotLearnedJutsus = false;
-  int maxCheckCounter = 2;
-  int checkCounter = 0;
-  int noSpeciality = 0;
   PrimaryElement mainElement = PrimaryElement();
   PrimaryElement secondElement = PrimaryElement();
   Kekkai kekkai = Kekkai();
   Genjutsu genjutsu = Genjutsu();
-  TextStyle titleStyle = const TextStyle(
-    fontSize: 22,
-    fontWeight: FontWeight.bold,
-    color: MyDecoration.bloodColor,
-  );
   List<List<Jutsu>> jutsusLists = <List<Jutsu>>[];
   List<List<JutsuCard>> jutsuCardsList = <List<JutsuCard>>[[], [], [], []];
   Timer? timerRebuild;
-  Color getColor(Set<MaterialState> states) {
-    const Set<MaterialState> interactiveStates = <MaterialState>{
-      MaterialState.pressed,
-      MaterialState.hovered,
-      MaterialState.focused,
-    };
-    if (states.any(interactiveStates.contains)) {
-      return Colors.red;
-    }
-    return MyDecoration.bloodColor;
-  }
 
   @override
   void initState() {
@@ -125,7 +100,10 @@ class _JutsuBlocState extends State<JutsuBloc> {
                       color: const Color.fromARGB(172, 255, 255, 255),
                       child: Checkbox(
                         checkColor: Colors.white,
-                        fillColor: MaterialStateProperty.resolveWith(getColor),
+                        fillColor: MaterialStateProperty.resolveWith<Color>(
+                            (Set<MaterialState> states) {
+                          return MyDecoration.bloodColor;
+                        }),
                         value: !hideNotLearnedJutsus,
                         onChanged: (bool? value) async {
                           setState(() {
@@ -139,11 +117,15 @@ class _JutsuBlocState extends State<JutsuBloc> {
                     Container(
                       height: 40,
                       color: const Color.fromARGB(172, 255, 255, 255),
-                      child: SizedBox(
+                      child: const SizedBox(
                         child: Center(
                           child: Text(
                             "Tous  ",
-                            style: titleStyle,
+                            style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                              color: MyDecoration.bloodColor,
+                            ),
                           ),
                         ),
                       ),

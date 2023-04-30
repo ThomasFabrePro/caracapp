@@ -72,7 +72,7 @@ class _MyCharacterPageState extends State<MyCharacterPage> {
                     thickness: 2),
                 JutsuBloc(
                   character: widget.character,
-                  updateBlocOntimer: false,
+                  // updateBlocOntimer: false,
                 ),
                 const SizedBox(height: 20),
               ],
