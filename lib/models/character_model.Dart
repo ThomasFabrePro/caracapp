@@ -17,6 +17,7 @@ class Character {
   int age;
   int level;
   int attribute;
+  int attributeEnabled;
   int mainSpe;
   int secondSpe;
   int mainElement;
@@ -63,6 +64,7 @@ class Character {
     this.kekkaiGenkai = 0,
     this.level = 1,
     this.attribute = 0,
+    this.attributeEnabled = 0,
     this.pointsLeftToSpend = 150,
     this.hpMax = 30,
     this.hp = 30,
@@ -106,6 +108,7 @@ class Character {
       'kekkaiGenkai': kekkaiGenkai,
       'level': level,
       'attribute': attribute,
+      'attributeEnabled': attributeEnabled,
       'pointsLeftToSpend': pointsLeftToSpend,
       'hpMax': hpMax,
       'hp': hp,
@@ -150,6 +153,7 @@ class Character {
       kekkaiGenkai: map['kekkaiGenkai'],
       level: map['level'],
       attribute: map['attribute'],
+      attributeEnabled: map['attributeEnabled'],
       pointsLeftToSpend: map['pointsLeftToSpend'],
       hpMax: map['hpMax'],
       hp: map['hp'],
@@ -189,6 +193,7 @@ class Character {
     "[3, 5]": 9, //Mokuton  //bois
     "[4, 5]": 10, //Jiton //Magnétisme
   };
+
   Future<Character> getCharacter() async {
     return await DbHelper.database.characterDao.findCharacterByName(name);
   }
@@ -330,9 +335,9 @@ class Character {
     await update();
   }
 
-  Future<void> attributeBoost(bool enabled) async {
-    int sign = enabled ? 1 : -1;
-
+  Future<void> attributeBoost(int enabled) async {
+    int sign = enabled == 1 ? 1 : -1;
+    attributeEnabled = enabled;
     switch (attribute) {
       case 1:
         //pas de boost de stat pour le jinchuriki
@@ -352,7 +357,8 @@ class Character {
         chakraBuffer -= 5 * sign;
         break;
     }
-    await addToLogsAndUpdate(enabled ? "Buff d'attribut" : "Débuff d'attribut");
+    await addToLogsAndUpdate(
+        enabled == 1 ? "Buff d'attribut" : "Débuff d'attribut");
     // await update();
   }
 

@@ -61,7 +61,7 @@ class Jutsu {
     return JutsuCard(
       jutsu: this,
       statValue: statValue,
-      chakra: character.chakra,
+      chakra: character.chakra + character.chakraBuffer,
       hideIfNotLearned: hide,
       minimumStat: statMinimum,
       statName: statName,

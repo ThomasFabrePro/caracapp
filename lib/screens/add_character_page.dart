@@ -149,6 +149,8 @@ class _ValidateButtonState extends State<ValidateButton> {
         child: ElevatedButton(
           onPressed: () async {
             Character character = widget.character;
+            await character.addToLogsAndUpdate(
+                "Points restants à dépenser avant de terminer\nla création du personnage : ${character.pointsLeftToSpend}");
             character
               ..chakraMax = character.chakraMax + character.chakraBuffer
               ..chakra = character.chakraMax

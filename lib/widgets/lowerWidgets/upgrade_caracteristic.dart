@@ -96,7 +96,7 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
                       ),
                     ),
                     TextSpan(
-                        text: " $bufferText",
+                        text: onMaxValue != "" ? "" : " $bufferText",
                         style: const TextStyle(
                           color: Colors.black,
                           fontSize: 18,
@@ -114,11 +114,11 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
                         size: 35,
                         color: Colors.red[900],
                       ),
-                      onTap: () {
+                      onTap: () async {
                         setState(() {
                           stat = (stat - 1).clamp(30, 100);
-                          widget.onTap!(-1);
                         });
+                        await widget.onTap!(-1);
                       },
                     )
                   : const SizedBox(),
@@ -130,11 +130,11 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
                 ? SizedBox(
                     width: width * 0.1,
                     child: GestureDetector(
-                        onTap: () {
+                        onTap: () async {
                           setState(() {
                             stat = (stat + 1).clamp(30, 100);
-                            widget.onTap!(1);
                           });
+                          await widget.onTap!(1);
                         },
                         child: const Icon(
                           Icons.add,

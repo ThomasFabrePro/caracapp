@@ -28,10 +28,6 @@ class _DiceCaracteristicState extends State<DiceCaracteristic> {
   int stat = 0;
   int buffer = 0;
   String bufferText = "";
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +35,8 @@ class _DiceCaracteristicState extends State<DiceCaracteristic> {
     buffer = widget.buffer;
     if (buffer > 0) {
       bufferText = "(+$buffer)";
+    } else if (buffer == 0) {
+      bufferText = "";
     } else {
       bufferText = "($buffer)";
     }
@@ -64,24 +62,38 @@ class _DiceCaracteristicState extends State<DiceCaracteristic> {
                 )),
           ),
           SizedBox(
-            width: width * 0.09,
-            child: Text((stat + buffer).toString(),
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: buffer > 0
-                      ? Colors.green
-                      : buffer < 0
-                          ? Colors.red
-                          : Colors.black,
-                )),
+            width: width * 0.2,
+            child: RichText(
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: '${(stat + buffer).toString()}',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: buffer > 0
+                          ? Colors.green
+                          : buffer < 0
+                              ? Colors.red
+                              : Colors.black,
+                    ),
+                  ),
+                  TextSpan(
+                      text: " $bufferText",
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                      )),
+                ],
+              ),
+            ),
           ),
-          buffer != 0
-              ? SizedBox(
-                  width: width * 0.11,
-                  child: Text(bufferText, style: MyDecoration.dataStyle),
-                )
-              : SizedBox(width: width * 0.11),
+          // buffer != 0
+          //     ? SizedBox(
+          //         width: width * 0.11,
+          //         child: Text(bufferText, style: MyDecoration.dataStyle),
+          //       )
+          //     : SizedBox(width: width * 0.11),
           Expanded(
             child: DiceButton(
                 character: widget.character,

@@ -3,10 +3,9 @@ import 'package:caracapp/utils/assets.dart';
 import 'package:flutter/material.dart';
 
 class PhotoBloc extends StatefulWidget {
-  final Character character;
+  Character character;
   final bool disableAttributeButton;
-  const PhotoBloc(this.character,
-      {super.key, this.disableAttributeButton = false});
+  PhotoBloc(this.character, {super.key, this.disableAttributeButton = false});
 
   @override
   State<PhotoBloc> createState() => _PhotoBlocState();
@@ -14,11 +13,18 @@ class PhotoBloc extends StatefulWidget {
 
 class _PhotoBlocState extends State<PhotoBloc> {
   bool displayPhotosGrid = false;
+  int attributeEnabled = 0;
+  @override
+  void initState() {
+    super.initState();
+    attributeEnabled = widget.character.attributeEnabled;
+  }
 
   void updatePhoto(String value) {
     setState(() {
       widget.character.picture = value;
       widget.character.setPicture(value);
+
       displayPhotosGrid = false;
     });
   }
@@ -110,12 +116,14 @@ class _PhotoBlocState extends State<PhotoBloc> {
                             ),
                             GestureDetector(
                               onTap: () async {
-                                // setState(() {
-                                //   widget.character
-                                //     ..level += 1
-                                //     ..pointsLeftToSpend += 5;
-                                // });
-                                // await widget.character.setLevel(widget.character.level);
+                                setState(() {
+                                  attributeEnabled =
+                                      attributeEnabled == 0 ? 1 : 0;
+                                });
+                                await widget.character
+                                    .attributeBoost(attributeEnabled);
+                                // await widget.character
+                                //     .setLevel(widget.character.level);
                               },
                               child: Padding(
                                 padding: const EdgeInsets.only(
@@ -145,7 +153,9 @@ class _PhotoBlocState extends State<PhotoBloc> {
                                   ),
                                   child: Center(
                                     child: Text(
-                                      "Niveau ${widget.character.level}",
+                                      attributeEnabled == 1
+                                          ? "Désactiver l'attribut"
+                                          : "Activer l'attribut",
                                       textAlign: TextAlign.center,
                                       style: const TextStyle(
                                         fontSize: 22,

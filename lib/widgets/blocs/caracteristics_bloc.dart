@@ -28,6 +28,8 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
     // var random = Random(2);
     while (true) {
       await Future.delayed(const Duration(seconds: 1));
+      // Character characterUpdated = await widget.character.getCharacter();
+      // yield characterUpdated;
       yield widget.character;
     }
   }
@@ -35,6 +37,9 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
   @override
   Widget build(BuildContext context) {
     // double width = double.infinity;
+    print("TEST ninjutsu : ${widget.character.ninjutsu}");
+    print("TEST genjutsu : ${widget.character.genjutsu}");
+
     return Column(
       children: [
         const Padding(
