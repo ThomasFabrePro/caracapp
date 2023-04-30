@@ -108,6 +108,7 @@ class _JutsuBlocState extends State<JutsuBloc> {
               jutsu: jutsu,
               statValue:
                   widget.character.ninjutsu + widget.character.ninjutsuBuffer,
+              chakra: widget.character.chakra,
             ),
           );
         }
@@ -122,6 +123,7 @@ class _JutsuBlocState extends State<JutsuBloc> {
           jutsu: jutsu,
           statValue:
               widget.character.genjutsu + widget.character.genjutsuBuffer,
+          chakra: widget.character.chakra,
           isGenjutsu: true,
         ));
       }

@@ -8,10 +8,12 @@ class JutsuCard extends StatefulWidget {
   final Jutsu jutsu;
   final int statValue;
   final bool isGenjutsu;
+  final int chakra;
   const JutsuCard(
       {super.key,
       this.isGenjutsu = false,
       required this.jutsu,
+      required this.chakra,
       required this.statValue});
 
   @override
@@ -150,7 +152,9 @@ class _JutsuCardState extends State<JutsuCard> {
             width: width,
             height: 90,
             decoration: BoxDecoration(
-              color: isAvailable ? null : Colors.grey[900]!.withOpacity(0.5),
+              color: isAvailable && widget.chakra >= jutsu.chakraCost
+                  ? null
+                  : Colors.grey[900]!.withOpacity(0.5),
               borderRadius: BorderRadius.circular(10),
             ),
           )
