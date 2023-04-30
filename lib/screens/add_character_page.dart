@@ -63,7 +63,7 @@ class _AddCharacterPageState extends State<AddCharacterPage> {
                   child: Column(
                     children: <Widget>[
                       InfosBloc(widget.character, textFieldWidthPercent),
-                      PhotoBloc(widget.character),
+                      PhotoBloc(widget.character, disableAttributeButton: true),
                       const SizedBox(height: 20),
                       Divider(
                           endIndent: width * 0.1,
