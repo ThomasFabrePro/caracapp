@@ -20,12 +20,11 @@ class _MyCharacterPageState extends State<MyCharacterPage> {
   Widget build(BuildContext context) {
     double width = (MediaQuery.of(context).size.width);
     double height = MediaQuery.of(context).size.height;
-    Character character = widget.character;
     return SafeArea(
       child: Container(
         height: height,
         width: width,
-        color: Color.fromARGB(255, 0, 0, 0),
+        color: const Color.fromARGB(255, 0, 0, 0),
         child: Stack(
           children: [
             Center(

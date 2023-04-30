@@ -26,7 +26,6 @@ class _AddCharacterPageState extends State<AddCharacterPage> {
   void dispose() {
     super.dispose();
     scrollController.dispose();
-    print("TEST disposed");
   }
 
   @override
@@ -41,7 +40,7 @@ class _AddCharacterPageState extends State<AddCharacterPage> {
         body: Container(
           height: height,
           width: width,
-          color: Color.fromARGB(255, 0, 0, 0),
+          color: const Color.fromARGB(255, 0, 0, 0),
           child: Stack(
             children: [
               Center(
@@ -63,9 +62,7 @@ class _AddCharacterPageState extends State<AddCharacterPage> {
                   controller: scrollController,
                   child: Column(
                     children: <Widget>[
-                      // TODO ADD FOCUS NODES
                       InfosBloc(widget.character, textFieldWidthPercent),
-
                       PhotoBloc(widget.character),
                       const SizedBox(height: 20),
                       Divider(
@@ -73,7 +70,6 @@ class _AddCharacterPageState extends State<AddCharacterPage> {
                           indent: width * 0.1,
                           color: Colors.white,
                           thickness: 2),
-
                       CaracteristicsUpgradeBloc(
                         character: widget.character,
                       ),
@@ -83,7 +79,6 @@ class _AddCharacterPageState extends State<AddCharacterPage> {
                           indent: width * 0.1,
                           color: Colors.white,
                           thickness: 2),
-
                       AttributeBloc(
                           character: widget.character,
                           scrollController: scrollController),
@@ -93,7 +88,6 @@ class _AddCharacterPageState extends State<AddCharacterPage> {
                           indent: width * 0.1,
                           color: Colors.white,
                           thickness: 2),
-
                       SpecialityBloc(character: widget.character),
                       const SizedBox(height: 20),
                       Divider(
@@ -101,7 +95,6 @@ class _AddCharacterPageState extends State<AddCharacterPage> {
                           indent: width * 0.1,
                           color: Colors.white,
                           thickness: 2),
-
                       ElementBloc(character: widget.character),
                       const SizedBox(height: 20),
                       Divider(
@@ -109,10 +102,8 @@ class _AddCharacterPageState extends State<AddCharacterPage> {
                           indent: width * 0.1,
                           color: Colors.white,
                           thickness: 2),
-
                       JutsuBloc(character: widget.character),
                       const SizedBox(height: 20),
-
                       ValidateButton(
                         character: widget.character,
                       ),
@@ -158,7 +149,6 @@ class _ValidateButtonState extends State<ValidateButton> {
         child: ElevatedButton(
           onPressed: () async {
             Character character = widget.character;
-            print("TEST ninjutsu before : ${character.ninjutsu}");
             character
               ..chakraMax = character.chakraMax + character.chakraBuffer
               ..chakra = character.chakraMax
@@ -185,7 +175,6 @@ class _ValidateButtonState extends State<ValidateButton> {
               ..chakraBuffer = 0
               ..pointsLeftToSpend = 0
               ..logs = "";
-            print("TEST ninjutsu after : ${character.ninjutsu}");
             await character.update();
             runApp(MyApp(
               character: character,

@@ -16,7 +16,6 @@ class _FightPageState extends State<FightPage> {
   @override
   void dispose() {
     super.dispose();
-    print("TEST disposed");
   }
 
   @override

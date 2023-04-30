@@ -1,6 +1,4 @@
 import 'package:caracapp/models/character_model.dart';
-import 'package:caracapp/screens/my_character_page.dart';
-import 'package:caracapp/widgets/lowerWidgets/my_text_field.dart';
 import 'package:flutter/material.dart';
 
 class PhotoBloc extends StatefulWidget {
@@ -37,7 +35,8 @@ class _PhotoBlocState extends State<PhotoBloc> {
                 child: Container(
                   width: width * 0.4,
                   height: width * 0.4,
-                  constraints: BoxConstraints(maxHeight: 300, maxWidth: 300),
+                  constraints:
+                      const BoxConstraints(maxHeight: 300, maxWidth: 300),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: Colors.white,

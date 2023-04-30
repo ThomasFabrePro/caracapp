@@ -1,7 +1,4 @@
-import 'dart:math';
-
 import 'package:caracapp/models/character_model.dart';
-import 'package:caracapp/utils/assets.dart';
 import 'package:caracapp/utils/data_access_object/character_dao.dart';
 import 'package:caracapp/widgets/lowerWidgets/my_text_field.dart';
 import 'package:flutter/material.dart';
@@ -23,10 +20,10 @@ class CharacterPicture extends StatefulWidget {
 class _CharacterPictureState extends State<CharacterPicture> {
   double textFieldWidthPercent = 0.42;
   double titleFieldWidthPercent = 0.21;
-  TextStyle dataStyle = TextStyle(
+  TextStyle dataStyle = const TextStyle(
     fontSize: 18,
   );
-  TextStyle titleStyle = TextStyle(
+  TextStyle titleStyle = const TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.bold,
   );
@@ -48,7 +45,7 @@ class _CharacterPictureState extends State<CharacterPicture> {
                   onTap: (() async {
                     setState(() {
                       String newPicture = "";
-                      int rand = Random().nextInt(2);
+                      // int rand = Random().nextInt(2);
                       // switch (rand) {
                       //   case 0:
                       //     newPicture = MyImages().imagePath[image.ninja4]!;

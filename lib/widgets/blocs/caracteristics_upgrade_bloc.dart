@@ -35,7 +35,6 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
 
   @override
   Widget build(BuildContext context) {
-    print("CaracteristicsBloc build");
     double width = double.infinity;
     return Column(
       children: [

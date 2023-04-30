@@ -14,4 +14,7 @@ class NatureElement {
     this.code = 0,
     this.jutsus = const <Jutsu>[],
   });
+  NatureElement getElement(int code) {
+    return NatureElement();
+  }
 }

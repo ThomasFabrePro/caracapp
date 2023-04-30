@@ -1,5 +1,6 @@
 // ignore_for_file: overridden_fields, annotate_overrides
 
+import 'package:caracapp/classes/genjutsus.dart';
 import 'package:caracapp/models/jutsu_model.dart';
 
 class Trance extends Jutsu {
@@ -14,6 +15,7 @@ class Trance extends Jutsu {
               40, //Mettre obligatoirement le meme que genjutsuMinimum
           malus: 0,
           chakraCost: 5,
+          type: Genjutsu,
         );
 }
 
@@ -29,6 +31,7 @@ class Terror extends Jutsu {
               45, //Mettre obligatoirement le meme que genjutsuMinimum
           malus: 5,
           chakraCost: 10,
+          type: Genjutsu,
         );
 }
 
@@ -44,6 +47,7 @@ class Permutation extends Jutsu {
               55, //Mettre obligatoirement le meme que genjutsuMinimum
           malus: 5,
           chakraCost: 10,
+          type: Genjutsu,
         );
 }
 
@@ -59,6 +63,7 @@ class Execution extends Jutsu {
               60, //Mettre obligatoirement le meme que genjutsuMinimum
           malus: 10,
           chakraCost: 15,
+          type: Genjutsu,
         );
 }
 
@@ -73,6 +78,7 @@ class Vanish extends Jutsu {
               65, //Mettre obligatoirement le meme que genjutsuMinimum
           malus: 10,
           chakraCost: 15,
+          type: Genjutsu,
         );
 }
 
@@ -88,5 +94,6 @@ class DivineOrder extends Jutsu {
               80, //Mettre obligatoirement le meme que genjutsuMinimum
           malus: 25,
           chakraCost: 15,
+          type: Genjutsu,
         );
 }

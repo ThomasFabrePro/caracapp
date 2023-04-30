@@ -23,6 +23,7 @@ class Kekkai extends NatureElement {
           code: code,
           jutsus: jutsus,
         );
+  @override
   Kekkai getElement(int code) {
     switch (code) {
       case 1:

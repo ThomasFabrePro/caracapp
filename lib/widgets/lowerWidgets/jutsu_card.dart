@@ -9,10 +9,16 @@ class JutsuCard extends StatefulWidget {
   final int statValue;
   final bool isGenjutsu;
   final int chakra;
+  final bool hideIfNotLearned;
+  final int minimumStat;
+  final String statName;
   const JutsuCard(
       {super.key,
       this.isGenjutsu = false,
       required this.jutsu,
+      required this.minimumStat,
+      required this.statName,
+      required this.hideIfNotLearned,
       required this.chakra,
       required this.statValue});
 
@@ -22,27 +28,13 @@ class JutsuCard extends StatefulWidget {
 
 class _JutsuCardState extends State<JutsuCard> {
   bool _showFrontSide = true;
-  String statName = "";
-  int minimumStat = 0;
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    if (widget.isGenjutsu) {
-      statName = "Genjutsu";
-      minimumStat = widget.jutsu.genjutsuMinimum;
-    } else {
-      statName = "Ninjutsu";
-      minimumStat = widget.jutsu.ninjutsuMinimum;
-    }
-  }
 
   Widget _buildFront() {
     return __buildLayout(
       key: const ValueKey(true),
       jutsu: widget.jutsu,
       paddingValues: 0,
-      isAvailable: minimumStat <= widget.statValue,
+      isAvailable: widget.minimumStat <= widget.statValue,
       showDescription: false,
       width: MediaQuery.of(context).size.width,
     );
@@ -53,7 +45,7 @@ class _JutsuCardState extends State<JutsuCard> {
       key: const ValueKey(false),
       jutsu: widget.jutsu,
       paddingValues: 0,
-      isAvailable: minimumStat <= widget.statValue,
+      isAvailable: widget.minimumStat <= widget.statValue,
       showDescription: true,
       width: MediaQuery.of(context).size.width,
     );
@@ -122,14 +114,19 @@ class _JutsuCardState extends State<JutsuCard> {
                           height: 18,
                           child: FittedBox(
                             child: Text("Coût Chakra : ${jutsu.chakraCost}",
-                                style: MyDecoration.dataStyle),
+                                style: TextStyle(
+                                  color: widget.chakra - jutsu.chakraCost < 0
+                                      ? Colors.red
+                                      : Colors.black,
+                                  fontSize: 18,
+                                )),
                           ),
                         ),
                         SizedBox(
                           height: 18,
                           child: FittedBox(
                             child: Text(
-                                "Requis : $statName ≥ ${jutsu.ninjutsuMinimum}",
+                                "Requis : ${widget.statName} ≥ ${jutsu.ninjutsuMinimum}",
                                 style: TextStyle(
                                   color:
                                       isAvailable ? Colors.black : Colors.red,
@@ -202,16 +199,18 @@ class _JutsuCardState extends State<JutsuCard> {
     double width = MediaQuery.of(context).size.width;
     double containerHeight = 90;
 
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8.0),
-      child: Container(
-        width: width,
-        height: containerHeight,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: _buildFlipAnimation(),
-      ),
-    );
+    return widget.hideIfNotLearned
+        ? Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: Container(
+              width: width,
+              height: containerHeight,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: _buildFlipAnimation(),
+            ),
+          )
+        : const SizedBox();
   }
 }

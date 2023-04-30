@@ -34,7 +34,7 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
 
   @override
   Widget build(BuildContext context) {
-    double width = double.infinity;
+    // double width = double.infinity;
     return Column(
       children: [
         const Padding(

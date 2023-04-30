@@ -40,7 +40,6 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
   bool cantAddMoreThan = false;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     isEditable = widget.isEditable;
 
@@ -52,7 +51,6 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
 
   @override
   Widget build(BuildContext context) {
-    print("TEST build upgrade caracteristic");
     stat = widget.stat;
     cantAddMoreThan = widget.cantAddMoreThan;
     buffer = widget.buffer;

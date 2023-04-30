@@ -23,6 +23,7 @@ class PrimaryElement extends NatureElement {
           code: code,
           jutsus: jutsus,
         );
+  @override
   PrimaryElement getElement(int code) {
     switch (code) {
       case 1:

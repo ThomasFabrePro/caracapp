@@ -177,19 +177,6 @@ class Character {
     );
   }
 
-  String compareCharacters(Character secondCharacter) {
-    String result = "";
-    Map<String, dynamic> characterMap = this.toMap();
-    Map<String, dynamic> secondCharacterMap = secondCharacter.toMap();
-    characterMap.forEach((key, value) {
-      if (value != secondCharacterMap[key]) {
-        result += "$key : $value -> ${secondCharacterMap[key]} //";
-      }
-    });
-
-    return result;
-  }
-
   Map<String, int> kekkaisMap = {
     "[1, 2]": 1, //Koton    //acier
     "[1, 3]": 2, //Futton   //ebullition
@@ -318,7 +305,7 @@ class Character {
 
   Future<void> setInventory(String newInventory) async {
     inventory = newInventory;
-    await update();
+    await addToLogsAndUpdate("Inventaire mis à jour :\n$inventory");
   }
 
   Future<void> setPointsLeftToSpend(int newPointsLeftToSpend) async {

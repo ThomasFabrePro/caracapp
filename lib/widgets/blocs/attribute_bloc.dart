@@ -113,7 +113,7 @@ class _AttributeBlocState extends State<AttributeBloc> {
                                 attribute != 0) {
                               widget.scrollController!.animateTo(height * 1.1,
                                   curve: Curves.linear,
-                                  duration: Duration(milliseconds: 500));
+                                  duration: const Duration(milliseconds: 500));
                             }
 
                             setChecks();
@@ -143,7 +143,7 @@ class _AttributeBlocState extends State<AttributeBloc> {
                                 attribute != 0) {
                               widget.scrollController!.animateTo(height * 1.1,
                                   curve: Curves.linear,
-                                  duration: Duration(milliseconds: 500));
+                                  duration: const Duration(milliseconds: 500));
                             }
                             setChecks();
                           });
@@ -172,7 +172,7 @@ class _AttributeBlocState extends State<AttributeBloc> {
                                 attribute != 0) {
                               widget.scrollController!.animateTo(height * 1.1,
                                   curve: Curves.linear,
-                                  duration: Duration(milliseconds: 500));
+                                  duration: const Duration(milliseconds: 500));
                             }
                             setChecks();
                           });

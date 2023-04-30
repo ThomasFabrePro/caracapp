@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:caracapp/models/character_model.dart';
 import 'package:caracapp/utils/assets.dart';
 import 'package:flutter/material.dart';
@@ -89,12 +87,16 @@ class _InventoryBlocState extends State<InventoryBloc> {
                                             BorderSide(color: Colors.white)),
                                     hintText: widget.character.inventory,
                                   ),
-                                  onChanged: (value) async {
+                                  // onChanged: (value) async {
+                                  //   widget.character.setInventory(value);
+                                  // },
+                                  onFieldSubmitted: (value) {
                                     widget.character.setInventory(value);
                                   },
                                   onEditingComplete: () {
-                                    widget.character.addToLogsAndUpdate(
-                                        "Inventaire mis à jour :\n${widget.character.inventory}");
+                                    // widget.character.addToLogsAndUpdate(
+                                    //     "Inventaire mis à jour :\n${widget.character.inventory}");
+
                                     FocusScope.of(context).unfocus();
                                   },
                                 ),

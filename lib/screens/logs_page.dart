@@ -1,6 +1,4 @@
 import 'package:caracapp/models/character_model.dart';
-import 'package:caracapp/utils/assets.dart';
-import 'package:caracapp/widgets/blocs/caracteristics_upgrade_bloc.dart';
 import 'package:caracapp/widgets/blocs/logs_bloc.dart';
 
 import 'package:flutter/material.dart';
@@ -24,7 +22,7 @@ class _LogsPageState extends State<LogsPage> {
       child: Container(
         height: height,
         width: width,
-        color: Color.fromARGB(255, 0, 0, 0),
+        color: const Color.fromARGB(255, 0, 0, 0),
         child: Center(
           child: Stack(
             children: [

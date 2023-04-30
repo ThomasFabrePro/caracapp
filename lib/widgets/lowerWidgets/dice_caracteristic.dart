@@ -188,7 +188,7 @@ class _DiceButtonState extends State<DiceButton> {
           int random = Random().nextInt(101);
           result = "$random";
           if (random <= 5) {
-            textColor = Color.fromARGB(255, 182, 164, 0);
+            textColor = const Color.fromARGB(255, 182, 164, 0);
             result += " succès crit.";
           } else if (random >= 95) {
             textColor = MyDecoration.bloodColor;

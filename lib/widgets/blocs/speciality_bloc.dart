@@ -22,7 +22,7 @@ class _SpecialityBlocState extends State<SpecialityBloc> {
   int maxCheckCounter = 2;
   int checkCounter = 0;
   int noSpeciality = 0;
-  TextStyle titleStyle = TextStyle(
+  TextStyle titleStyle = const TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.bold,
     color: MyDecoration.bloodColor,

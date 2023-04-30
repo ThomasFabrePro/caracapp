@@ -23,7 +23,7 @@ class _LevelUpPageState extends State<LevelUpPage> {
       child: Container(
         height: height,
         width: width,
-        color: Color.fromARGB(255, 0, 0, 0),
+        color: const Color.fromARGB(255, 0, 0, 0),
         child: Center(
           child: Stack(
             children: [
