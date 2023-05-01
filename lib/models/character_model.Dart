@@ -1,7 +1,9 @@
 // entity/person.dart
 
 import 'package:caracapp/classes/attributes.dart';
+import 'package:caracapp/classes/genjutsus.dart';
 import 'package:caracapp/models/attribute_model.dart';
+import 'package:caracapp/models/primary_element_model.dart';
 import 'package:floor/floor.dart';
 import 'package:caracapp/database/db_helper.dart';
 
@@ -214,6 +216,14 @@ class Character {
         return Byakugan();
       default:
         return Attribute();
+    }
+  }
+
+  PrimaryElement get hasGenjutsu {
+    if (attribute == 2) {
+      return Genjutsu();
+    } else {
+      return PrimaryElement();
     }
   }
 

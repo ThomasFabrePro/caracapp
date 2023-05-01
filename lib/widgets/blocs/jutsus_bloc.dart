@@ -25,7 +25,7 @@ class _JutsuBlocState extends State<JutsuBloc> {
   PrimaryElement mainElement = PrimaryElement();
   PrimaryElement secondElement = PrimaryElement();
   Kekkai kekkai = Kekkai();
-  Genjutsu genjutsu = Genjutsu();
+  PrimaryElement genjutsu = PrimaryElement();
   List<List<Jutsu>> jutsusLists = <List<Jutsu>>[];
   List<List<JutsuCard>> jutsuCardsList = <List<JutsuCard>>[[], [], [], []];
   Timer? timerRebuild;
@@ -35,7 +35,6 @@ class _JutsuBlocState extends State<JutsuBloc> {
     super.initState();
     timerRebuild = Timer.periodic(const Duration(seconds: 2), (timer) async {
       setState(() {});
-      print("Test setState");
     });
   }
 
@@ -43,6 +42,7 @@ class _JutsuBlocState extends State<JutsuBloc> {
     mainElement = mainElement.getElement(widget.character.mainElement);
     secondElement = secondElement.getElement(widget.character.secondElement);
     kekkai = kekkai.getElement(widget.character.kekkaiGenkai);
+    genjutsu = widget.character.hasGenjutsu;
     jutsusLists = <List<Jutsu>>[
       mainElement.jutsus,
       secondElement.jutsus,
