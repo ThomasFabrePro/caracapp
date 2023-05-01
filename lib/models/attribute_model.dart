@@ -1,6 +1,3 @@
-import 'package:caracapp/classes/attributes.dart';
-import 'package:caracapp/models/jutsu_model.dart';
-
 class Attribute {
   final String name;
   final String description;
@@ -15,17 +12,4 @@ class Attribute {
     this.code = 0,
     // this.jutsus = const <Jutsu>[],
   });
-
-  // Attribute getAttribute(int code) {
-  //   switch (code) {
-  //     case 1:
-  //       return Jinchuriki();
-  //     case 2:
-  //       return Shraringan();
-  //     case 3:
-  //       return Byakugan();
-  //     default:
-  //       return Attribute();
-  //   }
-  // }
 }
