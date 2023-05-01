@@ -1,5 +1,7 @@
 // entity/person.dart
 
+import 'package:caracapp/classes/attributes.dart';
+import 'package:caracapp/models/attribute_model.dart';
 import 'package:floor/floor.dart';
 import 'package:caracapp/database/db_helper.dart';
 
@@ -202,6 +204,19 @@ class Character {
     await DbHelper.database.characterDao.updateCharacter(this);
   }
 
+  Attribute get getAttribute {
+    switch (attribute) {
+      case 1:
+        return Jinchuriki();
+      case 2:
+        return Shraringan();
+      case 3:
+        return Byakugan();
+      default:
+        return Attribute();
+    }
+  }
+
   Future<void> addToLogsAndUpdate(String log) async {
     String dt = DateTime.now().toString().substring(0, 19);
     String newLogs = "$dt\n$log\n\n =====================\n";
@@ -229,6 +244,13 @@ class Character {
   }
 
   Future<void> setHp(int newHp) async {
+    if (attribute == 1) {
+      if (attributeEnabled == 0 && newHp <= 20) {
+        await attributeBoost(1);
+      } else if (attributeEnabled == 1 && newHp > 20) {
+        await attributeBoost(0);
+      }
+    }
     // hp = newHp;
     await addToLogsAndUpdate("Nouveau montant de HP : $newHp");
   }
@@ -340,7 +362,7 @@ class Character {
     attributeEnabled = enabled;
     switch (attribute) {
       case 1:
-        //pas de boost de stat pour le jinchuriki
+        chakraBuffer += 20 * sign;
         break;
       case 2:
         //sharingan

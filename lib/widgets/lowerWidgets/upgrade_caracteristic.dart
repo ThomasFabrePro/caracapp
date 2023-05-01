@@ -45,11 +45,13 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
     if (widget.minValue == null) {
       minValue = widget.stat;
     }
-    onMaxValue = widget.onMaxValue != null ? "/${widget.onMaxValue}" : "";
   }
 
   @override
   Widget build(BuildContext context) {
+    onMaxValue = widget.onMaxValue != null
+        ? "/${(widget.onMaxValue! + widget.buffer)}"
+        : "";
     stat = widget.stat;
     cantAddMoreThan = widget.cantAddMoreThan;
     buffer = widget.buffer;
