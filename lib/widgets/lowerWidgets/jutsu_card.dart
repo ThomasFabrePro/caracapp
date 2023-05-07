@@ -38,12 +38,20 @@ class JutsuCard extends StatefulWidget {
 class _JutsuCardState extends State<JutsuCard> {
   bool _showFrontSide = true;
   bool _showDice = true;
+  bool darkCard = false;
+  bool isAvailable = true;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   Widget _buildFront() {
     return __buildLayout(
       key: const ValueKey(true),
       jutsu: widget.jutsu,
       paddingValues: 0,
-      isAvailable: widget.minimumStat <= widget.statValue,
+      isAvailable: isAvailable,
       showDescription: false,
       width: MediaQuery.of(context).size.width,
     );
@@ -54,7 +62,7 @@ class _JutsuCardState extends State<JutsuCard> {
       key: const ValueKey(false),
       jutsu: widget.jutsu,
       paddingValues: 0,
-      isAvailable: widget.minimumStat <= widget.statValue,
+      isAvailable: isAvailable,
       showDescription: true,
       width: MediaQuery.of(context).size.width,
     );
@@ -68,6 +76,8 @@ class _JutsuCardState extends State<JutsuCard> {
     required bool isAvailable,
     required bool showDescription,
   }) {
+    isAvailable = widget.minimumStat <= widget.statValue;
+    darkCard = !(isAvailable && widget.chakra >= widget.jutsu.chakraCost);
     return Container(
       key: key,
       decoration: BoxDecoration(
@@ -160,9 +170,7 @@ class _JutsuCardState extends State<JutsuCard> {
             width: width,
             height: 90,
             decoration: BoxDecoration(
-              color: isAvailable && widget.chakra >= jutsu.chakraCost
-                  ? null
-                  : Colors.grey[900]!.withOpacity(0.5),
+              color: darkCard ? Colors.grey[900]!.withOpacity(0.5) : null,
               borderRadius: BorderRadius.circular(10),
             ),
           )
@@ -204,6 +212,7 @@ class _JutsuCardState extends State<JutsuCard> {
                   title: widget.jutsu.name,
                   stat: widget.statValue,
                   buffer: 0,
+                  darkCard: darkCard,
                   malus: widget.malus,
                   isEnabled: widget.minimumStat <= widget.statValue &&
                       widget.chakra >= widget.jutsu.chakraCost,

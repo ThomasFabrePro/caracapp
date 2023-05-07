@@ -12,10 +12,12 @@ class DiceButton extends StatefulWidget {
   final int malus;
   final bool isEnabled;
   final Function? additionalBehavior;
+  final bool darkCard;
   const DiceButton({
     super.key,
     this.malus = 0,
     this.isEnabled = true,
+    this.darkCard = false,
     required this.stat,
     required this.buffer,
     required this.character,
@@ -64,12 +66,15 @@ class _DiceButtonState extends State<DiceButton> {
     required double width,
     required bool showResult,
   }) {
+    double opacityValue = widget.darkCard ? 0.7 : 1;
     return Container(
       key: key,
       constraints: const BoxConstraints(minWidth: 100),
       height: 30,
       decoration: BoxDecoration(
-        color: showResult ? Colors.white : MyDecoration.bloodColor,
+        color: showResult
+            ? Colors.white
+            : MyDecoration.bloodColor.withOpacity(opacityValue),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Center(
@@ -80,16 +85,17 @@ class _DiceButtonState extends State<DiceButton> {
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: textColor,
+                    color: textColor.withOpacity(opacityValue),
                   ),
                 ),
               )
-            : const Text(
+            : Text(
                 "Jet de dé",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Colors.white
+                      .withOpacity((opacityValue * 1.2).clamp(0, 1)),
                 ),
               ),
       ),

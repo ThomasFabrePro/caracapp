@@ -18,7 +18,6 @@ class _MyCharacterPageState extends State<MyCharacterPage> {
 
   @override
   Widget build(BuildContext context) {
-    print("TEST character age : ${widget.character.age}");
     double width = (MediaQuery.of(context).size.width);
     double height = MediaQuery.of(context).size.height;
     return SafeArea(
