@@ -17,7 +17,6 @@ Future<void> main() async {
   final characterDao = database.characterDao;
   Character character;
   List<Character> list = await characterDao.findAllCharacters();
-  // int fakeId = Random().nextInt(10000000);
   if (list.isEmpty) {
     character = Character(picture: "assets/ninja_images/ninja_3.jpg");
     await characterDao.insertCharacter(character);
@@ -32,25 +31,6 @@ Future<void> main() async {
       addCharacter: false,
     ));
   }
-  //!FAKE
-  // if (list.isEmpty) {
-  //   character = Character(
-  //       id: fakeId, name: 'Ashley', picture: "assets/ninja_images/ninja_1.jpg");
-  //   await characterDao.insertCharacter(character);
-  //   runApp(MyApp(
-  //     character: character,
-  //     characterDao: characterDao,
-  //     addCharacter: true,
-  //   ));
-  // } else {
-  //   character = list[0];
-  //   runApp(MyApp(
-  //     character: character,
-  //     characterDao: characterDao,
-  //     addCharacter: true,
-  //   ));
-  // }
-  //!STOP FAKE
 }
 
 class MyApp extends StatefulWidget {

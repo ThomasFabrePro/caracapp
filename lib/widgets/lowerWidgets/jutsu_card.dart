@@ -104,7 +104,6 @@ class _JutsuCardState extends State<JutsuCard> {
                             jutsu.description,
                             style: MyDecoration.dataStyle,
                           ),
-                          // ),
                         ],
                       ),
                     )
@@ -193,8 +192,6 @@ class _JutsuCardState extends State<JutsuCard> {
             layoutBuilder: (widget, list) =>
                 Stack(children: [widget!, ...list]),
             child: _showFrontSide ? _buildFront() : _buildRear(),
-            // switchInCurve: Curves.easeInBack,
-            // switchOutCurve: Curves.easeOutBack,
           ),
         ),
         _showDice && _showFrontSide
@@ -204,7 +201,6 @@ class _JutsuCardState extends State<JutsuCard> {
                 child: DiceButton(
                   character: widget.character,
                   title: widget.jutsu.name,
-                  // width: width,
                   stat: widget.statValue,
                   buffer: 0,
                   malus: widget.malus,

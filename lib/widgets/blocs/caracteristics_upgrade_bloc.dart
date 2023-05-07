@@ -26,7 +26,6 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
   }
 
   Stream<Character> getCharacterStats() async* {
-    // var random = Random(2);
     while (true) {
       await Future.delayed(const Duration(seconds: 1));
       yield widget.character;
@@ -132,8 +131,6 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                                   widget.character.constitution += value;
                                   widget.character.pointsLeftToSpend +=
                                       (-value);
-                                  // (widget.character.constitution + value)
-                                  //     .clamp(30, 100);
                                   await widget.character.setConstitution(
                                       widget.character.constitution);
                                 }),
@@ -153,7 +150,6 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                                   widget.character.luck += value;
                                   widget.character.pointsLeftToSpend +=
                                       (-value);
-                                  // (widget.character.luck + value).clamp(30, 100);
                                   await widget.character
                                       .setLuck(widget.character.luck);
                                 }),
@@ -173,8 +169,6 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                                   widget.character.perception += value;
                                   widget.character.pointsLeftToSpend +=
                                       (-value);
-                                  // (widget.character.perception + value)
-                                  //     .clamp(30, 100);
                                   await widget.character.setPerception(
                                       widget.character.perception);
                                 }),
@@ -194,7 +188,6 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                                   widget.character.chakraMax += value;
                                   widget.character.pointsLeftToSpend +=
                                       (-value);
-                                  // (snapshot.data!.chakraMax + value).clamp(30, 100);
                                   await widget.character
                                       .setChakraMax(widget.character.chakraMax);
                                 }),
@@ -214,7 +207,6 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                                   widget.character.dodge += value;
                                   widget.character.pointsLeftToSpend +=
                                       (-value);
-                                  // (widget.character.dodge + value).clamp(30, 100);
                                   await widget.character
                                       .setDodge(widget.character.dodge);
                                 }),
@@ -234,8 +226,6 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                                   widget.character.throwing += value;
                                   widget.character.pointsLeftToSpend +=
                                       (-value);
-                                  // (widget.character.throwing + value)
-                                  //     .clamp(30, 100);
                                   await widget.character
                                       .setThrowing(widget.character.throwing);
                                 }),
@@ -255,8 +245,6 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                                   widget.character.ninjutsu += value;
                                   widget.character.pointsLeftToSpend +=
                                       (-value);
-                                  // (widget.character.ninjutsu + value)
-                                  //     .clamp(30, 100);
                                   await widget.character
                                       .setNinjutsu(widget.character.ninjutsu);
                                 }),
@@ -276,8 +264,6 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                                   widget.character.taijutsu += value;
                                   widget.character.pointsLeftToSpend +=
                                       (-value);
-                                  // (widget.character.taijutsu + value)
-                                  //     .clamp(30, 100);
                                   await widget.character
                                       .setTaijutsu(widget.character.taijutsu);
                                 }),
@@ -297,8 +283,6 @@ class _CaracteristicsUpgradeBlocState extends State<CaracteristicsUpgradeBloc> {
                                   widget.character.genjutsu += value;
                                   widget.character.pointsLeftToSpend +=
                                       (-value);
-                                  // (widget.character.genjutsu + value)
-                                  //     .clamp(30, 100);
                                   await widget.character
                                       .setGenjutsu(widget.character.genjutsu);
                                 }),

@@ -24,7 +24,6 @@ class MyTextField extends StatefulWidget {
 class _MyTextFieldState extends State<MyTextField> {
   @override
   Widget build(BuildContext context) {
-    // double height = MediaQuery.of(context).size.height;
     double width = (MediaQuery.of(context).size.width).clamp(0, 1000);
     return Row(
       children: [
@@ -41,7 +40,6 @@ class _MyTextFieldState extends State<MyTextField> {
           width: width * widget.textFieldWidthPercent,
           height: 40,
           child: Container(
-            // color: Colors.white,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(5),
@@ -53,7 +51,6 @@ class _MyTextFieldState extends State<MyTextField> {
               style: const TextStyle(
                 fontSize: 18,
               ),
-              // readOnly: true,
               decoration: InputDecoration(
                 fillColor: Colors.white,
                 border: const OutlineInputBorder(

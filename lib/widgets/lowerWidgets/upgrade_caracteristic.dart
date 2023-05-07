@@ -7,7 +7,6 @@ class UpgradeCaracteristic extends StatefulWidget {
   final int buffer;
   final int? minValue;
   final int? onMaxValue;
-  // final int? maxValue;
   final Color? fontColor;
   final Function? onTap;
   final bool isEditable;
@@ -17,7 +16,6 @@ class UpgradeCaracteristic extends StatefulWidget {
       this.fontColor,
       this.minValue,
       this.onMaxValue,
-      // this.maxValue,
       required this.isEditable,
       required this.cantAddMoreThan,
       required this.title,
@@ -76,7 +74,6 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
                     color: MyDecoration.bloodColor,
-                    // color: widget.fontColor,
                     overflow: TextOverflow.ellipsis,
                   )),
             ),
@@ -132,21 +129,18 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
                 ? SizedBox(
                     width: width * 0.1,
                     child: GestureDetector(
-                        onTap: () async {
-                          setState(() {
-                            stat = (stat + 1).clamp(30, 100);
-                          });
-                          await widget.onTap!(1);
-                        },
-                        child: const Icon(
-                          Icons.add,
-                          size: 35,
-                          // Icons.exposure_plus_1_outlined,
-                          color: Colors.green,
-                        )
-
-                        // child: MaterialIcons.plus,
-                        ),
+                      onTap: () async {
+                        setState(() {
+                          stat = (stat + 1).clamp(30, 100);
+                        });
+                        await widget.onTap!(1);
+                      },
+                      child: const Icon(
+                        Icons.add,
+                        size: 35,
+                        color: Colors.green,
+                      ),
+                    ),
                   )
                 : const SizedBox(),
           ]),

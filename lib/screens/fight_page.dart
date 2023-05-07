@@ -85,67 +85,8 @@ class _FightPageState extends State<FightPage> {
                   )
                 : const SizedBox(),
           ),
-          // Padding(
-          //   padding: const EdgeInsets.all(16.0),
-          //   child: Container(
-          //     width: width,
-          //     // height: 200,
-          //     constraints: const BoxConstraints(
-          //       maxWidth: 1000,
-          //     ),
-          //     decoration: BoxDecoration(
-          //       color: Colors.white,
-          //       borderRadius: BorderRadius.circular(10),
-          //       boxShadow: [MyDecoration.boxShadow],
-          //     ),
-          //     child: Padding(
-          //       padding: const EdgeInsets.all(8.0),
-          //       child: Text(widget.character.logs,
-          //           style: const TextStyle(
-          //             color: Colors.black,
-          //             fontSize: 20,
-          //           )),
-          //     ),
-          //   ),
-          // ),
         ),
       ),
     );
   }
 }
-
-
-
-// Row(
-//                                 children: [
-//                                   Container(
-//                                     width: width * 0.4,
-//                                     height: width * 0.4,
-//                                     constraints: BoxConstraints(
-//                                         maxHeight: 300, maxWidth: 300),
-//                                     decoration: BoxDecoration(
-//                                       borderRadius: BorderRadius.circular(10),
-//                                       color: Colors.white,
-//                                     ),
-//                                     child: Padding(
-//                                       padding: const EdgeInsets.all(3.0),
-//                                       child: ClipRRect(
-//                                         borderRadius: BorderRadius.circular(10),
-//                                         child: Image.asset(
-//                                             widget.character.picture),
-//                                       ),
-//                                     ),
-//                                   ),
-//                                   // Column(
-//                                   //   children: [
-//                                   //     Text(
-//                                   //       "${character.sexe} - ${character.age} ans ",
-//                                   //       style: TextStyle(
-//                                   //           color: Colors.white,
-//                                   //           fontSize: 20,
-//                                   //           fontWeight: FontWeight.bold),
-//                                   //     )
-//                                   //   ],
-//                                   // )
-//                                 ],
-//                               )

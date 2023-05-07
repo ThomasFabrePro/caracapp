@@ -7,12 +7,10 @@ import 'package:flutter/material.dart';
 class CaracteristicsBloc extends StatefulWidget {
   final Character character;
   final bool isEditable;
-  // final int malus;
   const CaracteristicsBloc({
     super.key,
     required this.character,
     this.isEditable = true,
-    // this.malus = 0,
   });
 
   @override
@@ -121,8 +119,7 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                               malus: malus,
                               onTap: (int value) async {
                                 widget.character.constitution += value;
-                                // (widget.character.constitution + value)
-                                //     .clamp(30, 100);
+
                                 await widget.character.setConstitution(
                                     widget.character.constitution);
                               }),
@@ -134,7 +131,6 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                               malus: malus,
                               onTap: (int value) async {
                                 widget.character.luck += value;
-                                // (widget.character.luck + value).clamp(30, 100);
                                 await widget.character
                                     .setLuck(widget.character.luck);
                               }),
@@ -146,8 +142,6 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                               malus: malus,
                               onTap: (int value) async {
                                 widget.character.perception += value;
-                                // (widget.character.perception + value)
-                                //     .clamp(30, 100);
                                 await widget.character
                                     .setPerception(widget.character.perception);
                               }),
@@ -159,7 +153,6 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                               malus: malus,
                               onTap: (int value) async {
                                 widget.character.dodge += value;
-                                // (widget.character.dodge + value).clamp(30, 100);
                                 await widget.character
                                     .setDodge(widget.character.dodge);
                               }),
@@ -171,8 +164,6 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                               malus: malus,
                               onTap: (int value) async {
                                 widget.character.throwing += value;
-                                // (widget.character.throwing + value)
-                                //     .clamp(30, 100);
                                 await widget.character
                                     .setThrowing(widget.character.throwing);
                               }),
@@ -184,8 +175,6 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                               malus: malus,
                               onTap: (int value) async {
                                 widget.character.ninjutsu += value;
-                                // (widget.character.ninjutsu + value)
-                                //     .clamp(30, 100);
                                 await widget.character
                                     .setNinjutsu(widget.character.ninjutsu);
                               }),
@@ -197,8 +186,6 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                               malus: malus,
                               onTap: (int value) async {
                                 widget.character.taijutsu += value;
-                                // (widget.character.taijutsu + value)
-                                //     .clamp(30, 100);
                                 await widget.character
                                     .setTaijutsu(widget.character.taijutsu);
                               }),
@@ -210,8 +197,6 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                               malus: malus,
                               onTap: (int value) async {
                                 widget.character.genjutsu += value;
-                                // (widget.character.genjutsu + value)
-                                //     .clamp(30, 100);
                                 await widget.character
                                     .setGenjutsu(widget.character.genjutsu);
                               }),

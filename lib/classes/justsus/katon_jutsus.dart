@@ -2,8 +2,6 @@
 
 import 'package:caracapp/models/jutsu_model.dart';
 
-//raiton
-//koton
 class FireBall extends Jutsu {
   FireBall()
       : super(

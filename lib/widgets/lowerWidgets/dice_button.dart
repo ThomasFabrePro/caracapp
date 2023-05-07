@@ -34,7 +34,6 @@ class _DiceButtonState extends State<DiceButton> {
   Function? additionalBehavior;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     additionalBehavior = widget.additionalBehavior;
   }
@@ -67,7 +66,6 @@ class _DiceButtonState extends State<DiceButton> {
   }) {
     return Container(
       key: key,
-      // width: width * 0.3,
       constraints: BoxConstraints(minWidth: 100),
       height: 30,
       decoration: BoxDecoration(
@@ -105,7 +103,6 @@ class _DiceButtonState extends State<DiceButton> {
         if (widget.isEnabled) {
           if (_showFrontSide && widget.isEnabled) {
             int randomInt = Random().nextInt(101);
-            // int random = randomInt;
             result = "$randomInt";
             int definitveStat = widget.stat + widget.buffer - malus;
             if (randomInt <= 5) {

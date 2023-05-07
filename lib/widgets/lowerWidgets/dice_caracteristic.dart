@@ -46,10 +46,6 @@ class _DiceCaracteristicState extends State<DiceCaracteristic> {
       padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
       child: SizedBox(
         height: 40,
-        // color: Colors.green,
-        // constraints: const BoxConstraints(
-        //   maxWidth: 1000,
-        // ),
         child: Row(children: [
           SizedBox(
             width: width * 0.38,
@@ -58,7 +54,6 @@ class _DiceCaracteristicState extends State<DiceCaracteristic> {
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
                   color: MyDecoration.bloodColor,
-                  // color: widget.fontColor,
                   overflow: TextOverflow.ellipsis,
                 )),
           ),
@@ -89,17 +84,10 @@ class _DiceCaracteristicState extends State<DiceCaracteristic> {
               ),
             ),
           ),
-          // buffer != 0
-          //     ? SizedBox(
-          //         width: width * 0.11,
-          //         child: Text(bufferText, style: MyDecoration.dataStyle),
-          //       )
-          //     : SizedBox(width: width * 0.11),
           Expanded(
             child: DiceButton(
               character: widget.character,
               title: widget.title,
-              // width: width,
               stat: stat,
               buffer: buffer,
               malus: widget.malus,

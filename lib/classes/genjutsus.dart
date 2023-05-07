@@ -16,6 +16,5 @@ class Genjutsu extends PrimaryElement {
             Vanish(),
             DivineOrder(),
           ],
-          // code: 1,
         );
 }

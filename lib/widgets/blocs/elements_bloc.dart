@@ -303,7 +303,6 @@ class _ElementBlocState extends State<ElementBloc> {
                           height: 40,
                           color: const Color.fromARGB(172, 255, 255, 255),
                           child: SizedBox(
-                            // width: width * titleWidthPercent,
                             child: Center(
                               child: Text(
                                 "Vent  ",
@@ -355,7 +354,6 @@ class _ElementBlocState extends State<ElementBloc> {
                           height: 40,
                           color: const Color.fromARGB(172, 255, 255, 255),
                           child: SizedBox(
-                            // width: width * titleWidthPercent,
                             child: Center(
                               child: Text(
                                 "Terre  ",

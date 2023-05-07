@@ -1,5 +1,3 @@
-// dao/person_dao.dart
-
 import 'package:floor/floor.dart';
 import 'package:caracapp/models/character_model.dart';
 import 'package:sqflite/sqflite.dart' as sqflite;

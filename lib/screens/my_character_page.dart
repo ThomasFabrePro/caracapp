@@ -63,17 +63,17 @@ class _MyCharacterPageState extends State<MyCharacterPage> {
                     indent: width * 0.1,
                     color: Colors.white,
                     thickness: 2),
-                InventoryBloc(character: widget.character),
+                JutsuBloc(
+                  character: widget.character,
+                  canDice: true,
+                ),
                 const SizedBox(height: 20),
                 Divider(
                     endIndent: width * 0.1,
                     indent: width * 0.1,
                     color: Colors.white,
                     thickness: 2),
-                JutsuBloc(
-                  character: widget.character,
-                  canDice: true,
-                ),
+                InventoryBloc(character: widget.character),
                 const SizedBox(height: 20),
               ],
             )),
@@ -83,41 +83,3 @@ class _MyCharacterPageState extends State<MyCharacterPage> {
     );
   }
 }
-
-
-
-
-
-// Row(
-//                                 children: [
-//                                   Container(
-//                                     width: width * 0.4,
-//                                     height: width * 0.4,
-//                                     constraints: BoxConstraints(
-//                                         maxHeight: 300, maxWidth: 300),
-//                                     decoration: BoxDecoration(
-//                                       borderRadius: BorderRadius.circular(10),
-//                                       color: Colors.white,
-//                                     ),
-//                                     child: Padding(
-//                                       padding: const EdgeInsets.all(3.0),
-//                                       child: ClipRRect(
-//                                         borderRadius: BorderRadius.circular(10),
-//                                         child: Image.asset(
-//                                             widget.character.picture),
-//                                       ),
-//                                     ),
-//                                   ),
-//                                   // Column(
-//                                   //   children: [
-//                                   //     Text(
-//                                   //       "${character.sexe} - ${character.age} ans ",
-//                                   //       style: TextStyle(
-//                                   //           color: Colors.white,
-//                                   //           fontSize: 20,
-//                                   //           fontWeight: FontWeight.bold),
-//                                   //     )
-//                                   //   ],
-//                                   // )
-//                                 ],
-//                               )

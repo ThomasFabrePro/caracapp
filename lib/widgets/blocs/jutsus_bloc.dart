@@ -116,7 +116,6 @@ class _JutsuBlocState extends State<JutsuBloc> {
                             setState(() {
                               hideNotLearnedJutsus = !hideNotLearnedJutsus;
                             });
-                            // await widget.character.setHideUnavailableJutsus(value);
                           },
                         ),
                       ),
@@ -220,7 +219,6 @@ class CardsList extends StatelessWidget {
           ],
         ),
       ),
-      // co
       ...cards,
     ]);
   }

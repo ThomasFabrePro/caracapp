@@ -14,7 +14,6 @@ class InventoryBloc extends StatefulWidget {
 
 class _InventoryBlocState extends State<InventoryBloc> {
   Stream<Character> getCharacterStats() async* {
-    // var random = Random(2);
     while (true) {
       await Future.delayed(const Duration(seconds: 1));
       yield widget.character;
@@ -44,8 +43,6 @@ class _InventoryBlocState extends State<InventoryBloc> {
                 const EdgeInsets.only(bottom: 16.0, left: 16.0, right: 16.0),
             child: Container(
               width: width,
-              // height: 200,
-              // color: Colors.white,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
@@ -61,15 +58,10 @@ class _InventoryBlocState extends State<InventoryBloc> {
                           children: <Widget>[
                             SizedBox(
                               width: width,
-                              // height: 40,
                               child: Container(
-                                // color: Colors.white,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(5),
-                                  // boxShadow: [
-                                  //   MyDecoration.textFieldBoxShadow,
-                                  // ],
                                 ),
                                 child: TextFormField(
                                   initialValue: widget.character.inventory,
@@ -80,8 +72,6 @@ class _InventoryBlocState extends State<InventoryBloc> {
                                     fontSize: 18,
                                     color: Colors.black,
                                   ),
-                                  // keyboardType: TextInputType.text,
-                                  // readOnly: true,
                                   decoration: InputDecoration(
                                     fillColor: Colors.black,
                                     border: const OutlineInputBorder(
@@ -89,18 +79,9 @@ class _InventoryBlocState extends State<InventoryBloc> {
                                             BorderSide(color: Colors.white)),
                                     hintText: widget.character.inventory,
                                   ),
-                                  // onChanged: (value) async {
-                                  //   widget.character.setInventory(value);
-                                  // },
                                   onFieldSubmitted: (value) {
                                     widget.character.setInventory(value);
                                   },
-                                  // onEditingComplete: () {
-                                  //   // widget.character.addToLogsAndUpdate(
-                                  //   //     "Inventaire mis à jour :\n${widget.character.inventory}");
-
-                                  //   FocusScope.of(context).unfocus();
-                                  // },
                                 ),
                               ),
                             ),

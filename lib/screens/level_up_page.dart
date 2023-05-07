@@ -56,9 +56,6 @@ class _LevelUpPageState extends State<LevelUpPage> {
                             ..hp = widget.character.hpMax;
                         });
                         await widget.character.setLevel(widget.character.level);
-                        // await widget.character.setLevel(widget.character.level);
-                        // await widget.character.setPointsLeftToSpend(
-                        //     widget.character.pointsLeftToSpend);
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(top: 10.0, left: 10.0),
