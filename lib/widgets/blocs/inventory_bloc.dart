@@ -1,5 +1,3 @@
-import 'dart:io' show Platform;
-
 import 'package:caracapp/models/character_model.dart';
 import 'package:caracapp/utils/assets.dart';
 import 'package:flutter/material.dart';

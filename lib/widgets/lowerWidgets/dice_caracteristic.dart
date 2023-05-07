@@ -63,7 +63,7 @@ class _DiceCaracteristicState extends State<DiceCaracteristic> {
               text: TextSpan(
                 children: [
                   TextSpan(
-                    text: '${(stat + buffer).toString()}',
+                    text: '${stat + buffer}',
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,

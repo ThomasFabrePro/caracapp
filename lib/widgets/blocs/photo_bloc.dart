@@ -8,9 +8,10 @@ import 'package:caracapp/widgets/lowerWidgets/pick_image.dart';
 import 'package:flutter/material.dart';
 
 class PhotoBloc extends StatefulWidget {
-  Character character;
+  final Character character;
   final bool disableAttributeButton;
-  PhotoBloc(this.character, {super.key, this.disableAttributeButton = false});
+  const PhotoBloc(this.character,
+      {super.key, this.disableAttributeButton = false});
 
   @override
   State<PhotoBloc> createState() => _PhotoBlocState();

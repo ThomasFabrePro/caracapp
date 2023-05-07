@@ -2,7 +2,6 @@ import 'package:caracapp/database/database.dart';
 import 'package:caracapp/database/db_helper.dart';
 import 'package:caracapp/models/character_model.dart';
 import 'package:caracapp/screens/add_character_page.dart';
-import 'package:caracapp/screens/fight_page.dart';
 import 'package:caracapp/screens/level_up_page.dart';
 import 'package:caracapp/screens/logs_page.dart';
 import 'package:caracapp/screens/my_character_page.dart';

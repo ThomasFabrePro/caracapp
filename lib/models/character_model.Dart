@@ -229,7 +229,7 @@ class Character {
 
   Future<void> addToLogsAndUpdate(String log) async {
     String dt = DateTime.now().toString().substring(0, 19);
-    String newLogs = "$dt\n$log\n\n =====================\n";
+    String newLogs = "$dt\n$log\n\n=====================\n";
     logs = newLogs + logs;
     if (logs.length > 10000) {
       logs = logs.substring(0, 10000);
@@ -245,12 +245,12 @@ class Character {
   Future<void> setLevel(int newLevel) async {
     // level = newLevel;
     await addToLogsAndUpdate(
-        "Level up : ${newLevel - 1} => $newLevel\nTotal de points à dépenser : $pointsLeftToSpend");
+        " Level up : ${newLevel - 1} => $newLevel\n Total de points à dépenser : $pointsLeftToSpend");
   }
 
   Future<void> setHpMax(int newHpMax) async {
     // hpMax = newHpMax;
-    await addToLogsAndUpdate("Nouveau montant de HP Max : $newHpMax");
+    await addToLogsAndUpdate(" Nouveau montant de HP Max : $newHpMax");
   }
 
   Future<void> setHp(int newHp) async {
@@ -263,67 +263,67 @@ class Character {
       }
     }
     // hp = newHp;
-    await addToLogsAndUpdate("Nouveau montant de HP : $newHp");
+    await addToLogsAndUpdate(" Nouveau montant de HP : $newHp");
   }
 
   Future<void> setConstitution(int newConstitution) async {
     // constitution = newConstitution;
     // await update();
     await addToLogsAndUpdate(
-        "Nouveau score de Constitution : $newConstitution");
+        " Nouveau score de Constitution : $newConstitution");
   }
 
   Future<void> setNinjutsu(int newNinjutsu) async {
     // ninjutsu = newNinjutsu;
     // await update();
-    await addToLogsAndUpdate("Nouveau score de Ninjutsu : $newNinjutsu");
+    await addToLogsAndUpdate(" Nouveau score de Ninjutsu : $newNinjutsu");
   }
 
   Future<void> setTaijutsu(int newTaijutsu) async {
     // taijutsu = newTaijutsu;
     // await update();
-    await addToLogsAndUpdate("Nouveau score de Taijutsu : $newTaijutsu");
+    await addToLogsAndUpdate(" Nouveau score de Taijutsu : $newTaijutsu");
   }
 
   Future<void> setGenjutsu(int newGenjutsu) async {
     // genjutsu = newGenjutsu;
     // await update();
-    await addToLogsAndUpdate("Nouveau score de Genjutsu : $newGenjutsu");
+    await addToLogsAndUpdate(" Nouveau score de Genjutsu : $newGenjutsu");
   }
 
   Future<void> setLuck(int newLuck) async {
     // luck = newLuck;
     // await update();
-    await addToLogsAndUpdate("Nouveau score de Luck : $newLuck");
+    await addToLogsAndUpdate(" Nouveau score de Luck : $newLuck");
   }
 
   Future<void> setPerception(int newPerception) async {
     // perception = newPerception;
     // await update();
-    await addToLogsAndUpdate("Nouveau score de Perception : $newPerception");
+    await addToLogsAndUpdate(" Nouveau score de Perception : $newPerception");
   }
 
   Future<void> setChakra(int newChakra) async {
     // chakra = newChakra;
-    await addToLogsAndUpdate("Nouveau montant de chakra : $newChakra");
+    await addToLogsAndUpdate(" Nouveau montant de chakra : $newChakra");
   }
 
   Future<void> setChakraMax(int newChakraMax) async {
     // chakraMax = newChakraMax;
     // await update();
-    await addToLogsAndUpdate("Nouveau montant de ChakraMax : $newChakraMax");
+    await addToLogsAndUpdate(" Nouveau montant de ChakraMax : $newChakraMax");
   }
 
   Future<void> setDodge(int newDodge) async {
     // dodge = newDodge;
     // await update();
-    await addToLogsAndUpdate("Nouveau score d'esquive / blocage : $newDodge");
+    await addToLogsAndUpdate(" Nouveau score d'esquive / blocage : $newDodge");
   }
 
   Future<void> setThrowing(int newThrowing) async {
     // throwing = newThrowing;
     // await update();
-    await addToLogsAndUpdate("Nouveau score de Lancer : $newThrowing");
+    await addToLogsAndUpdate(" Nouveau score de Lancer : $newThrowing");
   }
 
   Future<void> setAge(int newAge) async {
@@ -343,19 +343,19 @@ class Character {
 
   Future<void> setInventory(String newInventory) async {
     inventory = newInventory;
-    await addToLogsAndUpdate("Inventaire mis à jour :\n$inventory");
+    await addToLogsAndUpdate(" Inventaire mis à jour :\n$inventory");
   }
 
   Future<void> setPointsLeftToSpend(int newPointsLeftToSpend) async {
     // int difference = newPointsLeftToSpend - pointsLeftToSpend;
     // pointsLeftToSpend = newPointsLeftToSpend;
-    await addToLogsAndUpdate("Nombre de points restants : $pointsLeftToSpend");
+    await addToLogsAndUpdate(" Nombre de points restants : $pointsLeftToSpend");
   }
 
   Future<void> setPicture(String newPicture) async {
     // picture = newPicture;
     // await update();
-    await addToLogsAndUpdate("Changement de la photo");
+    await addToLogsAndUpdate(" Changement de la photo");
   }
 
   ///ATTRIBUT
@@ -391,7 +391,7 @@ class Character {
         break;
     }
     await addToLogsAndUpdate(
-        enabled == 1 ? "Buff d'attribut" : "Débuff d'attribut");
+        enabled == 1 ? " Buff d'attribut" : "Débuff d'attribut");
     // await update();
   }
 

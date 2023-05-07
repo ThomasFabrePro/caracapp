@@ -66,7 +66,7 @@ class _DiceButtonState extends State<DiceButton> {
   }) {
     return Container(
       key: key,
-      constraints: BoxConstraints(minWidth: 100),
+      constraints: const BoxConstraints(minWidth: 100),
       height: 30,
       decoration: BoxDecoration(
         color: showResult ? Colors.white : MyDecoration.bloodColor,
@@ -121,16 +121,16 @@ class _DiceButtonState extends State<DiceButton> {
             String malusValueAsString = "";
             String malusText = "";
             if (malus >= 0) {
-              malusValueAsString = "- ${malus}";
+              malusValueAsString = "- $malus";
               malusText = "Malus : ${malus.abs()}";
             } else {
               malusValueAsString = "+ ${-(malus)}";
               malusText = "Bonus : ${malus.abs()}";
             }
-            widget.character.addToLogsAndUpdate("Jet de ${widget.title}\n"
-                "$malusText\n"
-                "Max requis : ${widget.stat + widget.buffer} $malusValueAsString = $definitveStat\n"
-                "Score du dé : $result");
+            widget.character.addToLogsAndUpdate(" Jet de ${widget.title}\n"
+                " $malusText\n"
+                " Max requis : ${widget.stat + widget.buffer} $malusValueAsString = $definitveStat\n"
+                " Score du dé : $result");
             additionalBehavior?.call();
           }
 
