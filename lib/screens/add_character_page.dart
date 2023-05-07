@@ -176,6 +176,7 @@ class _ValidateButtonState extends State<ValidateButton> {
               ..throwingBuffer = 0
               ..chakraBuffer = 0
               ..pointsLeftToSpend = 0
+              ..age = character.age
               ..logs = "";
             await character.update();
             runApp(MyApp(

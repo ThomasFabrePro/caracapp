@@ -127,7 +127,7 @@ class _DiceButtonState extends State<DiceButton> {
               malusValueAsString = "+ ${-(malus)}";
               malusText = "Bonus : ${malus.abs()}";
             }
-            widget.character.addToLogsAndUpdate(" Jet de ${widget.title}\n"
+            widget.character.addToLogsAndUpdate(" ${widget.title}\n"
                 " $malusText\n"
                 " Max requis : ${widget.stat + widget.buffer} $malusValueAsString = $definitveStat\n"
                 " Score du dé : $result");

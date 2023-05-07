@@ -55,7 +55,7 @@ class _InfosBlocState extends State<InfosBloc> {
               hint: "${widget.character.age}",
               onChanged: (value) async {
                 if (value != "" && mounted) {
-                  await widget.character.setAge(value);
+                  await widget.character.setAge(int.parse(value));
                   setState(() {});
                 }
               },
