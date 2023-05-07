@@ -1,26 +1,33 @@
+import 'dart:async';
 import 'dart:math';
 
+import 'package:caracapp/models/character_model.dart';
 import 'package:caracapp/models/jutsu_model.dart';
 import 'package:caracapp/utils/assets.dart';
+import 'package:caracapp/widgets/lowerWidgets/dice_button.dart';
 import 'package:flutter/material.dart';
 
 class JutsuCard extends StatefulWidget {
+  final Character character;
   final Jutsu jutsu;
   final int statValue;
   final bool isGenjutsu;
   final int chakra;
   final bool hideIfNotLearned;
   final int minimumStat;
+  final int malus;
   final String statName;
   const JutsuCard(
       {super.key,
       this.isGenjutsu = false,
+      this.malus = 0,
       required this.jutsu,
       required this.minimumStat,
       required this.statName,
       required this.hideIfNotLearned,
       required this.chakra,
-      required this.statValue});
+      required this.statValue,
+      required this.character});
 
   @override
   State<JutsuCard> createState() => _JutsuCardState();
@@ -28,7 +35,7 @@ class JutsuCard extends StatefulWidget {
 
 class _JutsuCardState extends State<JutsuCard> {
   bool _showFrontSide = true;
-
+  bool _showDice = true;
   Widget _buildFront() {
     return __buildLayout(
       key: const ValueKey(true),
@@ -84,17 +91,15 @@ class _JutsuCardState extends State<JutsuCard> {
               child: showDescription
                   ? Padding(
                       padding: const EdgeInsets.only(
-                          top: 7.0, bottom: 7.0, right: 7.0),
+                          top: 7.0, bottom: 2.0, right: 7.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Flexible(
-                            child: Text(jutsu.name,
-                                style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold)),
-                          ),
-
+                          Text(jutsu.name,
+                              style: const TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold)),
+                          const SizedBox(height: 5),
                           Text(
                             jutsu.description,
                             style: MyDecoration.dataStyle,
@@ -103,43 +108,49 @@ class _JutsuCardState extends State<JutsuCard> {
                         ],
                       ),
                     )
-                  : Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                  : Stack(
                       children: [
-                        Text(jutsu.name,
-                            style: const TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold)),
-                        SizedBox(
-                          height: 18,
-                          child: FittedBox(
-                            child: Text("Coût Chakra : ${jutsu.chakraCost}",
-                                style: TextStyle(
-                                  color: widget.chakra - jutsu.chakraCost < 0
-                                      ? Colors.red
-                                      : Colors.black,
-                                  fontSize: 18,
-                                )),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 18,
-                          child: FittedBox(
-                            child: Text(
-                                "Requis : ${widget.statName} ≥ ${jutsu.ninjutsuMinimum}",
-                                style: TextStyle(
-                                  color:
-                                      isAvailable ? Colors.black : Colors.red,
-                                  fontSize: 18,
-                                )),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 18,
-                          child: FittedBox(
-                            child: Text("Malus au dé : ${jutsu.malus}",
-                                style: MyDecoration.dataStyle),
-                          ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(jutsu.name,
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold)),
+                            SizedBox(
+                              height: 18,
+                              child: FittedBox(
+                                child: Text(
+                                    "Prérequis : ${widget.statName} ≥ ${jutsu.ninjutsuMinimum}",
+                                    style: TextStyle(
+                                      color: isAvailable
+                                          ? Colors.black
+                                          : Colors.red,
+                                      fontSize: 18,
+                                    )),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 18,
+                              child: FittedBox(
+                                child: Text("Coût Chakra : ${jutsu.chakraCost}",
+                                    style: TextStyle(
+                                      color:
+                                          widget.chakra - jutsu.chakraCost < 0
+                                              ? Colors.red
+                                              : Colors.black,
+                                      fontSize: 18,
+                                    )),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 18,
+                              child: FittedBox(
+                                child: Text("Malus au dé : ${jutsu.malus}",
+                                    style: MyDecoration.dataStyle),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -161,16 +172,52 @@ class _JutsuCardState extends State<JutsuCard> {
   }
 
   Widget _buildFlipAnimation() {
-    return GestureDetector(
-      onTap: () => setState(() => _showFrontSide = !_showFrontSide),
-      child: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 500),
-        transitionBuilder: __transitionBuilder,
-        layoutBuilder: (widget, list) => Stack(children: [widget!, ...list]),
-        child: _showFrontSide ? _buildFront() : _buildRear(),
-        // switchInCurve: Curves.easeInBack,
-        // switchOutCurve: Curves.easeOutBack,
-      ),
+    Timer? timer;
+
+    return Stack(
+      children: [
+        GestureDetector(
+          onTap: () async {
+            timer?.cancel();
+            timer = Timer(const Duration(milliseconds: 500), () {
+              setState(() => _showDice = true);
+            });
+            setState(() {
+              _showDice = false;
+              _showFrontSide = !_showFrontSide;
+            });
+          },
+          child: AnimatedSwitcher(
+            duration: const Duration(milliseconds: 500),
+            transitionBuilder: __transitionBuilder,
+            layoutBuilder: (widget, list) =>
+                Stack(children: [widget!, ...list]),
+            child: _showFrontSide ? _buildFront() : _buildRear(),
+            // switchInCurve: Curves.easeInBack,
+            // switchOutCurve: Curves.easeOutBack,
+          ),
+        ),
+        _showDice && _showFrontSide
+            ? Positioned(
+                right: 10,
+                bottom: 10,
+                child: DiceButton(
+                  character: widget.character,
+                  title: widget.jutsu.name,
+                  // width: width,
+                  stat: widget.statValue,
+                  buffer: 0,
+                  malus: widget.malus,
+                  isEnabled: widget.minimumStat <= widget.statValue &&
+                      widget.chakra >= widget.jutsu.chakraCost,
+                  additionalBehavior: () async {
+                    widget.character.chakra -= widget.jutsu.chakraCost;
+                    await widget.character.setChakra(widget.character.chakra);
+                  },
+                ),
+              )
+            : const SizedBox()
+      ],
     );
   }
 

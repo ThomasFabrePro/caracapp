@@ -51,7 +51,9 @@ class _LevelUpPageState extends State<LevelUpPage> {
                         setState(() {
                           widget.character
                             ..level += 1
-                            ..pointsLeftToSpend += 5;
+                            ..pointsLeftToSpend += 5
+                            ..chakra = widget.character.chakraMax
+                            ..hp = widget.character.hpMax;
                         });
                         await widget.character.setLevel(widget.character.level);
                         // await widget.character.setLevel(widget.character.level);

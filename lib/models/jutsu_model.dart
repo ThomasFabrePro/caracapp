@@ -43,11 +43,12 @@ class Jutsu {
     }
   }
 
-  JutsuCard toCard(Character character, bool hideIfNotLearned) {
+  JutsuCard toCard(Character character, bool hideIfNotLearned, int diceMalus) {
     int statValue = 0;
     int statMinimum = 0;
     bool hide = false;
     String statName = "";
+
     if (type == Genjutsu) {
       statValue = character.genjutsu + character.genjutsuBuffer;
       statMinimum = genjutsuMinimum;
@@ -59,6 +60,8 @@ class Jutsu {
     }
     hide = !(statMinimum > statValue && hideIfNotLearned);
     return JutsuCard(
+      character: character,
+      malus: diceMalus + malus,
       jutsu: this,
       statValue: statValue,
       chakra: character.chakra + character.chakraBuffer,

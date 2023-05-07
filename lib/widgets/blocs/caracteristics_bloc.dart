@@ -56,7 +56,6 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
             isEditable
                 ? const SizedBox()
                 : MalusSetter(
-                    hint: "0",
                     onChanged: (int value) {
                       setState(() {
                         malus = value;

@@ -7,18 +7,21 @@ import 'package:flutter/material.dart';
 class DiceButton extends StatefulWidget {
   final Character character;
   final String title;
-  final double width;
   final int stat;
   final int buffer;
   final int malus;
-  const DiceButton(
-      {super.key,
-      this.malus = 0,
-      required this.width,
-      required this.stat,
-      required this.buffer,
-      required this.character,
-      required this.title});
+  final bool isEnabled;
+  final Function? additionalBehavior;
+  const DiceButton({
+    super.key,
+    this.malus = 0,
+    this.isEnabled = true,
+    required this.stat,
+    required this.buffer,
+    required this.character,
+    required this.title,
+    this.additionalBehavior,
+  });
 
   @override
   State<DiceButton> createState() => _DiceButtonState();
@@ -28,6 +31,13 @@ class _DiceButtonState extends State<DiceButton> {
   bool _showFrontSide = true;
   String result = "";
   Color textColor = Colors.black;
+  Function? additionalBehavior;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    additionalBehavior = widget.additionalBehavior;
+  }
 
   Widget _buildFront() {
     return __buildLayout(
@@ -58,6 +68,7 @@ class _DiceButtonState extends State<DiceButton> {
     return Container(
       key: key,
       // width: width * 0.3,
+      constraints: BoxConstraints(minWidth: 100),
       height: 30,
       decoration: BoxDecoration(
         color: showResult ? Colors.white : MyDecoration.bloodColor,
@@ -88,44 +99,48 @@ class _DiceButtonState extends State<DiceButton> {
   }
 
   Widget _buildFlipAnimation() {
+    int malus = widget.malus;
     return GestureDetector(
-      onTap: () {
-        if (_showFrontSide) {
-          int randomInt = Random().nextInt(101);
-          // int random = randomInt;
-          result = "$randomInt";
-          int definitveStat = widget.stat + widget.buffer - widget.malus;
-          if (randomInt <= 5) {
-            textColor = const Color.fromARGB(255, 182, 164, 0);
-            result += " succès crit.";
-          } else if (randomInt >= 95) {
-            textColor = MyDecoration.bloodColor;
-            result += " échec crit.";
-          } else if (randomInt > definitveStat) {
-            textColor = Colors.red;
-            result += " échec";
-          } else {
-            textColor = Colors.green;
-            result += " succès";
+      onTap: () async {
+        if (widget.isEnabled) {
+          if (_showFrontSide && widget.isEnabled) {
+            int randomInt = Random().nextInt(101);
+            // int random = randomInt;
+            result = "$randomInt";
+            int definitveStat = widget.stat + widget.buffer - malus;
+            if (randomInt <= 5) {
+              textColor = const Color.fromARGB(255, 182, 164, 0);
+              result += " succès crit.";
+            } else if (randomInt >= 95) {
+              textColor = MyDecoration.bloodColor;
+              result += " échec crit.";
+            } else if (randomInt > definitveStat) {
+              textColor = Colors.red;
+              result += " échec";
+            } else {
+              textColor = Colors.green;
+              result += " succès";
+            }
+            String malusValueAsString = "";
+            String malusText = "";
+            if (malus >= 0) {
+              malusValueAsString = "- ${malus}";
+              malusText = "Malus : ${malus.abs()}";
+            } else {
+              malusValueAsString = "+ ${-(malus)}";
+              malusText = "Bonus : ${malus.abs()}";
+            }
+            widget.character.addToLogsAndUpdate("Jet de ${widget.title}\n"
+                "$malusText\n"
+                "Max requis : ${widget.stat + widget.buffer} $malusValueAsString = $definitveStat\n"
+                "Score du dé : $result");
+            additionalBehavior?.call();
           }
-          String malusValueAsString = "";
-          String malusText = "";
-          if (widget.malus >= 0) {
-            malusValueAsString = "- ${widget.malus}";
-            malusText = "Malus : ${widget.malus.abs()}";
-          } else {
-            malusValueAsString = "+ ${-(widget.malus)}";
-            malusText = "Bonus : ${widget.malus.abs()}";
-          }
-          widget.character.addToLogsAndUpdate("Jet de ${widget.title}\n"
-              "$malusText\n"
-              "Max requis : ${widget.stat + widget.buffer} $malusValueAsString = $definitveStat\n"
-              "Score du dé : $result");
-        }
 
-        setState(() {
-          _showFrontSide = !_showFrontSide;
-        });
+          setState(() {
+            _showFrontSide = !_showFrontSide;
+          });
+        }
       },
       child: AnimatedSwitcher(
         duration: const Duration(milliseconds: 500),

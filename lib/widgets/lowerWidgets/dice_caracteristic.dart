@@ -99,7 +99,7 @@ class _DiceCaracteristicState extends State<DiceCaracteristic> {
             child: DiceButton(
               character: widget.character,
               title: widget.title,
-              width: width,
+              // width: width,
               stat: stat,
               buffer: buffer,
               malus: widget.malus,

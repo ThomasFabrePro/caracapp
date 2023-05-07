@@ -8,20 +8,25 @@ import 'package:caracapp/models/kekkai_model.dart';
 import 'package:caracapp/models/primary_element_model.dart';
 import 'package:caracapp/utils/assets.dart';
 import 'package:caracapp/widgets/lowerWidgets/jutsu_card.dart';
+import 'package:caracapp/widgets/lowerWidgets/malus_setter.dart';
 import 'package:flutter/material.dart';
 
 class JutsuBloc extends StatefulWidget {
   final Character character;
   final bool hideNotLearnedJutsus;
+  final bool canDice;
   const JutsuBloc(
-      {super.key, this.hideNotLearnedJutsus = true, required this.character});
+      {super.key,
+      this.hideNotLearnedJutsus = true,
+      this.canDice = false,
+      required this.character});
 
   @override
   State<JutsuBloc> createState() => _JutsuBlocState();
 }
 
 class _JutsuBlocState extends State<JutsuBloc> {
-  bool hideNotLearnedJutsus = false;
+  bool hideNotLearnedJutsus = true;
   PrimaryElement mainElement = PrimaryElement();
   PrimaryElement secondElement = PrimaryElement();
   Kekkai kekkai = Kekkai();
@@ -29,6 +34,7 @@ class _JutsuBlocState extends State<JutsuBloc> {
   List<List<Jutsu>> jutsusLists = <List<Jutsu>>[];
   List<List<JutsuCard>> jutsuCardsList = <List<JutsuCard>>[[], [], [], []];
   Timer? timerRebuild;
+  int malus = 0;
 
   @override
   void initState() {
@@ -54,7 +60,7 @@ class _JutsuBlocState extends State<JutsuBloc> {
     for (index = 0; index < jutsusLists.length; index++) {
       for (var jutsu in jutsusLists[index]) {
         jutsuCardsList[index]
-            .add(jutsu.toCard(widget.character, hideNotLearnedJutsus));
+            .add(jutsu.toCard(widget.character, hideNotLearnedJutsus, malus));
       }
     }
   }
@@ -70,99 +76,115 @@ class _JutsuBlocState extends State<JutsuBloc> {
     double width = MediaQuery.of(context).size.width;
 
     fillLists();
-    return Column(
-      children: [
-        Container(
-          constraints: const BoxConstraints(
-            maxWidth: 1000,
-          ),
-          width: width,
-          child: Stack(
-            children: [
-              const Center(
-                child: Padding(
-                  padding: EdgeInsets.only(top: 15),
-                  child: Text("Jutsus",
-                      style: TextStyle(
-                        fontSize: 22,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      )),
+    return Center(
+      child: Container(
+        constraints: const BoxConstraints(
+          maxWidth: 1000,
+        ),
+        width: width,
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                const Center(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 15),
+                    child: Text("Jutsus",
+                        style: TextStyle(
+                          fontSize: 22,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        )),
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(right: 16.0, top: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Container(
-                      height: 40,
-                      color: const Color.fromARGB(172, 255, 255, 255),
-                      child: Checkbox(
-                        checkColor: Colors.white,
-                        fillColor: MaterialStateProperty.resolveWith<Color>(
-                            (Set<MaterialState> states) {
-                          return MyDecoration.bloodColor;
-                        }),
-                        value: !hideNotLearnedJutsus,
-                        onChanged: (bool? value) async {
-                          setState(() {
-                            hideNotLearnedJutsus = !hideNotLearnedJutsus;
-                          });
-                          // await widget.character.setHideUnavailableJutsus(value);
-                        },
+                Padding(
+                  padding: const EdgeInsets.only(right: 16.0, top: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                        height: 40,
+                        color: const Color.fromARGB(172, 255, 255, 255),
+                        child: Checkbox(
+                          checkColor: Colors.white,
+                          fillColor: MaterialStateProperty.resolveWith<Color>(
+                              (Set<MaterialState> states) {
+                            return MyDecoration.bloodColor;
+                          }),
+                          value: !hideNotLearnedJutsus,
+                          onChanged: (bool? value) async {
+                            setState(() {
+                              hideNotLearnedJutsus = !hideNotLearnedJutsus;
+                            });
+                            // await widget.character.setHideUnavailableJutsus(value);
+                          },
+                        ),
                       ),
-                    ),
-                    //mainElement name
-                    Container(
-                      height: 40,
-                      color: const Color.fromARGB(172, 255, 255, 255),
-                      child: const SizedBox(
-                        child: Center(
-                          child: Text(
-                            "Tous  ",
-                            style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                              color: MyDecoration.bloodColor,
+                      //mainElement name
+                      Container(
+                        height: 40,
+                        color: const Color.fromARGB(172, 255, 255, 255),
+                        child: const SizedBox(
+                          child: Center(
+                            child: Text(
+                              "Tous  ",
+                              style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                                color: MyDecoration.bloodColor,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            widget.canDice
+                ? MalusSetter(
+                    onChanged: (int value) {
+                      setState(() {
+                        malus = value;
+                      });
+                    },
+                  )
+                : const SizedBox(),
+            Padding(
+              padding:
+                  const EdgeInsets.only(bottom: 16.0, left: 16.0, right: 16.0),
+              child: Container(
+                constraints: const BoxConstraints(
+                  maxWidth: 1000,
+                ),
+                width: width,
+                child: Column(
+                  children: [
+                    jutsuCardsList[0].isNotEmpty
+                        ? CardsList(
+                            element: mainElement, cards: jutsuCardsList[0])
+                        : const SizedBox(),
+                    jutsuCardsList[1].isNotEmpty
+                        ? CardsList(
+                            element: secondElement, cards: jutsuCardsList[1])
+                        : const SizedBox(),
+                    jutsuCardsList[2].isNotEmpty
+                        ? CardsList(element: kekkai, cards: jutsuCardsList[2])
+                        : const SizedBox(),
+                    jutsuCardsList[3].isNotEmpty
+                        ? CardsList(element: genjutsu, cards: jutsuCardsList[3])
+                        : const SizedBox(),
                   ],
                 ),
               ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 16.0, left: 16.0, right: 16.0),
-          child: Container(
-            constraints: const BoxConstraints(
-              maxWidth: 1000,
             ),
-            width: width,
-            child: Column(
-              children: [
-                jutsuCardsList[0].isNotEmpty
-                    ? CardsList(element: mainElement, cards: jutsuCardsList[0])
-                    : const SizedBox(),
-                jutsuCardsList[1].isNotEmpty
-                    ? CardsList(
-                        element: secondElement, cards: jutsuCardsList[1])
-                    : const SizedBox(),
-                jutsuCardsList[2].isNotEmpty
-                    ? CardsList(element: kekkai, cards: jutsuCardsList[2])
-                    : const SizedBox(),
-                jutsuCardsList[3].isNotEmpty
-                    ? CardsList(element: genjutsu, cards: jutsuCardsList[3])
-                    : const SizedBox(),
-              ],
-            ),
-          ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
@@ -198,6 +220,7 @@ class CardsList extends StatelessWidget {
           ],
         ),
       ),
+      // co
       ...cards,
     ]);
   }
