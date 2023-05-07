@@ -15,11 +15,12 @@ class JutsuBloc extends StatefulWidget {
   final Character character;
   final bool hideNotLearnedJutsus;
   final bool canDice;
-  const JutsuBloc(
-      {super.key,
-      this.hideNotLearnedJutsus = true,
-      this.canDice = false,
-      required this.character});
+  const JutsuBloc({
+    super.key,
+    this.hideNotLearnedJutsus = true,
+    this.canDice = false,
+    required this.character,
+  });
 
   @override
   State<JutsuBloc> createState() => _JutsuBlocState();
@@ -59,8 +60,8 @@ class _JutsuBlocState extends State<JutsuBloc> {
     int index;
     for (index = 0; index < jutsusLists.length; index++) {
       for (var jutsu in jutsusLists[index]) {
-        jutsuCardsList[index]
-            .add(jutsu.toCard(widget.character, hideNotLearnedJutsus, malus));
+        jutsuCardsList[index].add(jutsu.toCard(
+            widget.character, hideNotLearnedJutsus, malus, widget.canDice));
       }
     }
   }

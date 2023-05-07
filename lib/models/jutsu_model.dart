@@ -43,7 +43,8 @@ class Jutsu {
     }
   }
 
-  JutsuCard toCard(Character character, bool hideIfNotLearned, int diceMalus) {
+  JutsuCard toCard(
+      Character character, bool hideIfNotLearned, int diceMalus, bool canDice) {
     int statValue = 0;
     int statMinimum = 0;
     bool hide = false;
@@ -62,6 +63,7 @@ class Jutsu {
     return JutsuCard(
       character: character,
       malus: diceMalus + malus,
+      enableDice: canDice,
       jutsu: this,
       statValue: statValue,
       chakra: character.chakra + character.chakraBuffer,

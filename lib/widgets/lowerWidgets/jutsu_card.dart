@@ -17,10 +17,12 @@ class JutsuCard extends StatefulWidget {
   final int minimumStat;
   final int malus;
   final String statName;
+  final bool enableDice;
   const JutsuCard(
       {super.key,
       this.isGenjutsu = false,
       this.malus = 0,
+      this.enableDice = true,
       required this.jutsu,
       required this.minimumStat,
       required this.statName,
@@ -194,7 +196,7 @@ class _JutsuCardState extends State<JutsuCard> {
             child: _showFrontSide ? _buildFront() : _buildRear(),
           ),
         ),
-        _showDice && _showFrontSide
+        _showDice && _showFrontSide && widget.enableDice
             ? Positioned(
                 right: 10,
                 bottom: 10,
