@@ -255,6 +255,7 @@ class Character {
 
   Future<void> setHp(int newHp) async {
     if (attribute == 1) {
+      //Boost Jinchuriki
       if (attributeEnabled == 0 && newHp <= 20) {
         await attributeBoost(1);
       } else if (attributeEnabled == 1 && newHp > 20) {

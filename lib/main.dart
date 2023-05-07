@@ -2,6 +2,7 @@ import 'package:caracapp/database/database.dart';
 import 'package:caracapp/database/db_helper.dart';
 import 'package:caracapp/models/character_model.dart';
 import 'package:caracapp/screens/add_character_page.dart';
+import 'package:caracapp/screens/fight_page.dart';
 import 'package:caracapp/screens/level_up_page.dart';
 import 'package:caracapp/screens/logs_page.dart';
 import 'package:caracapp/screens/my_character_page.dart';
@@ -85,15 +86,17 @@ class _MyAppState extends State<MyApp> {
           : Scaffold(
               appBar: AppBar(
                 backgroundColor: MyColorTheme.colorCustom,
-                title: FittedBox(
-                  child: [
-                    const Text("Logs"),
-                    Text(
-                      "${widget.character.name} de ${widget.character.origin}\n${widget.character.sexe} - ${widget.character.age} ans - level ${widget.character.level}",
-                    ),
-                    // const Text("Combat"),
-                    const Text("Level Up"),
-                  ][_currentIndex],
+                title: Center(
+                  child: FittedBox(
+                    child: [
+                      const Text("Logs"),
+                      Text(
+                        "${widget.character.name} de ${widget.character.origin}\n${widget.character.sexe} - ${widget.character.age} ans - level ${widget.character.level}",
+                        textAlign: TextAlign.center,
+                      ),
+                      const Text("Level Up"),
+                    ][_currentIndex],
+                  ),
                 ),
                 leading: _currentIndex == 0
                     ? GestureDetector(
@@ -127,10 +130,6 @@ class _MyAppState extends State<MyApp> {
                     icon: Icon(Icons.person_search_outlined),
                     label: "Perso",
                   ),
-                  // BottomNavigationBarItem(
-                  //   icon: Icon(Icons.balance_outlined),
-                  //   label: "Combat",
-                  // ),
                   BottomNavigationBarItem(
                     icon: Icon(Icons.auto_graph_outlined),
                     label: "Level Up",
@@ -140,7 +139,6 @@ class _MyAppState extends State<MyApp> {
               body: [
                 LogsPage(character: widget.character),
                 MyCharacterPage(character: widget.character),
-                // FightPage(character: widget.character),
                 LevelUpPage(character: widget.character),
               ][_currentIndex],
             ),
