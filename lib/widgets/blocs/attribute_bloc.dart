@@ -1,3 +1,5 @@
+import 'package:caracapp/classes/genjutsus.dart';
+import 'package:caracapp/models/attribute_model.dart';
 import 'package:caracapp/models/character_model.dart';
 import 'package:caracapp/utils/assets.dart';
 import 'package:flutter/material.dart';
@@ -69,6 +71,7 @@ class _AttributeBlocState extends State<AttributeBloc> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    Attribute attribute = widget.character.getAttribute;
     return Column(
       children: [
         const Padding(
@@ -96,7 +99,7 @@ class _AttributeBlocState extends State<AttributeBloc> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  AttributeDescription(attribute: widget.character.attribute),
+                  AttributeDescription(attribute: attribute),
                   Row(
                     children: [
                       //checkbox
@@ -196,39 +199,16 @@ class _AttributeBlocState extends State<AttributeBloc> {
 }
 
 class AttributeDescription extends StatelessWidget {
-  final int attribute;
+  final Attribute attribute;
   const AttributeDescription({super.key, required this.attribute});
 
   @override
   Widget build(BuildContext context) {
-    String imagePath = "";
-    String description = "";
-    switch (attribute) {
-      case 1:
-        imagePath = "assets/attributes/jinchuriki.jpg";
-        description =
-            "Une fois à 20% des Hp : Reserve chakra grandement augmenté, peut envoyer 2 ninjutsu par tour, "
-            "possibilité de perdre le controle à chaque tour (ex : lancé de dés raté = attaque un allié) ";
-        break;
-      case 2:
-        imagePath = "assets/attributes/sharingan.jpg";
-        description =
-            "A activer quand on le souhaite, peut être désactivé n'importe quand mais pas réactivé derriere. "
-            "BONUS Ninjutsu notamment ceux pas de son type, BONUS Esquive. "
-            "BONUS Genjutsu, MALUS Chakra (sorts coutent plus), MALUS Constitution";
-        break;
-      case 3:
-        imagePath = "assets/attributes/byakugan.jpg";
-        description =
-            "Active/désactive pareil que sharringan, BONUS Taïjutsu, BONUS Perception, MALUS Chakra, "
-            "MALUS Taïjutsu après 3/4/5 tours (à voir)";
-        break;
-      default:
-        imagePath = "";
-        description = "";
-        break;
-    }
-    return attribute > 0
+    // Attribute attribute = Attribute().getAttribute(attributeCode);
+    String imagePath = attribute.image;
+    String description = attribute.description;
+
+    return attribute.code > 0
         ? Column(
             children: [
               ClipRRect(

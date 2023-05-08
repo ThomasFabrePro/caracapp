@@ -1,3 +1,5 @@
+import 'package:caracapp/classes/attributes.dart';
+
 class Attribute {
   final String name;
   final String description;
