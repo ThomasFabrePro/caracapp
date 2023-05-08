@@ -10,8 +10,8 @@ class Explosion extends Jutsu {
               "Fait exploser toute la zone autour de vous sur 20 mètres",
           image: "assets/jutsus/bakuton/explosion.jpg",
           ninjutsuMinimum: 80,
-          malus: 20,
-          chakraCost: 35,
+          malus: 8,
+          chakraCost: 30,
         );
 }
 
@@ -23,7 +23,7 @@ class ExplosiveHands extends Jutsu {
           image: "assets/jutsus/bakuton/explosive_hand.jpg",
           ninjutsuMinimum: 25,
           malus: 0,
-          chakraCost: 10,
+          chakraCost: 5,
         );
 }
 
@@ -31,10 +31,11 @@ class Scolopandre extends Jutsu {
   Scolopandre()
       : super(
           name: "Invocation Scolopandre",
-          description: "Invoque un gros scolopandre",
+          description:
+              "Invoque un gros scolopandre qui rampe vers la cible et explose",
           image: "assets/jutsus/bakuton/scolopandre.jpg",
-          ninjutsuMinimum: 45,
-          malus: 5,
+          ninjutsuMinimum: 50,
+          malus: 2,
           chakraCost: 15,
         );
 }
@@ -46,7 +47,7 @@ class BigBird extends Jutsu {
           description: "Invoque un gros oiseau capable de vous faire voler",
           image: "assets/jutsus/bakuton/summon_big_bird.jpg",
           ninjutsuMinimum: 65,
-          malus: 15,
+          malus: 4,
           chakraCost: 20,
         );
 }

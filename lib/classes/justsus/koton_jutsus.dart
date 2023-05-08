@@ -21,7 +21,7 @@ class StealAffinity extends Jutsu {
           description: "vous rend totalement insensible au métal",
           image: "assets/jutsus/koton/steal_affinity.jpg",
           ninjutsuMinimum: 60,
-          malus: 5,
+          malus: 4,
           chakraCost: 10,
         );
 }
@@ -34,7 +34,7 @@ class StealProduction extends Jutsu {
               "Produit n'importe quel type d'arme en métal, qui disparait moins vite qu'une invocation",
           image: "assets/jutsus/koton/steal_production.jpg",
           ninjutsuMinimum: 55,
-          malus: 5,
+          malus: 2,
           chakraCost: 10,
         );
 }

@@ -10,7 +10,7 @@ class Cataclysm extends Jutsu {
               "Vous explosez comme un volcan et faites déferler lave et cendres tout autour de vous",
           image: "assets/jutsus/yoton/cataclysm.jpg",
           ninjutsuMinimum: 80,
-          malus: 20,
+          malus: 6,
           chakraCost: 30,
         );
 }
@@ -22,7 +22,7 @@ class ExplosiveLava extends Jutsu {
           description: "Crache une boule de lave",
           image: "assets/jutsus/yoton/lava_ball.jpg",
           ninjutsuMinimum: 60,
-          malus: 15,
+          malus: 4,
           chakraCost: 15,
         );
 }
@@ -46,7 +46,7 @@ class LavaTorrent extends Jutsu {
           description: "Projète une vague de lave devant vous",
           image: "assets/jutsus/yoton/lava_torrent.jpg",
           ninjutsuMinimum: 60,
-          malus: 10,
+          malus: 4,
           chakraCost: 15,
         );
 }

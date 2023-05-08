@@ -81,7 +81,7 @@ class Ranton extends Kekkai {
       : super(
             name: "Ranton",
             description:
-                "Permet de créer des faisceaux d'énergie pouvant être dirigés vers l'ennemi.",
+                "Permet de créer des faisceaux d'énergie noire dont la puissance est décuplée",
             image: "assets/elements/icons/ranton_icon.png",
             jutsus: <Jutsu>[
               LaserSurge(),
@@ -97,7 +97,7 @@ class Jinton extends Kekkai {
       : super(
             name: "Jinton",
             description:
-                "Permet d'utiliser des mouvements à une vitesse pratiquement instantanée, donnant à l'utilisateur un avantage face aux adversaires ayant plus de force que de vitesse.",
+                "Permet une maîtrise de la poussière au point de pouvoir créer du vide",
             image: "assets/elements/icons/jinton_icon.png",
             jutsus: <Jutsu>[
               MagicCube(),

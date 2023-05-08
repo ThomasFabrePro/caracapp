@@ -33,7 +33,7 @@ class Hindrance extends Jutsu {
           name: "Entrave",
           description: "Entrave la cible",
           image: "assets/jutsus/mokuton/hindrance.jpg",
-          ninjutsuMinimum: 50,
+          ninjutsuMinimum: 45,
           malus: 0,
           chakraCost: 15,
         );

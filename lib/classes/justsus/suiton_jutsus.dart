@@ -9,8 +9,8 @@ class WaterDragon extends Jutsu {
           description:
               "Crée un énorme dragon liquide, qui frappe l'adversaire avec une formidable puissance",
           image: "assets/jutsus/suiton/water_dragon.jpg",
-          ninjutsuMinimum: 85,
-          malus: 20,
+          ninjutsuMinimum: 80,
+          malus: 6,
           chakraCost: 30,
         );
 }
@@ -23,7 +23,7 @@ class WaterSword extends Jutsu {
           image: "assets/jutsus/suiton/water_sword.jpg",
           ninjutsuMinimum: 25,
           malus: 0,
-          chakraCost: 10,
+          chakraCost: 5,
         );
 }
 
@@ -34,8 +34,8 @@ class WaterClone extends Jutsu {
           description: "Invoque un clone d'eau",
           image: "assets/jutsus/suiton/water_clone.jpg",
           ninjutsuMinimum: 35,
-          malus: 5,
-          chakraCost: 5,
+          malus: 0,
+          chakraCost: 10,
         );
 }
 
@@ -47,7 +47,7 @@ class WaterPrison extends Jutsu {
               "Enferme la cible dans une prison d'eau capable de la noyer",
           image: "assets/jutsus/suiton/water_prison.jpg",
           ninjutsuMinimum: 45,
-          malus: 10,
+          malus: 4,
           chakraCost: 15,
         );
 }
@@ -59,7 +59,7 @@ class Tsunami extends Jutsu {
           description: "Fait surgir un tsunami qui s'abat sur la zone",
           image: "assets/jutsus/suiton/tsunami.jpg",
           ninjutsuMinimum: 75,
-          malus: 25,
+          malus: 8,
           chakraCost: 30,
         );
 }
@@ -71,7 +71,7 @@ class WaterRelease extends Jutsu {
           description: "Envoie un jet d'eau à haute pression devant vous",
           image: "assets/jutsus/suiton/water_release.jpg",
           ninjutsuMinimum: 55,
-          malus: 10,
+          malus: 4,
           chakraCost: 20,
         );
 }

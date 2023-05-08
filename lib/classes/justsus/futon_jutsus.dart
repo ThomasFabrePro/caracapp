@@ -7,8 +7,8 @@ class WindDragon extends Jutsu {
           description:
               "Fait apparaitre un dragon de vent qui va s'écraser sur la cible",
           image: "assets/jutsus/futon/wind_dragon.jpg",
-          ninjutsuMinimum: 85,
-          malus: 20,
+          ninjutsuMinimum: 80,
+          malus: 8,
           chakraCost: 30,
         );
 }
@@ -29,10 +29,11 @@ class Rasengan extends Jutsu {
   Rasengan()
       : super(
           name: "Rasengan",
-          description: "Créé une boule de vent pour la projeter sur l'ennemi",
+          description:
+              "Créé une boule de vent et de chakra pour la projeter sur l'ennemi",
           image: "assets/jutsus/futon/rasengan.jpg",
           ninjutsuMinimum: 55,
-          malus: 10,
+          malus: 4,
           chakraCost: 15,
         );
 }
@@ -44,8 +45,8 @@ class RazorBlades extends Jutsu {
           description: "Des lames de vent cisaillent la zone devant vous",
           image: "assets/jutsus/futon/razor_blades.jpg",
           ninjutsuMinimum: 40,
-          malus: 5,
-          chakraCost: 15,
+          malus: 2,
+          chakraCost: 10,
         );
 }
 
@@ -56,7 +57,7 @@ class Tornado extends Jutsu {
           description: "Forme une tornade qui dévaste la zone",
           image: "assets/jutsus/futon/tornado.jpg",
           ninjutsuMinimum: 70,
-          malus: 15,
+          malus: 6,
           chakraCost: 25,
         );
 }
@@ -69,6 +70,6 @@ class WindBlade extends Jutsu {
           image: "assets/jutsus/futon/wind_blade.jpg",
           ninjutsuMinimum: 25,
           malus: 0,
-          chakraCost: 10,
+          chakraCost: 5,
         );
 }

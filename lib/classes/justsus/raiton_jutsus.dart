@@ -9,8 +9,8 @@ class Electrocution extends Jutsu {
           description: "Simple éclair de foudre",
           image: "assets/jutsus/raiton/electrocution.jpg",
           ninjutsuMinimum: 45,
-          malus: 5,
-          chakraCost: 20,
+          malus: 2,
+          chakraCost: 15,
         );
 }
 
@@ -22,7 +22,7 @@ class FatalThunder extends Jutsu {
               "Déchaine la foudre depuis le ciel pour frapper votre cible",
           image: "assets/jutsus/raiton/fatal_thunder.jpg",
           ninjutsuMinimum: 75,
-          malus: 20,
+          malus: 6,
           chakraCost: 30,
         );
 }
@@ -35,7 +35,7 @@ class Shidori extends Jutsu {
               "Foncez vers votre cible pour la pourfendre avec un éclair",
           image: "assets/jutsus/raiton/shidori.jpg",
           ninjutsuMinimum: 60,
-          malus: 5,
+          malus: 4,
           chakraCost: 15,
         );
 }
@@ -59,7 +59,7 @@ class ThunderAbsorption extends Jutsu {
           description: "Absorbe la foudre qui se dirige vers vous",
           image: "assets/jutsus/raiton/thunder_absorption.jpg",
           ninjutsuMinimum: 45,
-          malus: 5,
+          malus: 2,
           chakraCost: 10,
         );
 }
@@ -72,6 +72,6 @@ class ThunderWeapon extends Jutsu {
           image: "assets/jutsus/raiton/thunder_weapon.jpg",
           ninjutsuMinimum: 25,
           malus: 0,
-          chakraCost: 10,
+          chakraCost: 5,
         );
 }

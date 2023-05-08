@@ -9,7 +9,7 @@ class Attraction extends Jutsu {
           description: "Attire tout le monde autour de vous",
           image: "assets/jutsus/jiton/attraction.jpg",
           ninjutsuMinimum: 50,
-          malus: 5,
+          malus: 4,
           chakraCost: 5,
         );
 }
@@ -21,7 +21,7 @@ class Repulsion extends Jutsu {
           description: "Repousse tout le monde autour de vous",
           image: "assets/jutsus/jiton/repulsion.jpg",
           ninjutsuMinimum: 50,
-          malus: 5,
+          malus: 4,
           chakraCost: 5,
         );
 }
@@ -33,7 +33,7 @@ class FlyingSticks extends Jutsu {
           description: "Envoie une série de pieux en métal",
           image: "assets/jutsus/jiton/flying_sticks.jpg",
           ninjutsuMinimum: 45,
-          malus: 5,
+          malus: 4,
           chakraCost: 15,
         );
 }
@@ -45,8 +45,8 @@ class Destruction extends Jutsu {
           description:
               "Agrège une énorme boule de roche pour la faire retomber sur la cible",
           image: "assets/jutsus/jiton/destruction.jpg",
-          ninjutsuMinimum: 70,
-          malus: 15,
-          chakraCost: 25,
+          ninjutsuMinimum: 80,
+          malus: 6,
+          chakraCost: 30,
         );
 }

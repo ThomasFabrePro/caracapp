@@ -22,8 +22,8 @@ class DryOut extends Jutsu {
           description: "Desseche la cible au point de la faire fondre",
           image: "assets/jutsus/shakuton/dry_out.jpg",
           ninjutsuMinimum: 65,
-          malus: 15,
-          chakraCost: 15,
+          malus: 6,
+          chakraCost: 25,
         );
 }
 
@@ -34,7 +34,7 @@ class ExplosiveGasBall extends Jutsu {
           description: "Envoie une méga boule de gaz explosif",
           image: "assets/jutsus/shakuton/explosive_gas_ball.jpg",
           ninjutsuMinimum: 75,
-          malus: 15,
+          malus: 6,
           chakraCost: 30,
         );
 }

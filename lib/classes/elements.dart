@@ -20,6 +20,7 @@ class Katon extends PrimaryElement {
             FlameBurst(),
             FireDragon(),
           ],
+          code: 1,
         );
 }
 
@@ -37,6 +38,7 @@ class Suiton extends PrimaryElement {
             Tsunami(),
             WaterRelease(),
           ],
+          code: 3,
         );
 }
 
@@ -54,6 +56,7 @@ class Futon extends PrimaryElement {
             RazorBlades(),
             Tornado(),
           ],
+          code: 4,
         );
 }
 
@@ -71,6 +74,7 @@ class Raiton extends PrimaryElement {
             Shidori(),
             Electrocution(),
           ],
+          code: 2,
         );
 }
 
@@ -88,5 +92,6 @@ class Doton extends PrimaryElement {
             MultiRockClones(),
             MudTermiteMound(),
           ],
+          code: 5,
         );
 }

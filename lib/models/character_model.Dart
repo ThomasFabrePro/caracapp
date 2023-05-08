@@ -211,7 +211,7 @@ class Character {
       case 1:
         return Jinchuriki();
       case 2:
-        return Shraringan();
+        return Sharingan();
       case 3:
         return Byakugan();
       default:

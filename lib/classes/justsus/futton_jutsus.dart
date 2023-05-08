@@ -9,8 +9,8 @@ class AcidSmoke extends Jutsu {
           description: "Envoie une fumée acide sur la cible",
           image: "assets/jutsus/futton/acid_smoke.jpg",
           ninjutsuMinimum: 45,
-          malus: 5,
-          chakraCost: 15,
+          malus: 2,
+          chakraCost: 10,
         );
 }
 
@@ -22,7 +22,7 @@ class ExplosiveMyst extends Jutsu {
               "Envoie une vague de vapeur qui brule tout ce qu'elle touche",
           image: "assets/jutsus/futton/explosive_myst.jpg",
           ninjutsuMinimum: 55,
-          malus: 10,
+          malus: 4,
           chakraCost: 15,
         );
 }
@@ -34,7 +34,7 @@ class HellSauna extends Jutsu {
           description: "Créé une zone de chaleur infernale tout autour de vous",
           image: "assets/jutsus/futton/sauna.jpg",
           ninjutsuMinimum: 65,
-          malus: 10,
-          chakraCost: 20,
+          malus: 4,
+          chakraCost: 25,
         );
 }

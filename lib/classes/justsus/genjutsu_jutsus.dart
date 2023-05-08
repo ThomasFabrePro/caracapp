@@ -29,7 +29,7 @@ class Terror extends Jutsu {
           genjutsuMinimum: 45,
           ninjutsuMinimum:
               45, //Mettre obligatoirement le meme que genjutsuMinimum
-          malus: 5,
+          malus: 4,
           chakraCost: 10,
           type: Genjutsu,
         );
@@ -42,11 +42,11 @@ class Permutation extends Jutsu {
           description:
               "Vous permet d'esquiver un coup en laissant un clone le prendre à votre place",
           image: "assets/jutsus/genjutsu/permutation.jpg",
-          genjutsuMinimum: 55,
+          genjutsuMinimum: 50,
           ninjutsuMinimum:
-              55, //Mettre obligatoirement le meme que genjutsuMinimum
-          malus: 5,
-          chakraCost: 10,
+              50, //Mettre obligatoirement le meme que genjutsuMinimum
+          malus: 0,
+          chakraCost: 12,
           type: Genjutsu,
         );
 }
@@ -61,7 +61,7 @@ class Execution extends Jutsu {
           genjutsuMinimum: 60,
           ninjutsuMinimum:
               60, //Mettre obligatoirement le meme que genjutsuMinimum
-          malus: 10,
+          malus: 4,
           chakraCost: 15,
           type: Genjutsu,
         );
@@ -89,11 +89,11 @@ class DivineOrder extends Jutsu {
           description:
               "Permet de contrôler une personne sans que cette dernière ne le réalise",
           image: "assets/jutsus/genjutsu/divine_order.jpg",
-          genjutsuMinimum: 80,
+          genjutsuMinimum: 75,
           ninjutsuMinimum:
-              80, //Mettre obligatoirement le meme que genjutsuMinimum
-          malus: 25,
-          chakraCost: 15,
+              75, //Mettre obligatoirement le meme que genjutsuMinimum
+          malus: 6,
+          chakraCost: 20,
           type: Genjutsu,
         );
 }

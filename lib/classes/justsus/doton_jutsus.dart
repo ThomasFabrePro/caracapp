@@ -10,8 +10,8 @@ class Dome extends Jutsu {
               "Créé un dôme de pierre sur un autre ninja pour le protéger ou l'immobiliser",
           image: "assets/jutsus/doton/dome.jpg",
           ninjutsuMinimum: 45,
-          malus: 5,
-          chakraCost: 20,
+          malus: 4,
+          chakraCost: 15,
         );
 }
 
@@ -23,8 +23,8 @@ class MudTermiteMound extends Jutsu {
               "Une grosse termitière pousse rapidement sous un ninja pour le bloquer et le blesser",
           image: "assets/jutsus/doton/mud_termite_mound.jpg",
           ninjutsuMinimum: 35,
-          malus: 5,
-          chakraCost: 15,
+          malus: 2,
+          chakraCost: 10,
         );
 }
 
@@ -47,8 +47,8 @@ class RockGolem extends Jutsu {
           description: "Invoque un gros golem de pierre très résistant",
           image: "assets/jutsus/doton/rock_golem.jpg",
           ninjutsuMinimum: 75,
-          malus: 20,
-          chakraCost: 35,
+          malus: 8,
+          chakraCost: 30,
         );
 }
 
@@ -70,8 +70,8 @@ class RockWall extends Jutsu {
           name: "Mur de Pierre",
           description: "Fait apparaitre un mur de pierre où vous le souhaitez",
           image: "assets/jutsus/doton/rock_wall.jpg",
-          ninjutsuMinimum: 35,
-          malus: 5,
+          ninjutsuMinimum: 40,
+          malus: 2,
           chakraCost: 10,
         );
 }
