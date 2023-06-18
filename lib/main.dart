@@ -2,6 +2,7 @@ import 'package:caracapp/database/database.dart';
 import 'package:caracapp/database/db_helper.dart';
 import 'package:caracapp/models/character_model.dart';
 import 'package:caracapp/screens/add_character_page.dart';
+import 'package:caracapp/screens/free_dices_page.dart';
 import 'package:caracapp/screens/level_up_page.dart';
 import 'package:caracapp/screens/logs_page.dart';
 import 'package:caracapp/screens/my_character_page.dart';
@@ -42,7 +43,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int _currentIndex = 1;
+  int _currentIndex = 2;
 
   void setCurrentIndex(int index) {
     setState(() {
@@ -74,6 +75,7 @@ class _MyAppState extends State<MyApp> {
                         textAlign: TextAlign.center,
                       ),
                       const Text("Level Up"),
+                      const Text("Dés libres"),
                     ][_currentIndex],
                   ),
                 ),
@@ -102,6 +104,10 @@ class _MyAppState extends State<MyApp> {
                 backgroundColor: MyColorTheme.colorCustom,
                 items: const [
                   BottomNavigationBarItem(
+                    icon: Icon(Icons.auto_graph_outlined),
+                    label: "Level Up",
+                  ),
+                  BottomNavigationBarItem(
                     icon: Icon(Icons.playlist_add_check_outlined),
                     label: "Logs",
                   ),
@@ -110,15 +116,17 @@ class _MyAppState extends State<MyApp> {
                     label: "Perso",
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.auto_graph_outlined),
-                    label: "Level Up",
+                    // icon: Icon(Icons.),
+                    icon: Icon(Icons.heat_pump),
+                    label: "Dés",
                   ),
                 ],
               ),
               body: [
+                LevelUpPage(character: widget.character),
                 LogsPage(character: widget.character),
                 MyCharacterPage(character: widget.character),
-                LevelUpPage(character: widget.character),
+                FreeDicesPage(character: widget.character),
               ][_currentIndex],
             ),
     );
