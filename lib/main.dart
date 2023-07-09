@@ -8,17 +8,20 @@ import 'package:caracapp/screens/my_character_page.dart';
 import 'package:caracapp/utils/color_theme.dart';
 import 'package:flutter/material.dart';
 
+final dbHelper = DatabaseHelper();
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await DbHelper().constructor();
-  final AppDatabase database = DbHelper.database;
+  // await DbHelper().constructor();
+  await dbHelper.init();
+  // final AppDatabase database = DbHelper.database;
 
-  final characterDao = database.characterDao;
+  // final characterDao = database.characterDao;
   Character character;
-  List<Character> list = await characterDao.findAllCharacters();
+  //  = await dbHelper.retrieveCharacter();
+  List<Character> list = await dbHelper.findAllCharacters();
   if (list.isEmpty) {
     character = Character(picture: "assets/ninja_images/ninja_3.jpg");
-    await characterDao.insertCharacter(character);
+    await dbHelper.insertCharacter(character);
     runApp(MyApp(
       character: character,
       addCharacter: true,
@@ -80,10 +83,8 @@ class _MyAppState extends State<MyApp> {
                 leading: _currentIndex == 0
                     ? GestureDetector(
                         onTap: () async {
-                          widget.character.logs = "";
-
-                          await widget.character.update();
                           setCurrentIndex(1);
+                          await dbHelper.clearLogs(widget.character.id);
                         },
                         child: const Icon(
                           Icons.delete_outline,

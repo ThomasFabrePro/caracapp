@@ -92,9 +92,11 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                               cantAddMoreThan:
                                   widget.character.hp >= widget.character.hpMax,
                               onTap: (int value) async {
-                                widget.character.hp =
-                                    (widget.character.hp + value)
-                                        .clamp(0, widget.character.hpMax);
+                                setState(() {
+                                  widget.character.hp =
+                                      (widget.character.hp + value)
+                                          .clamp(0, widget.character.hpMax);
+                                });
                                 await widget.character
                                     .setHp(widget.character.hp);
                                 // widget.characterViewModel.updateBlocJutsusData(widget.character.hp);

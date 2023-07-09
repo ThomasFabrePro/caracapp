@@ -180,8 +180,9 @@ class _ValidateButtonState extends State<ValidateButton> {
               ..throwingBuffer = 0
               ..chakraBuffer = 0
               ..pointsLeftToSpend = 0
-              ..age = character.age
-              ..logs = "";
+              ..age = character.age;
+            // ..logs = "";
+            await dbHelper.clearLogs(character.id);
             await character.update();
             runApp(MyApp(
               character: character,

@@ -16,6 +16,8 @@ dependencies:
   # google_fonts: ^4.0.2
   # database_helper: ^0.0.2
   floor: ^1.4.1
+  path_provider: ^2.0.11
+  path: ^1.8.2
 dev_dependencies:
   flutter_test:
     sdk: flutter

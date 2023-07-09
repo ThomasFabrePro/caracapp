@@ -1,5 +1,3 @@
-import 'package:caracapp/database/database.dart';
-import 'package:caracapp/database/db_helper.dart';
 import 'package:caracapp/models/character_model.dart';
 import 'package:caracapp/viewmodels/base_view_model.dart';
 import 'package:rxdart/rxdart.dart';
@@ -22,7 +20,6 @@ class CharacterViewModel extends BaseViewModel {
   Future<void> loadCharacter() async {
     // Set the loading state to true
     setLoading(true);
-    print("character name : ${character.name}");
     character = await character.getCharacter();
     setCharacter(character);
     // Perform the database operation to load the character

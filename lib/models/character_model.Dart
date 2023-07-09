@@ -7,6 +7,8 @@ import 'package:caracapp/models/primary_element_model.dart';
 import 'package:floor/floor.dart';
 import 'package:caracapp/database/db_helper.dart';
 
+import '../main.dart';
+
 @entity
 class Character {
   @primaryKey
@@ -17,7 +19,7 @@ class Character {
   String sexe;
   String origin;
   String inventory;
-  String logs;
+  // String logs;
   int age;
   int level;
   int attribute;
@@ -59,7 +61,7 @@ class Character {
     this.sexe = "Non Binaire",
     this.age = 17,
     this.inventory = "",
-    this.logs = "",
+    // this.logs = "",
     this.origin = "Konoha",
     this.mainSpe = 0,
     this.secondSpe = 0,
@@ -103,7 +105,7 @@ class Character {
       'sexe': sexe,
       'age': age,
       'inventory': inventory,
-      'logs': logs,
+      // 'logs': logs,
       'origin': origin,
       'mainSpe': mainSpe,
       'secondSpe': secondSpe,
@@ -148,7 +150,7 @@ class Character {
       sexe: map['sexe'],
       age: map['age'],
       inventory: map['inventory'],
-      logs: map['logs'],
+      // logs: map['logs'],
       origin: map['origin'],
       mainSpe: map['mainSpe'],
       secondSpe: map['secondSpe'],
@@ -199,11 +201,11 @@ class Character {
   };
 
   Future<Character> getCharacter() async {
-    return await DbHelper.database.characterDao.findCharacter();
+    return await dbHelper.retrieveCharacter();
   }
 
   Future<void> update() async {
-    await DbHelper.database.characterDao.updateCharacter(this);
+    await dbHelper.updateCharacter(this);
   }
 
   Attribute get getAttribute {
@@ -230,10 +232,10 @@ class Character {
   Future<void> addToLogsAndUpdate(String log) async {
     String dt = DateTime.now().toString().substring(0, 19);
     String newLogs = "$dt\n$log\n\n=====================\n";
-    logs = newLogs + logs;
-    if (logs.length > 10000) {
-      logs = logs.substring(0, 10000);
-    }
+    // if (logs.length > 10000) {
+    //   logs = logs.substring(0, 10000);
+    // }
+    await dbHelper.insertLog(id, newLogs);
     await update();
   }
 

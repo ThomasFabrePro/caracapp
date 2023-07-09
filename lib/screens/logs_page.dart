@@ -1,4 +1,5 @@
 import 'package:caracapp/models/character_model.dart';
+// import 'package:caracapp/viewmodels/character_view_model.dart';
 import 'package:caracapp/widgets/blocs/logs_bloc.dart';
 
 import 'package:flutter/material.dart';
@@ -13,6 +14,22 @@ class LogsPage extends StatefulWidget {
 
 class _LogsPageState extends State<LogsPage> {
   double textFieldWidthPercent = 0.65;
+  // final CharacterViewModel characterViewModel = CharacterViewModel();
+  // @override
+  // void initState() {
+  //   super.initState();
+  // loadCharacter();
+  // }
+
+  // @override
+  // void dispose() {
+  //   characterViewModel.dispose();
+  //   super.dispose();
+  // }
+
+  // Future<void> loadCharacter() async {
+  //   await characterViewModel.loadCharacter();
+  // }
 
   @override
   Widget build(BuildContext context) {
