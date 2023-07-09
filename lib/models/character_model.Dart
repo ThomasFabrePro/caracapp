@@ -199,7 +199,7 @@ class Character {
   };
 
   Future<Character> getCharacter() async {
-    return await DbHelper.database.characterDao.findCharacterByName(name);
+    return await DbHelper.database.characterDao.findCharacter();
   }
 
   Future<void> update() async {

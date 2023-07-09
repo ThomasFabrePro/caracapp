@@ -12,6 +12,7 @@ dependencies:
   flutter_lints: ^2.0.0
   sqflite: ^2.2.6
   animated_card_switcher: ^1.0.0
+  rxdart: ^0.27.7
   # google_fonts: ^4.0.2
   # database_helper: ^0.0.2
   floor: ^1.4.1

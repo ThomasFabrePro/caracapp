@@ -117,7 +117,7 @@ class _MyAppState extends State<MyApp> {
               ),
               body: [
                 LogsPage(character: widget.character),
-                MyCharacterPage(character: widget.character),
+                MyCharacterPage(),
                 LevelUpPage(character: widget.character),
               ][_currentIndex],
             ),

@@ -6,6 +6,7 @@ import 'package:caracapp/models/jutsu_model.dart';
 import 'package:caracapp/models/kekkai_model.dart';
 import 'package:caracapp/models/primary_element_model.dart';
 import 'package:caracapp/utils/assets.dart';
+import 'package:caracapp/viewmodels/character_view_model.dart';
 import 'package:caracapp/widgets/lowerWidgets/jutsu_card.dart';
 import 'package:caracapp/widgets/lowerWidgets/malus_setter.dart';
 import 'package:flutter/material.dart';
@@ -14,11 +15,13 @@ class JutsuBloc extends StatefulWidget {
   final Character character;
   final bool hideNotLearnedJutsus;
   final bool canDice;
+  final CharacterViewModel characterViewModel;
   const JutsuBloc({
     super.key,
     this.hideNotLearnedJutsus = true,
     this.canDice = false,
     required this.character,
+    required this.characterViewModel,
   });
 
   @override
@@ -39,9 +42,9 @@ class _JutsuBlocState extends State<JutsuBloc> {
   @override
   void initState() {
     super.initState();
-    timerRebuild = Timer.periodic(const Duration(seconds: 2), (timer) async {
-      setState(() {});
-    });
+    // timerRebuild = Timer.periodic(const Duration(seconds: 2), (timer) async {
+    //   setState(() {});
+    // });
   }
 
   void fillLists() {
@@ -60,7 +63,11 @@ class _JutsuBlocState extends State<JutsuBloc> {
     for (index = 0; index < jutsusLists.length; index++) {
       for (var jutsu in jutsusLists[index]) {
         jutsuCardsList[index].add(jutsu.toCard(
-            widget.character, hideNotLearnedJutsus, malus, widget.canDice));
+            widget.character,
+            hideNotLearnedJutsus,
+            malus,
+            widget.canDice,
+            widget.characterViewModel));
       }
     }
   }

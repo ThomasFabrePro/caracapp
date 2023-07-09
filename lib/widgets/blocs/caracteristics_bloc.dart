@@ -1,4 +1,5 @@
 import 'package:caracapp/models/character_model.dart';
+import 'package:caracapp/viewmodels/character_view_model.dart';
 import 'package:caracapp/widgets/lowerWidgets/dice_caracteristic.dart';
 import 'package:caracapp/widgets/lowerWidgets/malus_setter.dart';
 import 'package:caracapp/widgets/lowerWidgets/upgrade_caracteristic.dart';
@@ -7,10 +8,12 @@ import 'package:flutter/material.dart';
 class CaracteristicsBloc extends StatefulWidget {
   final Character character;
   final bool isEditable;
+  final CharacterViewModel characterViewModel;
   const CaracteristicsBloc({
     super.key,
     required this.character,
     this.isEditable = true,
+    required this.characterViewModel,
   });
 
   @override
@@ -27,10 +30,10 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
   }
 
   Stream<Character> getCharacterStats() async* {
-    while (true) {
-      await Future.delayed(const Duration(seconds: 2));
-      yield widget.character;
-    }
+    // while (true) {
+    //   await Future.delayed(const Duration(seconds: 2));
+    //   yield widget.character;
+    // }
   }
 
   @override
@@ -94,6 +97,7 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                                         .clamp(0, widget.character.hpMax);
                                 await widget.character
                                     .setHp(widget.character.hp);
+                                // widget.characterViewModel.updateBlocJutsusData(widget.character.hp);
                               }),
                           UpgradeCaracteristic(
                               title: "Chakra",
@@ -110,6 +114,10 @@ class _CaracteristicsBlocState extends State<CaracteristicsBloc> {
                                         .clamp(0, widget.character.chakraMax);
                                 await widget.character
                                     .setChakra(widget.character.chakra);
+                                widget.characterViewModel
+                                    .setCharacter(widget.character);
+                                // widget.characterViewModel.updateBlocJutsusData(
+                                //     widget.character.chakra);
                               }),
                           DiceCaracteristic(
                               character: widget.character,

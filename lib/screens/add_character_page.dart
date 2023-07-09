@@ -1,5 +1,6 @@
 import 'package:caracapp/main.dart';
 import 'package:caracapp/models/character_model.dart';
+import 'package:caracapp/viewmodels/character_view_model.dart';
 
 import 'package:caracapp/widgets/blocs/attribute_bloc.dart';
 import 'package:caracapp/widgets/blocs/caracteristics_upgrade_bloc.dart';
@@ -102,7 +103,10 @@ class _AddCharacterPageState extends State<AddCharacterPage> {
                           indent: width * 0.1,
                           color: Colors.white,
                           thickness: 2),
-                      JutsuBloc(character: widget.character),
+                      JutsuBloc(
+                        character: widget.character,
+                        characterViewModel: CharacterViewModel(),
+                      ), //TODO delete characterViewModel
                       const SizedBox(height: 20),
                       ValidateButton(
                         character: widget.character,

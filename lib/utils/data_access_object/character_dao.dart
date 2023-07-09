@@ -7,8 +7,8 @@ abstract class CharacterDao {
   @Query('SELECT * FROM Character')
   Future<List<Character>> findAllCharacters();
 
-  @Query('SELECT * FROM Character WHERE id = :id')
-  Future<Character?> findCharacterById(int id);
+  @Query('SELECT * FROM Character')
+  Future<Character?> findCharacter();
 
   @Query('SELECT * FROM Character WHERE name = :name')
   Future<Character?> findCharacterByName(String name);

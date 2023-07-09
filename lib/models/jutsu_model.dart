@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:caracapp/models/character_model.dart';
+import 'package:caracapp/viewmodels/character_view_model.dart';
 import 'package:caracapp/widgets/lowerWidgets/jutsu_card.dart';
 
 import '../classes/genjutsus.dart';
@@ -43,8 +44,8 @@ class Jutsu {
     }
   }
 
-  JutsuCard toCard(
-      Character character, bool hideIfNotLearned, int diceMalus, bool canDice) {
+  JutsuCard toCard(Character character, bool hideIfNotLearned, int diceMalus,
+      bool canDice, CharacterViewModel characterViewModel) {
     int statValue = 0;
     int statMinimum = 0;
     bool hide = false;
@@ -70,6 +71,7 @@ class Jutsu {
       hideIfNotLearned: hide,
       minimumStat: statMinimum,
       statName: statName,
+      characterViewModel: characterViewModel,
     );
   }
 }

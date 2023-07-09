@@ -115,7 +115,7 @@ class _UpgradeCaracteristicState extends State<UpgradeCaracteristic> {
                       ),
                       onTap: () async {
                         setState(() {
-                          stat = (stat - 1).clamp(30, 100);
+                          stat = (stat - 1).clamp(0, 100);
                         });
                         await widget.onTap!(-1);
                       },

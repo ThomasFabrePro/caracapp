@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:caracapp/models/character_model.dart';
 import 'package:caracapp/models/jutsu_model.dart';
 import 'package:caracapp/utils/assets.dart';
+import 'package:caracapp/viewmodels/character_view_model.dart';
 import 'package:caracapp/widgets/lowerWidgets/dice_button.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,7 @@ class JutsuCard extends StatefulWidget {
   final int malus;
   final String statName;
   final bool enableDice;
+  final CharacterViewModel characterViewModel;
   const JutsuCard(
       {super.key,
       this.isGenjutsu = false,
@@ -29,7 +31,8 @@ class JutsuCard extends StatefulWidget {
       required this.hideIfNotLearned,
       required this.chakra,
       required this.statValue,
-      required this.character});
+      required this.character,
+      required this.characterViewModel});
 
   @override
   State<JutsuCard> createState() => _JutsuCardState();
@@ -219,6 +222,7 @@ class _JutsuCardState extends State<JutsuCard> {
                   additionalBehavior: () async {
                     widget.character.chakra -= widget.jutsu.chakraCost;
                     await widget.character.setChakra(widget.character.chakra);
+                    widget.characterViewModel.setCharacter(widget.character);
                   },
                 ),
               )
