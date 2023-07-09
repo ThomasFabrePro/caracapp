@@ -124,15 +124,10 @@ class _MyAppState extends State<MyApp> {
                 ],
               ),
               body: [
-                LevelUpPage(character: widget.character),
                 LogsPage(character: widget.character),
-<<<<<<< HEAD
                 MyCharacterPage(),
                 LevelUpPage(character: widget.character),
-=======
-                MyCharacterPage(character: widget.character),
                 FreeDicesPage(character: widget.character),
->>>>>>> feature/freeDices
               ][_currentIndex],
             ),
     );
